@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ya tenemos web (y carta online) · La Carreta del Carretón</title>
+<meta name="description" content="Estrenamos página web: carta con precios al día, horarios, cómo llegar y novedades de La Carreta del Carretón, en Arafo.">
+<meta property="og:title" content="Ya tenemos web (y carta online) · La Carreta del Carretón">
+<meta property="og:description" content="Carta con precios al día, horarios, cómo llegar y novedades de nuestro restaurante cubano en Arafo.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="../img/postre-teide.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232B2621'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='52' fill='%23D2B072' font-family='Georgia,serif'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<div id="site-header-slot"></div>
+
+<section class="post-hero">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="novedades_eyebrow">Últimas noticias</span>
+    <h1 data-i18n="post1_title">Ya tenemos web (y carta online)</h1>
+    <div class="post-meta" id="postDate">21 de septiembre de 2026</div>
+  </div>
+</section>
+
+<section class="post-body">
+  <div class="wrap">
+    <img class="post-cover" src="../img/postre-teide.webp" alt="Postre Teide bañado en chocolate">
+    <p data-i18n="post1_p1">Llevábamos tiempo con la misma conversación por teléfono: «¿a qué hora abren?», «¿tienen postre Teide hoy?», «¿dónde están exactamente?». Así que hemos hecho una página para tenerlo todo en un sitio.</p>
+    <h2 data-i18n="post1_h1">La carta, siempre al día</h2>
+    <p data-i18n="post1_p2">La sección de carta se actualiza sola desde nuestra carta digital, así que los precios y los platos que ves aquí son los mismos que hay en la mesa. Si algo cambia en cocina, cambia también en la web.</p>
+    <h2 data-i18n="post1_h2">Lo demás, donde toca</h2>
+    <p data-i18n="post1_p3">Horario completo, dirección con mapa y el teléfono a un clic. Abrimos de miércoles a domingo, solo a mediodía, y reservar sigue siendo tan sencillo como llamarnos al 922 51 50 66.</p>
+    <p data-i18n="post1_p4">Esta sección de novedades la iremos usando para contar lo que se salga de lo normal: platos de temporada, días de cierre, celebraciones. Nos vemos en la mesa.</p>
+
+    <div class="post-share">
+      <span class="share-label" data-i18n="share_label">Compartir</span>
+      <div class="socials" id="shareBox"></div>
+    </div>
+
+    <a class="post-back" href="../novedades.html" data-i18n="post_back">← Volver a novedades</a>
+  </div>
+</section>
+
+<div id="site-footer-slot"></div>
+
+<script src="../assets/i18n.js"></script>
+<script>
+  /* Textos propios de este post, en los dos idiomas. */
+  I18N.es.post1_title = "Ya tenemos web (y carta online)";
+  I18N.es.post1_p1 = "Llevábamos tiempo con la misma conversación por teléfono: «¿a qué hora abren?», «¿tienen postre Teide hoy?», «¿dónde están exactamente?». Así que hemos hecho una página para tenerlo todo en un sitio.";
+  I18N.es.post1_h1 = "La carta, siempre al día";
+  I18N.es.post1_p2 = "La sección de carta se actualiza sola desde nuestra carta digital, así que los precios y los platos que ves aquí son los mismos que hay en la mesa. Si algo cambia en cocina, cambia también en la web.";
+  I18N.es.post1_h2 = "Lo demás, donde toca";
+  I18N.es.post1_p3 = "Horario completo, dirección con mapa y el teléfono a un clic. Abrimos de miércoles a domingo, solo a mediodía, y reservar sigue siendo tan sencillo como llamarnos al 922 51 50 66.";
+  I18N.es.post1_p4 = "Esta sección de novedades la iremos usando para contar lo que se salga de lo normal: platos de temporada, días de cierre, celebraciones. Nos vemos en la mesa.";
+
+  I18N.en.post1_title = "Our website is up (menu included)";
+  I18N.en.post1_p1 = "We kept having the same phone conversation: \"what time do you open?\", \"do you have the Teide dessert today?\", \"where exactly are you?\". So we built a page that keeps it all in one place.";
+  I18N.en.post1_h1 = "The menu, always current";
+  I18N.en.post1_p2 = "The menu section updates itself from our digital menu, so the dishes and prices you see here are the ones on the table. If something changes in the kitchen, it changes on the website too.";
+  I18N.en.post1_h2 = "Everything else, where you would expect it";
+  I18N.en.post1_p3 = "Full opening hours, the address with a map, and the phone number one tap away. We open Wednesday to Sunday, lunch only, and booking is still as simple as calling +34 922 51 50 66.";
+  I18N.en.post1_p4 = "We will use this news section for anything out of the ordinary: seasonal dishes, closing days, celebrations. See you at the table.";
+
+  window.onLanguageChange = function(lang){
+    const el = document.getElementById('postDate');
+    if (el) el.textContent = new Date('2026-09-21T00:00:00')
+      .toLocaleDateString(lang === 'en' ? 'en-GB' : 'es-ES', { day:'numeric', month:'long', year:'numeric' });
+    if (window.CarretonShare){
+      CarretonShare.render('shareBox', window.location.href, document.title);
+    }
+  };
+</script>
+<script>window.SITE_PREFIX = "../";</script>
+<script src="../assets/site-common.js"></script>
+
+</body>
+</html>

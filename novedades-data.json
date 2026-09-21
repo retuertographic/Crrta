@@ -1,0 +1,13 @@
+{
+  "posts": [
+    {
+      "slug": "abrimos-nuestra-web",
+      "date": "2026-09-21",
+      "image": "img/postre-teide.webp",
+      "title_es": "Ya tenemos web (y carta online)",
+      "excerpt_es": "Estrenamos página para que no tengas que llamar solo para preguntar el horario. Aquí encontrarás la carta con los precios al día, cómo llegar y todo lo que vayamos contando.",
+      "title_en": "Our website is up (menu included)",
+      "excerpt_en": "We have a page at last, so you no longer have to call just to check the opening hours. Here you will find the menu with current prices, how to find us, and whatever else we have to share."
+    }
+  ]
+}
