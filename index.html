@@ -21,6 +21,7 @@
   "name": "La Carreta del Carretón",
   "servesCuisine": "Cubana",
   "telephone": "+34922515066",
+  "email": "info@lacarretadelcarreton.com",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "C. el Carretón, 4-7",
@@ -30,8 +31,8 @@
     "addressCountry": "ES"
   },
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday"], "opens": "12:00", "closes": "16:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "12:30", "closes": "16:00" }
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday"], "opens": "12:30", "closes": "16:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "12:00", "closes": "16:00" }
   ]
 }
 </script>
@@ -127,10 +128,6 @@
     <div class="menu-tabs" id="cartaTabs"><div class="menu-loading" data-i18n="carta_loading">Cargando la carta…</div></div>
     <div class="menu-panel" id="cartaPanel"></div>
     <div class="menu-notes" id="cartaNotes"></div>
-    <div class="menu-foot">
-      <a href="https://mdtotem.com/directorio/lacarretadelcarreton/index.php" target="_blank" rel="noopener" data-i18n="carta_full_link">Ver la carta completa online →</a>
-    </div>
-    <div class="menu-updated" id="cartaUpdated"></div>
   </div>
 </section>
 
@@ -188,11 +185,11 @@
               <div class="hours-grid">
                 <span data-i18n="day_mon">Lunes</span><span class="closed" data-i18n="closed">Cerrado</span>
                 <span data-i18n="day_tue">Martes</span><span class="closed" data-i18n="closed">Cerrado</span>
-                <span data-i18n="day_wed">Miércoles</span><span>12:00–16:00</span>
-                <span data-i18n="day_thu">Jueves</span><span>12:00–16:00</span>
-                <span data-i18n="day_fri">Viernes</span><span>12:00–16:00</span>
-                <span data-i18n="day_sat">Sábado</span><span>12:30–16:00</span>
-                <span data-i18n="day_sun">Domingo</span><span>12:30–16:00</span>
+                <span data-i18n="day_wed">Miércoles</span><span>12:30–16:00</span>
+                <span data-i18n="day_thu">Jueves</span><span>12:30–16:00</span>
+                <span data-i18n="day_fri">Viernes</span><span>12:30–16:00</span>
+                <span data-i18n="day_sat">Sábado</span><span>12:00–16:00</span>
+                <span data-i18n="day_sun">Domingo</span><span>12:00–16:00</span>
               </div>
               <div class="hours-note" data-i18n="hours_note">Solo servicio de mediodía. Última mesa, media hora antes del cierre.</div>
             </div>
@@ -228,7 +225,10 @@
         <div class="more-contacts">
           <div class="mc-title" data-i18n="mc_title">Otros contactos</div>
           <ul>
-            <li><span data-i18n="mc_email">Correo:</span> <a href="mailto:compadregalindo.eg@gmail.com">compadregalindo.eg@gmail.com</a></li>
+            <li><span data-i18n="mc_bookings">Reservas por correo:</span> <a id="mailBookings" href="mailto:reservas@lacarretadelcarreton.com">reservas@lacarretadelcarreton.com</a></li>
+            <li><span data-i18n="mc_care">Atención al cliente:</span> <a id="mailCare" href="mailto:atencionalcliente@lacarretadelcarreton.com">atencionalcliente@lacarretadelcarreton.com</a></li>
+            <li><span data-i18n="mc_info">Información general:</span> <a href="mailto:info@lacarretadelcarreton.com">info@lacarretadelcarreton.com</a></li>
+            <li><span data-i18n="mc_privacy">Protección de datos:</span> <a href="mailto:protecciondedatos@lacarretadelcarreton.com">protecciondedatos@lacarretadelcarreton.com</a></li>
             <li><span data-i18n="mc_groups">Grupos y celebraciones:</span> <a href="tel:+34922515066">922 51 50 66</a></li>
           </ul>
         </div>
@@ -265,7 +265,6 @@
   const CARTA_URL = 'menu-data.json';
   let cartaData = null;
   let cartaCat = 0;
-  let cartaScrapedAt = null;
   let cartaNotes = [];
 
   const t = (key, fallback) => {
@@ -417,16 +416,6 @@
     el.textContent = parts.join(' ');
   }
 
-  function renderCartaUpdated(){
-    const updatedEl = document.getElementById('cartaUpdated');
-    if (!updatedEl) return;
-    if (!cartaScrapedAt){ updatedEl.textContent = ''; return; }
-    const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
-    const d = new Date(cartaScrapedAt);
-    updatedEl.textContent = t('carta_updated', 'Carta actualizada:') + ' ' +
-      d.toLocaleDateString(lang === 'en' ? 'en-GB' : 'es-ES', { day:'numeric', month:'long', year:'numeric' });
-  }
-
   function showCartaMessage(key, fallback){
     const tabsEl = document.getElementById('cartaTabs');
     const panelEl = document.getElementById('cartaPanel');
@@ -450,22 +439,37 @@
       }
       cartaData = categories;
       cartaCat = 0;
-      cartaScrapedAt = data.scraped_at || null;
       cartaNotes = Array.isArray(data.notes) ? data.notes : [];
       renderCartaTabs();
       renderCartaPanel();
-      renderCartaUpdated();
     } catch (err) {
       cartaData = null;
       showCartaMessage('carta_error', 'No hemos podido cargar la carta ahora mismo. Puedes consultarla en el enlace de abajo o llamarnos al <a href="tel:+34922515066">922 51 50 66</a>.');
     }
   }
 
-  /* Al cambiar de idioma, repinta la carta con las etiquetas correctas. */
-  window.onLanguageChange = function(){
-    if (cartaData && cartaData.length){ renderCartaTabs(); renderCartaPanel(); renderCartaUpdated(); }
-    else { renderCartaUpdated(); }
+  /* Buzones con versión en inglés: cambian dirección y texto con el idioma. */
+  const MAILBOXES = {
+    mailBookings: { es: 'reservas@lacarretadelcarreton.com', en: 'bookings@lacarretadelcarreton.com' },
+    mailCare:     { es: 'atencionalcliente@lacarretadelcarreton.com', en: 'customercare@lacarretadelcarreton.com' },
   };
+  function renderMailboxes(){
+    const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
+    Object.entries(MAILBOXES).forEach(([id, addresses]) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const address = addresses[lang] || addresses.es;
+      el.textContent = address;
+      el.setAttribute('href', 'mailto:' + address);
+    });
+  }
+
+  /* Al cambiar de idioma, repinta la carta y los buzones. */
+  window.onLanguageChange = function(){
+    if (cartaData && cartaData.length){ renderCartaTabs(); renderCartaPanel(); }
+    renderMailboxes();
+  };
+  renderMailboxes();
 
   loadCarta();
 })();

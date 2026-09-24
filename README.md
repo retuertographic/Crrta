@@ -166,14 +166,7 @@ clave en los dos idiomas. El idioma elegido se guarda en el navegador
 - [ ] **Datos del titular en los textos legales.** `partials/footer.html` y
       `assets/i18n.js` llevan `[PENDIENTE: nombre del titular]` y
       `[PENDIENTE: NIF]`. Son obligatorios según el artículo 10 de la
-      LSSICE. (El correo ya está puesto:
-      `compadregalindo.eg@gmail.com`.)
-- [ ] **Dirección y horario.** El archivo de la carta exportada dice
-      «Camino del Taro s/n» y «miércoles a domingo 12:00–16:00». La web
-      lleva lo que nos pasaron por otro lado: «C. el Carretón, 4-7» y
-      sábados y domingos a partir de las 12:30. Hay que decidir cuál es
-      la buena (`index.html`, sección de contacto, y el JSON-LD del
-      `<head>`).
+      LSSICE.
 - [ ] **Filas marcadas para revisar en la carta de origen** (la web ya las
       enseña en español, así que no hay nada roto publicado, pero conviene
       arreglarlas en mdtotem):
@@ -198,5 +191,21 @@ clave en los dos idiomas. El idioma elegido se guarda en el navegador
 
 - Dirección: C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife
 - Teléfono: 922 51 50 66
-- Horario: lunes y martes cerrado · miércoles a viernes 12:00–16:00 ·
-  sábados y domingos 12:30–16:00
+- Horario: lunes y martes cerrado · miércoles a viernes 12:30–16:00 ·
+  sábados y domingos 12:00–16:00 (solo mediodía)
+
+### Correos
+
+| Para qué | Dirección |
+| --- | --- |
+| Reservas (ES) | `reservas@lacarretadelcarreton.com` |
+| Reservas (EN) | `bookings@lacarretadelcarreton.com` |
+| Atención al cliente (ES) | `atencionalcliente@lacarretadelcarreton.com` |
+| Atención al cliente (EN) | `customercare@lacarretadelcarreton.com` |
+| Información general | `info@lacarretadelcarreton.com` |
+| Protección de datos | `protecciondedatos@lacarretadelcarreton.com` |
+
+Los dos primeros pares cambian solos con el idioma que elija el visitante:
+la lógica está en `MAILBOXES`, al final de `index.html`. Los otros dos son
+iguales en los dos idiomas. El de protección de datos es además el que
+aparece en el aviso legal y en la política de privacidad.
