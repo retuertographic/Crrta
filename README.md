@@ -21,8 +21,9 @@ assets/site.css             todo el diseño
 assets/site-common.js       cabecera/pie, menú móvil, idioma, modal legal
 assets/i18n.js              los textos en español e inglés
 img/                        logotipo y fotografías
+scripts/carta_export.py     lee la carta exportada como página única
 scripts/totem_parser.py     entiende el HTML de la carta digital de mdtotem
-scripts/build_menu.py       genera menu-data.json (descargando o desde archivos)
+scripts/build_menu.py       genera menu-data.json a partir de cualquiera de las dos
 .github/workflows/update-menu.yml   la tarea diaria que lo ejecuta
 ```
 
@@ -56,13 +57,15 @@ lista de platos, con su descripción, los alérgenos y uno o varios precios
       "category": "Aperitivos",
       "category_en": "Starters",
       "items": [
+        { "group": "Refrescos", "group_en": "Refreshments" },
         {
-          "number": 2,
-          "name": "Tostones Rellenos",
+          "name": "Tostones rellenos",
+          "name_en": "Stuffed Tostones",
           "description": "Plátano verde frito, montadito con ropa vieja a la cubana",
+          "description_en": "Fried green plantain, slice with Cuban-style old rust",
           "prices": [
-            { "label": "1/2 ración", "value": "4,80" },
-            { "label": "1 ración",   "value": "7,00" }
+            { "label": "½ ración", "label_en": "Half portion", "value": "4,80" },
+            { "label": "1 ración", "label_en": "Full portion", "value": "7,00" }
           ],
           "allergens": ["gluten", "huevo"]
         }
@@ -72,11 +75,16 @@ lista de platos, con su descripción, los alérgenos y uno o varios precios
 }
 ```
 
-- `category_en`, `name_en`, `description`, `number` y `allergens` son
-  opcionales.
+- Todo lo que no sea `name` es opcional. Los sufijos `_en` y `_de` son
+  traducciones: si faltan, la web enseña el español. Eso es deliberado —
+  es mejor el nombre en español que uno en inglés que no corresponde al
+  plato.
+- Una entrada `{ "group": … }` dentro de `items` es un subtítulo dentro de
+  la categoría (Refrescos, Cervezas, Helados…), no un plato.
 - `value` es el número sin el símbolo del euro; la web le añade el ` €`.
-- `label` se traduce al inglés si es una ración conocida (`1/2 ración`,
-  `1 ración`, `unidad`); cualquier otra etiqueta se muestra tal cual.
+- `label` se traduce con `label_en` si viene en los datos; si no, con el
+  diccionario `portions` de `assets/i18n.js`; si tampoco, se muestra tal
+  cual.
 - `allergens` usa los nombres de los iconos de la carta digital (`gluten`,
   `huevo`, `leche`, `frutossecos`, `altramuces`, `pescado`…). Los nombres
   que se ven en pantalla están en `assets/i18n.js`, en `allergens`.
@@ -88,7 +96,22 @@ Se puede mantener a mano perfectamente: es un archivo de texto.
 
 ### Cómo se genera
 
-La carta digital de mdtotem tiene una página por categoría, todas con la
+La fuente más completa es **la carta exportada como página única** (el
+archivo `carta-…-carta.html`, que lleva toda la carta dentro de un
+`const D={…}`: los tres idiomas, los grupos, los alérgenos y un campo
+`note` que marca las filas con la traducción o el precio dudosos):
+
+```bash
+python scripts/build_menu.py --from-carta-html carta-la-carreta-del-carreton-carta.html
+```
+
+`scripts/carta_export.py` respeta ese campo `note`: si una fila viene
+marcada, esa traducción **no se publica** y la web cae al español. Al
+terminar, el script imprime por stderr la lista de filas marcadas, para
+poder arreglarlas en el origen.
+
+La otra fuente es la carta digital de mdtotem, que tiene una página por
+categoría, todas con la
 misma forma: el título en `.encabezadoTexto`, y dentro de `#eventos` un
 `.numeroPlato` por plato, seguido del nombre, la descripción, los
 `.preciosTexto` y una tabla con los iconos de alérgenos.
@@ -98,7 +121,8 @@ lo usa de dos maneras:
 ```bash
 pip install requests beautifulsoup4
 
-# Descargando de mdtotem (así lo hace el workflow diario):
+# Descargando de mdtotem (así lo hace el workflow diario;
+# ojo: sobrescribe la carta con lo que haya en mdtotem):
 python scripts/build_menu.py --fetch
 
 # Desde páginas guardadas a mano (botón derecho → guardar, o copiar el HTML):
@@ -140,15 +164,30 @@ clave en los dos idiomas. El idioma elegido se guarda en el navegador
 ## Pendiente antes de publicar
 
 - [ ] **Datos del titular en los textos legales.** `partials/footer.html` y
-      `assets/i18n.js` llevan `[PENDIENTE: nombre del titular]`,
-      `[PENDIENTE: NIF]` y `[PENDIENTE: correo de contacto]`. Son
-      obligatorios según el artículo 10 de la LSSICE.
-- [ ] **Correo de contacto** en el bloque "Otros contactos" de
-      `index.html` (mismo marcador).
-- [ ] **Resto de la carta.** Ahora mismo están cargadas *Aperitivos* y
-      *Ensaladas*. Faltan *Fuera de Carta*, *Vegetariano*, *Sopas*, *Pollo*,
-      *Res*, *Carne de Cochino*, *Pescado y Marisco* y *Postres*: se cargan
-      con `build_menu.py --fetch`, o a mano con `--from-files … --merge`.
+      `assets/i18n.js` llevan `[PENDIENTE: nombre del titular]` y
+      `[PENDIENTE: NIF]`. Son obligatorios según el artículo 10 de la
+      LSSICE. (El correo ya está puesto:
+      `compadregalindo.eg@gmail.com`.)
+- [ ] **Dirección y horario.** El archivo de la carta exportada dice
+      «Camino del Taro s/n» y «miércoles a domingo 12:00–16:00». La web
+      lleva lo que nos pasaron por otro lado: «C. el Carretón, 4-7» y
+      sábados y domingos a partir de las 12:30. Hay que decidir cuál es
+      la buena (`index.html`, sección de contacto, y el JSON-LD del
+      `<head>`).
+- [ ] **Filas marcadas para revisar en la carta de origen** (la web ya las
+      enseña en español, así que no hay nada roto publicado, pero conviene
+      arreglarlas en mdtotem):
+      - Traducción al inglés cruzada o vacía: *Ensalada especial*,
+        *¼ pollo* (decía «Chicken nuggets»), *Nuggets de pollo*,
+        *Secreto a la brasa*, *Victoria* (decía «Mahou Clásica»).
+      - Traducción al alemán cruzada: *Huevos rotos*, *Papas rellenas*,
+        *Croquetas de gofio con carne de costilla*, *Tamal cubano*.
+      - Precios: *Pata asada* trae «10,00 € / 10,50 €» en un solo campo;
+        *Garbanzos* venía marcado en el origen.
+- [ ] **Alemán.** Los datos ya traen las traducciones al alemán
+      (`name_de`, `description_de`), pero la web solo tiene ES/EN. Añadir
+      el tercer idioma es cuestión de traducir los textos de
+      `assets/i18n.js` y añadir el botón en `partials/header.html`.
 - [ ] **Redes sociales.** Los enlaces de Facebook, TripAdvisor y Google del
       pie de contacto se tomaron de resultados públicos de búsqueda;
       conviene comprobar que son las fichas correctas del local.

@@ -258,6 +258,12 @@
     background:var(--paper);border-radius:20px;padding:8px 34px;
     box-shadow:0 24px 50px rgba(43,38,33,.12);position:relative;min-height:120px;
   }
+  .menu-group{
+    font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;
+    color:var(--gold);letter-spacing:.01em;
+    padding:22px 0 2px;border-bottom:1px solid rgba(169,131,63,.25);margin-bottom:2px;
+  }
+  .menu-group:first-child{padding-top:14px;}
   .menu-item{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding:16px 0;border-bottom:1px dashed rgba(43,38,33,.15);}
   .menu-item:last-child{border-bottom:none;}
   .menu-item .mi-main{min-width:0;}

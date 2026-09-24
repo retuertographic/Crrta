@@ -2,9 +2,13 @@
 """
 Construye menu-data.json a partir de las páginas de la carta digital.
 
-Dos formas de darle las páginas:
+Tres formas de darle la carta:
 
-  # Desde archivos HTML guardados a mano (copiar/pegar del navegador):
+  # Desde la carta exportada como página única (la más completa: trae los
+  # tres idiomas, los grupos y las marcas de revisión):
+  python scripts/build_menu.py --from-carta-html carta-…-carta.html
+
+  # Desde las páginas sueltas de mdtotem guardadas a mano:
   python scripts/build_menu.py --from-files carta/*.html
 
   # Descargándolas de mdtotem (así lo hace el workflow diario):
@@ -27,6 +31,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urldefrag, urljoin, urlparse
 
+from carta_export import convert as convert_carta_export
 from totem_parser import fold, parse_page, to_category
 
 MENU_URL = "https://mdtotem.com/directorio/lacarretadelcarreton/index.php"
@@ -46,9 +51,13 @@ CATEGORY_ORDER = [
     "vegetariano",
     "sopas",
     "pollo",
+    "carne de res",
     "res",
     "carne de cochino",
+    "cochino",
+    "pescados y mariscos",
     "pescado y marisco",
+    "bebidas",
     "postres",
 ]
 
@@ -130,6 +139,11 @@ def main() -> int:
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--fetch", action="store_true", help="Descarga las páginas de mdtotem.")
     group.add_argument("--from-files", nargs="+", metavar="HTML", help="Lee páginas ya guardadas.")
+    group.add_argument(
+        "--from-carta-html",
+        metavar="HTML",
+        help="Lee la carta exportada como página única (bloque `const D={…}`).",
+    )
     parser.add_argument(
         "--merge",
         action="store_true",
@@ -137,16 +151,26 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    if args.fetch:
+    review: list[str] = []
+    if args.from_carta_html:
         try:
-            pages = fetch_pages()
+            categories, review = convert_carta_export(
+                Path(args.from_carta_html).read_text(encoding="utf-8")
+            )
         except Exception as exc:
-            print(f"ERROR: no se pudo descargar la carta: {exc}", file=sys.stderr)
+            print(f"ERROR: no se pudo leer la carta exportada: {exc}", file=sys.stderr)
             return 1
+        notes = ["IGIC INCLUIDO"]
     else:
-        pages = [Path(f).read_text(encoding="utf-8") for f in args.from_files]
-
-    categories, notes = build(pages)
+        if args.fetch:
+            try:
+                pages = fetch_pages()
+            except Exception as exc:
+                print(f"ERROR: no se pudo descargar la carta: {exc}", file=sys.stderr)
+                return 1
+        else:
+            pages = [Path(f).read_text(encoding="utf-8") for f in args.from_files]
+        categories, notes = build(pages)
 
     if args.merge and OUTPUT_PATH.exists():
         try:
@@ -160,7 +184,7 @@ def main() -> int:
         notes = notes or previous.get("notes", [])
         categories.sort(key=lambda c: sort_key(c["category"]))
 
-    total = sum(len(c["items"]) for c in categories)
+    total = sum(len([i for i in c["items"] if "group" not in i]) for c in categories)
     if len(categories) < MIN_CATEGORIES or total < MIN_ITEMS:
         print(
             f"ERROR: la extracción no dio un resultado creíble ({len(categories)} "
@@ -181,7 +205,12 @@ def main() -> int:
     )
     print(f"OK: {len(categories)} categorías y {total} platos en {OUTPUT_PATH.name}")
     for cat in categories:
-        print(f"  · {cat['category']}: {len(cat['items'])} platos")
+        dishes = len([i for i in cat["items"] if "group" not in i])
+        print(f"  · {cat['category']}: {dishes} platos")
+    if review:
+        print(f"\nPara revisar ({len(review)}):", file=sys.stderr)
+        for line in review:
+            print(f"  - {line}", file=sys.stderr)
     return 0
 
 

@@ -225,12 +225,10 @@
         <a href="tel:+34922515066" class="btn" data-i18n="cta_call">📞 Llamar y reservar</a>
         <a href="https://www.google.com/maps/search/?api=1&query=C.+el+Carret%C3%B3n%2C+4-7%2C+38550+Arafo%2C+Santa+Cruz+de+Tenerife" target="_blank" rel="noopener" class="btn outline" data-i18n="cta_maps">📍 Cómo llegar</a>
 
-        <!-- OJO: sustituye [PENDIENTE: correo de contacto] por el correo real
-             del restaurante (aparece también en el modal legal). -->
         <div class="more-contacts">
           <div class="mc-title" data-i18n="mc_title">Otros contactos</div>
           <ul>
-            <li><span data-i18n="mc_email">Correo:</span> <a href="mailto:">[PENDIENTE: correo de contacto]</a></li>
+            <li><span data-i18n="mc_email">Correo:</span> <a href="mailto:compadregalindo.eg@gmail.com">compadregalindo.eg@gmail.com</a></li>
             <li><span data-i18n="mc_groups">Grupos y celebraciones:</span> <a href="tel:+34922515066">922 51 50 66</a></li>
           </ul>
         </div>
@@ -279,10 +277,16 @@
     const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
     return (lang === 'en' && cat.category_en) ? cat.category_en : cat.category;
   }
-  function itemName(item){
+  /* Devuelve el campo en el idioma activo, con el español como respaldo.
+     Las traducciones que la carta de origen marcaba como dudosas no están
+     en los datos, así que ahí se ve el español — y eso es lo correcto. */
+  function field(obj, key){
     const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
-    return (lang === 'en' && item.name_en) ? item.name_en : item.name;
+    if (!obj) return '';
+    if (lang !== 'es' && obj[key + '_' + lang]) return obj[key + '_' + lang];
+    return obj[key] || '';
   }
+  function itemName(item){ return field(item, 'name'); }
   function formatPrice(p){
     if (p === null || p === undefined || p === '') return '';
     return String(p).replace('.', ',') + ' €';
@@ -297,12 +301,15 @@
     const dict = (window.I18N && I18N[lang] && I18N[lang].allergens) || {};
     return dict[fold(code)] || code;
   }
-  /* '1/2 ración' se traduce; cualquier otra etiqueta se muestra tal cual. */
-  function portionLabel(label){
+  /* La etiqueta de ración: primero la traducción que venga en los datos
+     (label_en), y si no, el diccionario de raciones conocidas. */
+  function portionLabel(price){
+    const label = price.label || '';
     if (!label) return '';
     const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
-    if (lang !== 'en') return label;
-    const dict = (window.I18N && I18N.en && I18N.en.portions) || {};
+    if (lang === 'es') return label;
+    if (price['label_' + lang]) return price['label_' + lang];
+    const dict = (window.I18N && I18N[lang] && I18N[lang].portions) || {};
     return dict[fold(label)] || label;
   }
   /* Acepta el formato nuevo (prices: [...]) y el antiguo (price: '4,20'). */
@@ -334,6 +341,15 @@
     const cat = cartaData[cartaCat];
     if (!cat) return;
     cat.items.forEach(item => {
+      /* Subtítulo dentro de una categoría (Refrescos, Cervezas, Helados…). */
+      if (item.group !== undefined){
+        const g = document.createElement('div');
+        g.className = 'menu-group';
+        g.textContent = field(item, 'group');
+        panel.appendChild(g);
+        return;
+      }
+
       const row = document.createElement('div');
       row.className = 'menu-item';
 
@@ -345,10 +361,11 @@
       nameEl.textContent = itemName(item);
       main.appendChild(nameEl);
 
-      if (item.description){
+      const description = field(item, 'description');
+      if (description){
         const desc = document.createElement('div');
         desc.className = 'mi-desc';
-        desc.textContent = item.description;
+        desc.textContent = description;
         main.appendChild(desc);
       }
 
@@ -370,7 +387,7 @@
       itemPrices(item).forEach(p => {
         const one = document.createElement('span');
         one.className = 'mi-price';
-        const label = portionLabel(p.label);
+        const label = portionLabel(p);
         if (label){
           const l = document.createElement('span');
           l.className = 'pl';
