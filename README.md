@@ -206,6 +206,15 @@ clave en los dos idiomas. El idioma elegido se guarda en el navegador
 | Protección de datos | `protecciondedatos@lacarretadelcarreton.com` |
 
 Los dos primeros pares cambian solos con el idioma que elija el visitante:
-la lógica está en `MAILBOXES`, al final de `index.html`. Los otros dos son
-iguales en los dos idiomas. El de protección de datos es además el que
-aparece en el aviso legal y en la política de privacidad.
+la lógica está en `MAILBOXES`, al final de `index.html`, y se aplica a
+cualquier elemento con `data-mailbox="bookings"` o `data-mailbox="care"`
+(el texto va en el propio enlace, o en el hijo con `data-mailbox-text` si
+el enlace lleva más cosas dentro). Los otros dos son iguales en los dos
+idiomas. El de protección de datos es además el que aparece en el aviso
+legal y en la política de privacidad, y el de información general va en el
+JSON-LD.
+
+La tarjeta de reservas presenta el teléfono y el correo como dos opciones
+con el mismo peso (`.reserve-ways` en `assets/site.css`), y los botones
+«Reservar mesa» de la cabecera, el pie y la galería llevan a la sección de
+contacto en vez de abrir el marcador del teléfono.

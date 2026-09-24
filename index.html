@@ -139,7 +139,7 @@
         <span class="eyebrow" data-i18n="gallery_eyebrow">Un vistazo</span>
         <h2 class="section-title" style="margin-bottom:0;"><span data-i18n="gallery_title1">La casa</span><span class="accent" data-i18n="gallery_title2">en imágenes</span></h2>
       </div>
-      <a href="tel:+34922515066" class="btn" data-i18n="nav_book">Reservar mesa</a>
+      <a href="#contacto" class="btn" data-i18n="nav_book">Reservar mesa</a>
     </div>
     <div class="gallery-grid" id="galleryGrid">
       <a href="img/salon.webp" class="g-tall"><img src="img/salon.webp" alt="Salón y patio de La Carreta del Carretón" loading="lazy"></a>
@@ -208,25 +208,39 @@
       </div>
 
       <div class="reserve-card">
-        <h3 data-i18n="reserve_title">Reservar es una llamada</h3>
-        <p data-i18n="reserve_p">No hace falta formulario ni aplicación: se coge el teléfono y ya está. Si no lo cogemos a la primera, es que estamos en plena faena — insiste un poco.</p>
-        <a class="reserve-phone" href="tel:+34922515066">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
-          922 51 50 66
-        </a>
+        <h3 data-i18n="reserve_title">Dos maneras de reservar</h3>
+        <p data-i18n="reserve_p">Por teléfono mientras estamos abiertos, o por correo a cualquier hora. Elige la que te venga mejor: las dos llegan a la misma mesa.</p>
+
+        <div class="reserve-ways">
+          <a class="way" href="tel:+34922515066">
+            <span class="way-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+            <span class="way-body">
+              <span class="way-label" data-i18n="reserve_by_phone">Por teléfono</span>
+              <span class="way-value">922 51 50 66</span>
+              <span class="way-note" data-i18n="reserve_phone_note">De miércoles a domingo, en horario de cocina.</span>
+            </span>
+          </a>
+          <a class="way" href="mailto:reservas@lacarretadelcarreton.com" data-mailbox="bookings">
+            <span class="way-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+            <span class="way-body">
+              <span class="way-label" data-i18n="reserve_by_email">Por correo</span>
+              <span class="way-value" data-mailbox-text>reservas@lacarretadelcarreton.com</span>
+              <span class="way-note" data-i18n="reserve_email_note">A cualquier hora. Te respondemos en cuanto salimos de la cocina.</span>
+            </span>
+          </a>
+        </div>
+
         <ul class="reserve-steps">
-          <li><span class="n">1</span><span data-i18n="reserve_step1">Dinos el día y cuántos sois — abrimos de miércoles a domingo, solo mediodía.</span></li>
+          <li><span class="n">1</span><span data-i18n="reserve_step1">Dinos el día, la hora y cuántos sois — abrimos de miércoles a domingo, solo mediodía.</span></li>
           <li><span class="n">2</span><span data-i18n="reserve_step2">Si venís en grupo o hay celebración, avísanos con tiempo para preparar la mesa.</span></li>
-          <li><span class="n">3</span><span data-i18n="reserve_step3">Cuéntanos alergias o intolerancias al reservar y lo tenemos en cuenta en cocina.</span></li>
+          <li><span class="n">3</span><span data-i18n="reserve_step3">Cuéntanos alergias o intolerancias y lo tenemos en cuenta en cocina.</span></li>
         </ul>
-        <a href="tel:+34922515066" class="btn" data-i18n="cta_call">📞 Llamar y reservar</a>
         <a href="https://www.google.com/maps/search/?api=1&query=C.+el+Carret%C3%B3n%2C+4-7%2C+38550+Arafo%2C+Santa+Cruz+de+Tenerife" target="_blank" rel="noopener" class="btn outline" data-i18n="cta_maps">📍 Cómo llegar</a>
 
         <div class="more-contacts">
           <div class="mc-title" data-i18n="mc_title">Otros contactos</div>
           <ul>
-            <li><span data-i18n="mc_bookings">Reservas por correo:</span> <a id="mailBookings" href="mailto:reservas@lacarretadelcarreton.com">reservas@lacarretadelcarreton.com</a></li>
-            <li><span data-i18n="mc_care">Atención al cliente:</span> <a id="mailCare" href="mailto:atencionalcliente@lacarretadelcarreton.com">atencionalcliente@lacarretadelcarreton.com</a></li>
+            <li><span data-i18n="mc_care">Atención al cliente:</span> <a href="mailto:atencionalcliente@lacarretadelcarreton.com" data-mailbox="care">atencionalcliente@lacarretadelcarreton.com</a></li>
             <li><span data-i18n="mc_info">Información general:</span> <a href="mailto:info@lacarretadelcarreton.com">info@lacarretadelcarreton.com</a></li>
             <li><span data-i18n="mc_privacy">Protección de datos:</span> <a href="mailto:protecciondedatos@lacarretadelcarreton.com">protecciondedatos@lacarretadelcarreton.com</a></li>
             <li><span data-i18n="mc_groups">Grupos y celebraciones:</span> <a href="tel:+34922515066">922 51 50 66</a></li>
@@ -450,17 +464,23 @@
 
   /* Buzones con versión en inglés: cambian dirección y texto con el idioma. */
   const MAILBOXES = {
-    mailBookings: { es: 'reservas@lacarretadelcarreton.com', en: 'bookings@lacarretadelcarreton.com' },
-    mailCare:     { es: 'atencionalcliente@lacarretadelcarreton.com', en: 'customercare@lacarretadelcarreton.com' },
+    bookings: { es: 'reservas@lacarretadelcarreton.com', en: 'bookings@lacarretadelcarreton.com' },
+    care:     { es: 'atencionalcliente@lacarretadelcarreton.com', en: 'customercare@lacarretadelcarreton.com' },
   };
   function renderMailboxes(){
     const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
-    Object.entries(MAILBOXES).forEach(([id, addresses]) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+    document.querySelectorAll('[data-mailbox]').forEach(el => {
+      const addresses = MAILBOXES[el.getAttribute('data-mailbox')];
+      if (!addresses) return;
       const address = addresses[lang] || addresses.es;
-      el.textContent = address;
       el.setAttribute('href', 'mailto:' + address);
+      /* El texto va en el propio enlace, o en el hijo marcado con
+         data-mailbox-text cuando el enlace tiene más cosas dentro. */
+      const target = el.querySelector('[data-mailbox-text]') || el;
+      /* <wbr> tras la arroba: si la dirección no cabe en una línea, parte
+         por ahí en vez de por la mitad de una palabra. Las direcciones son
+         constantes de este archivo, no entran datos de fuera. */
+      target.innerHTML = address.replace('@', '@<wbr>');
     });
   }
 
