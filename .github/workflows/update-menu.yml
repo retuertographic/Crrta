@@ -27,7 +27,7 @@ jobs:
         run: pip install requests beautifulsoup4
 
       - name: Extraer la carta
-        run: python scripts/scrape_menu.py
+        run: python scripts/build_menu.py --fetch
 
       - name: Publicar los cambios
         run: |

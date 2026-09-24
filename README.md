@@ -21,7 +21,8 @@ assets/site.css             todo el diseño
 assets/site-common.js       cabecera/pie, menú móvil, idioma, modal legal
 assets/i18n.js              los textos en español e inglés
 img/                        logotipo y fotografías
-scripts/scrape_menu.py      lee la carta digital y genera menu-data.json
+scripts/totem_parser.py     entiende el HTML de la carta digital de mdtotem
+scripts/build_menu.py       genera menu-data.json (descargando o desde archivos)
 .github/workflows/update-menu.yml   la tarea diaria que lo ejecuta
 ```
 
@@ -42,52 +43,84 @@ dominio (una sola línea, sin `https://`) y apunta el DNS a GitHub Pages.
 ## La carta
 
 `index.html` lee `menu-data.json` y pinta las pestañas de categorías y la
-lista de platos. El formato es:
+lista de platos, con su descripción, los alérgenos y uno o varios precios
+(media ración / ración entera). El formato es:
 
 ```json
 {
   "source": "https://mdtotem.com/directorio/lacarretadelcarreton/index.php",
-  "scraped_at": "2026-09-21T06:00:00+00:00",
+  "scraped_at": "2026-09-24T06:00:00+00:00",
+  "notes": ["IGIC INCLUIDO"],
   "categories": [
     {
-      "category": "Entrantes",
+      "category": "Aperitivos",
       "category_en": "Starters",
       "items": [
-        { "name": "Croquetas de jamón", "description": "Seis unidades", "price": "6,50" }
+        {
+          "number": 2,
+          "name": "Tostones Rellenos",
+          "description": "Plátano verde frito, montadito con ropa vieja a la cubana",
+          "prices": [
+            { "label": "1/2 ración", "value": "4,80" },
+            { "label": "1 ración",   "value": "7,00" }
+          ],
+          "allergens": ["gluten", "huevo"]
+        }
       ]
     }
   ]
 }
 ```
 
-- `category_en`, `name_en` y `description` son opcionales.
-- `price` es el número sin el símbolo del euro (`"12,50"` o `"12.50"`); la
-  web le añade el ` €`.
+- `category_en`, `name_en`, `description`, `number` y `allergens` son
+  opcionales.
+- `value` es el número sin el símbolo del euro; la web le añade el ` €`.
+- `label` se traduce al inglés si es una ración conocida (`1/2 ración`,
+  `1 ración`, `unidad`); cualquier otra etiqueta se muestra tal cual.
+- `allergens` usa los nombres de los iconos de la carta digital (`gluten`,
+  `huevo`, `leche`, `frutossecos`, `altramuces`, `pescado`…). Los nombres
+  que se ven en pantalla están en `assets/i18n.js`, en `allergens`.
+- También se admite el formato simple `"price": "4,20"` en vez de `prices`.
 - Si `categories` está vacío, la web muestra un aviso invitando a llamar,
   en vez de una sección en blanco.
 
 Se puede mantener a mano perfectamente: es un archivo de texto.
 
-### Actualización automática
+### Cómo se genera
 
-`scripts/scrape_menu.py` descarga la carta digital de mdtotem y regenera
-`menu-data.json`. El workflow `update-menu.yml` lo ejecuta **cada día a las
-06:00 UTC** y hace commit solo si algo ha cambiado. También puede lanzarse
-a mano desde la pestaña `Actions → Actualizar carta → Run workflow`.
-
-El extractor prueba dos estrategias (contenedores con clases del tipo
-`categoria`/`plato`/`precio`, y si eso no cuaja, un recorrido lineal
-tratando los encabezados como categorías y las líneas que acaban en precio
-como platos). Si ninguna da un resultado creíble, **el script falla a
-propósito** en vez de publicar una carta vacía o equivocada: verás la ❌ en
-Actions y sabrás que hay que revisarlo.
-
-Para depurar los selectores contra el HTML real:
+La carta digital de mdtotem tiene una página por categoría, todas con la
+misma forma: el título en `.encabezadoTexto`, y dentro de `#eventos` un
+`.numeroPlato` por plato, seguido del nombre, la descripción, los
+`.preciosTexto` y una tabla con los iconos de alérgenos.
+`scripts/totem_parser.py` es quien entiende eso; `scripts/build_menu.py`
+lo usa de dos maneras:
 
 ```bash
 pip install requests beautifulsoup4
-python scripts/scrape_menu.py --dump-html /tmp/carta.html
+
+# Descargando de mdtotem (así lo hace el workflow diario):
+python scripts/build_menu.py --fetch
+
+# Desde páginas guardadas a mano (botón derecho → guardar, o copiar el HTML):
+python scripts/build_menu.py --from-files carta/*.html
+
+# Añadiendo categorías sueltas sin perder las que ya estaban:
+python scripts/build_menu.py --from-files carta/postres.html --merge
 ```
+
+Con `--fetch` parte de `index.php`, sigue los enlaces de esa misma carpeta
+y se queda con las páginas que tienen pinta de categoría. El orden de las
+pestañas lo fija `CATEGORY_ORDER` en `build_menu.py`.
+
+Si el resultado no llega a los mínimos, **el script falla a propósito** en
+vez de publicar una carta vacía o a medias: verás la ❌ en Actions y sabrás
+que hay que revisarlo.
+
+### Actualización automática
+
+El workflow `update-menu.yml` ejecuta `build_menu.py --fetch` **cada día a
+las 06:00 UTC** y hace commit solo si algo ha cambiado. También puede
+lanzarse a mano desde `Actions → Actualizar carta → Run workflow`.
 
 ## Añadir una novedad
 
@@ -112,8 +145,10 @@ clave en los dos idiomas. El idioma elegido se guarda en el navegador
       obligatorios según el artículo 10 de la LSSICE.
 - [ ] **Correo de contacto** en el bloque "Otros contactos" de
       `index.html` (mismo marcador).
-- [ ] **La carta.** `menu-data.json` está vacío a la espera de la primera
-      sincronización (o de que se rellene a mano).
+- [ ] **Resto de la carta.** Ahora mismo están cargadas *Aperitivos* y
+      *Ensaladas*. Faltan *Fuera de Carta*, *Vegetariano*, *Sopas*, *Pollo*,
+      *Res*, *Carne de Cochino*, *Pescado y Marisco* y *Postres*: se cargan
+      con `build_menu.py --fetch`, o a mano con `--from-files … --merge`.
 - [ ] **Redes sociales.** Los enlaces de Facebook, TripAdvisor y Google del
       pie de contacto se tomaron de resultados públicos de búsqueda;
       conviene comprobar que son las fichas correctas del local.

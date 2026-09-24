@@ -126,6 +126,7 @@
     <p class="carta-sub" data-i18n="carta_sub">Sincronizada con nuestra carta digital: cuando cambia allí, cambia aquí.</p>
     <div class="menu-tabs" id="cartaTabs"><div class="menu-loading" data-i18n="carta_loading">Cargando la carta…</div></div>
     <div class="menu-panel" id="cartaPanel"></div>
+    <div class="menu-notes" id="cartaNotes"></div>
     <div class="menu-foot">
       <a href="https://mdtotem.com/directorio/lacarretadelcarreton/index.php" target="_blank" rel="noopener" data-i18n="carta_full_link">Ver la carta completa online →</a>
     </div>
@@ -267,6 +268,7 @@
   let cartaData = null;
   let cartaCat = 0;
   let cartaScrapedAt = null;
+  let cartaNotes = [];
 
   const t = (key, fallback) => {
     const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
@@ -284,6 +286,32 @@
   function formatPrice(p){
     if (p === null || p === undefined || p === '') return '';
     return String(p).replace('.', ',') + ' €';
+  }
+  /* Quita acentos y pasa a minúsculas, para buscar en los diccionarios. */
+  function fold(s){
+    return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  }
+  /* 'Gluten', 'Frutos secos'… a partir del nombre de archivo del alérgeno. */
+  function allergenLabel(code){
+    const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
+    const dict = (window.I18N && I18N[lang] && I18N[lang].allergens) || {};
+    return dict[fold(code)] || code;
+  }
+  /* '1/2 ración' se traduce; cualquier otra etiqueta se muestra tal cual. */
+  function portionLabel(label){
+    if (!label) return '';
+    const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
+    if (lang !== 'en') return label;
+    const dict = (window.I18N && I18N.en && I18N.en.portions) || {};
+    return dict[fold(label)] || label;
+  }
+  /* Acepta el formato nuevo (prices: [...]) y el antiguo (price: '4,20'). */
+  function itemPrices(item){
+    if (Array.isArray(item.prices) && item.prices.length) return item.prices;
+    if (item.price !== undefined && item.price !== null && item.price !== '') {
+      return [{ value: item.price }];
+    }
+    return [];
   }
 
   function renderCartaTabs(){
@@ -309,24 +337,67 @@
       const row = document.createElement('div');
       row.className = 'menu-item';
 
+      const main = document.createElement('div');
+      main.className = 'mi-main';
+
       const nameEl = document.createElement('div');
       nameEl.className = 'mi-name';
       nameEl.textContent = itemName(item);
+      main.appendChild(nameEl);
+
       if (item.description){
-        const desc = document.createElement('span');
+        const desc = document.createElement('div');
         desc.className = 'mi-desc';
         desc.textContent = item.description;
-        nameEl.appendChild(desc);
+        main.appendChild(desc);
       }
 
-      const priceEl = document.createElement('div');
-      priceEl.className = 'mi-price';
-      priceEl.textContent = formatPrice(item.price);
+      if (Array.isArray(item.allergens) && item.allergens.length){
+        const box = document.createElement('div');
+        box.className = 'mi-allergens';
+        box.setAttribute('aria-label', t('allergens_label', 'Alérgenos'));
+        item.allergens.forEach(code => {
+          const chip = document.createElement('span');
+          chip.className = 'al';
+          chip.textContent = allergenLabel(code);
+          box.appendChild(chip);
+        });
+        main.appendChild(box);
+      }
 
-      row.appendChild(nameEl);
-      row.appendChild(priceEl);
+      const pricesEl = document.createElement('div');
+      pricesEl.className = 'mi-prices';
+      itemPrices(item).forEach(p => {
+        const one = document.createElement('span');
+        one.className = 'mi-price';
+        const label = portionLabel(p.label);
+        if (label){
+          const l = document.createElement('span');
+          l.className = 'pl';
+          l.textContent = label;
+          one.appendChild(l);
+        }
+        one.appendChild(document.createTextNode(formatPrice(p.value)));
+        pricesEl.appendChild(one);
+      });
+
+      row.appendChild(main);
+      row.appendChild(pricesEl);
       panel.appendChild(row);
     });
+
+    renderCartaNotes();
+  }
+
+  /* Avisos de la carta ("IGIC incluido") + recordatorio de alérgenos. */
+  function renderCartaNotes(){
+    const el = document.getElementById('cartaNotes');
+    if (!el) return;
+    const parts = (cartaNotes || []).map(n =>
+      fold(n).indexOf('igic') !== -1 ? t('note_igic', 'IGIC incluido.') : n
+    );
+    parts.push(t('note_allergens', 'Si tienes alguna alergia o intolerancia, dínoslo al pedir.'));
+    el.textContent = parts.join(' ');
   }
 
   function renderCartaUpdated(){
@@ -344,6 +415,8 @@
     const panelEl = document.getElementById('cartaPanel');
     if (tabsEl) tabsEl.innerHTML = '';
     if (panelEl) panelEl.innerHTML = '<p class="menu-empty" data-i18n="' + key + '">' + fallback + '</p>';
+    const notesEl = document.getElementById('cartaNotes');
+    if (notesEl) notesEl.textContent = '';
     if (window.applyTranslations) window.applyTranslations((window.getCurrentLang && window.getCurrentLang()) || 'es');
   }
 
@@ -361,6 +434,7 @@
       cartaData = categories;
       cartaCat = 0;
       cartaScrapedAt = data.scraped_at || null;
+      cartaNotes = Array.isArray(data.notes) ? data.notes : [];
       renderCartaTabs();
       renderCartaPanel();
       renderCartaUpdated();
@@ -373,6 +447,7 @@
   /* Al cambiar de idioma, repinta la carta con las etiquetas correctas. */
   window.onLanguageChange = function(){
     if (cartaData && cartaData.length){ renderCartaTabs(); renderCartaPanel(); renderCartaUpdated(); }
+    else { renderCartaUpdated(); }
   };
 
   loadCarta();

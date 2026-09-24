@@ -60,6 +60,26 @@ window.I18N = {
     carta_empty: "Estamos actualizando la carta. Llámanos al <a href=\"tel:+34922515066\">922 51 50 66</a> y te contamos lo que hay hoy.",
     carta_error: "No hemos podido cargar la carta ahora mismo. Puedes consultarla en el enlace de abajo o llamarnos al <a href=\"tel:+34922515066\">922 51 50 66</a>.",
     carta_updated: "Carta actualizada:",
+    allergens_label: "Alérgenos",
+    note_igic: "IGIC incluido.",
+    note_allergens: "Si tienes alguna alergia o intolerancia, dínoslo al pedir.",
+    /* Nombres de alérgeno, por el nombre del icono de la carta digital. */
+    allergens: {
+      gluten: "Gluten",
+      crustaceos: "Crustáceos",
+      huevo: "Huevo",
+      pescado: "Pescado",
+      cacahuetes: "Cacahuetes",
+      soja: "Soja",
+      leche: "Lácteos",
+      frutossecos: "Frutos secos",
+      apio: "Apio",
+      mostaza: "Mostaza",
+      sesamo: "Sésamo",
+      sulfitos: "Sulfitos",
+      altramuces: "Altramuces",
+      moluscos: "Moluscos"
+    },
 
     /* --- galería --- */
     gallery_eyebrow: "Un vistazo",
@@ -196,6 +216,33 @@ window.I18N = {
     carta_empty: "We are updating the menu right now. Call us on <a href=\"tel:+34922515066\">+34 922 51 50 66</a> and we will tell you what is on today.",
     carta_error: "We could not load the menu right now. You can check it through the link below, or call us on <a href=\"tel:+34922515066\">+34 922 51 50 66</a>.",
     carta_updated: "Menu updated:",
+    allergens_label: "Allergens",
+    note_igic: "Local tax (IGIC) included.",
+    note_allergens: "Tell us when you order if you have any allergy or intolerance.",
+    allergens: {
+      gluten: "Gluten",
+      crustaceos: "Crustaceans",
+      huevo: "Egg",
+      pescado: "Fish",
+      cacahuetes: "Peanuts",
+      soja: "Soy",
+      leche: "Dairy",
+      frutossecos: "Nuts",
+      apio: "Celery",
+      mostaza: "Mustard",
+      sesamo: "Sesame",
+      sulfitos: "Sulphites",
+      altramuces: "Lupin",
+      moluscos: "Molluscs"
+    },
+    /* Etiquetas de ración: la clave va en minúsculas y sin acentos. */
+    portions: {
+      "1/2 racion": "Half portion",
+      "media racion": "Half portion",
+      "1 racion": "Full portion",
+      "racion": "Full portion",
+      "unidad": "Each"
+    },
 
     /* --- gallery --- */
     gallery_eyebrow: "A look inside",

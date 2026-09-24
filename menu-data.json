@@ -1,5 +1,279 @@
 {
   "source": "https://mdtotem.com/directorio/lacarretadelcarreton/index.php",
-  "scraped_at": null,
-  "categories": []
+  "scraped_at": "2026-09-24T13:16:58.603859+00:00",
+  "notes": [
+    "IGIC INCLUIDO"
+  ],
+  "categories": [
+    {
+      "category": "Aperitivos",
+      "category_en": "Starters",
+      "items": [
+        {
+          "name": "Tostones",
+          "number": 1,
+          "description": "Plátano verde frito",
+          "prices": [
+            {
+              "label": "1 ración",
+              "value": "4,20"
+            }
+          ],
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "name": "Tostones Rellenos",
+          "number": 2,
+          "description": "Plátano verde frito, montadito con ropa vieja a la cubana",
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "4,80"
+            },
+            {
+              "label": "1 ración",
+              "value": "7,00"
+            }
+          ],
+          "allergens": [
+            "gluten",
+            "huevo"
+          ]
+        },
+        {
+          "name": "Huevos Rotos",
+          "number": 3,
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "5,35"
+            },
+            {
+              "label": "1 ración",
+              "value": "7,50"
+            }
+          ],
+          "allergens": [
+            "gluten",
+            "huevo"
+          ]
+        },
+        {
+          "name": "Papas Rellenas",
+          "number": 4,
+          "description": "Puré de papas aderezado con nuez moscada y mantequilla, rellena con carne molida. Se empana y se fríe",
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "5,35"
+            },
+            {
+              "label": "1 ración",
+              "value": "7,50"
+            }
+          ],
+          "allergens": [
+            "gluten",
+            "huevo"
+          ]
+        },
+        {
+          "name": "Croquetas de Jamón Cocido",
+          "number": 5,
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "2,15"
+            },
+            {
+              "label": "1 ración",
+              "value": "3,75"
+            }
+          ],
+          "allergens": [
+            "gluten",
+            "huevo"
+          ]
+        },
+        {
+          "name": "Croquetas de Pollo",
+          "number": 6,
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "2,15"
+            },
+            {
+              "label": "1 ración",
+              "value": "3,75"
+            }
+          ],
+          "allergens": [
+            "gluten",
+            "huevo"
+          ]
+        },
+        {
+          "name": "Croquetas de Gofio con carne de Costilla",
+          "number": 7,
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "2,15"
+            },
+            {
+              "label": "1 ración",
+              "value": "3,75"
+            }
+          ],
+          "allergens": [
+            "gluten",
+            "huevo"
+          ]
+        },
+        {
+          "name": "Tamal Cubano",
+          "number": 8,
+          "description": "Millo tierno molido con tropezones de carne, una fritura y se cocina en la propia hoja de millo",
+          "prices": [
+            {
+              "label": "1 ración",
+              "value": "5,90"
+            }
+          ]
+        },
+        {
+          "name": "Yuca con mojo",
+          "number": 9,
+          "description": "Yuca guisada con un mojo criollo cubano",
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "3,20"
+            },
+            {
+              "label": "1 ración",
+              "value": "4,80"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Ensaladas",
+      "category_en": "Salads",
+      "items": [
+        {
+          "name": "Mixta",
+          "number": 1,
+          "description": "Diferentes tipos de lechuga, tomate, cebolla y millo",
+          "prices": [
+            {
+              "label": "1 ración",
+              "value": "4,80"
+            }
+          ]
+        },
+        {
+          "name": "Habana Libre",
+          "number": 2,
+          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pollo y una vinagreta de mango",
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "8,60"
+            },
+            {
+              "label": "1 ración",
+              "value": "12,30"
+            }
+          ],
+          "allergens": [
+            "altramuces",
+            "frutossecos",
+            "leche"
+          ]
+        },
+        {
+          "name": "Perla del Caribe",
+          "number": 3,
+          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, langostino y una vinagreta de mango",
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "8,60"
+            },
+            {
+              "label": "1 ración",
+              "value": "12,30"
+            }
+          ],
+          "allergens": [
+            "altramuces",
+            "frutossecos",
+            "leche",
+            "pescado"
+          ]
+        },
+        {
+          "name": "El Carretón",
+          "number": 4,
+          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, churrasco de entraña y una vinagreta de mango.",
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "9,80"
+            },
+            {
+              "label": "1 ración",
+              "value": "13,80"
+            }
+          ],
+          "allergens": [
+            "altramuces",
+            "frutossecos",
+            "leche"
+          ]
+        },
+        {
+          "name": "Guajira",
+          "number": 5,
+          "description": "Diferente tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pata asada y una vinagreta de mango.",
+          "prices": [
+            {
+              "label": "1/2 ración",
+              "value": "8,60"
+            },
+            {
+              "label": "1 ración",
+              "value": "12,30"
+            }
+          ],
+          "allergens": [
+            "altramuces",
+            "frutossecos",
+            "leche"
+          ]
+        },
+        {
+          "name": "Ensalada Especial",
+          "number": 6,
+          "description": "Diferentes tipos de lechuga, frutas (Uva y Manzana), frutos secos, queso feta y una vinagreta de Mango.",
+          "prices": [
+            {
+              "label": "1 ración",
+              "value": "7,50"
+            }
+          ],
+          "allergens": [
+            "altramuces",
+            "frutossecos",
+            "leche"
+          ]
+        }
+      ]
+    }
+  ]
 }
