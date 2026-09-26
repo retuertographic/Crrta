@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--{{HEAD}}-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232B2621'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='52' fill='%23D2B072' font-family='Georgia,serif'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="{{PREFIX}}assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "La Carreta del Carretón",
+  "servesCuisine": "Cubana",
+  "telephone": "+34922515066",
+  "email": "info@lacarretadelcarreton.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "C. el Carretón, 4-7",
+    "postalCode": "38550",
+    "addressLocality": "Arafo",
+    "addressRegion": "Santa Cruz de Tenerife",
+    "addressCountry": "ES"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday"], "opens": "12:30", "closes": "16:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "12:00", "closes": "16:00" }
+  ]
+}
+</script>
+<!--{{ANALYTICS}}-->
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<!--{{HEADER}}-->
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <span class="hero-tag" data-i18n="hero_tag">🇨🇺 Cocina cubana · Arafo</span>
+    <h1><span data-i18n="hero_title1">Aquí se come sin prisa</span><span class="script" data-i18n="hero_title2">y se repite postre</span></h1>
+    <p data-i18n="hero_p">Cocina cubana casera en el casco de Arafo: carnes a la brasa, cerdo tratado como se debe y el postre Teide, que es casi un motivo de viaje en sí mismo.</p>
+    <div class="hero-ctas">
+      <a href="tel:+34922515066" class="btn" data-i18n="cta_call">📞 Llamar y reservar</a>
+      <a href="#carta" class="btn outline" data-i18n="hero_btn2">Ver la carta</a>
+    </div>
+    <div class="hero-badges">
+      <span data-i18n="badge_1">🔥 Brasa y parrilla</span>
+      <span data-i18n="badge_2">🍮 Postre Teide</span>
+      <span data-i18n="badge_3">🪑 Salón y terraza</span>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="line"></span><span data-i18n="hero_scroll">Scroll</span></div>
+</section>
+
+<!-- ================= NOSOTROS ================= -->
+<section class="intro" id="nosotros">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div class="intro-media">
+        <img src="{{PREFIX}}img/salon.webp" alt="Salón de La Carreta del Carretón, con mesas de mantel de cuadros y pared de piedra volcánica">
+        <div class="float-card">
+          <strong data-i18n="intro_float_num">Arafo</strong>
+          <span data-i18n="intro_float_label">a un paso del Valle de Güímar</span>
+        </div>
+      </div>
+      <div class="intro-text">
+        <span class="eyebrow" data-i18n="intro_eyebrow">De Cuba a Tenerife</span>
+        <h2 class="section-title"><span data-i18n="intro_title1">Una casa cubana</span><span class="accent" data-i18n="intro_title2">en el corazón de Arafo</span></h2>
+        <p data-i18n="intro_p1">La Carreta del Carretón es un restaurante pequeño y familiar en el casco de Arafo, donde la cocina cubana se hace como en casa: a fuego lento, con producto de aquí y recetas de allá.</p>
+        <p data-i18n="intro_p2">Manteles de cuadros, pared de piedra volcánica y un patio con plantas. Se llena, así que es mejor llamar antes y reservar la mesa.</p>
+        <ul class="intro-points">
+          <li><span class="dot"></span><span data-i18n="intro_point1">Cocina cubana casera</span></li>
+          <li><span class="dot"></span><span data-i18n="intro_point2">Especialistas en cerdo</span></li>
+          <li><span class="dot"></span><span data-i18n="intro_point3">Raciones generosas</span></li>
+          <li><span class="dot"></span><span data-i18n="intro_point4">Trato de toda la vida</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ESPECIALIDADES ================= -->
+<section class="seleccion" id="especialidades">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="sel_eyebrow">Lo que nos piden siempre</span>
+    <h2 class="section-title"><span data-i18n="sel_title1">Tres razones</span><span class="accent" data-i18n="sel_title2">para sentarse a la mesa</span></h2>
+    <div class="sel-grid">
+      <div class="sel-card">
+        <div class="thumb"><img src="{{PREFIX}}img/carne-pimientos.webp" alt="Carne a la brasa con pimientos rojos y verdes" loading="lazy"></div>
+        <div class="body">
+          <h3 data-i18n="sel1_title">Carne a la brasa</h3>
+          <p data-i18n="sel1_p">Costillas, cerdo y carne salteada con pimientos — el punto justo de fuego y una salsa que pide pan.</p>
+        </div>
+      </div>
+      <div class="sel-card">
+        <div class="thumb"><img src="{{PREFIX}}img/postre-teide.webp" alt="Postre Teide: bizcocho cubierto de chocolate caliente" loading="lazy"></div>
+        <div class="body">
+          <h3 data-i18n="sel2_title">El postre Teide</h3>
+          <p data-i18n="sel2_p">Nuestro volcán particular: una montaña de bizcocho bañada en chocolate. Viene con varias cucharas por algo.</p>
+        </div>
+      </div>
+      <div class="sel-card">
+        <div class="thumb"><img src="{{PREFIX}}img/salon.webp" alt="Comedor con mesas vestidas y patio interior" loading="lazy"></div>
+        <div class="body">
+          <h3 data-i18n="sel3_title">Mesa y sobremesa</h3>
+          <p data-i18n="sel3_p">Salón interior y patio con plantas, mesas para grupos y familias. Sitio para quedarse un rato más.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CARTA ================= -->
+<section class="carta" id="carta">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="carta_eyebrow">Nuestra carta</span>
+    <h2 class="section-title"><span data-i18n="carta_title1">Lo que hay hoy</span><span class="accent" data-i18n="carta_title2">y lo que te quieres comer</span></h2>
+    <p class="carta-sub" data-i18n="carta_sub">Precios con IGIC incluido. La repasamos cada vez que cambia algo en cocina.</p>
+    <!--{{CARTA_TABS}}-->
+    <!--{{CARTA_PANELS}}-->
+    <!--{{CARTA_NOTES}}-->
+  </div>
+</section>
+
+<!-- ================= GALERÍA ================= -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <div class="gallery-head">
+      <div>
+        <span class="eyebrow" data-i18n="gallery_eyebrow">Un vistazo</span>
+        <h2 class="section-title" style="margin-bottom:0;"><span data-i18n="gallery_title1">La casa</span><span class="accent" data-i18n="gallery_title2">en imágenes</span></h2>
+      </div>
+      <a href="#contacto" class="btn" data-i18n="nav_book">Reservar mesa</a>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <a href="{{PREFIX}}img/salon.webp" class="g-tall"><img src="{{PREFIX}}img/salon.webp" alt="Salón y patio de La Carreta del Carretón" loading="lazy"></a>
+      <a href="{{PREFIX}}img/carne-pimientos.webp" class="g-wide"><img src="{{PREFIX}}img/carne-pimientos.webp" alt="Carne a la brasa con pimientos" loading="lazy"></a>
+      <a href="{{PREFIX}}img/postre-teide.webp" class="g-wide"><img src="{{PREFIX}}img/postre-teide.webp" alt="Postre Teide bañado en chocolate" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <img src="" alt="" id="lightboxImg">
+</div>
+
+<!-- ================= CONTACTO ================= -->
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="contact-head">
+      <span class="eyebrow" data-i18n="contact_eyebrow">Reserva tu mesa</span>
+      <h2 class="section-title"><span data-i18n="contact_title1">Te esperamos</span><span class="accent" data-i18n="contact_title2">de miércoles a domingo</span></h2>
+      <p data-i18n="contact_p">Somos pocos y el sitio es pequeño, así que mejor llamar antes. Abrimos solo a mediodía.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <ul class="info-list">
+          <li>
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <strong data-i18n="info_address_label">Dirección</strong>
+              <span>C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife</span><br>
+              <a class="go" href="https://www.google.com/maps/search/?api=1&query=C.+el+Carret%C3%B3n%2C+4-7%2C+38550+Arafo%2C+Santa+Cruz+de+Tenerife" target="_blank" rel="noopener" data-i18n="info_directions">Cómo llegar →</a>
+            </div>
+          </li>
+          <li>
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
+            <div><strong data-i18n="info_phone_label">Teléfono</strong><a href="tel:+34922515066">922 51 50 66</a></div>
+          </li>
+          <li>
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div>
+              <strong data-i18n="info_hours_label">Horario</strong>
+              <div class="hours-grid">
+                <span data-i18n="day_mon">Lunes</span><span class="closed" data-i18n="closed">Cerrado</span>
+                <span data-i18n="day_tue">Martes</span><span class="closed" data-i18n="closed">Cerrado</span>
+                <span data-i18n="day_wed">Miércoles</span><span>12:30–16:00</span>
+                <span data-i18n="day_thu">Jueves</span><span>12:30–16:00</span>
+                <span data-i18n="day_fri">Viernes</span><span>12:30–16:00</span>
+                <span data-i18n="day_sat">Sábado</span><span>12:00–16:00</span>
+                <span data-i18n="day_sun">Domingo</span><span>12:00–16:00</span>
+              </div>
+              <div class="hours-note" data-i18n="hours_note">Solo servicio de mediodía. Última mesa, media hora antes del cierre.</div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="socials">
+          <a href="https://www.facebook.com/lacarretadelcarreton/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/></svg></a>
+          <a href="https://www.tripadvisor.es/Restaurant_Review-g1190084-d7106801-Reviews-La_Carreta_del_Carreton-Arafo_Tenerife_Canary_Islands.html" target="_blank" rel="noopener" aria-label="Reseñas en TripAdvisor" title="TripAdvisor"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="13" r="9.5" fill="#34E0A1"/><circle cx="7.8" cy="13" r="3.3" fill="#fff"/><circle cx="16.2" cy="13" r="3.3" fill="#fff"/><circle cx="7.8" cy="13" r="1.35" fill="#00302A"/><circle cx="16.2" cy="13" r="1.35" fill="#00302A"/><path d="M8.2 5.2C9.6 4.4 10.8 4 12 4s2.4.4 3.8 1.2" fill="none" stroke="#34E0A1" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=La+Carreta+del+Carret%C3%B3n+Arafo" target="_blank" rel="noopener" aria-label="Reseñas en Google" title="Google"><svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="10" fill="#fff"/><text x="12" y="16.5" text-anchor="middle" font-size="13" font-weight="700" font-family="Arial, sans-serif" fill="#4285F4">G</text></svg></a>
+        </div>
+
+        <div class="map-box">
+          <iframe title="Ubicación de La Carreta del Carretón" src="https://www.google.com/maps?q=C.+el+Carret%C3%B3n,+4-7,+38550+Arafo,+Santa+Cruz+de+Tenerife&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="reserve-card">
+        <h3 data-i18n="reserve_title">Dos maneras de reservar</h3>
+        <p data-i18n="reserve_p">Por teléfono mientras estamos abiertos, o por correo a cualquier hora. Elige la que te venga mejor: las dos llegan a la misma mesa.</p>
+
+        <div class="reserve-ways">
+          <a class="way" href="tel:+34922515066">
+            <span class="way-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>
+            <span class="way-body">
+              <span class="way-label" data-i18n="reserve_by_phone">Por teléfono</span>
+              <span class="way-value">922 51 50 66</span>
+              <span class="way-note" data-i18n="reserve_phone_note">De miércoles a domingo, en horario de cocina.</span>
+            </span>
+          </a>
+          <a class="way" href="mailto:reservas@lacarretadelcarreton.com" data-mailbox="bookings">
+            <span class="way-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+            <span class="way-body">
+              <span class="way-label" data-i18n="reserve_by_email">Por correo</span>
+              <span class="way-value" data-mailbox-text>reservas@lacarretadelcarreton.com</span>
+              <span class="way-note" data-i18n="reserve_email_note">A cualquier hora. Te respondemos en cuanto salimos de la cocina.</span>
+            </span>
+          </a>
+        </div>
+
+        <ul class="reserve-steps">
+          <li><span class="n">1</span><span data-i18n="reserve_step1">Dinos el día, la hora y cuántos sois — abrimos de miércoles a domingo, solo mediodía.</span></li>
+          <li><span class="n">2</span><span data-i18n="reserve_step2">Si venís en grupo o hay celebración, avísanos con tiempo para preparar la mesa.</span></li>
+          <li><span class="n">3</span><span data-i18n="reserve_step3">Cuéntanos alergias o intolerancias y lo tenemos en cuenta en cocina.</span></li>
+        </ul>
+        <a href="https://www.google.com/maps/search/?api=1&query=C.+el+Carret%C3%B3n%2C+4-7%2C+38550+Arafo%2C+Santa+Cruz+de+Tenerife" target="_blank" rel="noopener" class="btn outline" data-i18n="cta_maps">📍 Cómo llegar</a>
+
+        <div class="more-contacts">
+          <div class="mc-title" data-i18n="mc_title">Otros contactos</div>
+          <ul>
+            <li><span data-i18n="mc_care">Atención al cliente:</span> <a href="mailto:atencionalcliente@lacarretadelcarreton.com" data-mailbox="care">atencionalcliente@lacarretadelcarreton.com</a></li>
+            <li><span data-i18n="mc_info">Información general:</span> <a href="mailto:info@lacarretadelcarreton.com">info@lacarretadelcarreton.com</a></li>
+            <li><span data-i18n="mc_privacy">Protección de datos:</span> <a href="mailto:protecciondedatos@lacarretadelcarreton.com">protecciondedatos@lacarretadelcarreton.com</a></li>
+            <li><span data-i18n="mc_groups">Grupos y celebraciones:</span> <a href="tel:+34922515066">922 51 50 66</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<!--{{FOOTER}}-->
+
+<script src="{{PREFIX}}assets/site.js" defer></script>
+
+</body>
+</html>

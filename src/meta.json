@@ -1,0 +1,36 @@
+{
+  "index.html": {
+    "es": {
+      "title": "La Carreta del Carretón · Cocina cubana en Arafo, Tenerife",
+      "description": "Restaurante cubano en Arafo, Tenerife. Carnes a la brasa, cerdo, el postre Teide y una carta con alérgenos. Abrimos de miércoles a domingo al mediodía. Reservas: 922 51 50 66."
+    },
+    "en": {
+      "title": "La Carreta del Carretón · Cuban restaurant in Arafo, Tenerife",
+      "description": "Cuban restaurant in Arafo, Tenerife. Grilled meats, pork, the Teide dessert and a full menu with allergens. Open Wednesday to Sunday for lunch. Bookings: +34 922 51 50 66."
+    }
+  },
+  "novedades.html": {
+    "es": {
+      "title": "Novedades · La Carreta del Carretón",
+      "description": "Novedades de La Carreta del Carretón: platos de temporada, horarios especiales y noticias de nuestro restaurante cubano en Arafo."
+    },
+    "en": {
+      "title": "News · La Carreta del Carretón",
+      "description": "News from La Carreta del Carretón: seasonal dishes, special opening hours and updates from our Cuban restaurant in Arafo."
+    }
+  },
+  "novedades/abrimos-nuestra-web.html": {
+    "es": {
+      "title": "Ya tenemos web (y carta online) · La Carreta del Carretón",
+      "description": "Estrenamos página web: carta con precios y alérgenos, horarios, cómo llegar y novedades de La Carreta del Carretón, en Arafo.",
+      "og_type": "article",
+      "image": "img/postre-teide.webp"
+    },
+    "en": {
+      "title": "Our website is up (menu included) · La Carreta del Carretón",
+      "description": "Our new website: the full menu with prices and allergens, opening hours, how to find us and news from La Carreta del Carretón, in Arafo.",
+      "og_type": "article",
+      "image": "img/postre-teide.webp"
+    }
+  }
+}

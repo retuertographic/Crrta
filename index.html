@@ -4,11 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Carreta del Carretón · Cocina cubana en Arafo, Tenerife</title>
-<meta name="description" content="La Carreta del Carretón: cocina cubana casera en Arafo, Tenerife. Carnes a la brasa, cerdo bien tratado y el famoso postre Teide. Reserva en el 922 51 50 66.">
-<meta property="og:title" content="La Carreta del Carretón · Cocina cubana en Arafo">
-<meta property="og:description" content="Cocina cubana casera en Arafo, Tenerife. Carnes a la brasa, cerdo bien tratado y el famoso postre Teide.">
-<meta property="og:type" content="restaurant">
-<meta property="og:image" content="img/logo-square.jpg">
+<meta name="description" content="Restaurante cubano en Arafo, Tenerife. Carnes a la brasa, cerdo, el postre Teide y una carta con alérgenos. Abrimos de miércoles a domingo al mediodía. Reservas: 922 51 50 66.">
+<link rel="canonical" href="https://retuertographic.github.io/Crrta/">
+<meta property="og:title" content="La Carreta del Carretón · Cocina cubana en Arafo, Tenerife">
+<meta property="og:description" content="Restaurante cubano en Arafo, Tenerife. Carnes a la brasa, cerdo, el postre Teide y una carta con alérgenos. Abrimos de miércoles a domingo al mediodía. Reservas: 922 51 50 66.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://retuertographic.github.io/Crrta/">
+<meta property="og:image" content="https://retuertographic.github.io/Crrta/img/logo-square.jpg">
+<meta property="og:locale" content="es_ES">
+<link rel="alternate" hreflang="es-ES" href="https://retuertographic.github.io/Crrta/">
+<link rel="alternate" hreflang="en" href="https://retuertographic.github.io/Crrta/en/">
+<link rel="alternate" hreflang="x-default" href="https://retuertographic.github.io/Crrta/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -36,11 +42,36 @@
   ]
 }
 </script>
+
 </head>
 <body>
 
 <!-- ================= HEADER ================= -->
-<div id="site-header-slot"></div>
+<header id="site-header">
+  <div class="wrap">
+    <nav>
+      <a href="index.html#inicio" class="brand" aria-label="La Carreta del Carretón — inicio">
+        <span class="badge"><img src="img/logo.webp" alt="La Carreta del Carretón"></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#inicio" data-i18n="nav_home">Inicio</a></li>
+        <li><a href="index.html#nosotros" data-i18n="nav_about">Nosotros</a></li>
+        <li><a href="index.html#especialidades" data-i18n="nav_specials">Especialidades</a></li>
+        <li><a href="index.html#carta" data-i18n="nav_carta">Carta</a></li>
+        <li><a href="novedades.html" data-i18n="nav_novedades">Novedades</a></li>
+        <li><a href="index.html#galeria" data-i18n="nav_gallery">Galería</a></li>
+        <li><a href="index.html#contacto" data-i18n="nav_contact">Contacto</a></li>
+        <li><a href="index.html#contacto" class="btn" data-i18n="nav_book">Reservar mesa</a></li>
+      </ul>
+
+      <div class="lang-switch"><a class="lang-link" href="en/index.html" hreflang="en" lang="en"><span class="flag">🇬🇧</span><span>EN</span><span class="sr-only"> — English</span></a></div>
+
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú">☰</button>
+    </nav>
+  </div>
+</header>
+
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="inicio">
@@ -125,9 +156,29 @@
     <span class="eyebrow" data-i18n="carta_eyebrow">Nuestra carta</span>
     <h2 class="section-title"><span data-i18n="carta_title1">Lo que hay hoy</span><span class="accent" data-i18n="carta_title2">y lo que te quieres comer</span></h2>
     <p class="carta-sub" data-i18n="carta_sub">Precios con IGIC incluido. La repasamos cada vez que cambia algo en cocina.</p>
-    <div class="menu-tabs" id="cartaTabs"><div class="menu-loading" data-i18n="carta_loading">Cargando la carta…</div></div>
-    <div class="menu-panel" id="cartaPanel"></div>
-    <div class="menu-notes" id="cartaNotes"></div>
+    <div class="menu-tabs" role="tablist">
+<button class="menu-tab active" data-category="cat0" role="tab" aria-selected="true">Aperitivos</button>
+<button class="menu-tab" data-category="cat1" role="tab" aria-selected="false">Ensaladas</button>
+<button class="menu-tab" data-category="cat2" role="tab" aria-selected="false">Vegetariano</button>
+<button class="menu-tab" data-category="cat3" role="tab" aria-selected="false">Sopas</button>
+<button class="menu-tab" data-category="cat4" role="tab" aria-selected="false">Pollo</button>
+<button class="menu-tab" data-category="cat5" role="tab" aria-selected="false">Res</button>
+<button class="menu-tab" data-category="cat6" role="tab" aria-selected="false">Carne de Cochino</button>
+<button class="menu-tab" data-category="cat7" role="tab" aria-selected="false">Pescado y Marisco</button>
+<button class="menu-tab" data-category="cat8" role="tab" aria-selected="false">Postres</button>
+<button class="menu-tab" data-category="cat9" role="tab" aria-selected="false">Bebidas</button>
+</div>
+    <div class="menu-panel active" data-category="cat0" role="tabpanel"><div class="menu-item"><div class="mi-main"><div class="mi-name">Tostones</div><div class="mi-desc">Plátano verde frito</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>4,20 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Tostones Rellenos</div><div class="mi-desc">Plátano verde frito, montadito con ropa vieja a la cubana</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al maybe" title="Puede contenerlo: consúltanos">Gluten ?</span><span class="al maybe" title="Puede contenerlo: consúltanos">Lácteos ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>7,00 €</span><span class="mi-price"><span class="pl">½ ración</span>4,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Huevos Rotos</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Huevo</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>7,50 €</span><span class="mi-price"><span class="pl">½ ración</span>5,35 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Papas Rellenas</div><div class="mi-desc">Puré de papas aderezado con nuez moscada y mantequilla, rellena con carne molida. Se empana y se fríe</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span><span class="al">Huevo</span><span class="al maybe" title="Puede contenerlo: consúltanos">Lácteos ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>7,50 €</span><span class="mi-price"><span class="pl">½ ración</span>5,35 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Croquetas de Jamón Cocido</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span><span class="al">Huevo</span><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>3,75 €</span><span class="mi-price"><span class="pl">½ ración</span>2,15 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Croquetas de Pollo</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span><span class="al">Huevo</span><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>3,75 €</span><span class="mi-price"><span class="pl">½ ración</span>2,15 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Croquetas de Gofio con carne de Costilla</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span><span class="al">Huevo</span><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>3,75 €</span><span class="mi-price"><span class="pl">½ ración</span>2,15 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Tamal Cubano</div><div class="mi-desc">Millo tierno molido con tropezones de carne, una fritura y se cocina en la propia hoja de millo</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>5,90 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Yuca con mojo</div><div class="mi-desc">Yuca guisada con un mojo de cebollas, criollo cubano</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>4,80 €</span><span class="mi-price"><span class="pl">½ ración</span>3,20 €</span></div></div></div>
+<div class="menu-panel" data-category="cat1" role="tabpanel"><div class="menu-item"><div class="mi-main"><div class="mi-name">Mixta</div><div class="mi-desc">Diferentes tipos de lechuga, tomate, cebolla y millo</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al maybe" title="Puede contenerlo: consúltanos">Huevo ?</span><span class="al maybe" title="Puede contenerlo: consúltanos">Pescado ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>4,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Habana Libre</div><div class="mi-desc">Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pollo y una vinagreta de mango</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>12,30 €</span><span class="mi-price"><span class="pl">½ ración</span>8,60 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Perla del Caribe</div><div class="mi-desc">Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, langostino y una vinagreta de mango</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>12,30 €</span><span class="mi-price"><span class="pl">½ ración</span>8,60 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">El Carretón</div><div class="mi-desc">Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, churrasco de entraña y una vinagreta de mango</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>13,80 €</span><span class="mi-price"><span class="pl">½ ración</span>9,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Guajira</div><div class="mi-desc">Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pata asada y una vinagreta de mango</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>12,30 €</span><span class="mi-price"><span class="pl">½ ración</span>8,60 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Ensalada Especial</div><div class="mi-desc">Diferentes tipos de lechuga, frutas (uva y manzana), frutos secos, queso feta y una vinagreta de mango</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al maybe" title="Puede contenerlo: consúltanos">Huevo ?</span><span class="al maybe" title="Puede contenerlo: consúltanos">Pescado ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>7,50 €</span></div></div></div>
+<div class="menu-panel" data-category="cat2" role="tabpanel"><div class="menu-item"><div class="mi-main"><div class="mi-name">Ensalada Mixta especial</div><div class="mi-desc">Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta y una vinagreta de mango</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al maybe" title="Puede contenerlo: consúltanos">Huevo ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>7,50 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Yuca con mojo</div><div class="mi-desc">Yuca guisada con un mojo de cebollas, criollo cubano</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>4,80 €</span><span class="mi-price"><span class="pl">½ ración</span>3,20 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Papas fritas</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>3,20 €</span><span class="mi-price"><span class="pl">½ ración</span>2,15 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Tostones</div><div class="mi-desc">Plátano verde frito</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>4,20 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Vegetales salteados</div><div class="mi-desc">Calabacín, berenjena, cebolla, tomate, pimiento verde y pimiento rojo salteados</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al maybe" title="Puede contenerlo: consúltanos">Soja ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>5,35 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Vegetales a la brasa</div><div class="mi-desc">Calabacín, berenjena, cebolla, tomate, pimiento verde y rojo a la brasa ligeramente embadurnados con salsa BBQ</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>6,50 €</span><span class="mi-price"><span class="pl">½ ración</span>4,30 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Arroz Congrí</div><div class="mi-desc">Arroz blanco que se cocina junto con frijol negro y una fritura de cebolla, pimiento verde, rojo, laurel, comino y orégano</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>2,70 €</span></div></div></div>
+<div class="menu-panel" data-category="cat3" role="tabpanel"><div class="menu-item"><div class="mi-main"><div class="mi-name">Sopa de pollo</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al maybe" title="Puede contenerlo: consúltanos">Gluten ?</span><span class="al maybe" title="Puede contenerlo: consúltanos">Apio ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>3,20 €</span><span class="mi-price"><span class="pl">½ ración</span>2,15 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Garbanzos</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al maybe" title="Puede contenerlo: consúltanos">Apio ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>4,30 €</span><span class="mi-price"><span class="pl">½ ración</span>2,70 €</span></div></div></div>
+<div class="menu-panel" data-category="cat4" role="tabpanel"><div class="menu-item"><div class="mi-main"><div class="mi-name">1/2 Pollo</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>5,90 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">1/4 Pollo</div><div class="mi-desc">Puede elegir entre pechuga o pata</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>3,20 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Nuggets de Pollo</div><div class="mi-desc">Preparados por nosotros con pechuga de pollo fresca, con ketchup</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span><span class="al maybe" title="Puede contenerlo: consúltanos">Huevo ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>5,90 €</span><span class="mi-price"><span class="pl">½ ración</span>3,75 €</span></div></div></div>
+<div class="menu-panel" data-category="cat5" role="tabpanel"><div class="menu-item"><div class="mi-main"><div class="mi-name">Ropa Vieja a la cubana</div><div class="mi-desc">Carne de ternera mechada con una fritura de verduras y salsa de tomate</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al maybe" title="Puede contenerlo: consúltanos">Sulfitos ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>11,70 €</span><span class="mi-price"><span class="pl">½ ración</span>7,50 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Churrasco de Entraña</div><div class="mi-desc">Tierno y jugoso bistec de ternera a la brasa</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>15,00 €</span></div></div></div>
+<div class="menu-panel" data-category="cat6" role="tabpanel"><div class="menu-item"><div class="mi-main"><div class="mi-name">Masas de cerdo fritas</div><div class="mi-desc">Trozos de carne que se cuecen previamente con vino blanco y especias, luego se fríen y se sirven con un mojo de cebolla</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>10,00 €</span><span class="mi-price"><span class="pl">½ ración</span>5,90 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Pata Asada</div><div class="mi-desc">Suculenta y jugosa pata de cerdo, servida con nuestro mojo de cebolla</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>10,00 €</span><span class="mi-price"><span class="pl">½ ración</span>5,90 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Chuletas a la brasa</div><div class="mi-desc">Chuleta de aguja a la brasa</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>11,20 €</span><span class="mi-price"><span class="pl">½ ración</span>6,30 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Costillas BBQ</div><div class="mi-desc">Plato estrella, tiernas y jugosas costillas previamente maceradas y terminadas en la brasa con salsa barbacoa</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al maybe" title="Puede contenerlo: consúltanos">Gluten ?</span><span class="al maybe" title="Puede contenerlo: consúltanos">Mostaza ?</span><span class="al maybe" title="Puede contenerlo: consúltanos">Sulfitos ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>14,50 €</span><span class="mi-price"><span class="pl">½ ración</span>8,00 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Solomillo de cerdo a la brasa (para 2 personas)</div><div class="mi-desc">Solomillo de cerdo a la brasa, servido con salsa, champiñones y papas guisadas</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>13,90 €</span><span class="mi-price"><span class="pl">½ ración</span>7,50 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Secreto a la Brasa</div><div class="mi-desc">Suculento y jugoso secreto de cerdo a la brasa</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>13,40 €</span><span class="mi-price"><span class="pl">½ ración</span>7,50 €</span></div></div></div>
+<div class="menu-panel" data-category="cat7" role="tabpanel"><div class="menu-item"><div class="mi-main"><div class="mi-name">Bacalao en salsa</div><div class="mi-desc">Bacalao en salsa de tomate y cebolla, especial de la casa</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Pescado</span><span class="al maybe" title="Puede contenerlo: consúltanos">Sulfitos ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>10,70 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Enchilado de Langostino</div><div class="mi-desc">Langostinos salteados y reducidos en vino blanco, con una fritura de verduras en salsa de tomate</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Crustáceos</span><span class="al maybe" title="Puede contenerlo: consúltanos">Sulfitos ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>12,85 €</span><span class="mi-price"><span class="pl">½ ración</span>7,50 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Langostinos a la brasa</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Crustáceos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>12,85 €</span><span class="mi-price"><span class="pl">½ ración</span>7,50 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Langostinos al ajillo</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Crustáceos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>12,85 €</span><span class="mi-price"><span class="pl">½ ración</span>7,50 €</span></div></div></div>
+<div class="menu-panel" data-category="cat8" role="tabpanel"><div class="menu-item"><div class="mi-main"><div class="mi-name">Tarta de queso</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span><span class="al">Huevo</span><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>4,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Pudin de Guayaba con Queso</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span><span class="al">Huevo</span><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>4,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Flan</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Huevo</span><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>3,75 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Teide</div><div class="mi-desc">Postre estrella, bizcocho de chocolate relleno con helado de vainilla y una salsa tibia de chocolate por encima</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>5,90 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Tarta de Limón</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span><span class="al">Huevo</span><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">1 ración</span>4,80 €</span></div></div><div class="menu-group">Helados</div><div class="menu-item"><div class="mi-main"><div class="mi-name">Pivot Chocolate/Vainilla/Fresa</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Lácteos</span><span class="al maybe" title="Puede contenerlo: consúltanos">Soja ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>3,10 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Sándwich (helado)</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span><span class="al">Lácteos</span><span class="al maybe" title="Puede contenerlo: consúltanos">Soja ?</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>3,00 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Polo</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,75 €</span></div></div></div>
+<div class="menu-panel" data-category="cat9" role="tabpanel"><div class="menu-group">Aguas</div><div class="menu-item"><div class="mi-main"><div class="mi-name">Agua natural</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Pequeña</span>1,20 €</span><span class="mi-price"><span class="pl">Grande</span>1,70 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Agua con gas</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Pequeña</span>1,35 €</span><span class="mi-price"><span class="pl">Grande</span>1,85 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Tónica</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,50 €</span></div></div><div class="menu-group">Refrescos</div><div class="menu-item"><div class="mi-main"><div class="mi-name">Coca Cola</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Coca Cola Zero</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Aquarius de Naranja/Limón</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,90 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Nestea Mango Piña</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,95 €</span></div></div><div class="menu-group">Zumos</div><div class="menu-item"><div class="mi-main"><div class="mi-name">Zumos</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Zumos de Mango</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,80 €</span></div></div><div class="menu-group">Cervezas</div><div class="menu-item"><div class="mi-main"><div class="mi-name">Dorada Pilsen</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,70 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Dorada Especial</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,90 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Heineken</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,60 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Heineken 00</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,90 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Mixta de Limón</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>2,00 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Mahou Maestra</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>2,20 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Victoria</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Gluten</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,90 €</span></div></div><div class="menu-group">Vinos</div><div class="menu-item"><div class="mi-main"><div class="mi-name">Tinto Victoria</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Sulfitos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Copa</span>1,70 €</span><span class="mi-price"><span class="pl">1/2 L</span>4,80 €</span><span class="mi-price"><span class="pl">1/4 L</span>2,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Vino blanco de Güímar</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Sulfitos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Copa</span>1,70 €</span><span class="mi-price"><span class="pl">1/2 L</span>4,80 €</span><span class="mi-price"><span class="pl">1/4 L</span>2,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Vino blanco afrutado Güímar</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Sulfitos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Copa</span>1,70 €</span><span class="mi-price"><span class="pl">1/2 L</span>4,80 €</span><span class="mi-price"><span class="pl">1/4 L</span>2,80 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Señorío Real (Ribera del Duero)</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Sulfitos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Botella</span>10,00 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">La Planta</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Sulfitos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Botella</span>18,00 €</span></div></div><div class="menu-group">Cócteles</div><div class="menu-item"><div class="mi-main"><div class="mi-name">Mojito Cubano</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>4,30 €</span></div></div><div class="menu-group">Copas</div><div class="menu-item"><div class="mi-main"><div class="mi-name">Havana 7 años</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>4,50 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Havana 5 años</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>3,50 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Arehucas Blanco/Dorado</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>3,50 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Ginebra</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>4,00 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Johnnie Walker</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Etiqueta roja</span>3,50 €</span><span class="mi-price"><span class="pl">Etiqueta negra</span>4,50 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Copa Licor</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>2,00 €</span></div></div><div class="menu-group">Cafés</div><div class="menu-item"><div class="mi-main"><div class="mi-name">Café solo</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,00 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Cortado natural</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,20 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Cortado leche y leche</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,20 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Condensada/Bombón</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,20 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Barraquito</div><div class="mi-desc">Café con leche condensada, canela y licor</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,30 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Barraquito especial</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,50 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Café con leche</div><div class="mi-allergens" aria-label="Alérgenos"><span class="al">Lácteos</span></div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,40 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Guayoyo</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,00 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Café Americano</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,10 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Café con hielo</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,20 €</span></div></div><div class="menu-group">Infusiones</div><div class="menu-item"><div class="mi-main"><div class="mi-name">Té Verde/Rojo</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,30 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Manzanilla</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,30 €</span></div></div><div class="menu-item"><div class="mi-main"><div class="mi-name">Menta Poleo</div></div><div class="mi-prices"><span class="mi-price"><span class="pl">Unidad</span>1,30 €</span></div></div></div>
+    <div class="menu-notes">Todos los precios de comida llevan el IGIC incluido. Los alérgenos son una estimación según la receta habitual del plato; los marcados con «?» están por confirmar. Si tienes alguna alergia o intolerancia, dínoslo al pedir y lo comprobamos en cocina.</div>
   </div>
 </section>
 
@@ -191,7 +242,7 @@
                 <span data-i18n="day_sat">Sábado</span><span>12:00–16:00</span>
                 <span data-i18n="day_sun">Domingo</span><span>12:00–16:00</span>
               </div>
-              <div class="hours-note" data-i18n="hours_note">Solo servicio de mediodía. Última mesa, media hora antes del cierre.</div>
+              <div class="hours-note" data-i18n="hours_note">Solo servicio de mediodía.</div>
             </div>
           </li>
         </ul>
@@ -252,260 +303,92 @@
 </section>
 
 <!-- ================= FOOTER ================= -->
-<div id="site-footer-slot"></div>
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <span class="badge"><img src="img/logo.webp" alt="La Carreta del Carretón"></span>
+      <span>© <span id="year"></span> La Carreta del Carretón · Arafo</span>
+    </div>
+    <div class="legal-links">
+      <button type="button" data-legal-tab="aviso" data-i18n="footer_legal">Aviso legal</button>
+      <button type="button" data-legal-tab="privacidad" data-i18n="footer_privacy">Política de privacidad</button>
+      <button type="button" data-legal-tab="cookies" data-i18n="footer_cookies">Política de cookies</button>
+    </div>
+    <a href="index.html#contacto" class="book" data-i18n="nav_book">Reservar mesa</a>
+  </div>
+</footer>
 
-<script src="assets/i18n.js"></script>
-<script>window.SITE_PREFIX = "";</script>
-<script src="assets/site-common.js"></script>
-<script>
-(function(){
-  /* ---------- LIGHTBOX GALERÍA ---------- */
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  document.querySelectorAll('#galleryGrid a').forEach(a => {
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-      lightboxImg.src = a.getAttribute('href');
-      lightboxImg.alt = a.querySelector('img').alt;
-      lightbox.classList.add('open');
-    });
-  });
-  const closeLightbox = () => lightbox.classList.remove('open');
-  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+<button class="to-top" id="toTop" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
 
-  /* ---------- CARTA (sincronizada desde menu-data.json) ---------- */
-  const CARTA_URL = 'menu-data.json';
-  let cartaData = null;
-  let cartaCat = 0;
-  let cartaNotes = [];
+<!-- ================= MODAL LEGAL =================
+     OJO: los datos del titular (nombre, NIF, correo de contacto) están
+     marcados como [PENDIENTE ...]. Sustitúyelos por los reales antes de
+     publicar la web: son obligatorios según el art. 10 de la LSSICE.
+     Aparecen también en el bloque "Otros contactos" de index.html.
+============================================================= -->
+<div class="legal-modal" id="legalModal">
+  <div class="legal-box">
+    <div class="legal-head">
+      <h3 id="legalModalTitle" data-i18n="legal_modal_title">Información legal</h3>
+      <button class="legal-close" id="legalClose" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="legal-tabs">
+      <button class="legal-tab active" data-legal-panel="aviso" data-i18n="footer_legal">Aviso legal</button>
+      <button class="legal-tab" data-legal-panel="privacidad" data-i18n="footer_privacy">Política de privacidad</button>
+      <button class="legal-tab" data-legal-panel="cookies" data-i18n="footer_cookies">Política de cookies</button>
+    </div>
+    <div class="legal-body">
 
-  const t = (key, fallback) => {
-    const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
-    return (window.I18N && I18N[lang] && I18N[lang][key]) || fallback;
-  };
+      <div class="legal-panel active" id="legalPanelAviso">
+        <p data-i18n="aviso_p1">En cumplimiento del deber de información del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSICE), se informa de que el titular de este sitio web es [PENDIENTE: nombre del titular], NIF [PENDIENTE: NIF], que explota el restaurante La Carreta del Carretón, con domicilio en C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife.</p>
+        <p data-i18n="aviso_p2">La Carreta del Carretón no asume responsabilidad derivada de la falta de veracidad, integridad, actualización o precisión de los datos e informaciones contenidos en estas páginas. Los precios de la carta se publican a título informativo y pueden variar; los vigentes son siempre los del local.</p>
+        <p data-i18n="aviso_p3">Los textos, imágenes, logotipo y demás contenidos de este sitio son propiedad de La Carreta del Carretón o de sus licenciantes. Queda prohibida su reproducción, distribución o comunicación pública sin consentimiento expreso.</p>
+        <p data-i18n="aviso_p4">Este sitio no recoge datos personales a través de formularios: las reservas se gestionan por teléfono. Si nos escribes por correo electrónico, tus datos se tratarán conforme al Reglamento (UE) 2016/679 (RGPD) y podrás ejercer tus derechos en la dirección indicada arriba.</p>
+      </div>
 
-  function categoryLabel(cat){
-    const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
-    return (lang === 'en' && cat.category_en) ? cat.category_en : cat.category;
-  }
-  /* Devuelve el campo en el idioma activo, con el español como respaldo.
-     Las traducciones que la carta de origen marcaba como dudosas no están
-     en los datos, así que ahí se ve el español — y eso es lo correcto. */
-  function field(obj, key){
-    const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
-    if (!obj) return '';
-    if (lang !== 'es' && obj[key + '_' + lang]) return obj[key + '_' + lang];
-    return obj[key] || '';
-  }
-  function itemName(item){ return field(item, 'name'); }
-  function formatPrice(p){
-    if (p === null || p === undefined || p === '') return '';
-    return String(p).replace('.', ',') + ' €';
-  }
-  /* Quita acentos y pasa a minúsculas, para buscar en los diccionarios. */
-  function fold(s){
-    return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-  }
-  /* 'Gluten', 'Frutos secos'… a partir del nombre de archivo del alérgeno. */
-  function allergenLabel(code){
-    const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
-    const dict = (window.I18N && I18N[lang] && I18N[lang].allergens) || {};
-    return dict[fold(code)] || code;
-  }
-  /* La etiqueta de ración: primero la traducción que venga en los datos
-     (label_en), y si no, el diccionario de raciones conocidas. */
-  function portionLabel(price){
-    const label = price.label || '';
-    if (!label) return '';
-    const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
-    if (lang === 'es') return label;
-    if (price['label_' + lang]) return price['label_' + lang];
-    const dict = (window.I18N && I18N[lang] && I18N[lang].portions) || {};
-    return dict[fold(label)] || label;
-  }
-  /* Acepta el formato nuevo (prices: [...]) y el antiguo (price: '4,20'). */
-  function itemPrices(item){
-    if (Array.isArray(item.prices) && item.prices.length) return item.prices;
-    if (item.price !== undefined && item.price !== null && item.price !== '') {
-      return [{ value: item.price }];
-    }
-    return [];
-  }
+      <div class="legal-panel" id="legalPanelPrivacidad">
+        <h4 data-i18n="priv_h1">Protección de datos según el RGPD</h4>
+        <p data-i18n="priv_p1">Responsable del tratamiento: [PENDIENTE: nombre del titular], NIF [PENDIENTE: NIF], C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife.</p>
+        <h4 data-i18n="priv_h2">¿Con qué finalidad tratamos tus datos?</h4>
+        <ul>
+          <li data-i18n="priv_l1">Gestionar tu reserva de mesa y confirmarte disponibilidad.</li>
+          <li data-i18n="priv_l2">Responder a las consultas que nos hagas por teléfono o correo electrónico.</li>
+          <li data-i18n="priv_l3">Atender peticiones para celebraciones y grupos.</li>
+        </ul>
+        <h4 data-i18n="priv_h3">¿Por cuánto tiempo los conservamos?</h4>
+        <p data-i18n="priv_p2">Solo el tiempo necesario para atender tu reserva o consulta, y durante el plazo en que pudieran derivarse responsabilidades legales.</p>
+        <h4 data-i18n="priv_h4">Legitimación y destinatarios</h4>
+        <p data-i18n="priv_p3">El tratamiento se basa en tu solicitud de reserva o información. Tus datos no se ceden a terceros, salvo obligación legal.</p>
+        <h4 data-i18n="priv_h5">Tus derechos</h4>
+        <p data-i18n="priv_p4">Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a protecciondedatos@lacarretadelcarreton.com o en C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife.</p>
+        <h4 data-i18n="priv_h6">Propiedad intelectual</h4>
+        <p data-i18n="priv_p5">Todos los contenidos de este sitio (textos, imágenes, logotipo) son propiedad de La Carreta del Carretón o de sus licenciantes y están protegidos por la normativa de propiedad intelectual. Queda prohibido su uso no autorizado.</p>
+      </div>
 
-  function renderCartaTabs(){
-    const tabsEl = document.getElementById('cartaTabs');
-    if (!tabsEl || !cartaData) return;
-    tabsEl.innerHTML = '';
-    cartaData.forEach((cat, i) => {
-      const b = document.createElement('button');
-      b.className = 'menu-tab' + (i === cartaCat ? ' active' : '');
-      b.textContent = categoryLabel(cat);
-      b.addEventListener('click', () => { cartaCat = i; renderCartaTabs(); renderCartaPanel(); });
-      tabsEl.appendChild(b);
-    });
-  }
+      <div class="legal-panel" id="legalPanelCookies">
+        <h4 data-i18n="cook_h1">¿Qué son las cookies?</h4>
+        <p data-i18n="cook_p1">Las cookies son archivos que se descargan en tu equipo al visitar una página web y permiten almacenar y recuperar información sobre tus hábitos de navegación.</p>
+        <h4 data-i18n="cook_h2">Cookies que utilizamos</h4>
+        <p data-i18n="cook_p2">Esta web no instala cookies publicitarias ni de análisis. Únicamente guarda en tu navegador (almacenamiento local) el idioma que elijas, para no tener que preguntártelo en cada visita. Además, el mapa de Google Maps incrustado en la sección de contacto puede instalar sus propias cookies conforme a la política de privacidad de Google.</p>
+        <h4 data-i18n="cook_h3">Tipos de cookies</h4>
+        <ul>
+          <li data-i18n="cook_l1">Cookies técnicas y de personalización propias: recuerdan tu idioma preferido.</li>
+          <li data-i18n="cook_l2">Cookies de terceros: las que pueda instalar el mapa de Google Maps al cargarse.</li>
+        </ul>
+        <h4 data-i18n="cook_h4">Cómo gestionar las cookies</h4>
+        <p data-i18n="cook_p3">Puedes permitir, bloquear o eliminar las cookies desde la configuración de tu navegador (Chrome, Firefox, Safari, Edge, Opera). Bloquear algunas cookies puede afectar al funcionamiento del sitio.</p>
+        <h4 data-i18n="cook_h5">Consentimiento</h4>
+        <p data-i18n="cook_p4">Al continuar navegando por esta web aceptas el uso de estas cookies según lo descrito en esta política. Puedes cambiar tu decisión en cualquier momento eliminando las cookies y el almacenamiento local desde tu navegador.</p>
+      </div>
 
-  function renderCartaPanel(){
-    const panel = document.getElementById('cartaPanel');
-    if (!panel || !cartaData) return;
-    panel.innerHTML = '';
-    const cat = cartaData[cartaCat];
-    if (!cat) return;
-    cat.items.forEach(item => {
-      /* Subtítulo dentro de una categoría (Refrescos, Cervezas, Helados…). */
-      if (item.group !== undefined){
-        const g = document.createElement('div');
-        g.className = 'menu-group';
-        g.textContent = field(item, 'group');
-        panel.appendChild(g);
-        return;
-      }
+    </div>
+  </div>
+</div>
 
-      const row = document.createElement('div');
-      row.className = 'menu-item';
 
-      const main = document.createElement('div');
-      main.className = 'mi-main';
-
-      const nameEl = document.createElement('div');
-      nameEl.className = 'mi-name';
-      nameEl.textContent = itemName(item);
-      main.appendChild(nameEl);
-
-      const description = field(item, 'description');
-      if (description){
-        const desc = document.createElement('div');
-        desc.className = 'mi-desc';
-        desc.textContent = description;
-        main.appendChild(desc);
-      }
-
-      /* Dos listas distintas a propósito: la hoja marca con "X" lo que el
-         plato lleva según su receta habitual y con "?" lo que podría
-         llevar. Mezclarlas daría por seguro algo que no lo es. */
-      const certain = Array.isArray(item.allergens) ? item.allergens : [];
-      const maybe = Array.isArray(item.allergens_maybe) ? item.allergens_maybe : [];
-      if (certain.length || maybe.length){
-        const box = document.createElement('div');
-        box.className = 'mi-allergens';
-        box.setAttribute('aria-label', t('allergens_label', 'Alérgenos'));
-        certain.forEach(code => {
-          const chip = document.createElement('span');
-          chip.className = 'al';
-          chip.textContent = allergenLabel(code);
-          box.appendChild(chip);
-        });
-        maybe.forEach(code => {
-          const chip = document.createElement('span');
-          chip.className = 'al maybe';
-          chip.textContent = allergenLabel(code) + ' ?';
-          chip.title = t('allergens_maybe_label', 'Puede contenerlo: consúltanos');
-          box.appendChild(chip);
-        });
-        main.appendChild(box);
-      }
-
-      const pricesEl = document.createElement('div');
-      pricesEl.className = 'mi-prices';
-      itemPrices(item).forEach(p => {
-        const one = document.createElement('span');
-        one.className = 'mi-price';
-        const label = portionLabel(p);
-        if (label){
-          const l = document.createElement('span');
-          l.className = 'pl';
-          l.textContent = label;
-          one.appendChild(l);
-        }
-        one.appendChild(document.createTextNode(formatPrice(p.value)));
-        pricesEl.appendChild(one);
-      });
-
-      row.appendChild(main);
-      row.appendChild(pricesEl);
-      panel.appendChild(row);
-    });
-
-    renderCartaNotes();
-  }
-
-  /* Avisos de la carta ("IGIC incluido") + recordatorio de alérgenos. */
-  function renderCartaNotes(){
-    const el = document.getElementById('cartaNotes');
-    if (!el) return;
-    const parts = (cartaNotes || []).map(n =>
-      fold(n).indexOf('igic') !== -1 ? t('note_igic', 'IGIC incluido.') : n
-    );
-    parts.push(t('note_allergens', 'Los alérgenos son una estimación según la receta habitual del plato; los marcados con «?» están por confirmar. Si tienes alguna alergia o intolerancia, dínoslo al pedir.'));
-    el.textContent = parts.join(' ');
-  }
-
-  function showCartaMessage(key, fallback){
-    const tabsEl = document.getElementById('cartaTabs');
-    const panelEl = document.getElementById('cartaPanel');
-    if (tabsEl) tabsEl.innerHTML = '';
-    if (panelEl) panelEl.innerHTML = '<p class="menu-empty" data-i18n="' + key + '">' + fallback + '</p>';
-    const notesEl = document.getElementById('cartaNotes');
-    if (notesEl) notesEl.textContent = '';
-    if (window.applyTranslations) window.applyTranslations((window.getCurrentLang && window.getCurrentLang()) || 'es');
-  }
-
-  async function loadCarta(){
-    try {
-      const res = await fetch(CARTA_URL, { cache: 'no-store' });
-      if (!res.ok) throw new Error('bad response');
-      const data = await res.json();
-      const categories = (data.categories || []).filter(c => c.items && c.items.length);
-      if (!categories.length){
-        cartaData = null;
-        showCartaMessage('carta_empty', 'Estamos actualizando la carta. Llámanos al <a href="tel:+34922515066">922 51 50 66</a> y te contamos lo que hay hoy.');
-        return;
-      }
-      cartaData = categories;
-      cartaCat = 0;
-      cartaNotes = Array.isArray(data.notes) ? data.notes : [];
-      renderCartaTabs();
-      renderCartaPanel();
-    } catch (err) {
-      cartaData = null;
-      showCartaMessage('carta_error', 'No hemos podido cargar la carta ahora mismo. Puedes consultarla en el enlace de abajo o llamarnos al <a href="tel:+34922515066">922 51 50 66</a>.');
-    }
-  }
-
-  /* Buzones con versión en inglés: cambian dirección y texto con el idioma. */
-  const MAILBOXES = {
-    bookings: { es: 'reservas@lacarretadelcarreton.com', en: 'bookings@lacarretadelcarreton.com' },
-    care:     { es: 'atencionalcliente@lacarretadelcarreton.com', en: 'customercare@lacarretadelcarreton.com' },
-  };
-  function renderMailboxes(){
-    const lang = (window.getCurrentLang && window.getCurrentLang()) || 'es';
-    document.querySelectorAll('[data-mailbox]').forEach(el => {
-      const addresses = MAILBOXES[el.getAttribute('data-mailbox')];
-      if (!addresses) return;
-      const address = addresses[lang] || addresses.es;
-      el.setAttribute('href', 'mailto:' + address);
-      /* El texto va en el propio enlace, o en el hijo marcado con
-         data-mailbox-text cuando el enlace tiene más cosas dentro. */
-      const target = el.querySelector('[data-mailbox-text]') || el;
-      /* <wbr> tras la arroba: si la dirección no cabe en una línea, parte
-         por ahí en vez de por la mitad de una palabra. Las direcciones son
-         constantes de este archivo, no entran datos de fuera. */
-      target.innerHTML = address.replace('@', '@<wbr>');
-    });
-  }
-
-  /* Al cambiar de idioma, repinta la carta y los buzones. */
-  window.onLanguageChange = function(){
-    if (cartaData && cartaData.length){ renderCartaTabs(); renderCartaPanel(); }
-    renderMailboxes();
-  };
-  renderMailboxes();
-
-  loadCarta();
-})();
-</script>
+<script src="assets/site.js" defer></script>
 
 </body>
 </html>

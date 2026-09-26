@@ -1,44 +1,97 @@
 # La Carreta del Carretón — web del restaurante
 
-Sitio estático (HTML, CSS y un poco de JavaScript, sin framework ni build)
-para el restaurante **La Carreta del Carretón**, en Arafo (Tenerife).
-Está montado con la misma estructura que la web de El Capricho: páginas
-sueltas, cabecera y pie compartidos como *partials*, textos en dos idiomas
-y la carta separada del diseño en un JSON que se actualiza solo.
+Sitio estático generado: las plantillas viven en `src/`, un script escribe
+una versión por idioma con su propia URL, y GitHub Pages publica el
+resultado desde la raíz. Sin framework ni dependencias de JavaScript.
+La estructura sigue la de la web de El Capricho: cabecera y pie
+compartidos, y la carta separada del diseño en un JSON.
 
 ## Qué contiene
 
+La web **se genera**: se editan las plantillas de `src/` y un script escribe
+las páginas de cada idioma. Lo que hay en la raíz es el resultado, y es lo
+que publica GitHub Pages.
+
 ```
-index.html                  portada: hero, nosotros, especialidades, carta,
-                            galería y contacto
-novedades.html              listado de novedades
-novedades/                  una página por cada novedad publicada
-novedades-data.json         el índice de novedades (título, fecha, imagen)
-menu-data.json              la carta: categorías, platos y precios
-partials/header.html        cabecera compartida por todas las páginas
-partials/footer.html        pie + modal de textos legales
-assets/site.css             todo el diseño
-assets/site-common.js       cabecera/pie, menú móvil, idioma, modal legal
-assets/i18n.js              los textos en español e inglés
+src/pages/                  las plantillas (lo que se edita)
+src/partials/header.html    cabecera compartida
+src/partials/footer.html    pie + modal de textos legales
+src/i18n.json               todos los textos, en español e inglés
+src/meta.json               título y descripción de cada página, por idioma
+carta/carta-hoja.csv        la hoja de la carta, exportada a CSV
+carta/descripciones.json    las descripciones de los platos, en los dos idiomas
+scripts/build_menu.py       CSV + descripciones -> menu-data.json
+scripts/build_site.py       plantillas + traducciones + carta -> la web
+assets/site.css             el diseño
+assets/site.js              interacción (pestañas, menú, modal, galería)
 img/                        logotipo y fotografías
-carta/carta-hoja.csv        la hoja de la carta, exportada a CSV (fuente de verdad)
-carta/descripciones.json    las descripciones de los platos, en español e inglés
-scripts/build_menu.py       junta esos dos archivos en menu-data.json
+
+index.html, novedades.html, novedades/, en/, sitemap.xml, robots.txt
+                            GENERADOS: no se editan a mano
 ```
 
-## Publicar en GitHub Pages
+## Cómo se publica
 
-1. En el repositorio, `Settings → Pages`.
-2. En *Source*, elige la rama `main` y la carpeta `/ (root)`. Guarda.
-3. A los pocos minutos la web estará en
-   `https://retuertographic.github.io/Crrta/`.
+```bash
+python scripts/build_menu.py    # solo si ha cambiado la carta
+python scripts/build_site.py    # siempre
+git add -A && git commit && git push
+```
 
-Para usar un dominio propio, añade un archivo `CNAME` en la raíz con el
-dominio (una sola línea, sin `https://`) y apunta el DNS a GitHub Pages.
+GitHub Pages publica la rama `main` desde la raíz, así que **los archivos
+generados van al repositorio**. Si editas una plantilla y olvidas ejecutar
+`build_site.py`, el cambio no se publica.
 
-> Nota: las páginas cargan la cabecera y el pie con `fetch()`, así que hay
-> que abrirlas desde un servidor web, no con doble clic sobre el archivo.
-> En local: `python3 -m http.server` dentro de esta carpeta.
+En local: `python3 -m http.server` en la raíz.
+
+## Un idioma por URL
+
+El español vive en la raíz y el inglés en `/en/`:
+
+| | Español | Inglés |
+| --- | --- | --- |
+| Portada | `/` | `/en/` |
+| Novedades | `/novedades.html` | `/en/novedades.html` |
+| Una novedad | `/novedades/<slug>.html` | `/en/novedades/<slug>.html` |
+
+Cada página declara su `canonical` y las etiquetas `hreflang` de todas sus
+versiones, y el `sitemap.xml` las lista con sus alternativas. El selector
+de idioma son **enlaces de verdad**, no un botón de JavaScript.
+
+Esto es a propósito y es la razón de que haya un generador. Con el idioma
+resuelto en el navegador, Google solo veía la versión española: el resto
+del contenido no existía hasta que alguien pulsaba un botón. Por el mismo
+motivo **la carta se escribe entera en el HTML** en lugar de pedirse con
+`fetch`: los 88 platos con sus descripciones son justo lo que la gente
+busca, y así están en el código fuente de la página.
+
+### Añadir un idioma
+
+1. Añádelo a `LANGUAGES` en `scripts/build_site.py` (código, carpeta,
+   etiqueta hreflang y locale de fechas).
+2. Traduce `src/i18n.json` y `src/meta.json`.
+3. Añade `name_XX` / `description_XX` donde haga falta en
+   `carta/descripciones.json`, y los mapas de categorías en
+   `scripts/build_menu.py`.
+4. Ejecuta el build. Si falta alguna clave, el script avisa por stderr y
+   usa el español mientras tanto — no rompe la página.
+
+## Analíticas y mapas de calor
+
+La web **no carga ningún tercero por defecto**. Para añadir Google
+Analytics, Hotjar o similar, crea `src/partials/analytics.html` con las
+etiquetas que te den y vuelve a ejecutar `build_site.py`: se inyectan en el
+`<head>` de todas las páginas de todos los idiomas. Si el archivo no
+existe, no se inyecta nada.
+
+> **Antes de hacerlo**, dos cosas que hay que resolver o la web queda en
+> falso:
+>
+> 1. La política de cookies dice hoy, literalmente, que este sitio «no
+>    instala cookies publicitarias ni de análisis». Habría que reescribirla.
+> 2. En España, las cookies de análisis necesitan **consentimiento previo**
+>    (criterio de la AEPD): hace falta un banner que no cargue el script
+>    hasta que la persona acepte. Poner la etiqueta sin más no es legal.
 
 ## La carta
 
@@ -149,18 +202,22 @@ hoja.
 
 ## Añadir una novedad
 
-1. Añade una entrada al principio del array `posts` de `novedades-data.json`
-   (`slug`, `date` en formato `AAAA-MM-DD`, `image`, títulos y extractos).
-2. Copia `novedades/abrimos-nuestra-web.html` a `novedades/<slug>.html` y
-   cambia el texto. Los textos largos del post viven en el propio archivo,
-   en el bloque `I18N.es.postN_*` / `I18N.en.postN_*`.
+1. Añade una entrada al principio del array `posts` de
+   `novedades-data.json` (`slug`, `date` en `AAAA-MM-DD`, `image`, títulos
+   y extractos en los dos idiomas).
+2. Copia `src/pages/novedades/abrimos-nuestra-web.html` a
+   `src/pages/novedades/<slug>.html` y cambia el texto.
+3. Añade la página a `PAGES` y sus textos a `src/meta.json`.
+4. Ejecuta `build_site.py`.
 
-## Cambiar textos e idiomas
 
-Todo lo traducible lleva `data-i18n="clave"` en el HTML, y la clave vive en
-`assets/i18n.js` con su versión `es` y `en`. Si añades texto nuevo, añade la
-clave en los dos idiomas. El idioma elegido se guarda en el navegador
-(`localStorage`, clave `carreton_lang`).
+## Cambiar textos
+
+Todo lo traducible lleva `data-i18n="clave"` en las plantillas, y la clave
+vive en `src/i18n.json` con su versión `es` y `en`. El generador sustituye
+el contenido del elemento por el texto del idioma que toque, así que lo que
+se ve en la plantilla es solo el original en español.
+
 
 ## Pendiente antes de publicar
 

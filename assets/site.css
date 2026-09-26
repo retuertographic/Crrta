@@ -260,7 +260,9 @@
   .menu-panel{
     background:var(--paper);border-radius:20px;padding:8px 34px;
     box-shadow:0 24px 50px rgba(43,38,33,.12);position:relative;min-height:120px;
+    display:none;
   }
+  .menu-panel.active{display:block;}
   .menu-group{
     font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;
     color:var(--gold);letter-spacing:.01em;
@@ -472,33 +474,26 @@
   .legal-panel li::before{content:'—';position:absolute;left:0;color:var(--gold);}
   .legal-panel a{color:var(--gold);font-weight:600;}
 
-  /* ---------- SELECTOR DE IDIOMA ---------- */
-  .lang-switch{position:relative;}
-  .lang-btn{
+  /* ---------- SELECTOR DE IDIOMA ----------
+     Enlaces a la otra versión del sitio, no un conmutador: cada idioma
+     tiene su URL, así que esto es navegación normal. */
+  .lang-switch{display:flex;gap:6px;}
+  .lang-link{
     display:flex;align-items:center;gap:6px;
     background:rgba(255,255,255,.1);
     border:1px solid rgba(255,255,255,.3);
     color:#fff;padding:8px 14px;border-radius:30px;
-    font-weight:600;font-size:.8rem;cursor:pointer;
-    font-family:'Poppins',sans-serif;
+    font-weight:600;font-size:.8rem;text-decoration:none;
     transition:background .35s ease,border-color .35s ease,color .35s ease;
   }
-  header.scrolled .lang-btn{background:rgba(43,38,33,.06);border-color:rgba(43,38,33,.2);color:var(--ink);}
-  .lang-menu{
-    position:absolute;top:calc(100% + 10px);right:0;
-    background:#fff;border-radius:14px;overflow:hidden;
-    box-shadow:0 16px 40px rgba(0,0,0,.18);min-width:150px;
-    opacity:0;visibility:hidden;transform:translateY(-6px);
-    transition:opacity .2s ease,transform .2s ease,visibility .2s ease;z-index:120;
-  }
-  .lang-switch.open .lang-menu{opacity:1;visibility:visible;transform:translateY(0);}
-  .lang-menu button{
-    display:flex;align-items:center;gap:10px;width:100%;padding:11px 16px;background:none;border:none;cursor:pointer;
-    font-family:'Poppins',sans-serif;font-weight:600;font-size:.85rem;color:var(--ink);text-align:left;transition:background .15s ease;
-  }
-  .lang-menu button:hover{background:var(--cream);}
-  .lang-menu button.active{color:var(--gold);}
+  .lang-link:hover{background:rgba(255,255,255,.2);}
+  header.scrolled .lang-link{background:rgba(43,38,33,.06);border-color:rgba(43,38,33,.2);color:var(--ink);}
+  header.scrolled .lang-link:hover{background:rgba(43,38,33,.12);}
   .flag{font-size:1rem;line-height:1;}
+  .sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
 
   /* ---------- VOLVER ARRIBA ---------- */
   .to-top{

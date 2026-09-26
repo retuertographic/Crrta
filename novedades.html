@@ -4,19 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Novedades · La Carreta del Carretón</title>
-<meta name="description" content="Novedades de La Carreta del Carretón: platos de temporada, horarios especiales y noticias de nuestro restaurante cubano en Arafo, Tenerife.">
+<meta name="description" content="Novedades de La Carreta del Carretón: platos de temporada, horarios especiales y noticias de nuestro restaurante cubano en Arafo.">
+<link rel="canonical" href="https://retuertographic.github.io/Crrta/novedades.html">
 <meta property="og:title" content="Novedades · La Carreta del Carretón">
-<meta property="og:description" content="Platos de temporada, horarios especiales y noticias de nuestro restaurante cubano en Arafo.">
+<meta property="og:description" content="Novedades de La Carreta del Carretón: platos de temporada, horarios especiales y noticias de nuestro restaurante cubano en Arafo.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://retuertographic.github.io/Crrta/novedades.html">
+<meta property="og:image" content="https://retuertographic.github.io/Crrta/img/logo-square.jpg">
+<meta property="og:locale" content="es_ES">
+<link rel="alternate" hreflang="es-ES" href="https://retuertographic.github.io/Crrta/novedades.html">
+<link rel="alternate" hreflang="en" href="https://retuertographic.github.io/Crrta/en/novedades.html">
+<link rel="alternate" hreflang="x-default" href="https://retuertographic.github.io/Crrta/novedades.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232B2621'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='52' fill='%23D2B072' font-family='Georgia,serif'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/site.css">
+
 </head>
 <body>
 
-<div id="site-header-slot"></div>
+<header id="site-header">
+  <div class="wrap">
+    <nav>
+      <a href="index.html#inicio" class="brand" aria-label="La Carreta del Carretón — inicio">
+        <span class="badge"><img src="img/logo.webp" alt="La Carreta del Carretón"></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#inicio" data-i18n="nav_home">Inicio</a></li>
+        <li><a href="index.html#nosotros" data-i18n="nav_about">Nosotros</a></li>
+        <li><a href="index.html#especialidades" data-i18n="nav_specials">Especialidades</a></li>
+        <li><a href="index.html#carta" data-i18n="nav_carta">Carta</a></li>
+        <li><a href="novedades.html" data-i18n="nav_novedades">Novedades</a></li>
+        <li><a href="index.html#galeria" data-i18n="nav_gallery">Galería</a></li>
+        <li><a href="index.html#contacto" data-i18n="nav_contact">Contacto</a></li>
+        <li><a href="index.html#contacto" class="btn" data-i18n="nav_book">Reservar mesa</a></li>
+      </ul>
+
+      <div class="lang-switch"><a class="lang-link" href="en/novedades.html" hreflang="en" lang="en"><span class="flag">🇬🇧</span><span>EN</span><span class="sr-only"> — English</span></a></div>
+
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú">☰</button>
+    </nav>
+  </div>
+</header>
+
 
 <section class="novedades-hero">
   <div class="wrap">
@@ -27,51 +59,99 @@
 
 <section class="novedades-list">
   <div class="wrap">
-    <div class="nov-grid" id="novGrid">
-      <div class="nov-empty" data-i18n="novedades_empty">Todavía no hay novedades publicadas. Vuelve pronto.</div>
+    <div class="nov-grid">
+<article class="nov-card"><div class="thumb"><img src="img/postre-teide.webp" alt="Ya tenemos web (y carta online)" loading="lazy"></div><div class="body"><div class="nov-date">21 de septiembre de 2026</div><h3>Ya tenemos web (y carta online)</h3><p>Estrenamos página para que no tengas que llamar solo para preguntar el horario. Aquí encontrarás la carta con los precios al día, cómo llegar y todo lo que vayamos contando.</p><a class="read-more" href="novedades/abrimos-nuestra-web.html">Leer más →</a></div></article>
+</div>
     </div>
   </div>
 </section>
 
-<div id="site-footer-slot"></div>
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <span class="badge"><img src="img/logo.webp" alt="La Carreta del Carretón"></span>
+      <span>© <span id="year"></span> La Carreta del Carretón · Arafo</span>
+    </div>
+    <div class="legal-links">
+      <button type="button" data-legal-tab="aviso" data-i18n="footer_legal">Aviso legal</button>
+      <button type="button" data-legal-tab="privacidad" data-i18n="footer_privacy">Política de privacidad</button>
+      <button type="button" data-legal-tab="cookies" data-i18n="footer_cookies">Política de cookies</button>
+    </div>
+    <a href="index.html#contacto" class="book" data-i18n="nav_book">Reservar mesa</a>
+  </div>
+</footer>
 
-<script src="assets/i18n.js"></script>
-<script>
-  let novedadesCache = null;
-  async function renderPosts(lang){
-    const grid = document.getElementById('novGrid');
-    try{
-      if (!novedadesCache){
-        const res = await fetch('novedades-data.json', { cache: 'no-store' });
-        novedadesCache = (await res.json()).posts || [];
-      }
-      const posts = [...novedadesCache].sort((a, b) => new Date(b.date) - new Date(a.date));
-      if (!posts.length){
-        grid.innerHTML = `<div class="nov-empty">${I18N[lang].novedades_empty}</div>`;
-        return;
-      }
-      grid.innerHTML = posts.map(p => {
-        const title = lang === 'en' ? (p.title_en || p.title_es) : p.title_es;
-        const excerpt = lang === 'en' ? (p.excerpt_en || p.excerpt_es) : p.excerpt_es;
-        const dateStr = new Date(p.date + 'T00:00:00').toLocaleDateString(lang === 'en' ? 'en-GB' : 'es-ES', { day:'numeric', month:'long', year:'numeric' });
-        return `<article class="nov-card">
-          <div class="thumb"><img src="${p.image}" alt="${title}" loading="lazy"></div>
-          <div class="body">
-            <div class="nov-date">${dateStr}</div>
-            <h3>${title}</h3>
-            <p>${excerpt}</p>
-            <a class="read-more" href="novedades/${p.slug}.html">${I18N[lang].read_more}</a>
-          </div>
-        </article>`;
-      }).join('');
-    }catch(err){
-      grid.innerHTML = `<div class="nov-empty">${I18N[lang].novedades_empty}</div>`;
-    }
-  }
-  window.onLanguageChange = function(lang){ renderPosts(lang); };
-</script>
-<script>window.SITE_PREFIX = "";</script>
-<script src="assets/site-common.js"></script>
+<button class="to-top" id="toTop" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- ================= MODAL LEGAL =================
+     OJO: los datos del titular (nombre, NIF, correo de contacto) están
+     marcados como [PENDIENTE ...]. Sustitúyelos por los reales antes de
+     publicar la web: son obligatorios según el art. 10 de la LSSICE.
+     Aparecen también en el bloque "Otros contactos" de index.html.
+============================================================= -->
+<div class="legal-modal" id="legalModal">
+  <div class="legal-box">
+    <div class="legal-head">
+      <h3 id="legalModalTitle" data-i18n="legal_modal_title">Información legal</h3>
+      <button class="legal-close" id="legalClose" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="legal-tabs">
+      <button class="legal-tab active" data-legal-panel="aviso" data-i18n="footer_legal">Aviso legal</button>
+      <button class="legal-tab" data-legal-panel="privacidad" data-i18n="footer_privacy">Política de privacidad</button>
+      <button class="legal-tab" data-legal-panel="cookies" data-i18n="footer_cookies">Política de cookies</button>
+    </div>
+    <div class="legal-body">
+
+      <div class="legal-panel active" id="legalPanelAviso">
+        <p data-i18n="aviso_p1">En cumplimiento del deber de información del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSICE), se informa de que el titular de este sitio web es [PENDIENTE: nombre del titular], NIF [PENDIENTE: NIF], que explota el restaurante La Carreta del Carretón, con domicilio en C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife.</p>
+        <p data-i18n="aviso_p2">La Carreta del Carretón no asume responsabilidad derivada de la falta de veracidad, integridad, actualización o precisión de los datos e informaciones contenidos en estas páginas. Los precios de la carta se publican a título informativo y pueden variar; los vigentes son siempre los del local.</p>
+        <p data-i18n="aviso_p3">Los textos, imágenes, logotipo y demás contenidos de este sitio son propiedad de La Carreta del Carretón o de sus licenciantes. Queda prohibida su reproducción, distribución o comunicación pública sin consentimiento expreso.</p>
+        <p data-i18n="aviso_p4">Este sitio no recoge datos personales a través de formularios: las reservas se gestionan por teléfono. Si nos escribes por correo electrónico, tus datos se tratarán conforme al Reglamento (UE) 2016/679 (RGPD) y podrás ejercer tus derechos en la dirección indicada arriba.</p>
+      </div>
+
+      <div class="legal-panel" id="legalPanelPrivacidad">
+        <h4 data-i18n="priv_h1">Protección de datos según el RGPD</h4>
+        <p data-i18n="priv_p1">Responsable del tratamiento: [PENDIENTE: nombre del titular], NIF [PENDIENTE: NIF], C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife.</p>
+        <h4 data-i18n="priv_h2">¿Con qué finalidad tratamos tus datos?</h4>
+        <ul>
+          <li data-i18n="priv_l1">Gestionar tu reserva de mesa y confirmarte disponibilidad.</li>
+          <li data-i18n="priv_l2">Responder a las consultas que nos hagas por teléfono o correo electrónico.</li>
+          <li data-i18n="priv_l3">Atender peticiones para celebraciones y grupos.</li>
+        </ul>
+        <h4 data-i18n="priv_h3">¿Por cuánto tiempo los conservamos?</h4>
+        <p data-i18n="priv_p2">Solo el tiempo necesario para atender tu reserva o consulta, y durante el plazo en que pudieran derivarse responsabilidades legales.</p>
+        <h4 data-i18n="priv_h4">Legitimación y destinatarios</h4>
+        <p data-i18n="priv_p3">El tratamiento se basa en tu solicitud de reserva o información. Tus datos no se ceden a terceros, salvo obligación legal.</p>
+        <h4 data-i18n="priv_h5">Tus derechos</h4>
+        <p data-i18n="priv_p4">Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a protecciondedatos@lacarretadelcarreton.com o en C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife.</p>
+        <h4 data-i18n="priv_h6">Propiedad intelectual</h4>
+        <p data-i18n="priv_p5">Todos los contenidos de este sitio (textos, imágenes, logotipo) son propiedad de La Carreta del Carretón o de sus licenciantes y están protegidos por la normativa de propiedad intelectual. Queda prohibido su uso no autorizado.</p>
+      </div>
+
+      <div class="legal-panel" id="legalPanelCookies">
+        <h4 data-i18n="cook_h1">¿Qué son las cookies?</h4>
+        <p data-i18n="cook_p1">Las cookies son archivos que se descargan en tu equipo al visitar una página web y permiten almacenar y recuperar información sobre tus hábitos de navegación.</p>
+        <h4 data-i18n="cook_h2">Cookies que utilizamos</h4>
+        <p data-i18n="cook_p2">Esta web no instala cookies publicitarias ni de análisis. Únicamente guarda en tu navegador (almacenamiento local) el idioma que elijas, para no tener que preguntártelo en cada visita. Además, el mapa de Google Maps incrustado en la sección de contacto puede instalar sus propias cookies conforme a la política de privacidad de Google.</p>
+        <h4 data-i18n="cook_h3">Tipos de cookies</h4>
+        <ul>
+          <li data-i18n="cook_l1">Cookies técnicas y de personalización propias: recuerdan tu idioma preferido.</li>
+          <li data-i18n="cook_l2">Cookies de terceros: las que pueda instalar el mapa de Google Maps al cargarse.</li>
+        </ul>
+        <h4 data-i18n="cook_h4">Cómo gestionar las cookies</h4>
+        <p data-i18n="cook_p3">Puedes permitir, bloquear o eliminar las cookies desde la configuración de tu navegador (Chrome, Firefox, Safari, Edge, Opera). Bloquear algunas cookies puede afectar al funcionamiento del sitio.</p>
+        <h4 data-i18n="cook_h5">Consentimiento</h4>
+        <p data-i18n="cook_p4">Al continuar navegando por esta web aceptas el uso de estas cookies según lo descrito en esta política. Puedes cambiar tu decisión en cualquier momento eliminando las cookies y el almacenamiento local desde tu navegador.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script src="assets/site.js" defer></script>
 
 </body>
 </html>

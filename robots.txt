@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://retuertographic.github.io/Crrta/sitemap.xml
