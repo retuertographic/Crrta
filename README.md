@@ -22,7 +22,8 @@ assets/site-common.js       cabecera/pie, menú móvil, idioma, modal legal
 assets/i18n.js              los textos en español e inglés
 img/                        logotipo y fotografías
 carta/carta-hoja.csv        la hoja de la carta, exportada a CSV (fuente de verdad)
-scripts/build_menu.py       convierte ese CSV en menu-data.json
+carta/descripciones.json    las descripciones de los platos, en español e inglés
+scripts/build_menu.py       junta esos dos archivos en menu-data.json
 ```
 
 ## Publicar en GitHub Pages
@@ -52,6 +53,31 @@ pueda reconstruir sin depender de tener acceso a la hoja.
 2. `Archivo → Descargar → Valores separados por comas (.csv)`.
 3. Sustituye `carta/carta-hoja.csv` por el archivo descargado.
 4. `python scripts/build_menu.py` y haz commit de los dos archivos.
+
+### Las descripciones
+
+La hoja no tiene columna de descripción, así que viven aparte en
+`carta/descripciones.json`, y `build_menu.py` las mezcla al generar la
+carta. La clave es el nombre del plato tal como aparece en la hoja (no
+distingue mayúsculas ni acentos), y cada entrada lleva `es` y `en`:
+
+```json
+"Costillas BBQ": {
+  "es": "Plato estrella, tiernas y jugosas costillas…",
+  "en": "Our signature dish: tender, juicy ribs…"
+}
+```
+
+Si una entrada no casa con ningún plato de la hoja, el script lo avisa al
+terminar — así un plato que se renombre en la hoja no se queda con la
+descripción colgando en silencio. Ahora mismo hay 29 entradas, que cubren
+31 platos (*Tostones* y *Yuca con mojo* salen en dos secciones).
+
+El inglés está traducido a mano. La traducción automática que traía la
+carta digital anterior tenía errores que en una carta son graves
+(«entraña» como *entrails*, «ropa vieja» como *old rust*, «pata asada»
+como *pig's foot*), así que no se reutilizó. Los nombres de plato cubanos
+y canarios se dejan en español y se explican entre paréntesis.
 
 El script imprime cuántos platos ha leído por categoría, y al final, por
 stderr, las notas de la columna «Notas alérgenos / transcripción» — que
@@ -147,12 +173,14 @@ clave en los dos idiomas. El idioma elegido se guarda en el navegador
       ensaladas, «Confirmar tipo de gofio», «Pata asada: en la carta
       aparecen dos precios»…). No se publican, pero cerrarlas mejoraría
       los alérgenos. `build_menu.py` las lista al ejecutarse.
-- [ ] **Descripciones de los platos.** La hoja no tiene columna de
-      descripción, así que la carta va solo con nombre y precio. Si se
-      añade una columna, el script puede publicarlas.
-- [ ] **Traducciones de los platos.** Por el mismo motivo, en inglés se
-      traducen las categorías, los subtítulos y las raciones, pero los
-      nombres de los platos se quedan en español.
+- [ ] **Descripciones que faltan.** 31 de los 88 platos tienen
+      descripción; el resto son bebidas y platos sencillos que tampoco la
+      tenían en la carta anterior. Si quieres más, se añaden a
+      `carta/descripciones.json`.
+- [ ] **Nombres de los platos en inglés.** Las descripciones sí están
+      traducidas, pero los nombres se quedan en español (*Tostones
+      Rellenos*, *Pata Asada*…). En muchos casos es lo correcto para un
+      plato cubano; si se quieren traducir, harían falta campos `name_en`.
 - [ ] **Redes sociales.** Los enlaces de Facebook, TripAdvisor y Google del
       pie de contacto se tomaron de resultados públicos de búsqueda;
       conviene comprobar que son las fichas correctas del local.

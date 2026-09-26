@@ -1,7 +1,7 @@
 {
   "source": "Hoja de cálculo «Carta La Carreta del Carretón — con alérgenos»",
   "source_file": "carta/carta-hoja.csv",
-  "scraped_at": "2026-09-26T15:52:19.900425+00:00",
+  "scraped_at": "2026-09-26T19:01:45.999473+00:00",
   "notes": [
     "IGIC INCLUIDO"
   ],
@@ -18,6 +18,8 @@
         {
           "name": "Tostones",
           "number": 1,
+          "description": "Plátano verde frito",
+          "description_en": "Fried green plantain",
           "prices": [
             {
               "value": "4,20",
@@ -29,6 +31,8 @@
         {
           "name": "Tostones Rellenos",
           "number": 2,
+          "description": "Plátano verde frito, montadito con ropa vieja a la cubana",
+          "description_en": "Fried green plantain topped with Cuban-style ropa vieja (shredded beef)",
           "prices": [
             {
               "value": "7,00",
@@ -68,6 +72,8 @@
         {
           "name": "Papas Rellenas",
           "number": 4,
+          "description": "Puré de papas aderezado con nuez moscada y mantequilla, rellena con carne molida. Se empana y se fríe",
+          "description_en": "Mashed potato seasoned with nutmeg and butter, stuffed with minced meat, then breaded and fried",
           "prices": [
             {
               "value": "7,50",
@@ -154,6 +160,8 @@
         {
           "name": "Tamal Cubano",
           "number": 8,
+          "description": "Millo tierno molido con tropezones de carne, una fritura y se cocina en la propia hoja de millo",
+          "description_en": "Ground sweetcorn with pieces of meat, fried and then cooked in the corn husk itself",
           "prices": [
             {
               "value": "5,90",
@@ -165,6 +173,8 @@
         {
           "name": "Yuca con mojo",
           "number": 9,
+          "description": "Yuca guisada con un mojo de cebollas, criollo cubano",
+          "description_en": "Stewed cassava with Cuban creole onion mojo",
           "prices": [
             {
               "value": "4,80",
@@ -187,6 +197,8 @@
         {
           "name": "Mixta",
           "number": 1,
+          "description": "Diferentes tipos de lechuga, tomate, cebolla y millo",
+          "description_en": "Several kinds of lettuce, tomato, onion and sweetcorn",
           "prices": [
             {
               "value": "4,80",
@@ -202,6 +214,8 @@
         {
           "name": "Habana Libre",
           "number": 2,
+          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pollo y una vinagreta de mango",
+          "description_en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese, chicken and a mango vinaigrette",
           "prices": [
             {
               "value": "12,30",
@@ -218,6 +232,8 @@
         {
           "name": "Perla del Caribe",
           "number": 3,
+          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, langostino y una vinagreta de mango",
+          "description_en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese, prawns and a mango vinaigrette",
           "prices": [
             {
               "value": "12,30",
@@ -234,6 +250,8 @@
         {
           "name": "El Carretón",
           "number": 4,
+          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, churrasco de entraña y una vinagreta de mango",
+          "description_en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese, grilled skirt steak and a mango vinaigrette",
           "prices": [
             {
               "value": "13,80",
@@ -250,6 +268,8 @@
         {
           "name": "Guajira",
           "number": 5,
+          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pata asada y una vinagreta de mango",
+          "description_en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese, roast pork leg and a mango vinaigrette",
           "prices": [
             {
               "value": "12,30",
@@ -266,6 +286,8 @@
         {
           "name": "Ensalada Especial",
           "number": 6,
+          "description": "Diferentes tipos de lechuga, frutas (uva y manzana), frutos secos, queso feta y una vinagreta de mango",
+          "description_en": "Several kinds of lettuce, fruit (grape and apple), nuts, feta cheese and a mango vinaigrette",
           "prices": [
             {
               "value": "7,50",
@@ -287,6 +309,8 @@
         {
           "name": "Ensalada Mixta especial",
           "number": 1,
+          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta y una vinagreta de mango",
+          "description_en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese and a mango vinaigrette",
           "prices": [
             {
               "value": "7,50",
@@ -301,6 +325,8 @@
         {
           "name": "Yuca con mojo",
           "number": 2,
+          "description": "Yuca guisada con un mojo de cebollas, criollo cubano",
+          "description_en": "Stewed cassava with Cuban creole onion mojo",
           "prices": [
             {
               "value": "4,80",
@@ -333,6 +359,8 @@
         {
           "name": "Tostones",
           "number": 4,
+          "description": "Plátano verde frito",
+          "description_en": "Fried green plantain",
           "prices": [
             {
               "value": "4,20",
@@ -344,6 +372,8 @@
         {
           "name": "Vegetales salteados",
           "number": 5,
+          "description": "Calabacín, berenjena, cebolla, tomate, pimiento verde y pimiento rojo salteados",
+          "description_en": "Sautéed courgette, aubergine, onion, tomato, green pepper and red pepper",
           "prices": [
             {
               "value": "5,35",
@@ -358,6 +388,8 @@
         {
           "name": "Vegetales a la brasa",
           "number": 6,
+          "description": "Calabacín, berenjena, cebolla, tomate, pimiento verde y rojo a la brasa ligeramente embadurnados con salsa BBQ",
+          "description_en": "Courgette, aubergine, onion, tomato, green and red pepper off the grill, lightly brushed with barbecue sauce",
           "prices": [
             {
               "value": "6,50",
@@ -374,6 +406,8 @@
         {
           "name": "Arroz Congrí",
           "number": 7,
+          "description": "Arroz blanco que se cocina junto con frijol negro y una fritura de cebolla, pimiento verde, rojo, laurel, comino y orégano",
+          "description_en": "White rice cooked with black beans and a sofrito of onion, green and red pepper, bay leaf, cumin and oregano",
           "prices": [
             {
               "value": "2,70",
@@ -447,6 +481,8 @@
         {
           "name": "1/4 Pollo",
           "number": 2,
+          "description": "Puede elegir entre pechuga o pata",
+          "description_en": "Your choice of breast or leg",
           "prices": [
             {
               "value": "3,20",
@@ -458,6 +494,8 @@
         {
           "name": "Nuggets de Pollo",
           "number": 3,
+          "description": "Preparados por nosotros con pechuga de pollo fresca, con ketchup",
+          "description_en": "Made in-house with fresh chicken breast, served with ketchup",
           "prices": [
             {
               "value": "5,90",
@@ -486,6 +524,8 @@
         {
           "name": "Ropa Vieja a la cubana",
           "number": 1,
+          "description": "Carne de ternera mechada con una fritura de verduras y salsa de tomate",
+          "description_en": "Shredded beef with a vegetable sofrito and tomato sauce",
           "prices": [
             {
               "value": "11,70",
@@ -505,6 +545,8 @@
         {
           "name": "Churrasco de Entraña",
           "number": 2,
+          "description": "Tierno y jugoso bistec de ternera a la brasa",
+          "description_en": "Tender, juicy grilled skirt steak",
           "prices": [
             {
               "value": "15,00",
@@ -522,6 +564,8 @@
         {
           "name": "Masas de cerdo fritas",
           "number": 1,
+          "description": "Trozos de carne que se cuecen previamente con vino blanco y especias, luego se fríen y se sirven con un mojo de cebolla",
+          "description_en": "Chunks of pork first simmered with white wine and spices, then fried and served with onion mojo",
           "prices": [
             {
               "value": "10,00",
@@ -538,6 +582,8 @@
         {
           "name": "Pata Asada",
           "number": 2,
+          "description": "Suculenta y jugosa pata de cerdo, servida con nuestro mojo de cebolla",
+          "description_en": "Succulent, juicy roast pork leg, served with our onion mojo",
           "prices": [
             {
               "value": "10,00",
@@ -554,6 +600,8 @@
         {
           "name": "Chuletas a la brasa",
           "number": 3,
+          "description": "Chuleta de aguja a la brasa",
+          "description_en": "Grilled pork collar chop",
           "prices": [
             {
               "value": "11,20",
@@ -570,6 +618,8 @@
         {
           "name": "Costillas BBQ",
           "number": 4,
+          "description": "Plato estrella, tiernas y jugosas costillas previamente maceradas y terminadas en la brasa con salsa barbacoa",
+          "description_en": "Our signature dish: tender, juicy ribs, marinated and finished on the grill with barbecue sauce",
           "prices": [
             {
               "value": "14,50",
@@ -591,6 +641,8 @@
         {
           "name": "Solomillo de cerdo a la brasa (para 2 personas)",
           "number": 5,
+          "description": "Solomillo de cerdo a la brasa, servido con salsa, champiñones y papas guisadas",
+          "description_en": "Grilled pork tenderloin, served with sauce, mushrooms and stewed potatoes",
           "prices": [
             {
               "value": "13,90",
@@ -607,6 +659,8 @@
         {
           "name": "Secreto a la Brasa",
           "number": 6,
+          "description": "Suculento y jugoso secreto de cerdo a la brasa",
+          "description_en": "Succulent, juicy grilled secreto (a prized cut of pork)",
           "prices": [
             {
               "value": "13,40",
@@ -629,6 +683,8 @@
         {
           "name": "Bacalao en salsa",
           "number": 1,
+          "description": "Bacalao en salsa de tomate y cebolla, especial de la casa",
+          "description_en": "Cod in the house tomato and onion sauce",
           "prices": [
             {
               "value": "10,70",
@@ -646,6 +702,8 @@
         {
           "name": "Enchilado de Langostino",
           "number": 2,
+          "description": "Langostinos salteados y reducidos en vino blanco, con una fritura de verduras en salsa de tomate",
+          "description_en": "Prawns sautéed and reduced in white wine, with a vegetable sofrito in tomato sauce",
           "prices": [
             {
               "value": "12,85",
@@ -759,6 +817,8 @@
         {
           "name": "Teide",
           "number": 4,
+          "description": "Postre estrella, bizcocho de chocolate relleno con helado de vainilla y una salsa tibia de chocolate por encima",
+          "description_en": "Our signature dessert: chocolate sponge filled with vanilla ice cream under a warm chocolate sauce",
           "prices": [
             {
               "value": "5,90",
@@ -1316,6 +1376,8 @@
         {
           "name": "Barraquito",
           "number": 70,
+          "description": "Café con leche condensada, canela y licor",
+          "description_en": "Coffee with milk, condensed milk, cinnamon and liqueur",
           "prices": [
             {
               "value": "1,30",

@@ -10,6 +10,9 @@ reconstruir sin depender de tener acceso a la hoja.
     python scripts/build_menu.py                      # usa carta/carta-hoja.csv
     python scripts/build_menu.py otra-exportacion.csv
 
+Las descripciones de los platos no están en la hoja: viven aparte, en
+carta/descripciones.json, y este script las mezcla al generar la carta.
+
 Para actualizar la carta: edita la hoja, expórtala
 (Archivo → Descargar → CSV), sustituye carta/carta-hoja.csv y ejecuta el
 script. Las columnas deben mantener el orden de la cabecera.
@@ -32,6 +35,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 DEFAULT_CSV = REPO / "carta" / "carta-hoja.csv"
+DESCRIPTIONS_PATH = REPO / "carta" / "descripciones.json"
 OUTPUT_PATH = REPO / "menu-data.json"
 
 # Posición de cada columna en la hoja.
@@ -151,6 +155,14 @@ def parse_other_formats(raw: str) -> list[dict]:
     return prices
 
 
+def load_descriptions() -> dict[str, dict]:
+    """Descripciones por nombre de plato, con la clave normalizada."""
+    if not DESCRIPTIONS_PATH.exists():
+        return {}
+    data = json.loads(DESCRIPTIONS_PATH.read_text(encoding="utf-8"))
+    return {fold(name): value for name, value in (data.get("descripciones") or {}).items()}
+
+
 def read_rows(path: Path) -> tuple[list[list[str]], list[str]]:
     """Separa las filas de platos de las de la leyenda del final."""
     with path.open(encoding="utf-8-sig", newline="") as f:
@@ -171,9 +183,10 @@ def read_rows(path: Path) -> tuple[list[list[str]], list[str]]:
     return rows, legend
 
 
-def build(rows: list[list[str]]) -> tuple[list[dict], list[str]]:
+def build(rows: list[list[str]], descriptions: dict[str, dict]) -> tuple[list[dict], list[str]]:
     categories: list[dict] = []
     review: list[str] = []
+    used_descriptions: set[str] = set()
     by_name: dict[str, dict] = {}
     current_group: dict[str, str] = {}
 
@@ -210,6 +223,14 @@ def build(rows: list[list[str]]) -> tuple[list[dict], list[str]]:
         if number.isdigit():
             item["number"] = int(number)
 
+        described = descriptions.get(fold(name))
+        if described:
+            used_descriptions.add(fold(name))
+            if described.get("es"):
+                item["description"] = described["es"]
+            if described.get("en"):
+                item["description_en"] = described["en"]
+
         prices = []
         for label, col in (("1 ración", COL_FULL), ("½ ración", COL_HALF), ("Unidad", COL_UNIT)):
             entry = price(label, cell(row, col))
@@ -240,6 +261,10 @@ def build(rows: list[list[str]]) -> tuple[list[dict], list[str]]:
 
         cat["items"].append(item)
 
+    for key in descriptions:
+        if key not in used_descriptions:
+            review.append(f"descripciones.json: «{key}» no coincide con ningún plato de la hoja")
+
     return categories, review
 
 
@@ -250,7 +275,7 @@ def main() -> int:
         return 1
 
     rows, legend = read_rows(path)
-    categories, review = build(rows)
+    categories, review = build(rows, load_descriptions())
     total = sum(len([i for i in c["items"] if "group" not in i]) for c in categories)
 
     if total < MIN_ITEMS:
@@ -272,7 +297,13 @@ def main() -> int:
     OUTPUT_PATH.write_text(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    print(f"OK: {len(categories)} categorías y {total} platos en {OUTPUT_PATH.name}")
+    described = sum(
+        1 for c in categories for i in c["items"] if i.get("description")
+    )
+    print(
+        f"OK: {len(categories)} categorías y {total} platos en {OUTPUT_PATH.name} "
+        f"({described} con descripción)"
+    )
     for cat in categories:
         dishes = len([i for i in cat["items"] if "group" not in i])
         groups = len([i for i in cat["items"] if "group" in i])

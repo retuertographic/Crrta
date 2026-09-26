@@ -53,7 +53,7 @@ window.I18N = {
     /* --- carta --- */
     carta_eyebrow: "Nuestra carta",
     carta_title1: "Lo que hay hoy",
-    carta_title2: "y lo que cuesta",
+    carta_title2: "y lo que te quieres comer",
     carta_sub: "Precios con IGIC incluido. La repasamos cada vez que cambia algo en cocina.",
     carta_loading: "Cargando la carta…",
     carta_empty: "Estamos actualizando la carta. Llámanos al <a href=\"tel:+34922515066\">922 51 50 66</a> y te contamos lo que hay hoy.",
@@ -214,7 +214,7 @@ window.I18N = {
     /* --- menu --- */
     carta_eyebrow: "Our menu",
     carta_title1: "What we serve",
-    carta_title2: "and what it costs",
+    carta_title2: "and what you'll want to eat",
     carta_sub: "Prices include local tax (IGIC). We go over it whenever something changes in the kitchen.",
     carta_loading: "Loading the menu…",
     carta_empty: "We are updating the menu right now. Call us on <a href=\"tel:+34922515066\">+34 922 51 50 66</a> and we will tell you what is on today.",

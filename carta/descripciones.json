@@ -1,0 +1,131 @@
+{
+  "_comentario": [
+    "Descripciones de los platos, en español e inglés. La hoja de cálculo de la",
+    "carta no tiene columna de descripción, así que viven aquí y build_menu.py",
+    "las mezcla con menu-data.json al generarlo. La clave es el nombre del plato",
+    "tal como aparece en la hoja (no distingue mayúsculas ni acentos).",
+    "El español viene de la carta del restaurante. El inglés está traducido a",
+    "mano: la traducción automática de la carta digital tenía errores que en una",
+    "carta son graves ('entraña' como 'entrails', 'ropa vieja' como 'old rust',",
+    "'pata asada' como \"pig's foot\"). Los nombres de plato cubanos y canarios se",
+    "dejan en español y se explican entre paréntesis."
+  ],
+  "descripciones": {
+    "Tostones": {
+      "es": "Plátano verde frito",
+      "en": "Fried green plantain"
+    },
+    "Tostones Rellenos": {
+      "es": "Plátano verde frito, montadito con ropa vieja a la cubana",
+      "en": "Fried green plantain topped with Cuban-style ropa vieja (shredded beef)"
+    },
+    "Papas Rellenas": {
+      "es": "Puré de papas aderezado con nuez moscada y mantequilla, rellena con carne molida. Se empana y se fríe",
+      "en": "Mashed potato seasoned with nutmeg and butter, stuffed with minced meat, then breaded and fried"
+    },
+    "Tamal Cubano": {
+      "es": "Millo tierno molido con tropezones de carne, una fritura y se cocina en la propia hoja de millo",
+      "en": "Ground sweetcorn with pieces of meat, fried and then cooked in the corn husk itself"
+    },
+    "Yuca con mojo": {
+      "es": "Yuca guisada con un mojo de cebollas, criollo cubano",
+      "en": "Stewed cassava with Cuban creole onion mojo"
+    },
+    "Mixta": {
+      "es": "Diferentes tipos de lechuga, tomate, cebolla y millo",
+      "en": "Several kinds of lettuce, tomato, onion and sweetcorn"
+    },
+    "Habana Libre": {
+      "es": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pollo y una vinagreta de mango",
+      "en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese, chicken and a mango vinaigrette"
+    },
+    "Perla del Caribe": {
+      "es": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, langostino y una vinagreta de mango",
+      "en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese, prawns and a mango vinaigrette"
+    },
+    "El Carretón": {
+      "es": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, churrasco de entraña y una vinagreta de mango",
+      "en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese, grilled skirt steak and a mango vinaigrette"
+    },
+    "Guajira": {
+      "es": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pata asada y una vinagreta de mango",
+      "en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese, roast pork leg and a mango vinaigrette"
+    },
+    "Ensalada Especial": {
+      "es": "Diferentes tipos de lechuga, frutas (uva y manzana), frutos secos, queso feta y una vinagreta de mango",
+      "en": "Several kinds of lettuce, fruit (grape and apple), nuts, feta cheese and a mango vinaigrette"
+    },
+    "Ensalada Mixta especial": {
+      "es": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta y una vinagreta de mango",
+      "en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese and a mango vinaigrette"
+    },
+    "Vegetales salteados": {
+      "es": "Calabacín, berenjena, cebolla, tomate, pimiento verde y pimiento rojo salteados",
+      "en": "Sautéed courgette, aubergine, onion, tomato, green pepper and red pepper"
+    },
+    "Vegetales a la brasa": {
+      "es": "Calabacín, berenjena, cebolla, tomate, pimiento verde y rojo a la brasa ligeramente embadurnados con salsa BBQ",
+      "en": "Courgette, aubergine, onion, tomato, green and red pepper off the grill, lightly brushed with barbecue sauce"
+    },
+    "Arroz Congrí": {
+      "es": "Arroz blanco que se cocina junto con frijol negro y una fritura de cebolla, pimiento verde, rojo, laurel, comino y orégano",
+      "en": "White rice cooked with black beans and a sofrito of onion, green and red pepper, bay leaf, cumin and oregano"
+    },
+    "1/4 Pollo": {
+      "es": "Puede elegir entre pechuga o pata",
+      "en": "Your choice of breast or leg"
+    },
+    "Nuggets de Pollo": {
+      "es": "Preparados por nosotros con pechuga de pollo fresca, con ketchup",
+      "en": "Made in-house with fresh chicken breast, served with ketchup"
+    },
+    "Ropa Vieja a la cubana": {
+      "es": "Carne de ternera mechada con una fritura de verduras y salsa de tomate",
+      "en": "Shredded beef with a vegetable sofrito and tomato sauce"
+    },
+    "Churrasco de Entraña": {
+      "es": "Tierno y jugoso bistec de ternera a la brasa",
+      "en": "Tender, juicy grilled skirt steak"
+    },
+    "Masas de cerdo fritas": {
+      "es": "Trozos de carne que se cuecen previamente con vino blanco y especias, luego se fríen y se sirven con un mojo de cebolla",
+      "en": "Chunks of pork first simmered with white wine and spices, then fried and served with onion mojo"
+    },
+    "Pata Asada": {
+      "es": "Suculenta y jugosa pata de cerdo, servida con nuestro mojo de cebolla",
+      "en": "Succulent, juicy roast pork leg, served with our onion mojo"
+    },
+    "Chuletas a la brasa": {
+      "es": "Chuleta de aguja a la brasa",
+      "en": "Grilled pork collar chop"
+    },
+    "Costillas BBQ": {
+      "es": "Plato estrella, tiernas y jugosas costillas previamente maceradas y terminadas en la brasa con salsa barbacoa",
+      "en": "Our signature dish: tender, juicy ribs, marinated and finished on the grill with barbecue sauce"
+    },
+    "Solomillo de cerdo a la brasa (para 2 personas)": {
+      "es": "Solomillo de cerdo a la brasa, servido con salsa, champiñones y papas guisadas",
+      "en": "Grilled pork tenderloin, served with sauce, mushrooms and stewed potatoes"
+    },
+    "Secreto a la Brasa": {
+      "es": "Suculento y jugoso secreto de cerdo a la brasa",
+      "en": "Succulent, juicy grilled secreto (a prized cut of pork)"
+    },
+    "Bacalao en salsa": {
+      "es": "Bacalao en salsa de tomate y cebolla, especial de la casa",
+      "en": "Cod in the house tomato and onion sauce"
+    },
+    "Enchilado de Langostino": {
+      "es": "Langostinos salteados y reducidos en vino blanco, con una fritura de verduras en salsa de tomate",
+      "en": "Prawns sautéed and reduced in white wine, with a vegetable sofrito in tomato sauce"
+    },
+    "Teide": {
+      "es": "Postre estrella, bizcocho de chocolate relleno con helado de vainilla y una salsa tibia de chocolate por encima",
+      "en": "Our signature dessert: chocolate sponge filled with vanilla ice cream under a warm chocolate sauce"
+    },
+    "Barraquito": {
+      "es": "Café con leche condensada, canela y licor",
+      "en": "Coffee with milk, condensed milk, cinnamon and liqueur"
+    }
+  }
+}
