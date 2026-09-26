@@ -245,6 +245,56 @@ def render_lang_switch(page: str, lang: str, i18n: dict) -> str:
     return f'<div class="lang-switch">{"".join(items)}</div>'
 
 
+def render_analytics(ga4: str, hotjar: str, cfg: dict, prefix: str) -> str:
+    """Config y cargador del consentimiento. Los scripts de Google y Hotjar
+    NO se escriben aquí: los inyecta consent.js cuando alguien acepta."""
+    if not (ga4 or hotjar):
+        return ""
+    config = {
+        "ga4Id": ga4,
+        "hotjarId": hotjar,
+        "trackContactClicks": bool(cfg.get("track_contact_clicks", True)),
+    }
+    return (
+        f"<script>window.SITE_ANALYTICS={json.dumps(config, ensure_ascii=False)};</script>\n"
+        f'<script src="{prefix}assets/consent.js" defer></script>'
+    )
+
+
+def render_consent_banner(i18n: dict, lang: str) -> str:
+    return (
+        '<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" '
+        f'aria-label="{esc(t(i18n, lang, "cookie_title"))}">'
+        '<div class="cookie-box">'
+        f'<div class="cookie-copy"><strong>{esc(t(i18n, lang, "cookie_title"))}</strong>'
+        f'<p>{esc(t(i18n, lang, "cookie_text"))}</p>'
+        f'<button type="button" class="cookie-link" data-legal-tab="cookies">'
+        f'{esc(t(i18n, lang, "cookie_more"))}</button></div>'
+        '<div class="cookie-actions">'
+        f'<button type="button" class="btn ghost" data-consent="reject">'
+        f'{esc(t(i18n, lang, "cookie_reject"))}</button>'
+        f'<button type="button" class="btn" data-consent="accept">'
+        f'{esc(t(i18n, lang, "cookie_accept"))}</button>'
+        '</div></div></div>'
+    )
+
+
+def strip_conditionals(markup: str, analytics: bool) -> str:
+    """Quita los bloques marcados con data-if/data-unless que no apliquen.
+
+    Está para que la política de cookies diga siempre la verdad: si no hay
+    analítica configurada no se publica el párrafo que dice que la hay, y
+    al revés."""
+    drop = "data-unless" if analytics else "data-if"
+    pattern = re.compile(
+        rf'[ \t]*<(?P<tag>[a-zA-Z0-9]+)[^>]*\b{drop}="analytics"[^>]*>.*?</(?P=tag)>\n?',
+        re.S,
+    )
+    result = pattern.sub("", markup)
+    keep = "data-if" if analytics else "data-unless"
+    return result.replace(f'{keep}="analytics" ', "")
+
+
 def apply_translations(markup: str, i18n: dict, lang: str) -> str:
     """Sustituye el contenido de cada elemento con data-i18n por su texto."""
     pattern = re.compile(
@@ -280,10 +330,10 @@ def build() -> int:
             print(f"ERROR: falta el idioma «{code}» en src/i18n.json", file=sys.stderr)
             return 1
 
-    # Fragmento opcional para analíticas o mapas de calor. Si el archivo no
-    # existe, no se inyecta nada: la web no carga terceros por defecto.
-    analytics_file = SRC / "partials" / "analytics.html"
-    analytics = analytics_file.read_text(encoding="utf-8").strip() if analytics_file.exists() else ""
+    analytics_cfg = json.loads((SRC / "analytics.json").read_text(encoding="utf-8"))
+    ga4 = (analytics_cfg.get("ga4_id") or "").strip()
+    hotjar = (analytics_cfg.get("hotjar_id") or "").strip()
+    measuring = bool(ga4 or hotjar)
 
     header_tpl = (SRC / "partials" / "header.html").read_text(encoding="utf-8")
     footer_tpl = (SRC / "partials" / "footer.html").read_text(encoding="utf-8")
@@ -302,7 +352,11 @@ def build() -> int:
                     .replace("<!--{{HEADER}}-->", header)
                     .replace("<!--{{FOOTER}}-->", footer_tpl)
                     .replace("<!--{{HEAD}}-->", render_head(page, lang, meta, prefix))
-                    .replace("<!--{{ANALYTICS}}-->", analytics)
+                    .replace("<!--{{ANALYTICS}}-->", render_analytics(ga4, hotjar, analytics_cfg, prefix))
+                    .replace("<!--{{CONSENT_BANNER}}-->", render_consent_banner(i18n, lang) if measuring else "")
+                    .replace("<!--{{CONSENT_PREFS}}-->",
+                             f'<button type="button" data-consent="reopen">{esc(t(i18n, lang, "cookie_prefs"))}</button>'
+                             if measuring else "")
                     .replace("<!--{{CARTA_TABS}}-->", carta_tabs)
                     .replace("<!--{{CARTA_PANELS}}-->", carta_panels)
                     .replace("<!--{{CARTA_NOTES}}-->", carta_notes)
@@ -313,6 +367,7 @@ def build() -> int:
                 post = next((p for p in posts if p["slug"] == slug), None)
                 body = body.replace("{{POST_DATE}}", esc(fmt_date(post["date"], lang)) if post else "")
 
+            body = strip_conditionals(body, measuring)
             body = apply_translations(body, i18n, lang)
             body = body.replace("{{LANG}}", lang).replace("{{PREFIX}}", prefix)
 
@@ -323,8 +378,10 @@ def build() -> int:
 
     write_sitemap()
     write_robots()
-    print(f"OK: {len(written)} páginas en {len(LANGUAGES)} idiomas"
-          + ("" if analytics else " · sin analíticas (no hay src/partials/analytics.html)"))
+    tools = ", ".join(n for n, on in (("GA4", ga4), ("Hotjar", hotjar)) if on) or "ninguna"
+    print(f"OK: {len(written)} páginas en {len(LANGUAGES)} idiomas · medición: {tools}")
+    if not measuring:
+        print("  (sin IDs en src/analytics.json: no se inyecta nada ni aparece el banner)")
     for path in written:
         print(f"  · {path}")
     print("  · sitemap.xml\n  · robots.txt")

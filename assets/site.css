@@ -545,3 +545,47 @@
   .post-back:hover{color:var(--ink);}
   .post-share{display:flex;align-items:center;gap:14px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(43,38,33,.1);flex-wrap:wrap;}
   .post-share .share-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-soft);}
+
+  /* ---------- BANNER DE COOKIES ----------
+     Aceptar y rechazar tienen el mismo peso visual a propósito: la AEPD
+     exige que rechazar sea tan fácil como aceptar. */
+  .cookie-banner{
+    position:fixed;left:0;right:0;bottom:0;z-index:350;
+    padding:16px;
+    transform:translateY(120%);transition:transform .35s ease, visibility .35s ease;
+    pointer-events:none;
+    /* Cerrado no basta con moverlo fuera de pantalla: oculto de verdad,
+       para que no quede en el tabulador ni lo lea un lector de pantalla. */
+    visibility:hidden;
+  }
+  .cookie-banner.open{transform:translateY(0);pointer-events:auto;visibility:visible;}
+  .cookie-box{
+    max-width:1180px;margin:0 auto;
+    background:var(--ink);color:#fff;
+    border:1px solid rgba(169,131,63,.35);border-radius:18px;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    padding:22px 26px;
+    display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
+  }
+  .cookie-copy{flex:1 1 340px;min-width:0;}
+  .cookie-copy strong{
+    display:block;font-family:'Playfair Display',serif;font-size:1.1rem;
+    color:var(--gold-light);margin-bottom:4px;
+  }
+  .cookie-copy p{color:rgba(255,255,255,.78);font-size:.88rem;line-height:1.6;margin-bottom:6px;}
+  .cookie-link{
+    background:none;border:none;padding:0;cursor:pointer;
+    font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:600;
+    color:var(--gold-light);text-decoration:underline;
+  }
+  .cookie-link:hover{color:#fff;}
+  .cookie-actions{display:flex;gap:12px;flex:0 0 auto;}
+  .cookie-actions .btn{padding:12px 30px;font-size:.9rem;}
+  .cookie-actions .btn.ghost{border-color:rgba(255,255,255,.45);color:#fff;}
+  .cookie-actions .btn.ghost:hover{background:#fff;color:var(--ink);border-color:#fff;}
+  @media (max-width:700px){
+    .cookie-banner{padding:12px;}
+    .cookie-box{padding:20px;gap:18px;}
+    .cookie-actions{width:100%;}
+    .cookie-actions .btn{flex:1;text-align:center;padding:12px 16px;}
+  }

@@ -24,6 +24,8 @@ scripts/build_menu.py       CSV + descripciones -> menu-data.json
 scripts/build_site.py       plantillas + traducciones + carta -> la web
 assets/site.css             el diseño
 assets/site.js              interacción (pestañas, menú, modal, galería)
+assets/consent.js           banner de cookies y carga de la medición
+src/analytics.json          IDs de GA4 y Hotjar (vacíos = desactivados)
 img/                        logotipo y fotografías
 
 index.html, novedades.html, novedades/, en/, sitemap.xml, robots.txt
@@ -78,20 +80,60 @@ busca, y así están en el código fuente de la página.
 
 ## Analíticas y mapas de calor
 
-La web **no carga ningún tercero por defecto**. Para añadir Google
-Analytics, Hotjar o similar, crea `src/partials/analytics.html` con las
-etiquetas que te den y vuelve a ejecutar `build_site.py`: se inyectan en el
-`<head>` de todas las páginas de todos los idiomas. Si el archivo no
-existe, no se inyecta nada.
+Están montados pero **apagados**: `src/analytics.json` tiene los IDs
+vacíos, así que hoy la web no carga ningún tercero y no aparece ningún
+banner. Para encenderlos:
 
-> **Antes de hacerlo**, dos cosas que hay que resolver o la web queda en
-> falso:
->
-> 1. La política de cookies dice hoy, literalmente, que este sitio «no
->    instala cookies publicitarias ni de análisis». Habría que reescribirla.
-> 2. En España, las cookies de análisis necesitan **consentimiento previo**
->    (criterio de la AEPD): hace falta un banner que no cargue el script
->    hasta que la persona acepte. Poner la etiqueta sin más no es legal.
+```jsonc
+{
+  "ga4_id": "G-XXXXXXXXXX",     // Google Analytics 4
+  "hotjar_id": "1234567",       // Hotjar Site ID
+  "track_contact_clicks": true
+}
+```
+
+y `python scripts/build_site.py`. Cada herramienta se activa por separado:
+deja un campo vacío y esa no se carga. Si los dos están vacíos, el banner
+ni se genera.
+
+### Nada se carga antes del consentimiento
+
+`assets/consent.js` no incrusta las etiquetas de Google ni de Hotjar en el
+HTML: las **crea al vuelo solo cuando alguien pulsa «Aceptar»**. Mientras
+tanto no se descarga nada de esos dominios, que es lo que exige la AEPD —
+no basta con cargar el script y no poner la cookie.
+
+- La decisión se guarda en `localStorage` (`carreton_consent`), y hasta que
+  se toma, el banner vuelve a salir.
+- **Rechazar tiene el mismo peso visual que aceptar**, mismo tamaño y misma
+  fila. También es un requisito, no una cuestión de gusto.
+- El pie lleva «Preferencias de cookies», que reabre el banner: poder
+  cambiar de idea es obligatorio.
+- El banner cerrado queda `visibility:hidden`, así que no se queda en el
+  tabulador ni lo lee un lector de pantalla.
+
+### La política de cookies se ajusta sola
+
+Los párrafos de la política llevan `data-if="analytics"` y
+`data-unless="analytics"`, y el generador publica solo los que
+correspondan. Con los IDs vacíos la web dice que no instala cookies de
+análisis; al ponerlos, pasa a explicar GA4 y Hotjar y el consentimiento.
+Así la política nunca contradice a lo que la web hace de verdad.
+
+### Clics de contacto como conversión
+
+Con `track_contact_clicks` activo, cualquier clic en un `tel:` o un
+`mailto:` manda a GA4 un evento `contact_click` con `method`
+(teléfono/correo), `link_url` y `page_language`. Como esta web no tiene
+formulario de reserva, ese evento **es** la conversión: conviene marcarlo
+como tal en GA4 (Administrar → Eventos → marcar como conversión).
+
+### Lo que queda fuera
+
+- Los **textos legales de RGPD** (aviso legal y privacidad) no se han
+  tocado para esto; van por otra vía.
+- El **enmascarado de texto de Hotjar** se configura en el panel de Hotjar,
+  no en el código. Conviene revisarlo antes de grabar sesiones.
 
 ## La carta
 
@@ -221,6 +263,8 @@ se ve en la plantilla es solo el original en español.
 
 ## Pendiente antes de publicar
 
+- [ ] **IDs de medición.** `src/analytics.json` está vacío: GA4 y Hotjar
+      no se cargan hasta que se rellene y se vuelva a generar la web.
 - [ ] **Datos del titular en los textos legales.** `partials/footer.html` y
       `assets/i18n.js` llevan `[PENDIENTE: nombre del titular]` y
       `[PENDIENTE: NIF]`. Son obligatorios según el artículo 10 de la

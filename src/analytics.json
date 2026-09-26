@@ -1,0 +1,11 @@
+{
+  "_comentario": [
+    "Identificadores de las herramientas de medición. Cada una se carga solo",
+    "si tiene ID: deja el campo vacío para desactivarla. Si los dos están",
+    "vacíos no se inyecta nada y el banner de cookies no aparece.",
+    "Nada de esto se carga hasta que la persona acepta en el banner."
+  ],
+  "ga4_id": "",
+  "hotjar_id": "",
+  "track_contact_clicks": true
+}
