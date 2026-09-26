@@ -124,7 +124,7 @@
   <div class="wrap">
     <span class="eyebrow" data-i18n="carta_eyebrow">Nuestra carta</span>
     <h2 class="section-title"><span data-i18n="carta_title1">Lo que hay hoy</span><span class="accent" data-i18n="carta_title2">y lo que cuesta</span></h2>
-    <p class="carta-sub" data-i18n="carta_sub">Sincronizada con nuestra carta digital: cuando cambia allí, cambia aquí.</p>
+    <p class="carta-sub" data-i18n="carta_sub">Precios con IGIC incluido. La repasamos cada vez que cambia algo en cocina.</p>
     <div class="menu-tabs" id="cartaTabs"><div class="menu-loading" data-i18n="carta_loading">Cargando la carta…</div></div>
     <div class="menu-panel" id="cartaPanel"></div>
     <div class="menu-notes" id="cartaNotes"></div>
@@ -382,14 +382,26 @@
         main.appendChild(desc);
       }
 
-      if (Array.isArray(item.allergens) && item.allergens.length){
+      /* Dos listas distintas a propósito: la hoja marca con "X" lo que el
+         plato lleva según su receta habitual y con "?" lo que podría
+         llevar. Mezclarlas daría por seguro algo que no lo es. */
+      const certain = Array.isArray(item.allergens) ? item.allergens : [];
+      const maybe = Array.isArray(item.allergens_maybe) ? item.allergens_maybe : [];
+      if (certain.length || maybe.length){
         const box = document.createElement('div');
         box.className = 'mi-allergens';
         box.setAttribute('aria-label', t('allergens_label', 'Alérgenos'));
-        item.allergens.forEach(code => {
+        certain.forEach(code => {
           const chip = document.createElement('span');
           chip.className = 'al';
           chip.textContent = allergenLabel(code);
+          box.appendChild(chip);
+        });
+        maybe.forEach(code => {
+          const chip = document.createElement('span');
+          chip.className = 'al maybe';
+          chip.textContent = allergenLabel(code) + ' ?';
+          chip.title = t('allergens_maybe_label', 'Puede contenerlo: consúltanos');
           box.appendChild(chip);
         });
         main.appendChild(box);
@@ -426,7 +438,7 @@
     const parts = (cartaNotes || []).map(n =>
       fold(n).indexOf('igic') !== -1 ? t('note_igic', 'IGIC incluido.') : n
     );
-    parts.push(t('note_allergens', 'Si tienes alguna alergia o intolerancia, dínoslo al pedir.'));
+    parts.push(t('note_allergens', 'Los alérgenos son una estimación según la receta habitual del plato; los marcados con «?» están por confirmar. Si tienes alguna alergia o intolerancia, dínoslo al pedir.'));
     el.textContent = parts.join(' ');
   }
 

@@ -1,203 +1,272 @@
 #!/usr/bin/env python3
 """
-Construye menu-data.json a partir de las páginas de la carta digital.
+Genera menu-data.json a partir de la hoja de cálculo de la carta.
 
-Tres formas de darle la carta:
+La fuente de verdad es la hoja "Carta La Carreta del Carretón — con
+alérgenos" de Google Sheets. En el repositorio vive una copia exportada a
+CSV en carta/carta-hoja.csv, para que la carta publicada se pueda
+reconstruir sin depender de tener acceso a la hoja.
 
-  # Desde la carta exportada como página única (la más completa: trae los
-  # tres idiomas, los grupos y las marcas de revisión):
-  python scripts/build_menu.py --from-carta-html carta-…-carta.html
+    python scripts/build_menu.py                      # usa carta/carta-hoja.csv
+    python scripts/build_menu.py otra-exportacion.csv
 
-  # Desde las páginas sueltas de mdtotem guardadas a mano:
-  python scripts/build_menu.py --from-files carta/*.html
+Para actualizar la carta: edita la hoja, expórtala
+(Archivo → Descargar → CSV), sustituye carta/carta-hoja.csv y ejecuta el
+script. Las columnas deben mantener el orden de la cabecera.
 
-  # Descargándolas de mdtotem (así lo hace el workflow diario):
-  python scripts/build_menu.py --fetch
-
-Con --fetch parte de index.php, sigue los enlaces de la misma carpeta y se
-queda con las páginas que tienen pinta de categoría de la carta.
-
-Si el resultado no llega a los mínimos (MIN_CATEGORIES / MIN_ITEMS) el script
-falla en vez de escribir una carta vacía o a medias: preferimos ver la ❌ en
-Actions antes que publicar precios equivocados.
+Sobre los alérgenos: la hoja marca "X" cuando el plato lo lleva según su
+receta habitual y "?" cuando podría llevarlo. Las dos son estimaciones,
+no una analítica, así que el "?" se publica aparte, como "puede contener",
+y la web añade el aviso de consultar en sala. No se mezclan.
 """
 
 from __future__ import annotations
 
-import argparse
+import csv
 import json
+import re
 import sys
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urldefrag, urljoin, urlparse
 
-from carta_export import convert as convert_carta_export
-from totem_parser import fold, parse_page, to_category
+REPO = Path(__file__).resolve().parent.parent
+DEFAULT_CSV = REPO / "carta" / "carta-hoja.csv"
+OUTPUT_PATH = REPO / "menu-data.json"
 
-MENU_URL = "https://mdtotem.com/directorio/lacarretadelcarreton/index.php"
-OUTPUT_PATH = Path(__file__).resolve().parent.parent / "menu-data.json"
+# Posición de cada columna en la hoja.
+COL_SECTION, COL_GROUP, COL_NUMBER, COL_DISH = 0, 1, 2, 3
+COL_FULL, COL_HALF, COL_UNIT, COL_OTHER = 4, 5, 6, 7
+COL_IGIC = 8
+COL_NOTES = 23
 
-USER_AGENT = (
-    "Mozilla/5.0 (compatible; CarretonMenuBot/1.0; "
-    "+https://github.com/retuertographicdesign/crrtn)"
-)
-
-# Orden en que queremos las pestañas en la web. Lo que no esté aquí va detrás,
-# en el orden en que aparezca.
-CATEGORY_ORDER = [
-    "fuera de carta",
-    "aperitivos",
-    "ensaladas",
-    "vegetariano",
-    "sopas",
-    "pollo",
-    "carne de res",
-    "res",
-    "carne de cochino",
-    "cochino",
-    "pescados y mariscos",
-    "pescado y marisco",
-    "bebidas",
-    "postres",
+# Columnas 9..22, en el orden de la cabecera, con la clave que usa la web.
+ALLERGEN_COLUMNS = [
+    "gluten", "crustaceos", "huevo", "pescado", "cacahuetes", "soja", "leche",
+    "frutossecos", "apio", "mostaza", "sesamo", "sulfitos", "altramuces", "moluscos",
 ]
+FIRST_ALLERGEN_COL = 9
 
-# Secciones de la carta digital que no son comida.
-SKIP_CATEGORIES = {"contacto", "inicio", "horario", "horarios"}
+CATEGORY_EN = {
+    "aperitivos": "Starters",
+    "ensaladas": "Salads",
+    "vegetariano": "Vegetarian",
+    "sopas": "Soups",
+    "pollo": "Chicken",
+    "res": "Beef",
+    "carne de cochino": "Pork",
+    "pescado y marisco": "Fish & seafood",
+    "postres": "Desserts",
+    "bebidas": "Drinks",
+}
 
-MIN_CATEGORIES = 1
-MIN_ITEMS = 5
+GROUP_EN = {
+    "helados": "Ice creams",
+    "aguas": "Water",
+    "refrescos": "Soft drinks",
+    "zumos": "Juices",
+    "cervezas": "Beers",
+    "vinos": "Wines",
+    "cocteles": "Cocktails",
+    "copas": "Spirits",
+    "cafes": "Coffees",
+    "infusiones": "Infusions",
+}
+
+# Etiquetas de precio: la de la columna fija y las que vienen escritas
+# dentro de "Otros formatos".
+LABELS_EN = {
+    "1 racion": "Full portion",
+    "1/2 racion": "Half portion",
+    "unidad": "Each",
+    "pequena": "Small",
+    "grande": "Large",
+    "copa": "Glass",
+    "1/2 l": "½ litre",
+    "1/4 l": "¼ litre",
+    "botella": "Bottle",
+    "rojo": "Red Label",
+    "negro": "Black Label",
+}
+# En español se muestran así (para no repetir "Etiqueta" en la hoja).
+LABELS_ES = {"rojo": "Etiqueta roja", "negro": "Etiqueta negra"}
+
+PRICE_RE = re.compile(r"^(?P<label>.*?)\s*(?P<value>\d{1,3}(?:[.,]\d{1,2})?)\s*€?$")
+
+MIN_ITEMS = 20
 
 
-def sort_key(category_name: str):
-    key = fold(category_name)
-    return (CATEGORY_ORDER.index(key) if key in CATEGORY_ORDER else len(CATEGORY_ORDER), key)
+def fold(text: str) -> str:
+    text = unicodedata.normalize("NFD", (text or "").lower())
+    return "".join(c for c in text if unicodedata.category(c) != "Mn").strip()
 
 
-def fetch_pages() -> list[str]:
-    """Descarga index.php y las páginas de categoría enlazadas desde ella."""
-    import requests
+def label_key(label: str) -> str:
+    """Clave para los diccionarios de etiquetas. NFD no descompone «½», así
+    que las fracciones se escriben a mano antes de comparar."""
+    for char, text in (("½", "1/2"), ("¼", "1/4"), ("¾", "3/4")):
+        label = (label or "").replace(char, text)
+    return fold(label)
 
-    session = requests.Session()
-    session.headers["User-Agent"] = USER_AGENT
 
-    def get(url: str) -> str:
-        res = session.get(url, timeout=30)
-        res.raise_for_status()
-        res.encoding = res.apparent_encoding or res.encoding
-        return res.text
+def money(raw: str) -> str:
+    """'4,2' o '4.20' -> '4,20'. Cadena vacía si no hay número."""
+    raw = (raw or "").replace("€", "").strip()
+    if not raw:
+        return ""
+    normalised = raw.replace(",", ".")
+    try:
+        return f"{float(normalised):.2f}".replace(".", ",")
+    except ValueError:
+        return raw
 
-    index_html = get(MENU_URL)
-    base_dir = MENU_URL.rsplit("/", 1)[0] + "/"
 
-    from bs4 import BeautifulSoup
+def price(label_es: str, value: str) -> dict | None:
+    value = money(value)
+    if not value:
+        return None
+    key = label_key(label_es)
+    entry: dict = {"value": value}
+    if label_es:
+        entry["label"] = LABELS_ES.get(key, label_es)
+    label_en = LABELS_EN.get(key)
+    if label_en and label_en != entry.get("label"):
+        entry["label_en"] = label_en
+    return entry
 
-    soup = BeautifulSoup(index_html, "html.parser")
-    seen: set[str] = set()
-    urls: list[str] = []
-    for a in soup.find_all("a", href=True):
-        url = urldefrag(urljoin(MENU_URL, a["href"]))[0]
-        if not url.startswith(base_dir) or url in seen:
+
+def parse_other_formats(raw: str) -> list[dict]:
+    """'Pequeña 1,20 € · Grande 1,70 €' -> dos precios, en ese orden."""
+    prices = []
+    for chunk in re.split(r"[·|;]", raw or ""):
+        chunk = chunk.strip()
+        if not chunk:
             continue
-        if urlparse(url).path.rsplit(".", 1)[-1].lower() not in ("php", "html", "htm", ""):
+        m = PRICE_RE.match(chunk)
+        if not m:
             continue
-        seen.add(url)
-        urls.append(url)
-
-    pages = [index_html]
-    for url in urls:
-        try:
-            pages.append(get(url))
-        except Exception as exc:  # una categoría caída no debe tumbar el resto
-            print(f"AVISO: no se pudo leer {url}: {exc}", file=sys.stderr)
-    return pages
+        entry = price(m.group("label").strip(), m.group("value"))
+        if entry:
+            prices.append(entry)
+    return prices
 
 
-def build(pages: list[str]) -> tuple[list[dict], list[str]]:
+def read_rows(path: Path) -> tuple[list[list[str]], list[str]]:
+    """Separa las filas de platos de las de la leyenda del final."""
+    with path.open(encoding="utf-8-sig", newline="") as f:
+        raw = [[(c or "").strip() for c in row] for row in csv.reader(f)]
+    rows, legend, in_legend = [], [], False
+    for row in raw[1:]:
+        if not any(row):
+            continue
+        first = fold(row[COL_SECTION])
+        if first == "leyenda":
+            in_legend = True
+            continue
+        if in_legend:
+            legend.append(row[COL_SECTION])
+            continue
+        if row[COL_DISH] if len(row) > COL_DISH else "":
+            rows.append(row)
+    return rows, legend
+
+
+def build(rows: list[list[str]]) -> tuple[list[dict], list[str]]:
     categories: list[dict] = []
-    notes: list[str] = []
-    seen: set[str] = set()
+    review: list[str] = []
+    by_name: dict[str, dict] = {}
+    current_group: dict[str, str] = {}
 
-    for html in pages:
-        page = parse_page(html)
-        if not page or not page["items"]:
-            continue
-        key = fold(page["category"])
-        if key in SKIP_CATEGORIES or key in seen:
-            continue
-        seen.add(key)
-        categories.append(to_category(page))
-        for n in page["notes"]:
-            if n not in notes:
-                notes.append(n)
+    def cell(row: list[str], i: int) -> str:
+        return row[i] if len(row) > i else ""
 
-    categories.sort(key=lambda c: sort_key(c["category"]))
-    return categories, notes
+    for row in rows:
+        section = cell(row, COL_SECTION)
+        if not section:
+            continue
+        if section not in by_name:
+            cat: dict = {"category": section}
+            en = CATEGORY_EN.get(fold(section))
+            if en:
+                cat["category_en"] = en
+            cat["items"] = []
+            by_name[section] = cat
+            categories.append(cat)
+        cat = by_name[section]
+
+        # Subtítulo, solo cuando cambia dentro de la sección.
+        group = cell(row, COL_GROUP)
+        if group and current_group.get(section) != group:
+            current_group[section] = group
+            entry = {"group": group}
+            en = GROUP_EN.get(fold(group))
+            if en:
+                entry["group_en"] = en
+            cat["items"].append(entry)
+
+        name = cell(row, COL_DISH)
+        item: dict = {"name": name}
+        number = cell(row, COL_NUMBER)
+        if number.isdigit():
+            item["number"] = int(number)
+
+        prices = []
+        for label, col in (("1 ración", COL_FULL), ("½ ración", COL_HALF), ("Unidad", COL_UNIT)):
+            entry = price(label, cell(row, col))
+            if entry:
+                prices.append(entry)
+        prices.extend(parse_other_formats(cell(row, COL_OTHER)))
+        if prices:
+            item["prices"] = prices
+        else:
+            review.append(f"{section} · {name}: sin precio en la hoja")
+
+        certain, maybe = [], []
+        for offset, key in enumerate(ALLERGEN_COLUMNS):
+            mark = cell(row, FIRST_ALLERGEN_COL + offset).upper()
+            if mark == "X":
+                certain.append(key)
+            elif mark == "?":
+                maybe.append(key)
+        if certain:
+            item["allergens"] = certain
+        if maybe:
+            item["allergens_maybe"] = maybe
+
+        note = cell(row, COL_NOTES)
+        if note:
+            # Nota interna de la hoja: no se publica, se avisa al terminar.
+            review.append(f"{section} · {name}: {note}")
+
+        cat["items"].append(item)
+
+    return categories, review
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument("--fetch", action="store_true", help="Descarga las páginas de mdtotem.")
-    group.add_argument("--from-files", nargs="+", metavar="HTML", help="Lee páginas ya guardadas.")
-    group.add_argument(
-        "--from-carta-html",
-        metavar="HTML",
-        help="Lee la carta exportada como página única (bloque `const D={…}`).",
-    )
-    parser.add_argument(
-        "--merge",
-        action="store_true",
-        help="Conserva las categorías que ya hay en menu-data.json y no vengan en esta pasada.",
-    )
-    args = parser.parse_args()
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_CSV
+    if not path.exists():
+        print(f"ERROR: no existe {path}", file=sys.stderr)
+        return 1
 
-    review: list[str] = []
-    if args.from_carta_html:
-        try:
-            categories, review = convert_carta_export(
-                Path(args.from_carta_html).read_text(encoding="utf-8")
-            )
-        except Exception as exc:
-            print(f"ERROR: no se pudo leer la carta exportada: {exc}", file=sys.stderr)
-            return 1
-        notes = ["IGIC INCLUIDO"]
-    else:
-        if args.fetch:
-            try:
-                pages = fetch_pages()
-            except Exception as exc:
-                print(f"ERROR: no se pudo descargar la carta: {exc}", file=sys.stderr)
-                return 1
-        else:
-            pages = [Path(f).read_text(encoding="utf-8") for f in args.from_files]
-        categories, notes = build(pages)
-
-    if args.merge and OUTPUT_PATH.exists():
-        try:
-            previous = json.loads(OUTPUT_PATH.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            previous = {}
-        fresh = {fold(c["category"]) for c in categories}
-        for cat in previous.get("categories", []):
-            if fold(cat.get("category", "")) not in fresh:
-                categories.append(cat)
-        notes = notes or previous.get("notes", [])
-        categories.sort(key=lambda c: sort_key(c["category"]))
-
+    rows, legend = read_rows(path)
+    categories, review = build(rows)
     total = sum(len([i for i in c["items"] if "group" not in i]) for c in categories)
-    if len(categories) < MIN_CATEGORIES or total < MIN_ITEMS:
+
+    if total < MIN_ITEMS:
         print(
-            f"ERROR: la extracción no dio un resultado creíble ({len(categories)} "
-            f"categorías, {total} platos; mínimo {MIN_CATEGORIES} y {MIN_ITEMS}).\n"
-            "Puede que la carta digital haya cambiado de estructura.",
+            f"ERROR: solo se han leído {total} platos (mínimo {MIN_ITEMS}). "
+            "¿Ha cambiado el orden de las columnas de la hoja?",
             file=sys.stderr,
         )
         return 1
 
     payload = {
-        "source": MENU_URL,
+        "source": "Hoja de cálculo «Carta La Carreta del Carretón — con alérgenos»",
+        "source_file": str(path.relative_to(REPO)),
         "scraped_at": datetime.now(timezone.utc).isoformat(),
-        "notes": notes,
+        "notes": ["IGIC INCLUIDO"],
+        "allergen_legend": legend,
         "categories": categories,
     }
     OUTPUT_PATH.write_text(
@@ -206,9 +275,11 @@ def main() -> int:
     print(f"OK: {len(categories)} categorías y {total} platos en {OUTPUT_PATH.name}")
     for cat in categories:
         dishes = len([i for i in cat["items"] if "group" not in i])
-        print(f"  · {cat['category']}: {dishes} platos")
+        groups = len([i for i in cat["items"] if "group" in i])
+        extra = f" ({groups} subtítulos)" if groups else ""
+        print(f"  · {cat['category']}: {dishes} platos{extra}")
     if review:
-        print(f"\nPara revisar ({len(review)}):", file=sys.stderr)
+        print(f"\nNotas de la hoja, sin publicar ({len(review)}):", file=sys.stderr)
         for line in review:
             print(f"  - {line}", file=sys.stderr)
     return 0

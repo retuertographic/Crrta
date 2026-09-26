@@ -1,162 +1,159 @@
 {
-  "source": "https://mdtotem.com/directorio/lacarretadelcarreton/index.php",
-  "scraped_at": "2026-09-24T14:27:27.564441+00:00",
+  "source": "Hoja de cálculo «Carta La Carreta del Carretón — con alérgenos»",
+  "source_file": "carta/carta-hoja.csv",
+  "scraped_at": "2026-09-26T15:52:19.900425+00:00",
   "notes": [
     "IGIC INCLUIDO"
+  ],
+  "allergen_legend": [
+    "X = contiene el alérgeno (estimación según receta habitual del plato)",
+    "? = puede contenerlo según la receta: CONFIRMAR con cocina",
+    "vacío = no se espera ninguno de los 14 alérgenos"
   ],
   "categories": [
     {
       "category": "Aperitivos",
-      "category_en": "Appetizers",
+      "category_en": "Starters",
       "items": [
         {
           "name": "Tostones",
-          "description": "Plátano verde frito",
-          "description_en": "Green fried banana",
-          "name_de": "Scheiben von grünen Bananen, gebraten",
+          "number": 1,
           "prices": [
             {
               "value": "4,20",
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ],
-          "allergens": [
-            "gluten"
           ]
         },
         {
-          "name": "Tostones rellenos",
-          "description": "Plátano verde frito, montadito con ropa vieja a la cubana",
-          "name_en": "Stuffed Tostones",
-          "description_en": "Fried green plantain, slice with Cuban-style old rust",
-          "name_de": "Gebratene Bananenscheiben",
-          "description_de": "gefüllt mit Kalbsfleisch in Soße",
+          "name": "Tostones Rellenos",
+          "number": 2,
           "prices": [
-            {
-              "value": "4,80",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "7,00",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "4,80",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ],
-          "allergens": [
+          "allergens_maybe": [
             "gluten",
-            "huevo"
+            "leche"
           ]
         },
         {
-          "name": "Huevos rotos",
-          "name_en": "Broken eggs",
+          "name": "Huevos Rotos",
+          "number": 3,
           "prices": [
-            {
-              "value": "5,35",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "7,50",
               "label": "1 ración",
               "label_en": "Full portion"
-            }
-          ],
-          "allergens": [
-            "gluten",
-            "huevo"
-          ]
-        },
-        {
-          "name": "Papas rellenas",
-          "description": "Puré de papas aderezado con nuez moscada y mantequilla, rellena con carne molida. Se empana y se fríe",
-          "name_en": "Stuffed potatoes",
-          "description_en": "Mashed potatoes with walnut dressing nutmeg and butter, stuffed with ground meat. It is breaded and fried",
-          "prices": [
+            },
             {
               "value": "5,35",
               "label": "½ ración",
               "label_en": "Half portion"
-            },
+            }
+          ],
+          "allergens": [
+            "huevo"
+          ]
+        },
+        {
+          "name": "Papas Rellenas",
+          "number": 4,
+          "prices": [
             {
               "value": "7,50",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "5,35",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ],
           "allergens": [
             "gluten",
             "huevo"
+          ],
+          "allergens_maybe": [
+            "leche"
           ]
         },
         {
-          "name": "Croquetas de jamón cocido",
-          "name_en": "Ham croquette",
-          "name_de": "Kroketten mit Schinken",
+          "name": "Croquetas de Jamón Cocido",
+          "number": 5,
           "prices": [
-            {
-              "value": "2,15",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "3,75",
               "label": "1 ración",
               "label_en": "Full portion"
-            }
-          ],
-          "allergens": [
-            "gluten",
-            "huevo"
-          ]
-        },
-        {
-          "name": "Croquetas de pollo",
-          "name_en": "Chicken croquette",
-          "name_de": "Kroketten mit Hühnchen",
-          "prices": [
+            },
             {
               "value": "2,15",
               "label": "½ ración",
               "label_en": "Half portion"
-            },
-            {
-              "value": "3,75",
-              "label": "1 ración",
-              "label_en": "Full portion"
             }
           ],
           "allergens": [
             "gluten",
-            "huevo"
+            "huevo",
+            "leche"
           ]
         },
         {
-          "name": "Croquetas de gofio con carne de costilla",
-          "name_en": "Gofio croquettes with rib meat",
+          "name": "Croquetas de Pollo",
+          "number": 6,
           "prices": [
+            {
+              "value": "3,75",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            },
             {
               "value": "2,15",
               "label": "½ ración",
               "label_en": "Half portion"
-            },
-            {
-              "value": "3,75",
-              "label": "1 ración",
-              "label_en": "Full portion"
             }
           ],
           "allergens": [
             "gluten",
-            "huevo"
+            "huevo",
+            "leche"
           ]
         },
         {
-          "name": "Tamal cubano",
-          "description": "Millo tierno molido con tropezones de carne, una fritura y se cocina en la propia hoja de millo",
-          "description_en": "Ground tender millet with chunks of meat, a fry and turns to cook in the millet leaf itself",
+          "name": "Croquetas de Gofio con carne de Costilla",
+          "number": 7,
+          "prices": [
+            {
+              "value": "3,75",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            },
+            {
+              "value": "2,15",
+              "label": "½ ración",
+              "label_en": "Half portion"
+            }
+          ],
+          "allergens": [
+            "gluten",
+            "huevo",
+            "leche"
+          ]
+        },
+        {
+          "name": "Tamal Cubano",
+          "number": 8,
           "prices": [
             {
               "value": "5,90",
@@ -167,18 +164,17 @@
         },
         {
           "name": "Yuca con mojo",
-          "description": "Yuca guisada con un mojo criollo cubano",
-          "name_en": "Yuca with mojo",
+          "number": 9,
           "prices": [
-            {
-              "value": "3,20",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "4,80",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "3,20",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ]
         }
@@ -190,118 +186,86 @@
       "items": [
         {
           "name": "Mixta",
-          "description": "Diferentes tipos de lechuga, tomate, cebolla y millo",
-          "name_en": "Mixed",
-          "description_en": "Different types of lettuce, tomato, onion and corn",
-          "name_de": "Gemischter Salat",
-          "description_de": "3 verschiedene Salatsorten, Tomate, Zuckermais und Zwiebel",
+          "number": 1,
           "prices": [
             {
               "value": "4,80",
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ]
-        },
-        {
-          "name": "Habana Libre",
-          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pollo y una vinagreta de mango",
-          "description_en": "Different types of lettuce, nuts, fruits (apple and grape), feta cheese, chicken and a mango vinaigrette",
-          "description_de": "Verschiedene Salatsorten, Apfel, Weintrauben, Nüsse, Rosinen, Sellerie, Fetakäse und Hühnchenfleisch",
-          "prices": [
-            {
-              "value": "8,60",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
-            {
-              "value": "12,30",
-              "label": "1 ración",
-              "label_en": "Full portion"
-            }
           ],
-          "allergens": [
-            "altramuces",
-            "frutossecos",
-            "leche"
-          ]
-        },
-        {
-          "name": "Perla del Caribe",
-          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, langostino y una vinagreta de mango",
-          "description_en": "Other than lettuce, nuts, fruits (apple and grape), feta cheese, shrimp and a mango vinaigrette",
-          "name_de": "Perle der Karibik",
-          "description_de": "Wie Habana Libre, statt Hühnchenfleisch Langusten",
-          "prices": [
-            {
-              "value": "8,60",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
-            {
-              "value": "12,30",
-              "label": "1 ración",
-              "label_en": "Full portion"
-            }
-          ],
-          "allergens": [
-            "altramuces",
-            "frutossecos",
-            "leche",
+          "allergens_maybe": [
+            "huevo",
             "pescado"
           ]
         },
         {
-          "name": "El Carretón",
-          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, churrasco de entraña y una vinagreta de mango",
-          "description_en": "Different types of lettuce, fruits nuts, fruits (apple and grape), cheese feta, steak of entrails and a mango vinaigrette",
-          "description_de": "Wie Habana Libre, statt Hühnchenfleisch Rindfleisch",
+          "name": "Habana Libre",
+          "number": 2,
           "prices": [
-            {
-              "value": "9,80",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
-            {
-              "value": "13,80",
-              "label": "1 ración",
-              "label_en": "Full portion"
-            }
-          ],
-          "allergens": [
-            "altramuces",
-            "frutossecos",
-            "leche"
-          ]
-        },
-        {
-          "name": "Guajira",
-          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pata asada y una vinagreta de mango",
-          "description_en": "Different types of lettuce, fruits nuts, fruits (apple and grape), feta cheese, roast leg and a mango vinaigrette",
-          "name_de": "El Guajiro",
-          "description_de": "Wie Habana Libre, statt Hühnchenfleisch Schweinefleisch",
-          "prices": [
-            {
-              "value": "8,60",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "12,30",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "8,60",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
-          ],
-          "allergens": [
-            "altramuces",
-            "frutossecos",
-            "leche"
           ]
         },
         {
-          "name": "Ensalada especial",
-          "description": "Diferentes tipos de lechuga, frutas (uva y manzana), frutos secos, queso feta y una vinagreta de mango",
-          "description_de": "Zu allen unseren Salaten wird eine Salatsoße mit Mango serviert",
+          "name": "Perla del Caribe",
+          "number": 3,
+          "prices": [
+            {
+              "value": "12,30",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            },
+            {
+              "value": "8,60",
+              "label": "½ ración",
+              "label_en": "Half portion"
+            }
+          ]
+        },
+        {
+          "name": "El Carretón",
+          "number": 4,
+          "prices": [
+            {
+              "value": "13,80",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            },
+            {
+              "value": "9,80",
+              "label": "½ ración",
+              "label_en": "Half portion"
+            }
+          ]
+        },
+        {
+          "name": "Guajira",
+          "number": 5,
+          "prices": [
+            {
+              "value": "12,30",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            },
+            {
+              "value": "8,60",
+              "label": "½ ración",
+              "label_en": "Half portion"
+            }
+          ]
+        },
+        {
+          "name": "Ensalada Especial",
+          "number": 6,
           "prices": [
             {
               "value": "7,50",
@@ -309,10 +273,9 @@
               "label_en": "Full portion"
             }
           ],
-          "allergens": [
-            "altramuces",
-            "frutossecos",
-            "leche"
+          "allergens_maybe": [
+            "huevo",
+            "pescado"
           ]
         }
       ]
@@ -322,12 +285,8 @@
       "category_en": "Vegetarian",
       "items": [
         {
-          "name": "Ensalada mixta especial",
-          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta y una vinagreta de mango",
-          "name_en": "Special mixed salad",
-          "description_en": "Different types of lettuce, fruits nuts, fruits (apple and grape), cheese feta and a mango vinaigrette",
-          "name_de": "Gemischter Salat, spezial",
-          "description_de": "Wie Habana Libre ohne Hühnchenfleisch",
+          "name": "Ensalada Mixta especial",
+          "number": 1,
           "prices": [
             {
               "value": "7,50",
@@ -335,112 +294,86 @@
               "label_en": "Full portion"
             }
           ],
-          "allergens": [
-            "altramuces",
-            "frutossecos",
-            "leche"
+          "allergens_maybe": [
+            "huevo"
           ]
         },
         {
           "name": "Yuca con mojo",
-          "description": "Yuca guisada con un mojo de cebollas, criollo cubano",
-          "name_en": "Yuca with mojo",
-          "description_en": "Cassava stewed with a mojo of onions, Cuban Creole",
-          "name_de": "Yuca mit Mojo-Soße",
+          "number": 2,
           "prices": [
-            {
-              "value": "3,20",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "4,80",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "3,20",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ]
         },
         {
           "name": "Papas fritas",
-          "name_en": "French fries",
-          "name_de": "Pommes frites",
+          "number": 3,
           "prices": [
-            {
-              "value": "2,15",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "3,20",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "2,15",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
-          ],
-          "allergens": [
-            "gluten"
           ]
         },
         {
           "name": "Tostones",
-          "description": "Plátano frito verde",
-          "description_en": "Green fried plantain",
-          "name_de": "Bananenscheiben, grün, gebraten",
+          "number": 4,
           "prices": [
             {
               "value": "4,20",
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ],
-          "allergens": [
-            "gluten"
           ]
         },
         {
           "name": "Vegetales salteados",
-          "description": "Calabacín, berenjena, cebolla, tomate, pimiento verde y pimiento rojo salteados",
-          "name_en": "Sautéed vegetables",
-          "description_en": "Zucchini, eggplant, onion, tomato, sautéed green and red pepper",
-          "name_de": "Gemüse, kurz angebraten",
-          "description_de": "Zucchini, Auberginen, Tomaten, grüner und roter Paprika",
+          "number": 5,
           "prices": [
             {
               "value": "5,35",
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ]
-        },
-        {
-          "name": "Vegetales a la brasa",
-          "description": "Calabacín, berenjena, cebolla, tomate, pimiento verde y rojo a la brasa ligeramente embadurnados con salsa BBQ",
-          "name_en": "Grilled vegetables",
-          "description_en": "Zucchini, eggplant, onion, tomato, green and red pepper grilled lightly smeared with BBQ sauce",
-          "name_de": "Gemüse, gegrillt",
-          "description_de": "Zucchini, Auberginen, Tomaten, grüner und roter Paprika",
-          "prices": [
-            {
-              "value": "4,30",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
-            {
-              "value": "6,50",
-              "label": "1 ración",
-              "label_en": "Full portion"
-            }
           ],
-          "allergens": [
+          "allergens_maybe": [
             "soja"
           ]
         },
         {
-          "name": "Arroz congrí",
-          "description": "Arroz blanco que se cocina junto con frijol negro y una fritura de cebolla, pimiento verde, rojo, laurel, comino y orégano",
-          "name_en": "Congrí rice",
-          "description_en": "White rice that is cooked together with black beans and a fry of onion, green, red pepper, bay leaf, cumin and oregano",
-          "name_de": "Reis Congrí",
-          "description_de": "Weißer Reis mit schwarzen Bohnen",
+          "name": "Vegetales a la brasa",
+          "number": 6,
+          "prices": [
+            {
+              "value": "6,50",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            },
+            {
+              "value": "4,30",
+              "label": "½ ración",
+              "label_en": "Half portion"
+            }
+          ]
+        },
+        {
+          "name": "Arroz Congrí",
+          "number": 7,
           "prices": [
             {
               "value": "2,70",
@@ -457,36 +390,41 @@
       "items": [
         {
           "name": "Sopa de pollo",
-          "name_en": "Chicken soup",
-          "name_de": "Hühnersuppe",
+          "number": 1,
           "prices": [
-            {
-              "value": "2,15",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "3,20",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "2,15",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
+          ],
+          "allergens_maybe": [
+            "gluten",
+            "apio"
           ]
         },
         {
           "name": "Garbanzos",
-          "name_en": "Chickpeas",
-          "name_de": "Kichererbsensuppe",
+          "number": 2,
           "prices": [
-            {
-              "value": "2,70",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "4,30",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "2,70",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
+          ],
+          "allergens_maybe": [
+            "apio"
           ]
         }
       ]
@@ -496,84 +434,77 @@
       "category_en": "Chicken",
       "items": [
         {
-          "name": "½ pollo",
-          "name_en": "½ chicken",
-          "name_de": "½ Hähnchen",
+          "name": "1/2 Pollo",
+          "number": 1,
           "prices": [
             {
               "value": "5,90",
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ],
-          "allergens": [
-            "gluten"
           ]
         },
         {
-          "name": "¼ pollo",
-          "description": "Puede elegir entre pechuga o pata",
-          "name_de": "Panierte Hühnchen-Medaillons",
+          "name": "1/4 Pollo",
+          "number": 2,
           "prices": [
             {
               "value": "3,20",
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ],
-          "allergens": [
-            "gluten",
-            "huevo"
           ]
         },
         {
-          "name": "Nuggets de pollo",
-          "description": "Preparados por nosotros con pechuga de pollo fresca con ketchup",
-          "description_de": "Preparados por nosotros con pechuga de pollo fresca con papas fritas y ketchup",
+          "name": "Nuggets de Pollo",
+          "number": 3,
           "prices": [
-            {
-              "value": "3,75",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "5,90",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "3,75",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "gluten"
+          ],
+          "allergens_maybe": [
+            "huevo"
           ]
         }
       ]
     },
     {
-      "category": "Carne de res",
+      "category": "Res",
       "category_en": "Beef",
       "items": [
         {
-          "name": "Ropa vieja a la cubana",
-          "description": "Carne de ternera mechada con una fritura de verduras y salsa de tomate",
-          "name_en": "Ropa vieja Cuban style",
-          "description_en": "Shredded beef with a vegetable fry and tomato sauce",
-          "name_de": "Kalbsfleisch in Soße nach kubanischer Art",
+          "name": "Ropa Vieja a la cubana",
+          "number": 1,
           "prices": [
-            {
-              "value": "7,50",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "11,70",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "7,50",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
+          ],
+          "allergens_maybe": [
+            "sulfitos"
           ]
         },
         {
-          "name": "Churrasco de entraña",
-          "description": "Tierno y jugoso bistec de ternera a la brasa",
-          "name_en": "Entraña steak",
-          "description_en": "Tender and juicy grilled beef steak",
-          "name_de": "Rinds-Beefsteak vom Grill",
+          "name": "Churrasco de Entraña",
+          "number": 2,
           "prices": [
             {
               "value": "15,00",
@@ -585,138 +516,119 @@
       ]
     },
     {
-      "category": "Carne de cochino",
-      "category_en": "Pork meat",
+      "category": "Carne de Cochino",
+      "category_en": "Pork",
       "items": [
         {
           "name": "Masas de cerdo fritas",
-          "description": "Trozos de carne que se cuecen previamente con vino blanco y especias, luego se fríen y se sirve con un mojo de cebolla",
-          "name_en": "Fried pork masses",
-          "description_en": "Pieces of meat that are cooked previously with white wine and spices, then they are fried and served with an onion mojo",
-          "name_de": "Gebratenes Schweinefleisch",
-          "description_de": "Zuvor in Weißwein mit Gewürzen gekocht",
+          "number": 1,
           "prices": [
-            {
-              "value": "5,90",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "10,00",
               "label": "1 ración",
               "label_en": "Full portion"
-            }
-          ],
-          "allergens": [
-            "gluten"
-          ]
-        },
-        {
-          "name": "Pata asada",
-          "description": "Suculenta y jugosa pata de cerdo, servida con nuestro mojo de cebolla",
-          "name_en": "Roast leg",
-          "description_en": "Succulent and juicy pig's foot, served with our onion mojo",
-          "name_de": "Gegrillte Schweinshaxe",
-          "prices": [
+            },
             {
               "value": "5,90",
               "label": "½ ración",
               "label_en": "Half portion"
-            },
+            }
+          ]
+        },
+        {
+          "name": "Pata Asada",
+          "number": 2,
+          "prices": [
             {
-              "value": "10,00 / 10,50",
+              "value": "10,00",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "5,90",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ]
         },
         {
           "name": "Chuletas a la brasa",
-          "description": "Chuleta de aguja",
-          "name_en": "Grilled chops",
-          "description_en": "Grilled skewer chops",
-          "name_de": "Schweinekotelett vom Holzgrill",
+          "number": 3,
           "prices": [
-            {
-              "value": "6,30",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "11,20",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "6,30",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ]
         },
         {
           "name": "Costillas BBQ",
-          "description": "Plato estrella, tiernas y jugosas costillas previamente maceradas y terminadas en la brasa con salsa barbacoa",
-          "name_en": "BBQ ribs",
-          "description_en": "Star dish, tender and juicy previously marinated ribs and finished on the grill with barbecue sauce",
-          "name_de": "Rippchen vom Holzgrill mit Grillsoße",
+          "number": 4,
           "prices": [
-            {
-              "value": "8,00",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "14,50",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "8,00",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ],
-          "allergens": [
-            "soja"
+          "allergens_maybe": [
+            "gluten",
+            "mostaza",
+            "sulfitos"
           ]
         },
         {
           "name": "Solomillo de cerdo a la brasa (para 2 personas)",
-          "name_en": "Pork tenderloin (for 2 people)",
-          "description_en": "Grilled pork tenderloin, served with sauce, mushrooms and stewed potatoes",
-          "name_de": "Schweinelende (2 Personen)",
+          "number": 5,
           "prices": [
-            {
-              "value": "7,50",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "13,90",
               "label": "1 ración",
               "label_en": "Full portion"
-            }
-          ]
-        },
-        {
-          "name": "Secreto a la brasa",
-          "description": "Suculento y jugoso secreto a la brasa",
-          "prices": [
+            },
             {
               "value": "7,50",
               "label": "½ ración",
               "label_en": "Half portion"
-            },
+            }
+          ]
+        },
+        {
+          "name": "Secreto a la Brasa",
+          "number": 6,
+          "prices": [
             {
               "value": "13,40",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "7,50",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ]
         }
       ]
     },
     {
-      "category": "Pescados y mariscos",
-      "category_en": "Fish and seafood",
+      "category": "Pescado y Marisco",
+      "category_en": "Fish & seafood",
       "items": [
         {
           "name": "Bacalao en salsa",
-          "description": "Bacalao en salsa de tomate y cebollas especial de la casa",
-          "name_en": "Cod in sauce",
-          "description_en": "Cod in house special tomato sauce",
-          "name_de": "Kabeljau in Soße",
+          "number": 1,
           "prices": [
             {
               "value": "10,70",
@@ -726,682 +638,69 @@
           ],
           "allergens": [
             "pescado"
+          ],
+          "allergens_maybe": [
+            "sulfitos"
           ]
         },
         {
-          "name": "Enchilado de langostino",
-          "description": "Langostinos salteados reducido en vino blanco, se le agrega una fritura de verduras en salsa de tomate",
-          "name_en": "Prawn enchilado",
-          "description_en": "Sautéed prawns reduced in white wine, a fry is added of vegetables in tomato sauce",
-          "name_de": "Hummer mit Chili",
+          "name": "Enchilado de Langostino",
+          "number": 2,
           "prices": [
-            {
-              "value": "7,50",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "12,85",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "7,50",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ],
           "allergens": [
-            "crustaceos",
-            "pescado"
+            "crustaceos"
+          ],
+          "allergens_maybe": [
+            "sulfitos"
           ]
         },
         {
           "name": "Langostinos a la brasa",
-          "name_en": "Grilled prawns",
-          "name_de": "Hummer gegrillt",
+          "number": 3,
           "prices": [
-            {
-              "value": "7,50",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "12,85",
               "label": "1 ración",
               "label_en": "Full portion"
+            },
+            {
+              "value": "7,50",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ],
           "allergens": [
-            "crustaceos",
-            "pescado"
+            "crustaceos"
           ]
         },
         {
           "name": "Langostinos al ajillo",
-          "name_en": "Shrimp scampi",
-          "name_de": "Hummer mit Knoblauchsoße",
+          "number": 4,
           "prices": [
-            {
-              "value": "7,50",
-              "label": "½ ración",
-              "label_en": "Half portion"
-            },
             {
               "value": "12,85",
               "label": "1 ración",
               "label_en": "Full portion"
-            }
-          ],
-          "allergens": [
-            "crustaceos",
-            "pescado"
-          ]
-        }
-      ]
-    },
-    {
-      "category": "Bebidas",
-      "category_en": "Drinks",
-      "items": [
-        {
-          "group": "Aguas y tónica",
-          "group_en": "Water and tonic"
-        },
-        {
-          "name": "Agua natural",
-          "name_en": "Natural water",
-          "name_de": "Natürliches Wasser",
-          "prices": [
-            {
-              "value": "1,70",
-              "label": "Grande",
-              "label_en": "Large"
             },
             {
-              "value": "1,20",
-              "label": "Pequeña",
-              "label_en": "Small"
-            }
-          ]
-        },
-        {
-          "name": "Agua con gas",
-          "name_en": "Soda water",
-          "name_de": "Mineralwasser",
-          "prices": [
-            {
-              "value": "1,85",
-              "label": "Grande",
-              "label_en": "Large"
-            },
-            {
-              "value": "1,35",
-              "label": "Pequeña",
-              "label_en": "Small"
-            }
-          ]
-        },
-        {
-          "name": "Tónica",
-          "name_en": "Tonic",
-          "name_de": "Tonic",
-          "prices": [
-            {
-              "value": "1,50",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "group": "Refrescos",
-          "group_en": "Refreshments"
-        },
-        {
-          "name": "Coca-Cola, Fanta naranja / limón, Sprite",
-          "name_en": "Coca-Cola, Fanta orange / lemon, Sprite",
-          "name_de": "Coca-Cola, Fanta Orange / Zitrone, Sprite",
-          "prices": [
-            {
-              "value": "1,80",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Coca-Cola Zero",
-          "prices": [
-            {
-              "value": "1,80",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Aquarius naranja / limón",
-          "name_en": "Aquarius orange / lemon",
-          "name_de": "Aquarius Orange / Zitrone",
-          "prices": [
-            {
-              "value": "1,90",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Nestea mango piña, Appletiser",
-          "name_en": "Nestea pineapple mango, Appletiser",
-          "name_de": "Nestea Ananas Mango, Appletiser",
-          "prices": [
-            {
-              "value": "1,95",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "group": "Zumos",
-          "group_en": "Juices"
-        },
-        {
-          "name": "Zumos de mango, melocotón, pera, piña",
-          "name_en": "Mango, peach, pear, pineapple",
-          "name_de": "Mango, Pfirsich, Birne, Ananas",
-          "prices": [
-            {
-              "value": "1,80",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "group": "Cervezas",
-          "group_en": "Beers"
-        },
-        {
-          "name": "Dorada Pilsen",
-          "prices": [
-            {
-              "value": "1,70",
-              "label": "Unidad",
-              "label_en": "Each"
+              "value": "7,50",
+              "label": "½ ración",
+              "label_en": "Half portion"
             }
           ],
           "allergens": [
-            "gluten"
-          ]
-        },
-        {
-          "name": "Dorada Especial",
-          "prices": [
-            {
-              "value": "1,90",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "gluten"
-          ]
-        },
-        {
-          "name": "Heineken",
-          "prices": [
-            {
-              "value": "1,60",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "gluten"
-          ]
-        },
-        {
-          "name": "Heineken 0,0",
-          "prices": [
-            {
-              "value": "1,90",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "gluten"
-          ]
-        },
-        {
-          "name": "Mixta de limón",
-          "name_en": "Mixed lemon",
-          "name_de": "Gemischte Zitrone",
-          "prices": [
-            {
-              "value": "2,00",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "gluten"
-          ]
-        },
-        {
-          "name": "Mahou Maestra",
-          "prices": [
-            {
-              "value": "2,20",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Victoria",
-          "name_de": "Mahou Clásica",
-          "prices": [
-            {
-              "value": "1,90",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "gluten"
-          ]
-        },
-        {
-          "name": "Caña Victoria",
-          "prices": [
-            {
-              "value": "1,70",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Jarra Victoria",
-          "prices": [
-            {
-              "value": "3,00",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "group": "Vinos",
-          "group_en": "Wines"
-        },
-        {
-          "name": "Tinto Victoria",
-          "name_en": "Red Victoria",
-          "name_de": "Rot Victoria",
-          "prices": [
-            {
-              "value": "1,70",
-              "label": "Copa",
-              "label_en": "Glass"
-            },
-            {
-              "value": "2,80",
-              "label": "¼ litro",
-              "label_en": "¼ litre"
-            },
-            {
-              "value": "4,80",
-              "label": "½ litro",
-              "label_en": "½ litre"
-            }
-          ],
-          "allergens": [
-            "sulfitos"
-          ]
-        },
-        {
-          "name": "Vino blanco de Güímar",
-          "name_en": "Güímar white wine",
-          "name_de": "Güímar Weißwein",
-          "prices": [
-            {
-              "value": "1,70",
-              "label": "Copa",
-              "label_en": "Glass"
-            },
-            {
-              "value": "2,80",
-              "label": "¼ litro",
-              "label_en": "¼ litre"
-            },
-            {
-              "value": "4,80",
-              "label": "½ litro",
-              "label_en": "½ litre"
-            }
-          ],
-          "allergens": [
-            "sulfitos"
-          ]
-        },
-        {
-          "name": "Vino blanco afrutado Güímar",
-          "name_en": "Fruity white wine Güímar",
-          "name_de": "Fruchtiger Weißwein Güímar",
-          "prices": [
-            {
-              "value": "1,70",
-              "label": "Copa",
-              "label_en": "Glass"
-            },
-            {
-              "value": "2,80",
-              "label": "¼ litro",
-              "label_en": "¼ litre"
-            },
-            {
-              "value": "4,80",
-              "label": "½ litro",
-              "label_en": "½ litre"
-            }
-          ],
-          "allergens": [
-            "sulfitos"
-          ]
-        },
-        {
-          "name": "Señorío Real (Ribera del Duero)",
-          "prices": [
-            {
-              "value": "10,00",
-              "label": "Botella",
-              "label_en": "Bottle"
-            }
-          ],
-          "allergens": [
-            "sulfitos"
-          ]
-        },
-        {
-          "name": "La Planta",
-          "prices": [
-            {
-              "value": "18,00",
-              "label": "Botella",
-              "label_en": "Bottle"
-            }
-          ],
-          "allergens": [
-            "sulfitos"
-          ]
-        },
-        {
-          "group": "Cócteles",
-          "group_en": "Cocktails"
-        },
-        {
-          "name": "Mojito cubano",
-          "prices": [
-            {
-              "value": "4,30",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "group": "Copas",
-          "group_en": "Cups"
-        },
-        {
-          "name": "Havana 7 años",
-          "name_en": "Havana 7 years",
-          "name_de": "Havana 7 Jahre",
-          "prices": [
-            {
-              "value": "4,50",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Havana 5 años",
-          "name_en": "Havana 5 years",
-          "name_de": "Havana 5 Jahre",
-          "prices": [
-            {
-              "value": "3,50",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Arehucas blanco / dorado",
-          "prices": [
-            {
-              "value": "3,50",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Ginebra",
-          "prices": [
-            {
-              "value": "4,00",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Johnnie Walker",
-          "prices": [
-            {
-              "value": "4,50",
-              "label": "Etiqueta negra",
-              "label_en": "Black Label"
-            },
-            {
-              "value": "3,50",
-              "label": "Etiqueta roja",
-              "label_en": "Red Label"
-            }
-          ]
-        },
-        {
-          "name": "Copa licor",
-          "name_en": "Liquor cup",
-          "name_de": "Schnaps-Cup",
-          "prices": [
-            {
-              "value": "2,00",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "group": "Cafés",
-          "group_en": "Coffees"
-        },
-        {
-          "name": "Café solo",
-          "name_en": "Just coffee",
-          "name_de": "Nur Kaffee",
-          "prices": [
-            {
-              "value": "1,00",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Cortado natural",
-          "name_en": "Short latte",
-          "name_de": "Kurzer Latte",
-          "prices": [
-            {
-              "value": "1,20",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "leche"
-          ]
-        },
-        {
-          "name": "Cortado leche y leche",
-          "name_en": "Cortado natural milk and condensed milk",
-          "name_de": "Cortado Naturmilch und Kondensmilch",
-          "prices": [
-            {
-              "value": "1,20",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "leche"
-          ]
-        },
-        {
-          "name": "Condensada / bombón",
-          "name_en": "Black coffee with condensed milk",
-          "name_de": "Schwarzer Kaffee mit Kondensmilch",
-          "prices": [
-            {
-              "value": "1,20",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "leche"
-          ]
-        },
-        {
-          "name": "Barraquito",
-          "description_en": "Coffee with milk, condensed milk, cinnamon and liquor",
-          "description_de": "Kaffee mit Milch, Kondensmilch, Zimt und Likör",
-          "prices": [
-            {
-              "value": "1,30",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "leche"
-          ]
-        },
-        {
-          "name": "Barraquito especial",
-          "name_en": "Barraquito special",
-          "name_de": "Barraquito special",
-          "prices": [
-            {
-              "value": "1,50",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "leche"
-          ]
-        },
-        {
-          "name": "Café con leche",
-          "name_en": "Coffee with milk",
-          "name_de": "Kaffee mit Milch",
-          "prices": [
-            {
-              "value": "1,40",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ],
-          "allergens": [
-            "leche"
-          ]
-        },
-        {
-          "name": "Guayoyo",
-          "prices": [
-            {
-              "value": "1,00",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Café americano",
-          "name_en": "American coffee",
-          "name_de": "Amerikanischer Kaffee",
-          "prices": [
-            {
-              "value": "1,10",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Café con hielo",
-          "name_en": "Coffee with ice",
-          "name_de": "Kaffee mit Eis",
-          "prices": [
-            {
-              "value": "1,20",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "group": "Infusiones",
-          "group_en": "Infusions"
-        },
-        {
-          "name": "Té verde / rojo",
-          "name_en": "Green / red tea",
-          "name_de": "Grüner / roter Tee",
-          "prices": [
-            {
-              "value": "1,30",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Manzanilla",
-          "name_en": "Chamomile",
-          "name_de": "Kamille",
-          "prices": [
-            {
-              "value": "1,30",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
-          ]
-        },
-        {
-          "name": "Menta poleo",
-          "name_en": "Pennyroyal",
-          "name_de": "Pennyroyal",
-          "prices": [
-            {
-              "value": "1,30",
-              "label": "Unidad",
-              "label_en": "Each"
-            }
+            "crustaceos"
           ]
         }
       ]
@@ -1412,8 +711,7 @@
       "items": [
         {
           "name": "Tarta de queso",
-          "name_en": "Cheesecake",
-          "name_de": "Käsekuchen",
+          "number": 1,
           "prices": [
             {
               "value": "4,80",
@@ -1428,10 +726,8 @@
           ]
         },
         {
-          "name": "Pudin de guayaba con queso",
-          "name_en": "Guava pudding with cheese",
-          "name_de": "Süßspeise mit Guaven",
-          "description_de": "Guayaba, tropische, aromatische Frucht, und Quark",
+          "name": "Pudin de Guayaba con Queso",
+          "number": 2,
           "prices": [
             {
               "value": "4,80",
@@ -1447,7 +743,7 @@
         },
         {
           "name": "Flan",
-          "description_de": "ähnlich wie Pudding",
+          "number": 3,
           "prices": [
             {
               "value": "3,75",
@@ -1462,24 +758,18 @@
         },
         {
           "name": "Teide",
-          "description": "Postre estrella, bizcocho de chocolate, relleno con helado de vainilla y una salsa tibia de chocolate por encima",
-          "description_en": "Star dessert, chocolate cake, filled with vanilla ice cream and a warm chocolate sauce on top",
-          "description_de": "Schokoladenkuchen, gefüllt mit Vanilleeis und warmer Schokoladensoße",
+          "number": 4,
           "prices": [
             {
               "value": "5,90",
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ],
-          "allergens": [
-            "gluten",
-            "huevo",
-            "leche"
           ]
         },
         {
-          "name": "Tarta de limón",
+          "name": "Tarta de Limón",
+          "number": 5,
           "prices": [
             {
               "value": "4,80",
@@ -1498,7 +788,8 @@
           "group_en": "Ice creams"
         },
         {
-          "name": "Pivot chocolate / vainilla / fresa",
+          "name": "Pivot Chocolate/Vainilla/Fresa",
+          "number": 10,
           "prices": [
             {
               "value": "3,10",
@@ -1508,15 +799,484 @@
           ],
           "allergens": [
             "leche"
+          ],
+          "allergens_maybe": [
+            "soja"
           ]
         },
         {
-          "name": "Sándwich",
-          "name_en": "Ice cream sandwich",
-          "name_de": "Eiscreme-Sandwich",
+          "name": "Sándwich (helado)",
+          "number": 12,
           "prices": [
             {
               "value": "3,00",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "gluten",
+            "leche"
+          ],
+          "allergens_maybe": [
+            "soja"
+          ]
+        },
+        {
+          "name": "Polo",
+          "number": 13,
+          "prices": [
+            {
+              "value": "1,75",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Bebidas",
+      "category_en": "Drinks",
+      "items": [
+        {
+          "group": "Aguas",
+          "group_en": "Water"
+        },
+        {
+          "name": "Agua natural",
+          "number": 1,
+          "prices": [
+            {
+              "value": "1,20",
+              "label": "Pequeña",
+              "label_en": "Small"
+            },
+            {
+              "value": "1,70",
+              "label": "Grande",
+              "label_en": "Large"
+            }
+          ]
+        },
+        {
+          "name": "Agua con gas",
+          "number": 2,
+          "prices": [
+            {
+              "value": "1,35",
+              "label": "Pequeña",
+              "label_en": "Small"
+            },
+            {
+              "value": "1,85",
+              "label": "Grande",
+              "label_en": "Large"
+            }
+          ]
+        },
+        {
+          "name": "Tónica",
+          "number": 3,
+          "prices": [
+            {
+              "value": "1,50",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "group": "Refrescos",
+          "group_en": "Soft drinks"
+        },
+        {
+          "name": "Coca Cola",
+          "number": 7,
+          "prices": [
+            {
+              "value": "1,80",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Coca Cola Zero",
+          "number": 8,
+          "prices": [
+            {
+              "value": "1,80",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Aquarius de Naranja/Limón",
+          "number": 9,
+          "prices": [
+            {
+              "value": "1,90",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Nestea Mango Piña",
+          "number": 10,
+          "prices": [
+            {
+              "value": "1,95",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "group": "Zumos",
+          "group_en": "Juices"
+        },
+        {
+          "name": "Zumos",
+          "number": 13,
+          "prices": [
+            {
+              "value": "1,80",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Zumos de Mango",
+          "number": 14,
+          "prices": [
+            {
+              "value": "1,80",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "group": "Cervezas",
+          "group_en": "Beers"
+        },
+        {
+          "name": "Dorada Pilsen",
+          "number": 18,
+          "prices": [
+            {
+              "value": "1,70",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "name": "Dorada Especial",
+          "number": 19,
+          "prices": [
+            {
+              "value": "1,90",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "name": "Heineken",
+          "number": 20,
+          "prices": [
+            {
+              "value": "1,60",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "name": "Heineken 00",
+          "number": 21,
+          "prices": [
+            {
+              "value": "1,90",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "name": "Mixta de Limón",
+          "number": 22,
+          "prices": [
+            {
+              "value": "2,00",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "name": "Mahou Maestra",
+          "number": 23,
+          "prices": [
+            {
+              "value": "2,20",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "name": "Victoria",
+          "number": 24,
+          "prices": [
+            {
+              "value": "1,90",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "group": "Vinos",
+          "group_en": "Wines"
+        },
+        {
+          "name": "Tinto Victoria",
+          "number": 36,
+          "prices": [
+            {
+              "value": "1,70",
+              "label": "Copa",
+              "label_en": "Glass"
+            },
+            {
+              "value": "4,80",
+              "label": "1/2 L",
+              "label_en": "½ litre"
+            },
+            {
+              "value": "2,80",
+              "label": "1/4 L",
+              "label_en": "¼ litre"
+            }
+          ],
+          "allergens": [
+            "sulfitos"
+          ]
+        },
+        {
+          "name": "Vino blanco de Güímar",
+          "number": 37,
+          "prices": [
+            {
+              "value": "1,70",
+              "label": "Copa",
+              "label_en": "Glass"
+            },
+            {
+              "value": "4,80",
+              "label": "1/2 L",
+              "label_en": "½ litre"
+            },
+            {
+              "value": "2,80",
+              "label": "1/4 L",
+              "label_en": "¼ litre"
+            }
+          ],
+          "allergens": [
+            "sulfitos"
+          ]
+        },
+        {
+          "name": "Vino blanco afrutado Güímar",
+          "number": 38,
+          "prices": [
+            {
+              "value": "1,70",
+              "label": "Copa",
+              "label_en": "Glass"
+            },
+            {
+              "value": "4,80",
+              "label": "1/2 L",
+              "label_en": "½ litre"
+            },
+            {
+              "value": "2,80",
+              "label": "1/4 L",
+              "label_en": "¼ litre"
+            }
+          ],
+          "allergens": [
+            "sulfitos"
+          ]
+        },
+        {
+          "name": "Señorío Real (Ribera del Duero)",
+          "number": 39,
+          "prices": [
+            {
+              "value": "10,00",
+              "label": "Botella",
+              "label_en": "Bottle"
+            }
+          ],
+          "allergens": [
+            "sulfitos"
+          ]
+        },
+        {
+          "name": "La Planta",
+          "number": 40,
+          "prices": [
+            {
+              "value": "18,00",
+              "label": "Botella",
+              "label_en": "Bottle"
+            }
+          ],
+          "allergens": [
+            "sulfitos"
+          ]
+        },
+        {
+          "group": "Cócteles",
+          "group_en": "Cocktails"
+        },
+        {
+          "name": "Mojito Cubano",
+          "number": 48,
+          "prices": [
+            {
+              "value": "4,30",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "group": "Copas",
+          "group_en": "Spirits"
+        },
+        {
+          "name": "Havana 7 años",
+          "number": 54,
+          "prices": [
+            {
+              "value": "4,50",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Havana 5 años",
+          "number": 55,
+          "prices": [
+            {
+              "value": "3,50",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Arehucas Blanco/Dorado",
+          "number": 56,
+          "prices": [
+            {
+              "value": "3,50",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Ginebra",
+          "number": 57,
+          "prices": [
+            {
+              "value": "4,00",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Johnnie Walker",
+          "number": 58,
+          "prices": [
+            {
+              "value": "3,50",
+              "label": "Etiqueta roja",
+              "label_en": "Red Label"
+            },
+            {
+              "value": "4,50",
+              "label": "Etiqueta negra",
+              "label_en": "Black Label"
+            }
+          ]
+        },
+        {
+          "name": "Copa Licor",
+          "number": 59,
+          "prices": [
+            {
+              "value": "2,00",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "group": "Cafés",
+          "group_en": "Coffees"
+        },
+        {
+          "name": "Café solo",
+          "number": 66,
+          "prices": [
+            {
+              "value": "1,00",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Cortado natural",
+          "number": 67,
+          "prices": [
+            {
+              "value": "1,20",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1526,10 +1286,140 @@
           ]
         },
         {
-          "name": "Polo",
+          "name": "Cortado leche y leche",
+          "number": 68,
           "prices": [
             {
-              "value": "1,75",
+              "value": "1,20",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "leche"
+          ]
+        },
+        {
+          "name": "Condensada/Bombón",
+          "number": 69,
+          "prices": [
+            {
+              "value": "1,20",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "leche"
+          ]
+        },
+        {
+          "name": "Barraquito",
+          "number": 70,
+          "prices": [
+            {
+              "value": "1,30",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "leche"
+          ]
+        },
+        {
+          "name": "Barraquito especial",
+          "number": 71,
+          "prices": [
+            {
+              "value": "1,50",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "leche"
+          ]
+        },
+        {
+          "name": "Café con leche",
+          "number": 72,
+          "prices": [
+            {
+              "value": "1,40",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "leche"
+          ]
+        },
+        {
+          "name": "Guayoyo",
+          "number": 73,
+          "prices": [
+            {
+              "value": "1,00",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Café Americano",
+          "number": 74,
+          "prices": [
+            {
+              "value": "1,10",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Café con hielo",
+          "number": 75,
+          "prices": [
+            {
+              "value": "1,20",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "group": "Infusiones",
+          "group_en": "Infusions"
+        },
+        {
+          "name": "Té Verde/Rojo",
+          "number": 81,
+          "prices": [
+            {
+              "value": "1,30",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Manzanilla",
+          "number": 82,
+          "prices": [
+            {
+              "value": "1,30",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Menta Poleo",
+          "number": 83,
+          "prices": [
+            {
+              "value": "1,30",
               "label": "Unidad",
               "label_en": "Each"
             }
