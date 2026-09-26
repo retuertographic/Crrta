@@ -30,7 +30,7 @@ scripts/build_menu.py       convierte ese CSV en menu-data.json
 1. En el repositorio, `Settings → Pages`.
 2. En *Source*, elige la rama `main` y la carpeta `/ (root)`. Guarda.
 3. A los pocos minutos la web estará en
-   `https://retuertographicdesign.github.io/crrtn/`.
+   `https://retuertographic.github.io/crrta/`.
 
 Para usar un dominio propio, añade un archivo `CNAME` en la raíz con el
 dominio (una sola línea, sin `https://`) y apunta el DNS a GitHub Pages.
