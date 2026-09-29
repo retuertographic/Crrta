@@ -74,9 +74,9 @@
       <span>© <span id="year"></span> La Carreta del Carretón · Arafo</span>
     </div>
     <div class="legal-links">
-      <button type="button" data-legal-tab="aviso" data-i18n="footer_legal">Aviso legal</button>
-      <button type="button" data-legal-tab="privacidad" data-i18n="footer_privacy">Política de privacidad</button>
-      <button type="button" data-legal-tab="cookies" data-i18n="footer_cookies">Política de cookies</button>
+      <a href="legal.html#aviso-legal" data-i18n="footer_legal">Aviso legal</a>
+      <a href="legal.html#privacidad" data-i18n="footer_privacy">Política de privacidad</a>
+      <a href="legal.html#cookies" data-i18n="footer_cookies">Política de cookies</a>
       
     </div>
     <a href="index.html#contacto" class="book" data-i18n="nav_book">Reservar mesa</a>
@@ -87,70 +87,6 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 
-<!-- ================= MODAL LEGAL =================
-     OJO: los datos del titular (nombre, NIF, correo de contacto) están
-     marcados como [PENDIENTE ...]. Sustitúyelos por los reales antes de
-     publicar la web: son obligatorios según el art. 10 de la LSSICE.
-     Aparecen también en el bloque "Otros contactos" de index.html.
-============================================================= -->
-<div class="legal-modal" id="legalModal">
-  <div class="legal-box">
-    <div class="legal-head">
-      <h3 id="legalModalTitle" data-i18n="legal_modal_title">Información legal</h3>
-      <button class="legal-close" id="legalClose" aria-label="Cerrar">&times;</button>
-    </div>
-    <div class="legal-tabs">
-      <button class="legal-tab active" data-legal-panel="aviso" data-i18n="footer_legal">Aviso legal</button>
-      <button class="legal-tab" data-legal-panel="privacidad" data-i18n="footer_privacy">Política de privacidad</button>
-      <button class="legal-tab" data-legal-panel="cookies" data-i18n="footer_cookies">Política de cookies</button>
-    </div>
-    <div class="legal-body">
-
-      <div class="legal-panel active" id="legalPanelAviso">
-        <p data-i18n="aviso_p1">En cumplimiento del deber de información del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSICE), se informa de que el titular de este sitio web es [PENDIENTE: nombre del titular], NIF [PENDIENTE: NIF], que explota el restaurante La Carreta del Carretón, con domicilio en C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife.</p>
-        <p data-i18n="aviso_p2">La Carreta del Carretón no asume responsabilidad derivada de la falta de veracidad, integridad, actualización o precisión de los datos e informaciones contenidos en estas páginas. Los precios de la carta se publican a título informativo y pueden variar; los vigentes son siempre los del local.</p>
-        <p data-i18n="aviso_p3">Los textos, imágenes, logotipo y demás contenidos de este sitio son propiedad de La Carreta del Carretón o de sus licenciantes. Queda prohibida su reproducción, distribución o comunicación pública sin consentimiento expreso.</p>
-        <p data-i18n="aviso_p4">Este sitio no recoge datos personales a través de formularios: las reservas se gestionan por teléfono. Si nos escribes por correo electrónico, tus datos se tratarán conforme al Reglamento (UE) 2016/679 (RGPD) y podrás ejercer tus derechos en la dirección indicada arriba.</p>
-      </div>
-
-      <div class="legal-panel" id="legalPanelPrivacidad">
-        <h4 data-i18n="priv_h1">Protección de datos según el RGPD</h4>
-        <p data-i18n="priv_p1">Responsable del tratamiento: [PENDIENTE: nombre del titular], NIF [PENDIENTE: NIF], C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife.</p>
-        <h4 data-i18n="priv_h2">¿Con qué finalidad tratamos tus datos?</h4>
-        <ul>
-          <li data-i18n="priv_l1">Gestionar tu reserva de mesa y confirmarte disponibilidad.</li>
-          <li data-i18n="priv_l2">Responder a las consultas que nos hagas por teléfono o correo electrónico.</li>
-          <li data-i18n="priv_l3">Atender peticiones para celebraciones y grupos.</li>
-        </ul>
-        <h4 data-i18n="priv_h3">¿Por cuánto tiempo los conservamos?</h4>
-        <p data-i18n="priv_p2">Solo el tiempo necesario para atender tu reserva o consulta, y durante el plazo en que pudieran derivarse responsabilidades legales.</p>
-        <h4 data-i18n="priv_h4">Legitimación y destinatarios</h4>
-        <p data-i18n="priv_p3">El tratamiento se basa en tu solicitud de reserva o información. Tus datos no se ceden a terceros, salvo obligación legal.</p>
-        <h4 data-i18n="priv_h5">Tus derechos</h4>
-        <p data-i18n="priv_p4">Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a protecciondedatos@lacarretadelcarreton.com o en C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife.</p>
-        <h4 data-i18n="priv_h6">Propiedad intelectual</h4>
-        <p data-i18n="priv_p5">Todos los contenidos de este sitio (textos, imágenes, logotipo) son propiedad de La Carreta del Carretón o de sus licenciantes y están protegidos por la normativa de propiedad intelectual. Queda prohibido su uso no autorizado.</p>
-      </div>
-
-      <div class="legal-panel" id="legalPanelCookies">
-        <h4 data-i18n="cook_h1">¿Qué son las cookies?</h4>
-        <p data-i18n="cook_p1">Las cookies son archivos que se descargan en tu equipo al visitar una página web y permiten almacenar y recuperar información sobre tus hábitos de navegación.</p>
-        <h4 data-i18n="cook_h2">Cookies que utilizamos</h4>
-        <p data-i18n="cook_p2_off">Esta web no instala cookies publicitarias ni de análisis. Solo usa cookies técnicas, necesarias para que funcione. Además, el mapa de Google Maps de la sección de contacto puede instalar sus propias cookies al cargarse, conforme a la política de privacidad de Google.</p>
-        <h4 data-i18n="cook_h3">Tipos de cookies</h4>
-        <ul>
-          <li data-i18n="cook_l1_off">Cookies técnicas propias: necesarias para el funcionamiento básico del sitio.</li>
-          <li data-i18n="cook_l3">Cookies de terceros: las que pueda instalar el mapa de Google Maps al cargarse.</li>
-        </ul>
-        <h4 data-i18n="cook_h4">Cómo gestionar las cookies</h4>
-        <p data-i18n="cook_p3">Puedes permitir, bloquear o eliminar las cookies desde la configuración de tu navegador (Chrome, Firefox, Safari, Edge, Opera). Bloquear algunas cookies puede afectar al funcionamiento del sitio.</p>
-        <h4 data-i18n="cook_h5">Consentimiento</h4>
-        <p data-i18n="cook_p4_off">Al navegar por esta web aceptas el uso de estas cookies técnicas. Puedes eliminarlas en cualquier momento desde la configuración de tu navegador.</p>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 
 

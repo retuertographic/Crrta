@@ -26,6 +26,7 @@ assets/site.css             el diseño
 assets/site.js              interacción (pestañas, menú, modal, galería)
 assets/consent.js           banner de cookies y carga de la medición
 src/analytics.json          IDs de GA4 y Hotjar (vacíos = desactivados)
+src/forms.json              IDs de los formularios del CRM
 img/                        logotipo y fotografías
 
 index.html, novedades.html, novedades/, en/, sitemap.xml, robots.txt
@@ -54,6 +55,7 @@ El español vive en la raíz y el inglés en `/en/`:
 | --- | --- | --- |
 | Portada | `/` | `/en/` |
 | Catering | `/catering.html` | `/en/catering.html` |
+| Información legal | `/legal.html` | `/en/legal.html` |
 | Novedades | `/novedades.html` | `/en/novedades.html` |
 | Una novedad | `/novedades/<slug>.html` | `/en/novedades/<slug>.html` |
 
@@ -101,6 +103,81 @@ dímelo y cambio el envío sin tocar el resto de la página.
 El destinatario es `info@lacarretadelcarreton.com`, en el `CATERING_EMAIL`
 de `assets/site.js`. La línea «Servicio: buffet» se añade sola al resumen,
 porque el formato es siempre el mismo.
+
+## Textos legales
+
+Están en `/legal.html` (y `/en/legal.html`), en tres secciones con ancla,
+para poder enlazar directamente a cada una:
+
+    /legal.html#aviso-legal
+    /legal.html#privacidad
+    /legal.html#cookies
+
+Antes vivían en un modal del pie, que no se podía enlazar. El pie apunta
+ahora a esas anclas, y al cambiar de idioma se conserva el ancla, porque
+los identificadores son los mismos en los dos idiomas.
+
+El contenido sigue saliendo de `src/i18n.json` (claves `aviso_*`,
+`priv_*`, `cook_*`): se edita ahí, no en la página.
+
+## Formularios del CRM
+
+Los cuatro formularios viven en el CRM y se incrustan en un iframe. Sus
+identificadores están en `src/forms.json`; deja uno vacío y esa sección
+deja de mostrar formulario.
+
+| Dónde | Español | Inglés |
+| --- | --- | --- |
+| Presupuesto de catering | `/catering.html` | `/en/catering.html` |
+| Contacto | portada, sección de contacto | ídem |
+
+### Por qué iframe y no un formulario propio
+
+El CRM **no manda cabeceras CORS**: un formulario con nuestro marcado que
+enviara a `POST /form/<guid>/submit` lo bloquearía el navegador. Se
+comprobó con una petición de prueba a un guid inexistente. Si algún día se
+habilita CORS en el CRM, se podría montar el formulario con el diseño del
+sitio y desaparecería todo lo que viene a continuación.
+
+### Por qué la altura va fija
+
+El CRM tampoco comunica su altura al contenedor (el único `postMessage`
+de su bundle es interno de React), y al ser otro dominio la página no
+puede medir el iframe. Así que la altura va fija por tramos de ancho, en
+`assets/site.css`, bajo `.crm-form`.
+
+Los valores salen de **medir cada formulario en un navegador real** a los
+anchos que realmente ocupa. El contenido crece al estrecharse, porque la
+etiqueta del consentimiento pasa a más líneas:
+
+| Ancho del iframe | Catering | Contacto |
+| --- | --- | --- |
+| 760 px | 858 | 558 |
+| 512 px | 882 | 558 |
+| 382 px | 906 | 582 |
+| 272 px | 930 | 630 |
+| 252 px | 978 | — |
+
+**Pasarse de alto no se ve** (el formulario tiene fondo transparente);
+quedarse corto saca una barra de scroll dentro del marco. Por eso cada
+tramo lleva 40-70 px de margen. Comprobado de 280 a 1440 px: la holgura
+mínima es de +15 px y no hay scroll interno en ningún ancho.
+
+Si se añade o quita un campo en el CRM, hay que volver a medir. El script
+está en el scratchpad de la sesión (`measure.mjs`); en esencia: abrir
+`https://crmapi.retuertographicdesign.com/form/<guid>` a cada ancho y leer
+la altura de `#root > div > div`.
+
+### Pendiente en el CRM
+
+- La casilla de consentimiento de los cuatro formularios enlaza a la
+  política de privacidad de **otra web** (`retuertographic.github.io/rya`).
+  Debe apuntar a `https://retuertographic.github.io/Crrta/legal.html#privacidad`
+  y, en los de inglés, a `/en/legal.html#privacidad`.
+- Los cuatro están **sin captcha**.
+- El botón del formulario de contacto sale en azul de Material, mientras
+  que el de catering sale dorado: cada formulario tiene su propio CSS en
+  el CRM y conviene igualarlos al dorado del sitio (`#A9833F`).
 
 ## Analíticas y mapas de calor
 
@@ -287,6 +364,8 @@ se ve en la plantilla es solo el original en español.
 
 ## Pendiente antes de publicar
 
+- [ ] **Enlace de la casilla de consentimiento en el CRM**, que apunta a
+      la política de privacidad de otra web (ver arriba).
 - [ ] **IDs de medición.** `src/analytics.json` está vacío: GA4 y Hotjar
       no se cargan hasta que se rellene y se vuelva a generar la web.
 - [ ] **Datos del titular en los textos legales.** `partials/footer.html` y

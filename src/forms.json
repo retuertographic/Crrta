@@ -1,0 +1,23 @@
+{
+  "_comentario": [
+    "Formularios del CRM (crmapi.retuertographicdesign.com). Se incrustan en",
+    "un iframe porque el CRM no permite peticiones desde otro dominio (no",
+    "manda cabeceras CORS), así que un formulario propio que enviara ahí",
+    "sería bloqueado por el navegador.",
+    "El CRM tampoco comunica su altura al contenedor, así que la altura va",
+    "fija por tramos de ancho. Los valores salen de medir cada formulario en",
+    "un navegador real; pasarse es gratis porque el formulario tiene fondo",
+    "transparente, quedarse corto provoca scroll dentro del iframe.",
+    "Para volver a medirlos: scratchpad/measure.mjs.",
+    "Deja un guid vacío para que esa sección no muestre formulario."
+  ],
+  "base_url": "https://crmapi.retuertographicdesign.com/form/",
+  "catering": {
+    "es": "663fd883-6ac0-3d7c-aee0-b2356b7f6694",
+    "en": "7bd6e976-7fec-334d-8c59-ff3c686dce1f"
+  },
+  "contacto": {
+    "es": "574c4704-01b9-3c67-afb9-30a26a4ce0a7",
+    "en": "ba0d9b5e-7fea-3a96-9d9d-103377a44099"
+  }
+}

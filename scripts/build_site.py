@@ -48,6 +48,7 @@ DEFAULT_LANG = "es"
 
 PAGES = [
     "index.html",
+    "legal.html",
     "catering.html",
     "novedades.html",
     "novedades/abrimos-nuestra-web.html",
@@ -250,6 +251,39 @@ def render_lang_switch(page: str, lang: str, i18n: dict) -> str:
     return f'<div class="lang-switch">{"".join(items)}</div>'
 
 
+def render_form(forms: dict, slot: str, lang: str, i18n: dict, kind: str) -> str:
+    """Incrusta un formulario del CRM.
+
+    Va en iframe y no como formulario propio porque el CRM no manda
+    cabeceras CORS: un envío desde este dominio lo bloquearía el navegador.
+    Y como tampoco comunica su altura, la altura va fija por tramos; las
+    clases las resuelve el CSS. Pasarse de alto no se ve (el formulario
+    tiene fondo transparente); quedarse corto saca scroll dentro."""
+    guid = (forms.get(slot, {}) or {}).get(lang, "").strip()
+    if not guid:
+        return ""
+    title = esc(t(i18n, lang, "cat_quote_title" if slot == "catering" else "contact_form_title"))
+    src = esc(forms["base_url"] + guid)
+    return (
+        f'<div class="crm-form crm-form--{esc(kind)}">'
+        f'<iframe src="{src}" title="{title}" loading="lazy" '
+        f'scrolling="no" allowtransparency="true"></iframe>'
+        f"</div>"
+    )
+
+
+def render_contacto(forms: dict, lang: str, i18n: dict) -> str:
+    inner = render_form(forms, "contacto", lang, i18n, "contacto")
+    if not inner:
+        return ""
+    return (
+        '<div class="contact-form-block">'
+        f'<h3>{esc(t(i18n, lang, "contact_form_title"))}</h3>'
+        f'<p>{esc(t(i18n, lang, "contact_form_p"))}</p>'
+        f"{inner}</div>"
+    )
+
+
 def render_analytics(ga4: str, hotjar: str, cfg: dict, prefix: str) -> str:
     """Config y cargador del consentimiento. Los scripts de Google y Hotjar
     NO se escriben aquí: los inyecta consent.js cuando alguien acepta."""
@@ -357,6 +391,7 @@ def build() -> int:
             print(f"ERROR: falta el idioma «{code}» en src/i18n.json", file=sys.stderr)
             return 1
 
+    forms = json.loads((SRC / "forms.json").read_text(encoding="utf-8"))
     analytics_cfg = json.loads((SRC / "analytics.json").read_text(encoding="utf-8"))
     ga4 = (analytics_cfg.get("ga4_id") or "").strip()
     hotjar = (analytics_cfg.get("hotjar_id") or "").strip()
@@ -387,7 +422,9 @@ def build() -> int:
                     .replace("<!--{{CARTA_TABS}}-->", carta_tabs)
                     .replace("<!--{{CARTA_PANELS}}-->", carta_panels)
                     .replace("<!--{{CARTA_NOTES}}-->", carta_notes)
-                    .replace("<!--{{NOVEDADES}}-->", render_novedades(posts, i18n, lang, prefix)))
+                    .replace("<!--{{NOVEDADES}}-->", render_novedades(posts, i18n, lang, prefix))
+                    .replace("<!--{{FORM_CATERING}}-->", render_form(forms, "catering", lang, i18n, "catering"))
+                    .replace("<!--{{FORM_CONTACTO}}-->", render_contacto(forms, lang, i18n)))
 
             if "{{POST_DATE}}" in body:
                 slug = Path(page).stem

@@ -42,5 +42,15 @@
       "title": "Habana Express Cuban food catering · Arafo, Tenerife",
       "description": "Cuban food catering in Tenerife with Habana Express: buffet service for celebrations, family gatherings and company events. Food, equipment and staff included. Ask for a quote."
     }
+  },
+  "legal.html": {
+    "es": {
+      "title": "Información legal · La Carreta del Carretón",
+      "description": "Aviso legal, política de privacidad y política de cookies de La Carreta del Carretón, restaurante cubano en Arafo, Tenerife."
+    },
+    "en": {
+      "title": "Legal information · La Carreta del Carretón",
+      "description": "Legal notice, privacy policy and cookie policy for La Carreta del Carretón, a Cuban restaurant in Arafo, Tenerife."
+    }
   }
 }

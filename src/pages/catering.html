@@ -58,48 +58,7 @@
       <p data-i18n="cat_quote_p">Cuéntanos cómo es tu evento y te respondemos con una propuesta personalizada. El servicio se sirve siempre en formato buffet.</p>
     </div>
 
-    <form class="cat-form" id="cateringForm" novalidate data-service-line="Servicio: buffet">
-      <div class="f-row">
-        <label class="f-field">
-          <span data-i18n="cat_f_name">Nombre y apellidos</span> *
-          <input type="text" name="nombre" required autocomplete="name">
-        </label>
-        <label class="f-field">
-          <span data-i18n="cat_f_people">Número de personas</span> *
-          <input type="number" name="personas" min="1" step="1" required inputmode="numeric">
-        </label>
-      </div>
-      <div class="f-row">
-        <label class="f-field">
-          <span data-i18n="cat_f_date">Fecha del evento</span> *
-          <input type="date" name="fecha" required>
-        </label>
-        <label class="f-field">
-          <span data-i18n="cat_f_type">Tipo de evento</span> *
-          <input type="text" name="tipo" required data-i18n-ph="cat_f_type_ph" placeholder="Cumpleaños, comida de empresa, bautizo…">
-        </label>
-      </div>
-      <label class="f-field">
-        <span data-i18n="cat_f_place">Lugar de celebración</span> *
-        <input type="text" name="lugar" required data-i18n-ph="cat_f_place_ph" placeholder="Localidad y, si lo sabes, el sitio">
-      </label>
-      <label class="f-field">
-        <span data-i18n="cat_f_notes">Comentarios o necesidades especiales</span>
-        <textarea name="comentarios" rows="4" data-i18n-ph="cat_f_notes_ph" placeholder="Alergias, horarios, cualquier cosa que debamos saber"></textarea>
-      </label>
-
-      <p class="f-note" data-i18n="cat_f_required">Los campos marcados con * son necesarios para poder darte un precio.</p>
-      <button type="submit" class="btn" data-i18n="cat_f_send">Pedir presupuesto</button>
-      <p class="f-note f-privacy" data-i18n="cat_f_privacy">Al enviarlo se abre tu programa de correo con los datos escritos: esta web no los guarda ni los manda a ningún sitio.</p>
-    </form>
-
-    <div class="cat-fallback" id="cateringFallback" hidden>
-      <p data-i18n="cat_f_fallback">Si no se ha abierto tu programa de correo, copia estos datos y mándanoslos a info@lacarretadelcarreton.com.</p>
-      <pre id="cateringSummary"></pre>
-      <button type="button" class="btn outline" id="cateringCopy"
-              data-copy-label="Copiar los datos" data-copied-label="Copiado"
-              data-i18n="cat_f_copy">Copiar los datos</button>
-    </div>
+    <!--{{FORM_CATERING}}-->
 
     <p class="cat-call"><span data-i18n="cat_or_call">¿Prefieres hablarlo? Llámanos al</span>
       <a href="tel:+34922515066">922 51 50 66</a></p>

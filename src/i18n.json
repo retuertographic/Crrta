@@ -197,7 +197,14 @@
     "cat_teaser_title": "Catering Habana Express",
     "cat_teaser_p": "Cocina cubana en formato buffet para celebraciones, reuniones familiares y eventos de empresa. Ponemos la comida, las máquinas y el personal.",
     "cat_teaser_cta": "Ver el catering",
-    "cat_f_service_line": "Servicio: buffet"
+    "cat_f_service_line": "Servicio: buffet",
+    "legal_title": "Información legal",
+    "legal_intro": "Aquí están el aviso legal, la política de privacidad y la política de cookies de La Carreta del Carretón. Puedes enlazar directamente a cualquiera de las tres.",
+    "legal_nav": "En esta página",
+    "legal_updated": "Última actualización:",
+    "nav_legal": "Información legal",
+    "contact_form_title": "O escríbenos",
+    "contact_form_p": "Si prefieres dejarlo por escrito, cuéntanos qué necesitas y te contestamos en cuanto podamos."
   },
   "en": {
     "nav_home": "Home",
@@ -404,6 +411,13 @@
     "cat_teaser_title": "Habana Express catering",
     "cat_teaser_p": "Cuban food, buffet style, for celebrations, family gatherings and company events. We bring the food, the equipment and the staff.",
     "cat_teaser_cta": "See the catering",
-    "cat_f_service_line": "Service: buffet"
+    "cat_f_service_line": "Service: buffet",
+    "legal_title": "Legal information",
+    "legal_intro": "The legal notice, privacy policy and cookie policy for La Carreta del Carretón. You can link directly to any of the three.",
+    "legal_nav": "On this page",
+    "legal_updated": "Last updated:",
+    "nav_legal": "Legal information",
+    "contact_form_title": "Or write to us",
+    "contact_form_p": "If you would rather put it in writing, tell us what you need and we will reply as soon as we can."
   }
 }
