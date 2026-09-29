@@ -53,6 +53,7 @@ El español vive en la raíz y el inglés en `/en/`:
 | | Español | Inglés |
 | --- | --- | --- |
 | Portada | `/` | `/en/` |
+| Catering | `/catering.html` | `/en/catering.html` |
 | Novedades | `/novedades.html` | `/en/novedades.html` |
 | Una novedad | `/novedades/<slug>.html` | `/en/novedades/<slug>.html` |
 
@@ -77,6 +78,29 @@ busca, y así están en el código fuente de la página.
    `scripts/build_menu.py`.
 4. Ejecuta el build. Si falta alguna clave, el script avisa por stderr y
    usa el español mientras tanto — no rompe la página.
+
+## Catering (Habana Express)
+
+Página propia, `src/pages/catering.html`, con su entrada en el menú y un
+resumen en la portada que enlaza a ella (`.cat-teaser` en `index.html`).
+
+**El formulario de presupuesto no envía nada a ningún servidor**, porque
+esta web no tiene backend. Al pulsar «Pedir presupuesto» se compone un
+correo con los datos y se abre el programa de correo de quien lo rellena,
+con todo escrito. Si no se abre —típico en webmail—, aparece debajo el
+texto ya montado y un botón para copiarlo.
+
+Efecto secundario bueno: como los datos nunca pasan por la web, no hay
+tratamiento de datos que declarar por esta vía ni casilla de
+consentimiento que añadir.
+
+Si algún día quieres que las solicitudes lleguen solas a un buzón o a un
+CRM (como el formulario de El Capricho), hace falta un endpoint externo;
+dímelo y cambio el envío sin tocar el resto de la página.
+
+El destinatario es `info@lacarretadelcarreton.com`, en el `CATERING_EMAIL`
+de `assets/site.js`. La línea «Servicio: buffet» se añade sola al resumen,
+porque el formato es siempre el mismo.
 
 ## Analíticas y mapas de calor
 

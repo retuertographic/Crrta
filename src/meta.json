@@ -32,5 +32,15 @@
       "og_type": "article",
       "image": "img/postre-teide.webp"
     }
+  },
+  "catering.html": {
+    "es": {
+      "title": "Catering de comida cubana Habana Express · Arafo, Tenerife",
+      "description": "Catering de comida cubana en Tenerife con Habana Express: buffet para celebraciones, reuniones familiares y eventos de empresa. Ponemos comida, máquinas y personal. Pide presupuesto."
+    },
+    "en": {
+      "title": "Habana Express Cuban food catering · Arafo, Tenerife",
+      "description": "Cuban food catering in Tenerife with Habana Express: buffet service for celebrations, family gatherings and company events. Food, equipment and staff included. Ask for a quote."
+    }
   }
 }

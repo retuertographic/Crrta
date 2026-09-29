@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--{{HEAD}}-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%232B2621'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='52' fill='%23D2B072' font-family='Georgia,serif'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="{{PREFIX}}assets/site.css">
+<!--{{ANALYTICS}}-->
+</head>
+<body>
+
+<!--{{HEADER}}-->
+
+<section class="cat-hero">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="cat_eyebrow">Catering de comida cubana</span>
+    <h1><span data-i18n="cat_title1">Habana Express</span><span class="accent" data-i18n="cat_title2">el sabor de Cuba en tu celebración</span></h1>
+  </div>
+</section>
+
+<section class="cat-intro">
+  <div class="wrap">
+    <div class="cat-grid">
+      <div class="cat-text">
+        <p class="lead" data-i18n="cat_intro">Disfruta del auténtico sabor de Cuba en tus celebraciones con Habana Express. Ofrecemos un servicio de catering para eventos privados, reuniones familiares, celebraciones y encuentros profesionales.</p>
+        <p data-i18n="cat_p2">Nuestro equipo prepara y sirve una selección de platos cubanos en formato buffet, adaptada al número de invitados y a las características de cada evento. También proporcionamos la comida, las máquinas necesarias y el personal encargado del servicio.</p>
+
+        <h2 class="cat-sub" data-i18n="cat_events_title">Para qué tipo de evento</h2>
+        <ul class="cat-events">
+          <li data-i18n="cat_ev1">Eventos privados</li>
+          <li data-i18n="cat_ev2">Reuniones familiares</li>
+          <li data-i18n="cat_ev3">Celebraciones</li>
+          <li data-i18n="cat_ev4">Encuentros profesionales</li>
+        </ul>
+      </div>
+
+      <aside class="cat-card">
+        <h2 data-i18n="cat_includes_title">Qué ponemos nosotros</h2>
+        <ul class="cat-includes">
+          <li data-i18n="cat_inc1">La comida, en formato buffet</li>
+          <li data-i18n="cat_inc2">Las máquinas necesarias para el servicio</li>
+          <li data-i18n="cat_inc3">El personal que atiende durante el evento</li>
+        </ul>
+        <p class="cat-notice" data-i18n="cat_notice">El servicio de catering no incluye bebidas.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="cat-quote" id="presupuesto">
+  <div class="wrap">
+    <div class="cat-quote-head">
+      <h2 class="section-title"><span data-i18n="cat_quote_title">Solicita tu presupuesto</span></h2>
+      <p data-i18n="cat_quote_p">Cuéntanos cómo es tu evento y te respondemos con una propuesta personalizada. El servicio se sirve siempre en formato buffet.</p>
+    </div>
+
+    <form class="cat-form" id="cateringForm" novalidate data-service-line="Servicio: buffet">
+      <div class="f-row">
+        <label class="f-field">
+          <span data-i18n="cat_f_name">Nombre y apellidos</span> *
+          <input type="text" name="nombre" required autocomplete="name">
+        </label>
+        <label class="f-field">
+          <span data-i18n="cat_f_people">Número de personas</span> *
+          <input type="number" name="personas" min="1" step="1" required inputmode="numeric">
+        </label>
+      </div>
+      <div class="f-row">
+        <label class="f-field">
+          <span data-i18n="cat_f_date">Fecha del evento</span> *
+          <input type="date" name="fecha" required>
+        </label>
+        <label class="f-field">
+          <span data-i18n="cat_f_type">Tipo de evento</span> *
+          <input type="text" name="tipo" required data-i18n-ph="cat_f_type_ph" placeholder="Cumpleaños, comida de empresa, bautizo…">
+        </label>
+      </div>
+      <label class="f-field">
+        <span data-i18n="cat_f_place">Lugar de celebración</span> *
+        <input type="text" name="lugar" required data-i18n-ph="cat_f_place_ph" placeholder="Localidad y, si lo sabes, el sitio">
+      </label>
+      <label class="f-field">
+        <span data-i18n="cat_f_notes">Comentarios o necesidades especiales</span>
+        <textarea name="comentarios" rows="4" data-i18n-ph="cat_f_notes_ph" placeholder="Alergias, horarios, cualquier cosa que debamos saber"></textarea>
+      </label>
+
+      <p class="f-note" data-i18n="cat_f_required">Los campos marcados con * son necesarios para poder darte un precio.</p>
+      <button type="submit" class="btn" data-i18n="cat_f_send">Pedir presupuesto</button>
+      <p class="f-note f-privacy" data-i18n="cat_f_privacy">Al enviarlo se abre tu programa de correo con los datos escritos: esta web no los guarda ni los manda a ningún sitio.</p>
+    </form>
+
+    <div class="cat-fallback" id="cateringFallback" hidden>
+      <p data-i18n="cat_f_fallback">Si no se ha abierto tu programa de correo, copia estos datos y mándanoslos a info@lacarretadelcarreton.com.</p>
+      <pre id="cateringSummary"></pre>
+      <button type="button" class="btn outline" id="cateringCopy"
+              data-copy-label="Copiar los datos" data-copied-label="Copiado"
+              data-i18n="cat_f_copy">Copiar los datos</button>
+    </div>
+
+    <p class="cat-call"><span data-i18n="cat_or_call">¿Prefieres hablarlo? Llámanos al</span>
+      <a href="tel:+34922515066">922 51 50 66</a></p>
+  </div>
+</section>
+
+<!--{{FOOTER}}-->
+
+<script src="{{PREFIX}}assets/site.js" defer></script>
+</body>
+</html>

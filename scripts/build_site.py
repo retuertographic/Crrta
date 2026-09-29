@@ -46,7 +46,12 @@ LANGUAGES = {
 }
 DEFAULT_LANG = "es"
 
-PAGES = ["index.html", "novedades.html", "novedades/abrimos-nuestra-web.html"]
+PAGES = [
+    "index.html",
+    "catering.html",
+    "novedades.html",
+    "novedades/abrimos-nuestra-web.html",
+]
 
 MONTHS = {
     "es": ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
@@ -312,6 +317,28 @@ def apply_translations(markup: str, i18n: dict, lang: str) -> str:
         return f'{m.group(1)}{value}{m.group(6)}'
 
     result = pattern.sub(replace, markup)
+
+    # Los placeholders van en un atributo, no en el contenido del elemento.
+    def replace_ph(m: re.Match) -> str:
+        key = m.group("key")
+        value = i18n.get(lang, {}).get(key)
+        if value is None:
+            missing.add(key)
+            value = i18n[DEFAULT_LANG].get(key, "")
+        return f'placeholder="{html.escape(value, quote=True)}"'
+
+    result = re.sub(
+        r'data-i18n-ph="(?P<key>[^"]+)"\s+placeholder="[^"]*"', replace_ph, result
+    )
+
+    # Etiquetas que el JS intercambia (botón de copiar): van en atributos.
+    for attr, key in (("data-copy-label", "cat_f_copy"),
+                      ("data-copied-label", "cat_f_copied"),
+                      ("data-service-line", "cat_f_service_line")):
+        value = i18n.get(lang, {}).get(key) or i18n[DEFAULT_LANG].get(key, "")
+        result = re.sub(
+            rf'{attr}="[^"]*"', f'{attr}="{html.escape(value, quote=True)}"', result
+        )
     for key in sorted(missing):
         print(f"  aviso [{lang}]: falta la traducción de «{key}»", file=sys.stderr)
     return result

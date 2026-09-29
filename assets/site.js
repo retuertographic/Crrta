@@ -124,6 +124,72 @@
     }
   }
 
+  /* ---- Formulario de presupuesto del catering ----
+     La web es estática y no tiene a dónde enviar un formulario, así que
+     compone un correo con los datos y abre el programa de correo. Nada
+     sale de aquí sin que la persona lo envíe ella misma. Si no hay cliente
+     de correo (webmail), se enseña el texto para copiarlo. */
+  var cateringForm = document.getElementById('cateringForm');
+  if (cateringForm) {
+    var CATERING_EMAIL = 'info@lacarretadelcarreton.com';
+    var fallback = document.getElementById('cateringFallback');
+    var summaryBox = document.getElementById('cateringSummary');
+    var copyBtn = document.getElementById('cateringCopy');
+
+    function labelFor(field) {
+      var label = field.closest('label');
+      var span = label && label.querySelector('span');
+      return span ? span.textContent.trim() : field.name;
+    }
+
+    function buildSummary() {
+      var lines = [];
+      cateringForm.querySelectorAll('input, textarea').forEach(function (field) {
+        var value = field.value.trim();
+        if (value) lines.push(labelFor(field) + ': ' + value);
+      });
+      // El formato de servicio es siempre el mismo; va escrito para que
+      // quien lo reciba no tenga que suponerlo.
+      lines.push(cateringForm.getAttribute('data-service-line') || 'Buffet');
+      return lines.join('\n');
+    }
+
+    cateringForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!cateringForm.reportValidity()) return;
+
+      var summary = buildSummary();
+      var name = (cateringForm.elements.nombre.value || '').trim();
+      var subject = 'Catering Habana Express' + (name ? ' — ' + name : '');
+
+      if (summaryBox) summaryBox.textContent = summary;
+      if (fallback) fallback.hidden = false;
+
+      // Un enlace que se pulsa, en vez de reasignar location: es el patrón
+      // que mejor aguanta entre navegadores para esquemas externos.
+      var link = document.createElement('a');
+      link.href = 'mailto:' + CATERING_EMAIL +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(summary);
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async function () {
+        try {
+          await navigator.clipboard.writeText(summaryBox ? summaryBox.textContent : '');
+          var done = copyBtn.getAttribute('data-copied-label');
+          var idle = copyBtn.getAttribute('data-copy-label');
+          copyBtn.textContent = done;
+          setTimeout(function () { copyBtn.textContent = idle; }, 1800);
+        } catch (err) { /* sin portapapeles: el texto ya está a la vista */ }
+      });
+    }
+  }
+
   /* ---- Año del pie ---- */
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();

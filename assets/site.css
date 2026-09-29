@@ -113,11 +113,11 @@
     transition:width .25s ease;
   }
   .nav-links a:hover::after{width:100%;}
-  .nav-links a.btn{padding:11px 24px;color:#fff!important;}
+  .nav-links a.btn{padding:11px 24px;color:#fff!important;white-space:nowrap;}
   .nav-links a.btn::after{display:none;}
   .burger{display:none;background:none;border:none;font-size:1.6rem;color:var(--gold-light);cursor:pointer;}
 
-  @media (max-width:980px){
+  @media (max-width:1100px){
     .nav-links{
       position:fixed;inset:0 0 0 auto;height:100vh;width:min(78vw,320px);
       background:var(--paper);flex-direction:column;justify-content:center;
@@ -588,4 +588,114 @@
     .cookie-box{padding:20px;gap:18px;}
     .cookie-actions{width:100%;}
     .cookie-actions .btn{flex:1;text-align:center;padding:12px 16px;}
+  }
+
+  /* ---------- CATERING ---------- */
+  .cat-hero{background:var(--ink);color:#fff;padding:170px 0 70px;position:relative;}
+  .cat-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 15%, rgba(169,131,63,.16), transparent 45%);pointer-events:none;}
+  .cat-hero .wrap{position:relative;z-index:1;}
+  .cat-hero .eyebrow{color:var(--gold-light);}
+  .cat-hero h1{color:#fff;font-family:'Playfair Display',serif;font-size:clamp(2.1rem,4.4vw,3.1rem);font-weight:800;line-height:1.1;margin:.4rem 0 0;}
+  .cat-hero h1 .accent{display:block;font-family:'Yellowtail',cursive;font-weight:400;color:var(--gold-light);font-size:1.1em;line-height:1.35;margin-top:.1em;}
+
+  .cat-intro{background:var(--paper);padding:80px 0 70px;}
+  .cat-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:56px;align-items:start;}
+  .cat-text p{color:var(--text-soft);font-size:1.02rem;line-height:1.85;margin-bottom:18px;}
+  .cat-text p.lead{font-size:1.14rem;color:var(--ink);line-height:1.8;}
+  .cat-sub{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ink);margin:34px 0 14px;}
+  .cat-events{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;}
+  .cat-events li{
+    display:flex;align-items:center;gap:10px;font-weight:600;font-size:.92rem;color:var(--ink);
+  }
+  .cat-events li::before{
+    content:'';width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none;
+  }
+
+  .cat-card{
+    background:var(--ink);color:#fff;border-radius:22px;padding:32px 30px;
+    box-shadow:0 24px 50px rgba(43,38,33,.22);position:sticky;top:96px;
+  }
+  .cat-card h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold-light);margin-bottom:18px;}
+  .cat-includes{display:flex;flex-direction:column;gap:14px;}
+  .cat-includes li{
+    display:flex;gap:12px;align-items:flex-start;
+    color:rgba(255,255,255,.82);font-size:.94rem;line-height:1.6;
+  }
+  .cat-includes li::before{
+    content:'';width:20px;height:20px;border-radius:50%;flex:none;margin-top:1px;
+    background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/12px no-repeat;
+  }
+  .cat-notice{
+    margin-top:22px;padding:14px 16px;border-radius:12px;
+    background:rgba(169,131,63,.14);border:1px dashed rgba(210,176,114,.5);
+    color:var(--gold-light);font-size:.88rem;font-weight:600;line-height:1.55;
+  }
+  @media (max-width:900px){
+    .cat-hero{padding:140px 0 56px;}
+    .cat-intro{padding:60px 0 50px;}
+    .cat-grid{grid-template-columns:1fr;gap:36px;}
+    .cat-card{position:static;}
+  }
+  @media (max-width:520px){.cat-events{grid-template-columns:1fr;}}
+
+  /* ---------- FORMULARIO DE PRESUPUESTO ---------- */
+  .cat-quote{background:var(--cream);padding:80px 0 100px;}
+  .cat-quote-head{max-width:640px;margin:0 auto 40px;text-align:center;}
+  .cat-quote-head p{color:var(--text-soft);line-height:1.75;}
+  .cat-form{
+    max-width:760px;margin:0 auto;
+    background:var(--paper);border-radius:22px;padding:34px;
+    box-shadow:0 24px 50px rgba(43,38,33,.12);
+  }
+  .f-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .f-field{display:block;margin-bottom:18px;font-size:.82rem;font-weight:600;color:var(--ink);}
+  .f-field > span{display:inline;}
+  .f-field input, .f-field textarea{
+    display:block;width:100%;margin-top:7px;
+    background:#fff;border:1px solid rgba(43,38,33,.18);border-radius:11px;
+    padding:12px 14px;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:400;color:var(--ink);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .f-field input:focus, .f-field textarea:focus{
+    outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(169,131,63,.16);
+  }
+  .f-field input:user-invalid, .f-field textarea:user-invalid{border-color:#b4552f;}
+  .f-field textarea{resize:vertical;min-height:96px;}
+  .f-field input::placeholder, .f-field textarea::placeholder{color:#a79d8f;}
+  .f-note{font-size:.8rem;color:var(--text-soft);line-height:1.6;margin-bottom:18px;}
+  .cat-form .btn{width:100%;text-align:center;}
+  .f-privacy{margin:16px 0 0;font-size:.78rem;color:#8a8073;}
+
+  .cat-fallback{
+    max-width:760px;margin:22px auto 0;
+    background:var(--paper);border:1px dashed rgba(169,131,63,.5);border-radius:18px;padding:24px 26px;
+  }
+  .cat-fallback p{font-size:.88rem;color:var(--text-soft);line-height:1.6;margin-bottom:12px;}
+  .cat-fallback pre{
+    background:rgba(43,38,33,.05);border-radius:12px;padding:16px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8rem;line-height:1.7;
+    white-space:pre-wrap;word-break:break-word;color:var(--ink);margin-bottom:14px;
+  }
+  .cat-call{text-align:center;margin-top:28px;color:var(--text-soft);font-size:.95rem;}
+  .cat-call a{color:var(--gold);font-weight:700;}
+  @media (max-width:600px){
+    .cat-quote{padding:60px 0 70px;}
+    .cat-form{padding:26px 20px;}
+    .f-row{grid-template-columns:1fr;gap:0;}
+  }
+
+  /* ---------- CATERING: resumen en la portada ---------- */
+  .cat-teaser{background:var(--cream);padding:70px 0;}
+  .cat-teaser-box{
+    background:var(--paper);border-radius:22px;padding:38px 40px;
+    box-shadow:0 18px 44px rgba(43,38,33,.1);
+    display:flex;align-items:center;justify-content:space-between;gap:34px;flex-wrap:wrap;
+  }
+  .cat-teaser-box > div{flex:1 1 420px;min-width:0;}
+  .cat-teaser-box p{color:var(--text-soft);line-height:1.75;font-size:.98rem;max-width:56ch;}
+  .cat-teaser-box .btn{flex:0 0 auto;}
+  @media (max-width:600px){
+    .cat-teaser{padding:50px 0;}
+    .cat-teaser-box{padding:28px 22px;}
+    .cat-teaser-box .btn{width:100%;text-align:center;}
   }
