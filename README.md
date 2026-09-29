@@ -170,10 +170,11 @@ la altura de `#root > div > div`.
 
 ### Pendiente en el CRM
 
-- La casilla de consentimiento de los cuatro formularios enlaza a la
+- La casilla de consentimiento: **Catering ES ya apunta bien**. Los otros
+  tres (Catering EN, Contacto ES y Contacto EN) siguen enlazando a la
   política de privacidad de **otra web** (`retuertographic.github.io/rya`).
-  Debe apuntar a `https://retuertographic.github.io/Crrta/legal.html#privacidad`
-  y, en los de inglés, a `/en/legal.html#privacidad`.
+  Deben apuntar a `https://retuertographic.github.io/Crrta/legal.html#privacidad`
+  y, los de inglés, a `.../en/legal.html#privacidad`.
 - Los cuatro están **sin captcha**.
 - El botón del formulario de contacto sale en azul de Material, mientras
   que el de catering sale dorado: cada formulario tiene su propio CSS en
@@ -409,16 +410,17 @@ se ve en la plantilla es solo el original en español.
 | Información general | `info@lacarretadelcarreton.com` |
 | Protección de datos | `protecciondedatos@lacarretadelcarreton.com` |
 
-Los dos primeros pares cambian solos con el idioma que elija el visitante:
-la lógica está en `MAILBOXES`, al final de `index.html`, y se aplica a
-cualquier elemento con `data-mailbox="bookings"` o `data-mailbox="care"`
-(el texto va en el propio enlace, o en el hijo con `data-mailbox-text` si
-el enlace lleva más cosas dentro). Los otros dos son iguales en los dos
+Los dos primeros pares se resuelven al generar el sitio: `MAILBOXES` en
+`scripts/build_site.py` se aplica a cualquier elemento con
+`data-mailbox="bookings"` o `data-mailbox="care"` (el texto va en el
+propio enlace, o en el hijo con `data-mailbox-text` si el enlace lleva
+más cosas dentro). Los otros dos son iguales en los dos
 idiomas. El de protección de datos es además el que aparece en el aviso
 legal y en la política de privacidad, y el de información general va en el
 JSON-LD.
 
-La tarjeta de reservas presenta el teléfono y el correo como dos opciones
-con el mismo peso (`.reserve-ways` en `assets/site.css`), y los botones
+La tarjeta de reservas presenta las cuatro vías con el mismo peso —
+teléfono, WhatsApp (+34 661 72 78 26), correo y el formulario del CRM que
+está más abajo en la misma página (`.reserve-ways` en `assets/site.css`), y los botones
 «Reservar mesa» de la cabecera, el pie y la galería llevan a la sección de
 contacto en vez de abrir el marcador del teléfono.

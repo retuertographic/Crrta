@@ -63,6 +63,15 @@ MONTHS = {
 
 FLAGS = {"es": "🇪🇸", "en": "🇬🇧", "de": "🇩🇪"}
 
+# Buzones con versión por idioma. Los demás correos (info@,
+# protecciondedatos@) son iguales en todos y van escritos en la plantilla.
+MAILBOXES = {
+    "bookings": {"es": "reservas@lacarretadelcarreton.com",
+                 "en": "bookings@lacarretadelcarreton.com"},
+    "care": {"es": "atencionalcliente@lacarretadelcarreton.com",
+             "en": "customercare@lacarretadelcarreton.com"},
+}
+
 
 def esc(text: str) -> str:
     return html.escape(str(text), quote=True)
@@ -277,7 +286,7 @@ def render_contacto(forms: dict, lang: str, i18n: dict) -> str:
     if not inner:
         return ""
     return (
-        '<div class="contact-form-block">'
+        '<div class="contact-form-block" id="formulario">'
         f'<h3>{esc(t(i18n, lang, "contact_form_title"))}</h3>'
         f'<p>{esc(t(i18n, lang, "contact_form_p"))}</p>'
         f"{inner}</div>"
@@ -316,6 +325,38 @@ def render_consent_banner(i18n: dict, lang: str) -> str:
         f'{esc(t(i18n, lang, "cookie_accept"))}</button>'
         '</div></div></div>'
     )
+
+
+def resolve_mailboxes(markup: str, lang: str) -> str:
+    """Pone en cada enlace marcado con data-mailbox la dirección del idioma.
+
+    Antes lo hacía JavaScript en la página; al pasar a generar el sitio se
+    quedó sin resolver y las páginas en inglés enseñaban el buzón español.
+    Ahora se resuelve aquí, que además lo deja en el HTML publicado."""
+    pattern = re.compile(
+        r'<a(?P<before>[^>]*?)\sdata-mailbox="(?P<key>[^"]+)"(?P<after>[^>]*)>(?P<body>.*?)</a>',
+        re.S,
+    )
+
+    def replace(m: re.Match) -> str:
+        addresses = MAILBOXES.get(m.group("key"))
+        if not addresses:
+            return m.group(0)
+        address = addresses.get(lang) or addresses[DEFAULT_LANG]
+        attrs = re.sub(
+            r'href="mailto:[^"]*"', f'href="mailto:{address}"',
+            m.group("before") + m.group("after"),
+        )
+        body = m.group("body")
+        if "data-mailbox-text" in body:
+            body = re.sub(
+                r'(data-mailbox-text[^>]*>)[^<]*', rf'\g<1>{address}', body
+            )
+        else:
+            body = address
+        return f"<a{attrs}>{body}</a>"
+
+    return pattern.sub(replace, markup)
 
 
 def strip_conditionals(markup: str, analytics: bool) -> str:
@@ -431,6 +472,7 @@ def build() -> int:
                 post = next((p for p in posts if p["slug"] == slug), None)
                 body = body.replace("{{POST_DATE}}", esc(fmt_date(post["date"], lang)) if post else "")
 
+            body = resolve_mailboxes(body, lang)
             body = strip_conditionals(body, measuring)
             body = apply_translations(body, i18n, lang)
             body = body.replace("{{LANG}}", lang).replace("{{PREFIX}}", prefix)
