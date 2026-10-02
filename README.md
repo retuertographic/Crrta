@@ -3,8 +3,9 @@
 Sitio estático generado: las plantillas viven en `src/`, un script escribe
 una versión por idioma con su propia URL, y GitHub Pages publica el
 resultado desde la raíz. Sin framework ni dependencias de JavaScript.
-La estructura sigue la de la web de El Capricho: cabecera y pie
-compartidos, y la carta separada del diseño en un JSON.
+La estructura sigue la de la web de El Capricho: nada que salga en más
+de una página se escribe dos veces, y la carta va separada del diseño en
+un JSON.
 
 ## Qué contiene
 
@@ -13,9 +14,17 @@ las páginas de cada idioma. Lo que hay en la raíz es el resultado, y es lo
 que publica GitHub Pages.
 
 ```
-src/pages/                  las plantillas (lo que se edita)
-src/partials/header.html    cabecera compartida
-src/partials/footer.html    pie + modal de textos legales
+src/pages/                  las plantillas de cada página (lo que se edita)
+src/partials/               los elementos comunes, una sola copia de cada uno
+            head.html         el <head>: fuentes, CSS, favicon y el SEO
+            header.html       cabecera y menú
+            footer.html       pie y enlaces legales
+            form.html         plantilla de los formularios del CRM
+            form-contacto.html  el formulario de contacto con su titular
+            consent-banner.html banner de cookies
+            consent-prefs.html  botón de preferencias del pie
+            schema.html       ficha del restaurante para Google (NAP)
+            scripts.html      el <script> del final
 src/i18n.json               todos los textos, en español e inglés
 src/meta.json               título y descripción de cada página, por idioma
 carta/carta-hoja.csv        la hoja de la carta, exportada a CSV
@@ -23,7 +32,7 @@ carta/descripciones.json    las descripciones de los platos, en los dos idiomas
 scripts/build_menu.py       CSV + descripciones -> menu-data.json
 scripts/build_site.py       plantillas + traducciones + carta -> la web
 assets/site.css             el diseño
-assets/site.js              interacción (pestañas, menú, modal, galería)
+assets/site.js              interacción (pestañas, menú, galería, compartir)
 assets/consent.js           banner de cookies y carga de la medición
 src/analytics.json          IDs de GA4 y Hotjar (vacíos = desactivados)
 src/forms.json              IDs de los formularios del CRM
@@ -31,6 +40,71 @@ img/                        logotipo y fotografías
 
 index.html, novedades.html, novedades/, en/, sitemap.xml, robots.txt
                             GENERADOS: no se editan a mano
+```
+
+## Elementos comunes (`src/partials/`)
+
+Lo que sale en más de una página vive en un solo archivo. Las plantillas
+de `src/pages/` solo ponen el marcador y el generador lo sustituye:
+
+```html
+<head>
+<!--{{HEAD}}-->
+</head>
+<body>
+<!--{{HEADER}}-->
+  ...
+<!--{{FOOTER}}-->
+<!--{{SCRIPTS}}-->
+```
+
+**Cada archivo de `src/partials/` es un marcador**, con el nombre en
+mayúsculas y los guiones como subrayados: `consent-banner.html` se inserta
+donde ponga `<!--{{CONSENT_BANNER}}-->`. Para añadir un elemento común no
+hay que tocar el generador: se deja el archivo ahí y se pone su marcador.
+
+Un partial puede contener el marcador de otro. Así es como `head.html`
+trae dentro el bloque de SEO, y el bloque de contacto trae el formulario.
+
+Los marcadores que el generador rellena con datos:
+
+| Marcador | Qué pone |
+|---|---|
+| `<!--{{SEO}}-->` | title, description, **canonical**, `og:` y `hreflang` |
+| `<!--{{CARTA_TABS}}-->`, `<!--{{CARTA_PANELS}}-->`, `<!--{{CARTA_NOTES}}-->` | la carta |
+| `<!--{{NOVEDADES}}-->` | las tarjetas de novedades |
+| `<!--{{FORM_CATERING}}-->`, `<!--{{FORM_CONTACTO}}-->` | los formularios, con el ID de cada idioma |
+| `<!--{{LANG_SWITCH}}-->` | los enlaces entre idiomas |
+| `<!--{{ANALYTICS}}-->`, `<!--{{CONSENT_BANNER}}-->`, `<!--{{CONSENT_PREFS}}-->` | medición y consentimiento (vacíos si no hay IDs) |
+
+Si un marcador está mal escrito, el generador avisa por pantalla en vez de
+dejar la página sin ese trozo.
+
+### Dos rutas, para dos cosas distintas
+
+| Token | Apunta a | Para qué |
+|---|---|---|
+| `{{PREFIX}}` | la raíz del sitio | `assets/`, `img/` — no se duplican por idioma |
+| `{{HOME}}` | la raíz **de ese idioma** | los enlaces entre páginas |
+
+Importa: desde `/en/legal.html`, `{{HOME}}index.html` lleva a
+`/en/index.html` y no a la portada en español. Con un solo token, el menú
+y el pie de las páginas en inglés devolvían al visitante al español.
+
+### Comentarios que no se publican
+
+Un comentario que empiece por `<!--#` es una nota para quien edita `src/`
+y el generador la quita al publicar. Los comentarios normales (`<!-- -->`)
+sí salen en el HTML.
+
+### Textos en atributos
+
+`data-i18n` cambia el contenido de un elemento, pero no sirve para un
+`aria-label` o un `title`. Para eso está `data-i18n-attr`:
+
+```html
+<button data-i18n-attr="aria-label=aria_menu" aria-label="Abrir menú">
+<a data-i18n-attr="aria-label=aria_reviews_g;title=aria_reviews_g" ...>
 ```
 
 ## Cómo se publica

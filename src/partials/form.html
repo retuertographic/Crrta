@@ -1,0 +1,12 @@
+<!--# Plantilla de los formularios del CRM. La rellena build_site.py con el
+     GUID de cada formulario y cada idioma (src/forms.json).
+
+     Va en iframe y no como formulario propio porque el CRM no manda
+     cabeceras CORS: un envío desde este dominio lo bloquearía el
+     navegador. Y como tampoco comunica su altura, la altura va fija por
+     tramos de anchura en assets/site.css; pasarse de alto no se ve (el
+     formulario tiene fondo transparente), quedarse corto saca scroll
+     dentro. -->
+<div class="crm-form crm-form--{{FORM_KIND}}">
+  <iframe src="{{FORM_URL}}" title="{{FORM_TITLE}}" loading="lazy" scrolling="no" allowtransparency="true"></iframe>
+</div>

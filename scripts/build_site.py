@@ -4,9 +4,10 @@ Genera la web en varios idiomas, cada uno en su propia URL.
 
     python scripts/build_site.py
 
-Lee las plantillas de src/, las traducciones de src/i18n.json, los
-metadatos de src/meta.json y los datos de menu-data.json y
-novedades-data.json, y escribe en la raíz del repositorio:
+Lee las plantillas de src/pages/, los elementos comunes de
+src/partials/, las traducciones de src/i18n.json, los metadatos de
+src/meta.json y los datos de menu-data.json y novedades-data.json, y
+escribe en la raíz del repositorio:
 
     /              español   (index.html, novedades.html, novedades/…)
     /en/           inglés
@@ -19,6 +20,15 @@ idioma y sus etiquetas hreflang, cada versión se indexa por separado.
 
 Por el mismo motivo la carta se escribe entera en el HTML en vez de
 pedirse con fetch: los platos son justo lo que la gente busca.
+
+Nada común se escribe dos veces: cabecera, pie, <head>, formularios
+y banner de cookies viven en src/partials/ y las páginas solo ponen el
+marcador. Cada archivo de esa carpeta es un marcador con su nombre en
+mayúsculas (consent-banner.html -> <!--{{CONSENT_BANNER}}-->), así que
+para añadir un elemento común basta con dejar el archivo ahí.
+
+El canonical va dentro de head.html, que es común: de este modo ninguna
+página puede publicarse sin él.
 
 Para añadir un idioma: añádelo a LANGUAGES, traduce src/i18n.json y
 src/meta.json, y vuelve a ejecutar.
@@ -106,6 +116,16 @@ def prefix_for(page: str, lang: str) -> str:
     return "../" * depth
 
 
+def lang_prefix_for(page: str) -> str:
+    """Camino desde la página hasta la raíz de SU idioma.
+
+    Es lo que usan los enlaces entre páginas ({{HOME}}), porque tienen que
+    quedarse dentro del idioma: desde /en/ se enlaza a /en/legal.html, no a
+    /legal.html. Para assets/ e img/, que no se duplican por idioma, está
+    {{PREFIX}}, que sube hasta la raíz del sitio."""
+    return "../" * page.count("/")
+
+
 def page_url(page: str, lang: str) -> str:
     folder = LANGUAGES[lang][0]
     path = "" if page == "index.html" else page
@@ -187,7 +207,8 @@ def render_carta(menu: dict, i18n: dict, lang: str) -> tuple[str, str, str]:
 
 # ------------------------------------------------------------- novedades
 
-def render_novedades(posts: list[dict], i18n: dict, lang: str, prefix: str) -> str:
+def render_novedades(posts: list[dict], i18n: dict, lang: str,
+                     prefix: str, home: str) -> str:
     if not posts:
         return f'<div class="nov-grid"><div class="nov-empty">{esc(t(i18n, lang, "novedades_empty"))}</div></div>'
     cards = ['<div class="nov-grid">']
@@ -199,16 +220,98 @@ def render_novedades(posts: list[dict], i18n: dict, lang: str, prefix: str) -> s
             f'<div class="thumb"><img src="{prefix}{esc(post["image"])}" alt="{title}" loading="lazy"></div>'
             f'<div class="body"><div class="nov-date">{esc(fmt_date(post["date"], lang))}</div>'
             f'<h3>{title}</h3><p>{excerpt}</p>'
-            f'<a class="read-more" href="{prefix}novedades/{esc(post["slug"])}.html">'
+            f'<a class="read-more" href="{home}novedades/{esc(post["slug"])}.html">'
             f'{esc(t(i18n, lang, "read_more"))}</a></div></article>'
         )
     cards.append("</div>")
     return "\n".join(cards)
 
 
+# ------------------------------------------------------------- partials
+
+PARTIALS = SRC / "partials"
+
+
+def load_partials() -> dict[str, str]:
+    """Carga src/partials/ en un diccionario de marcadores.
+
+    Cada archivo se convierte en un marcador con su nombre en mayúsculas y
+    los guiones como subrayados: consent-banner.html -> <!--{{CONSENT_BANNER}}-->
+    Para añadir un elemento común basta con dejar el archivo aquí y poner
+    su marcador en la página; no hay que tocar este script."""
+    partials = {}
+    for path in sorted(PARTIALS.glob("*.html")):
+        name = path.stem.replace("-", "_").upper()
+        partials[name] = path.read_text(encoding="utf-8").strip("\n")
+    return partials
+
+
+def marker(name: str) -> str:
+    return f"<!--{{{{{name}}}}}-->"
+
+
+MARKER_RE = re.compile(r"<!--\{\{(?P<name>[A-Z0-9_]+)\}\}-->")
+LINE_MARKER_RE = re.compile(
+    r"^(?P<indent>[ \t]*)<!--\{\{(?P<name>[A-Z0-9_]+)\}\}-->[ \t]*\n", re.M)
+NOTE_RE = re.compile(r"[ \t]*<!--#.*?-->[ \t]*\n?", re.S)
+
+
+def expand_partials(markup: str, partials: dict[str, str]) -> str:
+    """Sustituye los marcadores por su partial, incluidos los anidados.
+
+    Repite hasta que no cambie nada, porque un partial puede contener el
+    marcador de otro (head.html trae dentro <!--{{SEO}}-->, y el bloque de
+    contacto trae el del formulario). Si el marcador está solo en su línea,
+    el contenido hereda su sangría y, cuando está vacío, se va también la
+    línea: así el HTML publicado sigue siendo legible."""
+    def by_line(m: re.Match) -> str:
+        name = m.group("name")
+        if name not in partials:
+            return m.group(0)
+        content = partials[name]
+        if not content.strip():
+            return ""
+        indent = m.group("indent")
+        body = "\n".join(indent + ln if ln.strip() else ln
+                         for ln in content.split("\n"))
+        return body + "\n"
+
+    def inline(m: re.Match) -> str:
+        return partials.get(m.group("name"), m.group(0))
+
+    for _ in range(10):
+        before = markup
+        markup = LINE_MARKER_RE.sub(by_line, markup)
+        markup = MARKER_RE.sub(inline, markup)
+        if markup == before:
+            return markup
+    raise RuntimeError("marcadores de partials en bucle: revisa src/partials/")
+
+
+def strip_source_notes(markup: str) -> str:
+    """Quita los comentarios que empiezan por <!--# .
+
+    Son notas para quien edita src/; no tienen por qué descargarlas todas
+    las visitas. Los comentarios normales (<!-- ... -->) sí se publican."""
+    return NOTE_RE.sub("", markup)
+
+
+def leftover_markers(markup: str) -> list[str]:
+    """Marcadores que se han quedado sin resolver.
+
+    Un marcador mal escrito no da error: desaparece en un comentario HTML y
+    la página sale sin ese trozo. Mejor avisar."""
+    return sorted(set(re.findall(r"<!--\{\{([A-Z0-9_]+)\}\}-->", markup)))
+
+
 # ------------------------------------------------------------ <head> y UI
 
-def render_head(page: str, lang: str, meta: dict, prefix: str) -> str:
+def render_seo(page: str, lang: str, meta: dict) -> str:
+    """title, description, canonical, og: y hreflang de esta página.
+
+    El canonical apunta siempre a la propia URL (autorreferente) y
+    las etiquetas hreflang declaran las dos versiones, para que Google
+    no trate español e inglés como contenido duplicado."""
     info = meta.get(page, {}).get(lang) or meta.get(page, {}).get(DEFAULT_LANG, {})
     title = info.get("title", "La Carreta del Carretón")
     description = info.get("description", "")
@@ -260,37 +363,29 @@ def render_lang_switch(page: str, lang: str, i18n: dict) -> str:
     return f'<div class="lang-switch">{"".join(items)}</div>'
 
 
-def render_form(forms: dict, slot: str, lang: str, i18n: dict, kind: str) -> str:
-    """Incrusta un formulario del CRM.
+def render_form(tpl: str, forms: dict, slot: str, lang: str,
+                i18n: dict, kind: str) -> str:
+    """Rellena src/partials/form.html con el GUID del formulario.
 
-    Va en iframe y no como formulario propio porque el CRM no manda
-    cabeceras CORS: un envío desde este dominio lo bloquearía el navegador.
-    Y como tampoco comunica su altura, la altura va fija por tramos; las
-    clases las resuelve el CSS. Pasarse de alto no se ve (el formulario
-    tiene fondo transparente); quedarse corto saca scroll dentro."""
+    Si ese formulario no tiene GUID para este idioma no se publica nada:
+    mejor que un iframe vacío."""
     guid = (forms.get(slot, {}) or {}).get(lang, "").strip()
     if not guid:
         return ""
     title = esc(t(i18n, lang, "cat_quote_title" if slot == "catering" else "contact_form_title"))
-    src = esc(forms["base_url"] + guid)
-    return (
-        f'<div class="crm-form crm-form--{esc(kind)}">'
-        f'<iframe src="{src}" title="{title}" loading="lazy" '
-        f'scrolling="no" allowtransparency="true"></iframe>'
-        f"</div>"
-    )
+    return (tpl
+            .replace("{{FORM_KIND}}", esc(kind))
+            .replace("{{FORM_URL}}", esc(forms["base_url"] + guid))
+            .replace("{{FORM_TITLE}}", title))
 
 
-def render_contacto(forms: dict, lang: str, i18n: dict) -> str:
-    inner = render_form(forms, "contacto", lang, i18n, "contacto")
+def render_contacto(tpl_block: str, tpl_form: str, forms: dict,
+                    lang: str, i18n: dict) -> str:
+    """El formulario de contacto con su titular, o nada si no hay GUID."""
+    inner = render_form(tpl_form, forms, "contacto", lang, i18n, "contacto")
     if not inner:
         return ""
-    return (
-        '<div class="contact-form-block" id="formulario">'
-        f'<h3>{esc(t(i18n, lang, "contact_form_title"))}</h3>'
-        f'<p>{esc(t(i18n, lang, "contact_form_p"))}</p>'
-        f"{inner}</div>"
-    )
+    return tpl_block.replace(marker("FORM"), inner)
 
 
 def render_analytics(ga4: str, hotjar: str, cfg: dict, prefix: str) -> str:
@@ -306,24 +401,6 @@ def render_analytics(ga4: str, hotjar: str, cfg: dict, prefix: str) -> str:
     return (
         f"<script>window.SITE_ANALYTICS={json.dumps(config, ensure_ascii=False)};</script>\n"
         f'<script src="{prefix}assets/consent.js" defer></script>'
-    )
-
-
-def render_consent_banner(i18n: dict, lang: str) -> str:
-    return (
-        '<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" '
-        f'aria-label="{esc(t(i18n, lang, "cookie_title"))}">'
-        '<div class="cookie-box">'
-        f'<div class="cookie-copy"><strong>{esc(t(i18n, lang, "cookie_title"))}</strong>'
-        f'<p>{esc(t(i18n, lang, "cookie_text"))}</p>'
-        f'<button type="button" class="cookie-link" data-legal-tab="cookies">'
-        f'{esc(t(i18n, lang, "cookie_more"))}</button></div>'
-        '<div class="cookie-actions">'
-        f'<button type="button" class="btn ghost" data-consent="reject">'
-        f'{esc(t(i18n, lang, "cookie_reject"))}</button>'
-        f'<button type="button" class="btn" data-consent="accept">'
-        f'{esc(t(i18n, lang, "cookie_accept"))}</button>'
-        '</div></div></div>'
     )
 
 
@@ -406,6 +483,33 @@ def apply_translations(markup: str, i18n: dict, lang: str) -> str:
         r'data-i18n-ph="(?P<key>[^"]+)"\s+placeholder="[^"]*"', replace_ph, result
     )
 
+    # Atributos traducibles: data-i18n-attr="aria-label=cookie_title", y
+    # varios separados por ';'. Hace falta porque aria-label y title no son
+    # el contenido del elemento y data-i18n no los alcanza.
+    def replace_attrs(m: re.Match) -> str:
+        tag = m.group(0)
+        for pair in m.group("spec").split(";"):
+            attr, _, key = pair.partition("=")
+            attr, key = attr.strip(), key.strip()
+            if not (attr and key):
+                continue
+            value = i18n.get(lang, {}).get(key)
+            if value is None:
+                missing.add(key)
+                value = i18n[DEFAULT_LANG].get(key, "")
+            value = html.escape(value, quote=True)
+            if re.search(rf'\s{re.escape(attr)}="', tag):
+                tag = re.sub(rf'(\s{re.escape(attr)}=")[^"]*"',
+                             lambda hit: hit.group(1) + value + '"', tag, count=1)
+            else:
+                tag = tag[:-1].rstrip() + f' {attr}="{value}">'
+        return tag
+
+    result = re.sub(
+        r'<[a-zA-Z0-9]+[^>]*\bdata-i18n-attr="(?P<spec>[^"]+)"[^>]*>',
+        replace_attrs, result,
+    )
+
     # Etiquetas que el JS intercambia (botón de copiar): van en atributos.
     for attr, key in (("data-copy-label", "cat_f_copy"),
                       ("data-copied-label", "cat_f_copied"),
@@ -438,34 +542,48 @@ def build() -> int:
     hotjar = (analytics_cfg.get("hotjar_id") or "").strip()
     measuring = bool(ga4 or hotjar)
 
-    header_tpl = (SRC / "partials" / "header.html").read_text(encoding="utf-8")
-    footer_tpl = (SRC / "partials" / "footer.html").read_text(encoding="utf-8")
+    # Elementos comunes: cada archivo de src/partials/ es un marcador.
+    partials = load_partials()
+    # Estos no se insertan tal cual, hay que rellenarlos antes.
+    tpl_form = partials.pop("FORM")
+    tpl_contacto = partials.pop("FORM_CONTACTO")
+    tpl_banner = partials.pop("CONSENT_BANNER")
+    tpl_prefs = partials.pop("CONSENT_PREFS")
 
     written: list[str] = []
     for lang, (folder, _, _) in LANGUAGES.items():
         out_root = REPO / folder if folder else REPO
         carta_tabs, carta_panels, carta_notes = render_carta(menu, i18n, lang)
 
+        # Lo que es igual en todas las páginas de este idioma.
+        common = dict(partials)
+        common["CARTA_TABS"] = carta_tabs
+        common["CARTA_PANELS"] = carta_panels
+        common["CARTA_NOTES"] = carta_notes
+        common["FORM_CATERING"] = render_form(
+            tpl_form, forms, "catering", lang, i18n, "catering")
+        common["FORM_CONTACTO"] = render_contacto(
+            tpl_contacto, tpl_form, forms, lang, i18n)
+        # Sin IDs de medición no hay nada que consentir: ni banner ni botón.
+        common["CONSENT_BANNER"] = tpl_banner if measuring else ""
+        common["CONSENT_PREFS"] = tpl_prefs if measuring else ""
+
         for page in PAGES:
             template = (SRC / "pages" / page).read_text(encoding="utf-8")
-            prefix = prefix_for(page, lang)
+            prefix = prefix_for(page, lang)     # hasta la raíz del sitio
+            home = lang_prefix_for(page)        # hasta la raíz del idioma
 
-            header = header_tpl.replace("<!--{{LANG_SWITCH}}-->", render_lang_switch(page, lang, i18n))
-            body = (template
-                    .replace("<!--{{HEADER}}-->", header)
-                    .replace("<!--{{FOOTER}}-->", footer_tpl)
-                    .replace("<!--{{HEAD}}-->", render_head(page, lang, meta, prefix))
-                    .replace("<!--{{ANALYTICS}}-->", render_analytics(ga4, hotjar, analytics_cfg, prefix))
-                    .replace("<!--{{CONSENT_BANNER}}-->", render_consent_banner(i18n, lang) if measuring else "")
-                    .replace("<!--{{CONSENT_PREFS}}-->",
-                             f'<button type="button" data-consent="reopen">{esc(t(i18n, lang, "cookie_prefs"))}</button>'
-                             if measuring else "")
-                    .replace("<!--{{CARTA_TABS}}-->", carta_tabs)
-                    .replace("<!--{{CARTA_PANELS}}-->", carta_panels)
-                    .replace("<!--{{CARTA_NOTES}}-->", carta_notes)
-                    .replace("<!--{{NOVEDADES}}-->", render_novedades(posts, i18n, lang, prefix))
-                    .replace("<!--{{FORM_CATERING}}-->", render_form(forms, "catering", lang, i18n, "catering"))
-                    .replace("<!--{{FORM_CONTACTO}}-->", render_contacto(forms, lang, i18n)))
+            # Y lo que cambia en cada página.
+            slots = dict(common)
+            slots["SEO"] = render_seo(page, lang, meta)
+            slots["ANALYTICS"] = render_analytics(ga4, hotjar, analytics_cfg, prefix)
+            slots["LANG_SWITCH"] = render_lang_switch(page, lang, i18n)
+            slots["NOVEDADES"] = render_novedades(posts, i18n, lang, prefix, home)
+
+            body = strip_source_notes(expand_partials(template, slots))
+            for name in leftover_markers(body):
+                print(f"  aviso [{lang}] {page}: marcador <!--{{{{{name}}}}}--> "
+                      f"sin resolver (¿falta src/partials/?)", file=sys.stderr)
 
             if "{{POST_DATE}}" in body:
                 slug = Path(page).stem
@@ -475,7 +593,9 @@ def build() -> int:
             body = resolve_mailboxes(body, lang)
             body = strip_conditionals(body, measuring)
             body = apply_translations(body, i18n, lang)
-            body = body.replace("{{LANG}}", lang).replace("{{PREFIX}}", prefix)
+            body = (body.replace("{{LANG}}", lang)
+                    .replace("{{PREFIX}}", prefix)
+                    .replace("{{HOME}}", home))
 
             target = out_root / page
             target.parent.mkdir(parents=True, exist_ok=True)

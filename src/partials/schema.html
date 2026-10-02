@@ -1,0 +1,25 @@
+<!--# Ficha del restaurante para Google (NAP: nombre, dirección, teléfono).
+     Un solo sitio donde cambiarlos; va en la portada, que es la página
+     que describe. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "La Carreta del Carretón",
+  "servesCuisine": "Cubana",
+  "telephone": "+34922515066",
+  "email": "info@lacarretadelcarreton.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "C. el Carretón, 4-7",
+    "postalCode": "38550",
+    "addressLocality": "Arafo",
+    "addressRegion": "Santa Cruz de Tenerife",
+    "addressCountry": "ES"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday"], "opens": "12:30", "closes": "16:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "12:00", "closes": "16:00" }
+  ]
+}
+</script>

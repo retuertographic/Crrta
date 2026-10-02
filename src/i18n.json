@@ -209,7 +209,14 @@
     "reserve_whatsapp_note": "Escríbenos cuando quieras; contestamos en horario de cocina.",
     "reserve_by_form": "Por el formulario",
     "reserve_form_value": "Aquí mismo, más abajo",
-    "reserve_form_note": "Sin salir de la página y sin abrir nada."
+    "reserve_form_note": "Sin salir de la página y sin abrir nada.",
+    "aria_home": "La Carreta del Carretón — inicio",
+    "aria_menu": "Abrir menú",
+    "aria_to_top": "Volver arriba",
+    "aria_map": "Ubicación de La Carreta del Carretón",
+    "aria_reviews_ta": "Reseñas en TripAdvisor",
+    "aria_reviews_g": "Reseñas en Google",
+    "copy_link": "Copiar enlace"
   },
   "en": {
     "nav_home": "Home",
@@ -428,6 +435,13 @@
     "reserve_whatsapp_note": "Message any time; we reply during kitchen hours.",
     "reserve_by_form": "With the form",
     "reserve_form_value": "Right here, further down",
-    "reserve_form_note": "Without leaving the page or opening anything."
+    "reserve_form_note": "Without leaving the page or opening anything.",
+    "aria_home": "La Carreta del Carretón — home",
+    "aria_menu": "Open menu",
+    "aria_to_top": "Back to top",
+    "aria_map": "Where La Carreta del Carretón is",
+    "aria_reviews_ta": "Reviews on TripAdvisor",
+    "aria_reviews_g": "Reviews on Google",
+    "copy_link": "Copy link"
   }
 }
