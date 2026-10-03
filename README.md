@@ -31,7 +31,9 @@ carta/carta-hoja.csv        la hoja de la carta, exportada a CSV
 carta/descripciones.json    las descripciones de los platos, en los dos idiomas
 scripts/build_menu.py       CSV + descripciones -> menu-data.json
 scripts/build_site.py       plantillas + traducciones + carta -> la web
+scripts/fetch_fonts.py      descarga las fuentes y escribe sus @font-face
 assets/site.css             el diseño
+assets/fonts/               las fuentes, alojadas aquí y no en Google
 assets/site.js              interacción (pestañas, menú, galería, compartir)
 assets/consent.js           banner de cookies y carga de la medición
 src/analytics.json          IDs de GA4 y Hotjar (vacíos = desactivados)
@@ -144,6 +146,30 @@ Lo que hay montado y conviene no deshacer sin pensarlo:
 
 Pendiente: el dorado de la marca (`--gold: #A9833F`) no llega a 4,5:1 sobre
 los fondos claros. `#826430` sí, con el mismo tono.
+
+## Las fuentes
+
+Están en `assets/fonts/`, no en Google. Dos motivos: la petición a
+`fonts.googleapis.com` salía nada más abrir la página —antes de que nadie
+aceptara nada, y con ella la IP del visitante—, y eran dos conexiones más y
+una hoja de estilo de terceros bloqueando el render.
+
+```bash
+python scripts/fetch_fonts.py    # solo si cambian las familias o los pesos
+```
+
+Baja el subconjunto `latin` (cubre el español y el inglés enteros: tildes, ñ,
+¿ ¡ y ½), escribe los `@font-face` entre marcas al principio de
+`assets/site.css` y **calcula las fuentes de reserva**. Esto último importa:
+sin ellas el texto se pinta primero con la fuente del sistema y al llegar la
+definitiva cambia de altura — en el titular de la portada eso valía 0,22 de
+CLS, por encima del umbral de Google. Con `size-adjust` y los
+`ascent-override` calculados a partir de las métricas reales, la reserva
+ocupa exactamente lo mismo y no se mueve nada.
+
+Si añades una familia o un peso, tócalo en `scripts/fetch_fonts.py`,
+ejecútalo, y revisa las precargas de `src/partials/head.html`: ahí van las
+tres que se ven sin bajar (Playfair, Yellowtail y Poppins 400).
 
 ## Cómo se publica
 

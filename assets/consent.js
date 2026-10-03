@@ -37,15 +37,23 @@
     document.head.appendChild(s);
   }
 
-  /* Clics en el teléfono y en los correos: es la conversión que importa
-     en esta web, porque no hay formulario de reserva. */
+  /* Clics en las cuatro vías de reserva. El envío del formulario ocurre
+     dentro del iframe del CRM, en otro dominio, así que desde aquí no se ve:
+     esto es lo que sí se puede medir. Marca contact_click como conversión en
+     GA4 y usa «method» para separar las cuatro. */
   function trackContactClicks() {
     document.addEventListener('click', function (e) {
-      var link = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
-      if (!link || typeof window.gtag !== 'function') return;
+      if (!e.target.closest || typeof window.gtag !== 'function') return;
+      var link = e.target.closest(
+        'a[href^="tel:"], a[href^="mailto:"], a[href*="wa.me"], a[href="#formulario"]');
+      if (!link) return;
       var href = link.getAttribute('href');
+      var method = 'correo';
+      if (href.indexOf('tel:') === 0) method = 'telefono';
+      else if (href.indexOf('wa.me') !== -1) method = 'whatsapp';
+      else if (href === '#formulario') method = 'formulario';
       window.gtag('event', 'contact_click', {
-        method: href.indexOf('tel:') === 0 ? 'telefono' : 'correo',
+        method: method,
         link_url: href,
         page_language: document.documentElement.lang || 'es'
       });

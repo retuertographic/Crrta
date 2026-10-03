@@ -99,12 +99,16 @@ def t(i18n: dict, lang: str, key: str, fallback: str = "") -> str:
 
 
 def field(obj: dict, key: str, lang: str) -> str:
-    """Devuelve obj[key_lang] y, si no existe esa traducción, obj[key]."""
+    """Devuelve el valor de key en este idioma.
+
+    Hay dos convenciones en los datos: la carta trae «name» y «name_en», y
+    las novedades «title_es» y «title_en». Se prueban las dos, por ese orden,
+    y se cae al idioma por defecto si falta la traducción."""
     if lang != DEFAULT_LANG:
         value = obj.get(f"{key}_{lang}")
         if value:
             return value
-    return obj.get(key) or ""
+    return obj.get(key) or obj.get(f"{key}_{DEFAULT_LANG}") or ""
 
 
 def prefix_for(page: str, lang: str) -> str:
@@ -217,8 +221,8 @@ def render_novedades(posts: list[dict], i18n: dict, lang: str,
         return f'<div class="nov-grid"><div class="nov-empty">{esc(t(i18n, lang, "novedades_empty"))}</div></div>'
     cards = ['<div class="nov-grid">']
     for post in sorted(posts, key=lambda p: p["date"], reverse=True):
-        title = esc(field(post, "title", lang) or post.get("title_es", ""))
-        excerpt = esc(field(post, "excerpt", lang) or post.get("excerpt_es", ""))
+        title = esc(field(post, "title", lang))
+        excerpt = esc(field(post, "excerpt", lang))
         cards.append(
             f'<article class="nov-card">'
             f'<div class="thumb"><img src="{prefix}{esc(post["image"])}" alt="{title}" loading="lazy"></div>'
@@ -343,6 +347,42 @@ def render_seo(page: str, lang: str, meta: dict) -> str:
         f'<link rel="alternate" hreflang="x-default" href="{esc(page_url(page, DEFAULT_LANG))}">'
     )
     return "\n".join(lines)
+
+
+def render_breadcrumbs(page: str, lang: str, i18n: dict, posts: list[dict]) -> str:
+    """Migas de pan en JSON-LD, para que Google enseñe la ruta en el resultado
+    en vez de la URL cruda.
+
+    La portada no lleva: es el primer escalón de todas las demás. La 404
+    tampoco, que no está en ninguna ruta."""
+    if page in ("index.html", "404.html"):
+        return ""
+
+    inicio = t(i18n, lang, "nav_home", "Inicio")
+    ruta = [(inicio, page_url("index.html", lang))]
+    if page == "catering.html":
+        ruta.append((t(i18n, lang, "nav_catering"), page_url(page, lang)))
+    elif page == "novedades.html":
+        ruta.append((t(i18n, lang, "nav_novedades"), page_url(page, lang)))
+    elif page == "legal.html":
+        ruta.append((t(i18n, lang, "legal_title"), page_url(page, lang)))
+    elif page.startswith("novedades/"):
+        ruta.append((t(i18n, lang, "nav_novedades"), page_url("novedades.html", lang)))
+        post = next((x for x in posts if x["slug"] == Path(page).stem), None)
+        if post:
+            ruta.append((field(post, "title", lang), page_url(page, lang)))
+    else:
+        return ""
+
+    items = [
+        {"@type": "ListItem", "position": i, "name": nombre, "item": url}
+        for i, (nombre, url) in enumerate(ruta, start=1)
+    ]
+    datos = {"@context": "https://schema.org", "@type": "BreadcrumbList",
+             "itemListElement": items}
+    return ('<script type="application/ld+json">\n'
+            + json.dumps(datos, ensure_ascii=False, indent=2)
+            + "\n</script>")
 
 
 def render_lang_switch(page: str, lang: str, i18n: dict) -> str:
@@ -514,14 +554,6 @@ def apply_translations(markup: str, i18n: dict, lang: str) -> str:
         replace_attrs, result,
     )
 
-    # Etiquetas que el JS intercambia (botón de copiar): van en atributos.
-    for attr, key in (("data-copy-label", "cat_f_copy"),
-                      ("data-copied-label", "cat_f_copied"),
-                      ("data-service-line", "cat_f_service_line")):
-        value = i18n.get(lang, {}).get(key) or i18n[DEFAULT_LANG].get(key, "")
-        result = re.sub(
-            rf'{attr}="[^"]*"', f'{attr}="{html.escape(value, quote=True)}"', result
-        )
     for key in sorted(missing):
         print(f"  aviso [{lang}]: falta la traducción de «{key}»", file=sys.stderr)
     return result
@@ -580,6 +612,7 @@ def build() -> int:
             # Y lo que cambia en cada página.
             slots = dict(common)
             slots["SEO"] = render_seo(page, lang, meta)
+            slots["BREADCRUMBS"] = render_breadcrumbs(page, lang, i18n, posts)
             slots["ANALYTICS"] = render_analytics(ga4, hotjar, analytics_cfg, prefix)
             slots["LANG_SWITCH"] = render_lang_switch(page, lang, i18n)
             slots["NOVEDADES"] = render_novedades(posts, i18n, lang, prefix, home)
