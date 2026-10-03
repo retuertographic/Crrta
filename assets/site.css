@@ -115,7 +115,10 @@
   .nav-links a:hover::after{width:100%;}
   .nav-links a.btn{padding:11px 24px;color:#fff!important;white-space:nowrap;}
   .nav-links a.btn::after{display:none;}
-  .burger{display:none;background:none;border:none;font-size:1.6rem;color:var(--gold-light);cursor:pointer;}
+  .burger{display:none;background:none;border:none;font-size:1.6rem;color:var(--gold-light);cursor:pointer;
+    /* WCAG 2.2 (2.5.8): el objetivo táctil no baja de 24x24; 44 es
+       lo cómodo con el pulgar. */
+    min-width:44px;min-height:44px;display:none;align-items:center;justify-content:center;padding:0;}
 
   @media (max-width:1100px){
     .nav-links{
@@ -131,7 +134,7 @@
     .nav-links.open{transform:translateX(0);visibility:visible;}
     .nav-links a:not(.btn){color:var(--ink);}
     .nav-links a.btn{margin-top:10px;}
-    .burger{display:block;z-index:110;order:-1;color:var(--gold);}
+    .burger{display:flex;z-index:110;order:-1;color:var(--gold);}
     header.scrolled .burger{color:var(--ink);}
     .brand{flex:1;justify-content:center;}
   }
@@ -334,7 +337,8 @@
   }
   .lightbox.open{opacity:1;pointer-events:auto;}
   .lightbox img{max-width:min(900px,90vw);max-height:85vh;border-radius:12px;box-shadow:0 30px 60px rgba(0,0,0,.5);}
-  .lightbox-close{position:absolute;top:26px;right:32px;color:#fff;font-size:2rem;cursor:pointer;line-height:1;background:none;border:none;}
+  .lightbox-close{position:absolute;top:26px;right:32px;color:#fff;font-size:2rem;cursor:pointer;line-height:1;background:none;border:none;
+    min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;}
 
   /* ---------- CONTACTO / RESERVAS ---------- */
   .contact{background:var(--cream);padding:120px 0 100px;}
@@ -438,7 +442,7 @@
   .legal-links{display:flex;gap:18px;flex-wrap:wrap;}
   .legal-links a, .legal-links button{
     background:none;border:none;cursor:pointer;font-family:'Poppins',sans-serif;
-    color:rgba(255,255,255,.72);font-size:.78rem;transition:color .2s ease;padding:0;
+    color:rgba(255,255,255,.72);font-size:.78rem;transition:color .2s ease;padding:6px 0;
     text-decoration:none;
   }
   .legal-links a:hover, .legal-links button:hover{color:var(--gold-light);}
@@ -757,3 +761,32 @@
   .section-title.flush{margin-bottom:0;}
 
   .nf-actions{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 18px;}
+
+  /* ---------- ACCESIBILIDAD ---------- */
+
+  /* Primer elemento de la página, fuera de la pantalla hasta que recibe el
+     foco: permite saltarse los nueve enlaces del menú. */
+  .skip-link{
+    position:absolute;left:12px;top:-72px;z-index:200;
+    background:var(--ink);color:#fff;padding:12px 20px;border-radius:0 0 12px 12px;
+    font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:600;
+    text-decoration:none;transition:top .2s ease;
+  }
+  .skip-link:focus{top:0;}
+
+  /* El contorno del navegador se pierde sobre los fondos oscuros de la
+     cabecera y del pie; este se ve en los dos. :focus-visible solo aparece
+     al navegar con teclado, no al hacer clic. */
+  a:focus-visible, button:focus-visible, [role="tab"]:focus-visible,
+  iframe:focus-visible, .lang-link:focus-visible{
+    outline:3px solid var(--gold-light);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+  header a:focus-visible, header button:focus-visible,
+  footer a:focus-visible, footer button:focus-visible,
+  .lightbox-close:focus-visible{outline-color:#fff;}
+
+  /* Los enlaces sueltos del pie no están dentro de un párrafo, así que no
+     les vale la excepción de WCAG 2.5.8 para enlaces en línea. */
+  footer .book{padding:6px 0;display:inline-block;}

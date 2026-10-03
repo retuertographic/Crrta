@@ -226,7 +226,9 @@
     "nf_call": "O llámanos al",
     "legal_body_title": "Textos legales",
     "nf_what": "Qué puedes hacer",
-    "nf_title2": "pero la cocina sigue abierta"
+    "nf_title2": "pero la cocina sigue abierta",
+    "skip_to_content": "Saltar al contenido",
+    "aria_menu_close": "Cerrar menú"
   },
   "en": {
     "nav_home": "Home",
@@ -462,6 +464,8 @@
     "nf_call": "Or give us a ring on",
     "legal_body_title": "Legal texts",
     "nf_what": "What you can do",
-    "nf_title2": "but the kitchen is still open"
+    "nf_title2": "but the kitchen is still open",
+    "skip_to_content": "Skip to content",
+    "aria_menu_close": "Close menu"
   }
 }

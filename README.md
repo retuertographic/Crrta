@@ -118,6 +118,33 @@ sí salen en el HTML.
 <a data-i18n-attr="aria-label=aria_reviews_g;title=aria_reviews_g" ...>
 ```
 
+## Accesibilidad
+
+Lo que hay montado y conviene no deshacer sin pensarlo:
+
+- **`<main id="contenido">`** envuelve el cuerpo de cada página, y el primer
+  elemento enfocable es un enlace «Saltar al contenido» que apunta ahí. Sin
+  él, quien navega con teclado se come los nueve enlaces del menú en cada
+  página.
+- **Las pestañas de la carta** siguen el patrón de la WAI: solo una entra en
+  el tabulador (`tabindex="0"`) y las demás se recorren con las flechas,
+  Inicio y Fin. Si tocas `activar()` en `assets/site.js`, el `tabindex`
+  tiene que seguir moviéndose con la pestaña activa: si no, las otras
+  categorías dejan de alcanzarse con el teclado.
+- **La hamburguesa** mantiene `aria-expanded`, cambia su `aria-label` entre
+  «Abrir menú» y «Cerrar menú» (los dos textos vienen resueltos desde
+  `i18n.json` en `data-label-open` y `data-label-close`), y el cajón se
+  cierra con Escape —devolviendo el foco al botón— y tocando fuera.
+- **Foco visible** con `:focus-visible`, en dorado claro sobre fondo claro y
+  en blanco sobre la cabecera y el pie.
+- **Objetivos táctiles** de 44 px en la hamburguesa y el cierre de la
+  galería, y de 26 px en los enlaces del pie. Los enlaces que van dentro de
+  una línea de texto (teléfono, correos, «Cómo llegar») se quedan como están:
+  WCAG 2.5.8 los exceptúa.
+
+Pendiente: el dorado de la marca (`--gold: #A9833F`) no llega a 4,5:1 sobre
+los fondos claros. `#826430` sí, con el mismo tono.
+
 ## Cómo se publica
 
 ```bash

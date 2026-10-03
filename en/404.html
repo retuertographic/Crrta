@@ -27,6 +27,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#contenido" data-i18n="skip_to_content">Skip to content</a>
+
 <header id="site-header">
   <div class="wrap">
     <nav>
@@ -48,10 +50,13 @@
 
       <div class="lang-switch"><a class="lang-link" href="../404.html" hreflang="es-ES" lang="es"><span class="flag">🇪🇸</span><span>ES</span><span class="sr-only"> — Español</span></a></div>
 
-      <button class="burger" id="burgerBtn" data-i18n-attr="aria-label=aria_menu" aria-label="Open menu">☰</button>
+      <button class="burger" id="burgerBtn" type="button" aria-expanded="false" aria-controls="navLinks"
+              data-i18n-attr="aria-label=aria_menu;data-label-open=aria_menu;data-label-close=aria_menu_close" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">☰</button>
     </nav>
   </div>
 </header>
+
+<main id="contenido">
 
 <section class="cat-hero">
   <div class="wrap">
@@ -72,6 +77,8 @@
       <a href="tel:+34922515066">922 51 50 66</a></p>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">

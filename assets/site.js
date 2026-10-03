@@ -22,9 +22,30 @@
   const burger = document.getElementById('burgerBtn');
   const navLinks = document.getElementById('navLinks');
   if (burger && navLinks) {
-    burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    const setMenu = (open) => {
+      navLinks.classList.toggle('open', open);
+      // aria-expanded es lo que anuncia al lector de pantalla si el cajón
+      // está abierto; sin él, el botón no dice nada de su estado.
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      const label = open ? burger.dataset.labelClose : burger.dataset.labelOpen;
+      if (label) burger.setAttribute('aria-label', label);
+    };
+    burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
     navLinks.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => navLinks.classList.remove('open')));
+      a.addEventListener('click', () => setMenu(false)));
+    // Salir sin tener que acertarle otra vez al botón: con Escape, y
+    // tocando fuera del cajón.
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        setMenu(false);
+        burger.focus();
+      }
+    });
+    document.addEventListener('click', (e) => {
+      if (!navLinks.classList.contains('open')) return;
+      if (navLinks.contains(e.target) || burger.contains(e.target)) return;
+      setMenu(false);
+    });
   }
 
   /* ---- Horario: resalta el día de hoy ---- */
@@ -39,18 +60,35 @@
   }
 
   /* ---- Carta: las categorías ya están en el HTML, solo se alternan ---- */
-  const tabs = document.querySelectorAll('.menu-tab');
+  const tabs = Array.prototype.slice.call(document.querySelectorAll('.menu-tab'));
   const panels = document.querySelectorAll('.menu-panel');
   if (tabs.length && panels.length) {
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const target = tab.getAttribute('data-category');
-        tabs.forEach(t => {
-          const on = t === tab;
-          t.classList.toggle('active', on);
-          t.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        panels.forEach(p => p.classList.toggle('active', p.getAttribute('data-category') === target));
+    // Con role="tab" solo una pestaña entra en el tabulador y las demás se
+    // recorren con las flechas (patrón de pestañas de la WAI). Por eso aquí
+    // hay que mover también el tabindex: si no, las otras categorías no se
+    // alcanzan con el teclado.
+    const activar = (tab, mueveFoco) => {
+      const target = tab.getAttribute('data-category');
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.classList.toggle('active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.setAttribute('tabindex', on ? '0' : '-1');
+      });
+      panels.forEach(p => p.classList.toggle('active', p.getAttribute('data-category') === target));
+      if (mueveFoco) tab.focus();
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => activar(tab, false));
+      tab.addEventListener('keydown', (e) => {
+        const salto = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+        let destino = null;
+        if (salto) destino = tabs[(i + salto + tabs.length) % tabs.length];
+        else if (e.key === 'Home') destino = tabs[0];
+        else if (e.key === 'End') destino = tabs[tabs.length - 1];
+        if (!destino) return;
+        e.preventDefault();
+        activar(destino, true);
       });
     });
   }

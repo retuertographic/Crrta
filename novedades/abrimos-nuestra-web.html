@@ -27,6 +27,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#contenido" data-i18n="skip_to_content">Saltar al contenido</a>
+
 <header id="site-header">
   <div class="wrap">
     <nav>
@@ -48,10 +50,13 @@
 
       <div class="lang-switch"><a class="lang-link" href="../en/novedades/abrimos-nuestra-web.html" hreflang="en" lang="en"><span class="flag">🇬🇧</span><span>EN</span><span class="sr-only"> — English</span></a></div>
 
-      <button class="burger" id="burgerBtn" data-i18n-attr="aria-label=aria_menu" aria-label="Abrir menú">☰</button>
+      <button class="burger" id="burgerBtn" type="button" aria-expanded="false" aria-controls="navLinks"
+              data-i18n-attr="aria-label=aria_menu;data-label-open=aria_menu;data-label-close=aria_menu_close" aria-label="Abrir menú" data-label-open="Abrir menú" data-label-close="Cerrar menú">☰</button>
     </nav>
   </div>
 </header>
+
+<main id="contenido">
 
 <section class="post-hero">
   <div class="wrap">
@@ -79,6 +84,8 @@
     <a class="post-back" href="../novedades.html" data-i18n="post_back">← Volver a novedades</a>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">
