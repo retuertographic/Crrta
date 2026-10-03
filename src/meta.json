@@ -52,5 +52,15 @@
       "title": "Legal information · La Carreta del Carretón",
       "description": "Legal notice, privacy policy and cookie policy for La Carreta del Carretón, a Cuban restaurant in Arafo, Tenerife."
     }
+  },
+  "404.html": {
+    "es": {
+      "title": "Página no encontrada · La Carreta del Carretón",
+      "description": "La página que buscas no existe. Vuelve al inicio, consulta la carta de nuestro restaurante cubano en Arafo o llámanos al 922 51 50 66 para reservar mesa."
+    },
+    "en": {
+      "title": "Page not found · La Carreta del Carretón",
+      "description": "The page you are looking for doesn't exist. Go back to the home page, see the menu of our Cuban restaurant in Arafo, or call +34 922 51 50 66 to book."
+    }
   }
 }

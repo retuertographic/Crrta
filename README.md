@@ -38,9 +38,20 @@ src/analytics.json          IDs de GA4 y Hotjar (vacíos = desactivados)
 src/forms.json              IDs de los formularios del CRM
 img/                        logotipo y fotografías
 
-index.html, novedades.html, novedades/, en/, sitemap.xml, robots.txt
+_config.yml                 lo que GitHub Pages NO publica (src/, scripts/, carta/)
+
+index.html, 404.html, novedades.html, novedades/, en/, sitemap.xml, robots.txt
                             GENERADOS: no se editan a mano
 ```
+
+`_config.yml` importa: sin él, GitHub Pages publica el repositorio entero y
+las plantillas de `src/` quedan accesibles y rastreables, con `{{LANG}}` en
+el atributo `lang` y sin canonical. Si alguna vez se renombra una carpeta
+de código, hay que añadirla ahí.
+
+La página de error es `404.html` **en la raíz**: GitHub Pages solo usa esa,
+también para las rutas bajo `/en/`, así que lleva los dos idiomas. No entra
+en el sitemap.
 
 ## Elementos comunes (`src/partials/`)
 

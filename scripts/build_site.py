@@ -62,6 +62,7 @@ PAGES = [
     "catering.html",
     "novedades.html",
     "novedades/abrimos-nuestra-web.html",
+    "404.html",
 ]
 
 MONTHS = {
@@ -155,10 +156,13 @@ def render_carta(menu: dict, i18n: dict, lang: str) -> tuple[str, str, str]:
         label = esc(field(cat, "category", lang))
         tabs.append(
             f'<button class="menu-tab{active}" data-category="{slug}" role="tab" '
+            f'id="tab-{slug}" aria-controls="panel-{slug}" '
+            f'tabindex="{"0" if index == 0 else "-1"}" '
             f'aria-selected="{"true" if index == 0 else "false"}">{label}</button>'
         )
 
-        rows = [f'<div class="menu-panel{active}" data-category="{slug}" role="tabpanel">']
+        rows = [f'<div class="menu-panel{active}" data-category="{slug}" role="tabpanel" '
+                f'id="panel-{slug}" aria-labelledby="tab-{slug}" tabindex="0">']
         for item in cat["items"]:
             if "group" in item:
                 rows.append(f'<div class="menu-group">{esc(field(item, "group", lang))}</div>')
@@ -173,7 +177,7 @@ def render_carta(menu: dict, i18n: dict, lang: str) -> tuple[str, str, str]:
             certain = item.get("allergens") or []
             maybe = item.get("allergens_maybe") or []
             if certain or maybe:
-                chips = [f'<div class="mi-allergens" aria-label="{esc(t(i18n, lang, "allergens_label"))}">']
+                chips = [f'<div class="mi-allergens" role="group" aria-label="{esc(t(i18n, lang, "allergens_label"))}">']
                 for code in certain:
                     chips.append(f'<span class="al">{esc(allergen_names.get(code, code))}</span>')
                 for code in maybe:
@@ -618,6 +622,8 @@ def write_sitemap() -> None:
     today = date.today().isoformat()
     urls = []
     for page in PAGES:
+        if page == "404.html":
+            continue
         for lang in LANGUAGES:
             alternates = "".join(
                 f'\n    <xhtml:link rel="alternate" hreflang="{LANGUAGES[c][1]}" '
@@ -638,7 +644,14 @@ def write_sitemap() -> None:
 
 def write_robots() -> None:
     (REPO / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8"
+        "User-agent: *\n"
+        "Allow: /\n"
+        # El código con el que se genera la web no es la web. _config.yml ya
+        # evita publicarlo; esto es la segunda barrera.
+        "Disallow: /src/\n"
+        "Disallow: /scripts/\n"
+        "Disallow: /carta/\n"
+        f"\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8"
     )
 
 

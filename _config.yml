@@ -1,0 +1,11 @@
+# GitHub Pages publica el repositorio entero, y aquí dentro conviven dos
+# cosas: la web (los HTML de la raíz, /en/ y /novedades/) y el código con
+# el que se genera. Esto deja fuera lo segundo, que si no se publica tal
+# cual y Google puede indexar las plantillas sin título ni canonical.
+exclude:
+  - src/
+  - scripts/
+  - carta/
+  - README.md
+  - .gitattributes
+  - .gitignore

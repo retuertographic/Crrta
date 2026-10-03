@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /src/
+Disallow: /scripts/
+Disallow: /carta/
 
 Sitemap: https://retuertographic.github.io/Crrta/sitemap.xml

@@ -216,7 +216,17 @@
     "aria_map": "Ubicación de La Carreta del Carretón",
     "aria_reviews_ta": "Reseñas en TripAdvisor",
     "aria_reviews_g": "Reseñas en Google",
-    "copy_link": "Copiar enlace"
+    "copy_link": "Copiar enlace",
+    "novedades_list_title": "Entradas publicadas",
+    "nf_eyebrow": "Error 404",
+    "nf_title": "Esta página no existe",
+    "nf_p": "Puede que la hayamos movido de sitio, o que el enlace venga con una errata.",
+    "nf_home": "Volver al inicio",
+    "nf_carta": "Ver la carta",
+    "nf_call": "O llámanos al",
+    "legal_body_title": "Textos legales",
+    "nf_what": "Qué puedes hacer",
+    "nf_title2": "pero la cocina sigue abierta"
   },
   "en": {
     "nav_home": "Home",
@@ -442,6 +452,16 @@
     "aria_map": "Where La Carreta del Carretón is",
     "aria_reviews_ta": "Reviews on TripAdvisor",
     "aria_reviews_g": "Reviews on Google",
-    "copy_link": "Copy link"
+    "copy_link": "Copy link",
+    "novedades_list_title": "Published posts",
+    "nf_eyebrow": "Error 404",
+    "nf_title": "This page doesn't exist",
+    "nf_p": "We may have moved it, or the link may have a typo in it.",
+    "nf_home": "Back to the home page",
+    "nf_carta": "See the menu",
+    "nf_call": "Or give us a ring on",
+    "legal_body_title": "Legal texts",
+    "nf_what": "What you can do",
+    "nf_title2": "but the kitchen is still open"
   }
 }
