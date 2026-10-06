@@ -1,12 +1,21 @@
 <!--# Ficha del restaurante para Google (NAP: nombre, dirección, teléfono).
-     Un solo sitio donde cambiarlos; va en la portada, que es la página
-     que describe. -->
+     Un solo sitio donde cambiarlos; va en la portada, que es la página que
+     describe. El @id es el mismo en español y en inglés para que Google vea
+     un restaurante y no dos.
+
+     Deliberadamente NO lleva aggregateRating: las 700 reseñas son de Google,
+     y sus directrices no permiten marcar como propias las valoraciones
+     recogidas en otro sitio. La nota se enseña en el hero, enlazada a la
+     ficha de Google, que es donde se puede comprobar. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
+  "@id": "https://retuertographic.github.io/Crrta/#restaurante",
   "name": "La Carreta del Carretón",
-  "servesCuisine": "Cubana",
+  "url": "https://retuertographic.github.io/Crrta/",
+  "image": "https://retuertographic.github.io/Crrta/img/salon.webp",
+  "servesCuisine": ["Cubana", "Canaria"],
   "telephone": "+34922515066",
   "email": "info@lacarretadelcarreton.com",
   "address": {
@@ -20,6 +29,13 @@
   "openingHoursSpecification": [
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday"], "opens": "12:30", "closes": "16:00" },
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "12:00", "closes": "16:00" }
+  ],
+  "hasMenu": "https://retuertographic.github.io/Crrta/#carta",
+  "acceptsReservations": "https://retuertographic.github.io/Crrta/#contacto",
+  "currenciesAccepted": "EUR",
+  "sameAs": [
+    "https://www.facebook.com/lacarretadelcarreton/",
+    "https://www.tripadvisor.es/Restaurant_Review-g1190084-d7106801-Reviews-La_Carreta_del_Carreton-Arafo_Tenerife_Canary_Islands.html"
   ]
 }
 </script>

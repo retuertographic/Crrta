@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>La Carreta del Carretón · Cocina cubana en Arafo, Tenerife</title>
-<meta name="description" content="Restaurante cubano en Arafo, Tenerife. Carnes a la brasa, cerdo, el postre Teide y una carta con alérgenos. Abrimos de miércoles a domingo al mediodía. Reservas: 922 51 50 66.">
+<title>La Carreta del Carretón · Cuba y Canarias en Arafo</title>
+<meta name="description" content="Restaurante familiar en el casco de Arafo, Tenerife. Platos cubanos de toda la vida y platos con alma canaria, en la misma mesa. Solo a mediodía.">
 <link rel="canonical" href="https://retuertographic.github.io/Crrta/">
-<meta property="og:title" content="La Carreta del Carretón · Cocina cubana en Arafo, Tenerife">
-<meta property="og:description" content="Restaurante cubano en Arafo, Tenerife. Carnes a la brasa, cerdo, el postre Teide y una carta con alérgenos. Abrimos de miércoles a domingo al mediodía. Reservas: 922 51 50 66.">
+<meta property="og:title" content="La Carreta del Carretón · Cuba y Canarias en Arafo">
+<meta property="og:description" content="Restaurante familiar en el casco de Arafo, Tenerife. Platos cubanos de toda la vida y platos con alma canaria, en la misma mesa. Solo a mediodía.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://retuertographic.github.io/Crrta/">
 <meta property="og:image" content="https://retuertographic.github.io/Crrta/img/logo-square.jpg">
@@ -30,8 +30,11 @@
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
+  "@id": "https://retuertographic.github.io/Crrta/#restaurante",
   "name": "La Carreta del Carretón",
-  "servesCuisine": "Cubana",
+  "url": "https://retuertographic.github.io/Crrta/",
+  "image": "https://retuertographic.github.io/Crrta/img/salon.webp",
+  "servesCuisine": ["Cubana", "Canaria"],
   "telephone": "+34922515066",
   "email": "info@lacarretadelcarreton.com",
   "address": {
@@ -45,6 +48,13 @@
   "openingHoursSpecification": [
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday"], "opens": "12:30", "closes": "16:00" },
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "12:00", "closes": "16:00" }
+  ],
+  "hasMenu": "https://retuertographic.github.io/Crrta/#carta",
+  "acceptsReservations": "https://retuertographic.github.io/Crrta/#contacto",
+  "currenciesAccepted": "EUR",
+  "sameAs": [
+    "https://www.facebook.com/lacarretadelcarreton/",
+    "https://www.tripadvisor.es/Restaurant_Review-g1190084-d7106801-Reviews-La_Carreta_del_Carreton-Arafo_Tenerife_Canary_Islands.html"
   ]
 }
 </script>
@@ -86,13 +96,18 @@
 <!-- ================= HERO ================= -->
 <section class="hero" id="inicio">
   <div class="wrap">
-    <span class="hero-tag" data-i18n="hero_tag">🇨🇺 Cocina cubana · Arafo</span>
+    <span class="hero-tag" data-i18n="hero_tag">Cuba y Canarias en la misma mesa · Arafo</span>
     <h1><span data-i18n="hero_title1">Aquí se come sin prisa</span><span class="script" data-i18n="hero_title2">y se repite postre</span></h1>
-    <p data-i18n="hero_p">Cocina cubana casera en el casco de Arafo: carnes a la brasa, cerdo tratado como se debe y el postre Teide, que es casi un motivo de viaje en sí mismo.</p>
+    <p data-i18n="hero_p">Restaurante pequeño y familiar en el casco de Arafo. Hay platos cubanos de toda la vida, platos con alma canaria y alguna mezcla de las dos cocinas. Abrimos solo a mediodía.</p>
     <div class="hero-ctas">
       <a href="tel:+34922515066" class="btn" data-i18n="cta_call">📞 Llamar y reservar</a>
       <a href="#carta" class="btn outline" data-i18n="hero_btn2">Ver la carta</a>
     </div>
+    <p class="hero-reviews">
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=La+Carreta+del+Carret%C3%B3n+Arafo"
+         target="_blank" rel="noopener" data-i18n="hero_reviews">4,4 ★ en Google con más de 700 reseñas</a>
+    </p>
+
     <div class="hero-badges">
       <span data-i18n="badge_1">🔥 Brasa y parrilla</span>
       <span data-i18n="badge_2">🍮 Postre Teide</span>
@@ -114,10 +129,10 @@
         </div>
       </div>
       <div class="intro-text">
-        <span class="eyebrow" data-i18n="intro_eyebrow">De Cuba a Tenerife</span>
-        <h2 class="section-title"><span data-i18n="intro_title1">Una casa cubana</span><span class="accent" data-i18n="intro_title2">en el corazón de Arafo</span></h2>
-        <p data-i18n="intro_p1">La Carreta del Carretón es un restaurante pequeño y familiar en el casco de Arafo, donde la cocina cubana se hace como en casa: a fuego lento, con producto de aquí y recetas de allá.</p>
-        <p data-i18n="intro_p2">Manteles de cuadros, pared de piedra volcánica y un patio con plantas. Se llena, así que es mejor llamar antes y reservar la mesa.</p>
+        <span class="eyebrow" data-i18n="intro_eyebrow">Raíces cubanas, corazón canario</span>
+        <h2 class="section-title"><span data-i18n="intro_title1">Cuba y Canarias</span><span class="accent" data-i18n="intro_title2">en la misma mesa</span></h2>
+        <p data-i18n="intro_p1">No somos un restaurante de fusión. En la carta hay platos cubanos de toda la vida —ropa vieja, congrí, tamal, tostones, pudin de guayaba— y platos con alma canaria —garbanzas, croquetas de gofio con costilla, pata asada con mojo de cebolla, vino blanco de Güímar—. Algunos sí mezclan las dos cocinas. La mayoría conviven sin más, que es como se come en esta casa.</p>
+        <p data-i18n="intro_p2">Manteles de cuadros, pared de piedra volcánica y un patio con plantas. Somos pocos y el sitio es pequeño, así que mejor llama antes y guarda la mesa.</p>
         <ul class="intro-points">
           <li><span class="dot"></span><span data-i18n="intro_point1">Cocina cubana casera</span></li>
           <li><span class="dot"></span><span data-i18n="intro_point2">Especialistas en cerdo</span></li>
@@ -138,22 +153,22 @@
       <div class="sel-card">
         <div class="thumb"><img src="img/carne-pimientos.webp" alt="Carne a la brasa con pimientos rojos y verdes" loading="lazy" width="765" height="1020"></div>
         <div class="body">
-          <h3 data-i18n="sel1_title">Carne a la brasa</h3>
-          <p data-i18n="sel1_p">Costillas, cerdo y carne salteada con pimientos — el punto justo de fuego y una salsa que pide pan.</p>
+          <h3 data-i18n="sel1_title">Allá y aquí</h3>
+          <p data-i18n="sel1_p">Unas croquetas de gofio con carne de costilla al lado de un tamal cubano. Un vino blanco de Güímar con el congrí. Y para terminar, mojito o barraquito: eliges tú.</p>
         </div>
       </div>
       <div class="sel-card">
         <div class="thumb"><img src="img/postre-teide.webp" alt="Postre Teide: bizcocho cubierto de chocolate caliente" loading="lazy" width="765" height="1020"></div>
         <div class="body">
-          <h3 data-i18n="sel2_title">El postre Teide</h3>
-          <p data-i18n="sel2_p">Nuestro volcán particular: una montaña de bizcocho bañada en chocolate. Viene con varias cucharas por algo.</p>
+          <h3 data-i18n="sel2_title">Carne a la brasa</h3>
+          <p data-i18n="sel2_p">Costillas, cerdo y carne salteada con pimientos — el punto justo de fuego y una salsa que pide pan.</p>
         </div>
       </div>
       <div class="sel-card">
         <div class="thumb"><img src="img/salon.webp" alt="Comedor con mesas vestidas y patio interior" loading="lazy" width="1116" height="837"></div>
         <div class="body">
-          <h3 data-i18n="sel3_title">Mesa y sobremesa</h3>
-          <p data-i18n="sel3_p">Salón interior y patio con plantas, mesas para grupos y familias. Sitio para quedarse un rato más.</p>
+          <h3 data-i18n="sel3_title">El postre Teide</h3>
+          <p data-i18n="sel3_p">Nuestro volcán particular: bizcocho de chocolate relleno de helado, con salsa tibia por encima. Llega con varias cucharas, y por algo será.</p>
         </div>
       </div>
     </div>
@@ -193,13 +208,26 @@
 </section>
 
 <!-- ================= CATERING (resumen) ================= -->
+<!-- ================= GUACHIN SALSA ================= -->
+<section class="salsa" id="guachin">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="salsa_eyebrow">Algunos sábados</span>
+    <h2 class="section-title"><span data-i18n="salsa_title1">Guachin Salsa</span><span class="accent" data-i18n="salsa_title2">salsa cubana en el salón</span></h2>
+    <p data-i18n="salsa_p">Hay sábados que aquí no son un sábado cualquiera: salsa cubana, cocina de la casa y ambiente de fiesta. No tiene calendario fijo y no es todos los sábados — por eso, cuando hay fecha, la anunciamos nosotros.</p>
+    <div class="salsa-ctas">
+      <a class="btn" href="https://www.facebook.com/lacarretadelcarreton/" target="_blank" rel="noopener" data-i18n="salsa_cta_fb">Enterarte por Facebook</a>
+      <a class="btn outline" href="tel:+34922515066" data-i18n="salsa_cta_call">O pregúntanos por teléfono</a>
+    </div>
+  </div>
+</section>
+
 <section class="cat-teaser">
   <div class="wrap">
     <div class="cat-teaser-box">
       <div>
-        <span class="eyebrow" data-i18n="cat_teaser_eyebrow">También llevamos la cocina a tu casa</span>
+        <span class="eyebrow" data-i18n="cat_teaser_eyebrow">También salimos de casa</span>
         <h2 class="section-title tight"><span data-i18n="cat_teaser_title">Catering Habana Express</span></h2>
-        <p data-i18n="cat_teaser_p">Cocina cubana en formato buffet para celebraciones, reuniones familiares y eventos de empresa. Ponemos la comida, las máquinas y el personal.</p>
+        <p data-i18n="cat_teaser_p">Cumpleaños, reuniones familiares, comidas de empresa y aperitivos. Tú pones la celebración; nosotros, la comida, las máquinas y el personal.</p>
       </div>
       <a href="catering.html" class="btn" data-i18n="cat_teaser_cta">Ver el catering</a>
     </div>

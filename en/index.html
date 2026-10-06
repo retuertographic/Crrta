@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>La Carreta del Carretón · Cuban restaurant in Arafo, Tenerife</title>
-<meta name="description" content="Cuban restaurant in Arafo, Tenerife. Grilled meats, pork, the Teide dessert and a full menu with allergens. Open Wednesday to Sunday for lunch. Bookings: +34 922 51 50 66.">
+<title>La Carreta del Carretón · Cuban and Canarian in Arafo</title>
+<meta name="description" content="Family restaurant in the old town of Arafo, Tenerife. Long-standing Cuban dishes and dishes with a Canarian soul, at one table. Lunchtime only.">
 <link rel="canonical" href="https://retuertographic.github.io/Crrta/en/">
-<meta property="og:title" content="La Carreta del Carretón · Cuban restaurant in Arafo, Tenerife">
-<meta property="og:description" content="Cuban restaurant in Arafo, Tenerife. Grilled meats, pork, the Teide dessert and a full menu with allergens. Open Wednesday to Sunday for lunch. Bookings: +34 922 51 50 66.">
+<meta property="og:title" content="La Carreta del Carretón · Cuban and Canarian in Arafo">
+<meta property="og:description" content="Family restaurant in the old town of Arafo, Tenerife. Long-standing Cuban dishes and dishes with a Canarian soul, at one table. Lunchtime only.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://retuertographic.github.io/Crrta/en/">
 <meta property="og:image" content="https://retuertographic.github.io/Crrta/img/logo-square.jpg">
@@ -30,8 +30,11 @@
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
+  "@id": "https://retuertographic.github.io/Crrta/#restaurante",
   "name": "La Carreta del Carretón",
-  "servesCuisine": "Cubana",
+  "url": "https://retuertographic.github.io/Crrta/",
+  "image": "https://retuertographic.github.io/Crrta/img/salon.webp",
+  "servesCuisine": ["Cubana", "Canaria"],
   "telephone": "+34922515066",
   "email": "info@lacarretadelcarreton.com",
   "address": {
@@ -45,6 +48,13 @@
   "openingHoursSpecification": [
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday"], "opens": "12:30", "closes": "16:00" },
     { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "12:00", "closes": "16:00" }
+  ],
+  "hasMenu": "https://retuertographic.github.io/Crrta/#carta",
+  "acceptsReservations": "https://retuertographic.github.io/Crrta/#contacto",
+  "currenciesAccepted": "EUR",
+  "sameAs": [
+    "https://www.facebook.com/lacarretadelcarreton/",
+    "https://www.tripadvisor.es/Restaurant_Review-g1190084-d7106801-Reviews-La_Carreta_del_Carreton-Arafo_Tenerife_Canary_Islands.html"
   ]
 }
 </script>
@@ -86,13 +96,18 @@
 <!-- ================= HERO ================= -->
 <section class="hero" id="inicio">
   <div class="wrap">
-    <span class="hero-tag" data-i18n="hero_tag">🇨🇺 Cuban kitchen · Arafo</span>
+    <span class="hero-tag" data-i18n="hero_tag">Cuba and the Canaries at the same table · Arafo</span>
     <h1><span data-i18n="hero_title1">Lunch here takes its time</span><span class="script" data-i18n="hero_title2">and dessert comes twice</span></h1>
-    <p data-i18n="hero_p">Home-style Cuban cooking in the old town of Arafo: grilled meats, pork treated the way it deserves, and the Teide dessert — reason enough for the drive.</p>
+    <p data-i18n="hero_p">A small family restaurant in the old town of Arafo. Long-standing Cuban dishes, dishes with a Canarian soul, and a few that mix the two kitchens. We open at lunchtime only.</p>
     <div class="hero-ctas">
       <a href="tel:+34922515066" class="btn" data-i18n="cta_call">📞 Call to book</a>
       <a href="#carta" class="btn outline" data-i18n="hero_btn2">See the menu</a>
     </div>
+    <p class="hero-reviews">
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=La+Carreta+del+Carret%C3%B3n+Arafo"
+         target="_blank" rel="noopener" data-i18n="hero_reviews">4.4 ★ on Google from more than 700 reviews</a>
+    </p>
+
     <div class="hero-badges">
       <span data-i18n="badge_1">🔥 Grill & barbecue</span>
       <span data-i18n="badge_2">🍮 The Teide dessert</span>
@@ -114,10 +129,10 @@
         </div>
       </div>
       <div class="intro-text">
-        <span class="eyebrow" data-i18n="intro_eyebrow">From Cuba to Tenerife</span>
-        <h2 class="section-title"><span data-i18n="intro_title1">A Cuban kitchen</span><span class="accent" data-i18n="intro_title2">in the heart of Arafo</span></h2>
-        <p data-i18n="intro_p1">La Carreta del Carretón is a small family restaurant in the old town of Arafo, where Cuban food is cooked the way it is cooked at home: slowly, with local produce and recipes from the island.</p>
-        <p data-i18n="intro_p2">Checked tablecloths, a volcanic stone wall and a leafy patio. It fills up, so it is best to call ahead and book your table.</p>
+        <span class="eyebrow" data-i18n="intro_eyebrow">Cuban roots, Canarian heart</span>
+        <h2 class="section-title"><span data-i18n="intro_title1">Cuba and the Canaries</span><span class="accent" data-i18n="intro_title2">at the same table</span></h2>
+        <p data-i18n="intro_p1">We are not a fusion restaurant. The menu has long-standing Cuban dishes — ropa vieja, congrí, tamal, tostones, guava pudding — and dishes with a Canarian soul — chickpea stew, gofio croquettes with rib meat, roast pork leg with onion mojo, white wine from Güímar. A few do mix the two kitchens. Most simply sit side by side, which is how we eat in this house.</p>
+        <p data-i18n="intro_p2">Checked tablecloths, a volcanic stone wall and a patio with plants. There are few of us and the place is small, so it is better to ring ahead and hold your table.</p>
         <ul class="intro-points">
           <li><span class="dot"></span><span data-i18n="intro_point1">Home-style Cuban cooking</span></li>
           <li><span class="dot"></span><span data-i18n="intro_point2">Pork is our speciality</span></li>
@@ -132,28 +147,28 @@
 <!-- ================= ESPECIALIDADES ================= -->
 <section class="seleccion" id="especialidades">
   <div class="wrap">
-    <span class="eyebrow" data-i18n="sel_eyebrow">What everyone orders</span>
+    <span class="eyebrow" data-i18n="sel_eyebrow">What people always order</span>
     <h2 class="section-title"><span data-i18n="sel_title1">Three reasons</span><span class="accent" data-i18n="sel_title2">to sit down with us</span></h2>
     <div class="sel-grid">
       <div class="sel-card">
         <div class="thumb"><img src="../img/carne-pimientos.webp" alt="Carne a la brasa con pimientos rojos y verdes" loading="lazy" width="765" height="1020"></div>
         <div class="body">
-          <h3 data-i18n="sel1_title">Off the grill</h3>
-          <p data-i18n="sel1_p">Ribs, pork and beef sautéed with peppers — the right amount of fire and a sauce that calls for bread.</p>
+          <h3 data-i18n="sel1_title">There and here</h3>
+          <p data-i18n="sel1_p">Gofio croquettes with rib meat next to a Cuban tamal. A white wine from Güímar with the congrí. And to finish, mojito or barraquito — your call.</p>
         </div>
       </div>
       <div class="sel-card">
         <div class="thumb"><img src="../img/postre-teide.webp" alt="Postre Teide: bizcocho cubierto de chocolate caliente" loading="lazy" width="765" height="1020"></div>
         <div class="body">
-          <h3 data-i18n="sel2_title">The Teide dessert</h3>
-          <p data-i18n="sel2_p">Our own volcano: a mountain of sponge cake buried in chocolate. There is a reason it arrives with several spoons.</p>
+          <h3 data-i18n="sel2_title">Meat off the grill</h3>
+          <p data-i18n="sel2_p">Ribs, pork and beef sautéed with peppers — the right amount of fire and a sauce that calls for bread.</p>
         </div>
       </div>
       <div class="sel-card">
         <div class="thumb"><img src="../img/salon.webp" alt="Comedor con mesas vestidas y patio interior" loading="lazy" width="1116" height="837"></div>
         <div class="body">
-          <h3 data-i18n="sel3_title">Table and conversation</h3>
-          <p data-i18n="sel3_p">Indoor dining room and a leafy patio, with tables for groups and families. A place to linger a little longer.</p>
+          <h3 data-i18n="sel3_title">The Teide dessert</h3>
+          <p data-i18n="sel3_p">Our own volcano: chocolate sponge filled with ice cream under a warm sauce. It arrives with several spoons, and there is a reason for that.</p>
         </div>
       </div>
     </div>
@@ -193,13 +208,26 @@
 </section>
 
 <!-- ================= CATERING (resumen) ================= -->
+<!-- ================= GUACHIN SALSA ================= -->
+<section class="salsa" id="guachin">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="salsa_eyebrow">Some Saturdays</span>
+    <h2 class="section-title"><span data-i18n="salsa_title1">Guachin Salsa</span><span class="accent" data-i18n="salsa_title2">Cuban salsa in the dining room</span></h2>
+    <p data-i18n="salsa_p">Some Saturdays here are not just any Saturday: Cuban salsa, the kitchen doing its thing and a party going on. There is no fixed calendar and it is not every Saturday — so when there is a date, you will hear it from us.</p>
+    <div class="salsa-ctas">
+      <a class="btn" href="https://www.facebook.com/lacarretadelcarreton/" target="_blank" rel="noopener" data-i18n="salsa_cta_fb">Hear about it on Facebook</a>
+      <a class="btn outline" href="tel:+34922515066" data-i18n="salsa_cta_call">Or ask us by phone</a>
+    </div>
+  </div>
+</section>
+
 <section class="cat-teaser">
   <div class="wrap">
     <div class="cat-teaser-box">
       <div>
-        <span class="eyebrow" data-i18n="cat_teaser_eyebrow">We also bring the kitchen to you</span>
+        <span class="eyebrow" data-i18n="cat_teaser_eyebrow">We also leave the house</span>
         <h2 class="section-title tight"><span data-i18n="cat_teaser_title">Habana Express catering</span></h2>
-        <p data-i18n="cat_teaser_p">Cuban food, buffet style, for celebrations, family gatherings and company events. We bring the food, the equipment and the staff.</p>
+        <p data-i18n="cat_teaser_p">Birthdays, family gatherings, work lunches and finger food. You bring the occasion; we bring the food, the equipment and the staff.</p>
       </div>
       <a href="catering.html" class="btn" data-i18n="cat_teaser_cta">See the catering</a>
     </div>

@@ -1,66 +1,66 @@
 {
   "index.html": {
     "es": {
-      "title": "La Carreta del Carretón · Cocina cubana en Arafo, Tenerife",
-      "description": "Restaurante cubano en Arafo, Tenerife. Carnes a la brasa, cerdo, el postre Teide y una carta con alérgenos. Abrimos de miércoles a domingo al mediodía. Reservas: 922 51 50 66."
+      "title": "La Carreta del Carretón · Cuba y Canarias en Arafo",
+      "description": "Restaurante familiar en el casco de Arafo, Tenerife. Platos cubanos de toda la vida y platos con alma canaria, en la misma mesa. Solo a mediodía."
     },
     "en": {
-      "title": "La Carreta del Carretón · Cuban restaurant in Arafo, Tenerife",
-      "description": "Cuban restaurant in Arafo, Tenerife. Grilled meats, pork, the Teide dessert and a full menu with allergens. Open Wednesday to Sunday for lunch. Bookings: +34 922 51 50 66."
+      "title": "La Carreta del Carretón · Cuban and Canarian in Arafo",
+      "description": "Family restaurant in the old town of Arafo, Tenerife. Long-standing Cuban dishes and dishes with a Canarian soul, at one table. Lunchtime only."
     }
   },
   "novedades.html": {
     "es": {
-      "title": "Novedades · La Carreta del Carretón",
-      "description": "Novedades de La Carreta del Carretón: platos de temporada, horarios especiales y noticias de nuestro restaurante cubano en Arafo."
+      "title": "Novedades de la casa · La Carreta del Carretón, Arafo",
+      "description": "Lo que vamos contando desde la cocina: platos fuera de carta, noticias de la casa y las fechas de Guachin Salsa cuando las hay. Arafo, Tenerife."
     },
     "en": {
-      "title": "News · La Carreta del Carretón",
-      "description": "News from La Carreta del Carretón: seasonal dishes, special opening hours and updates from our Cuban restaurant in Arafo."
+      "title": "News from the house · La Carreta del Carretón, Arafo",
+      "description": "What we tell from the kitchen: off-menu dishes, news from the house and the Guachin Salsa dates when there are any. A restaurant in Arafo, Tenerife."
     }
   },
   "novedades/abrimos-nuestra-web.html": {
     "es": {
-      "title": "Ya tenemos web (y carta online) · La Carreta del Carretón",
-      "description": "Estrenamos página web: carta con precios y alérgenos, horarios, cómo llegar y novedades de La Carreta del Carretón, en Arafo.",
+      "title": "Ya tenemos web y carta online · La Carreta del Carretón",
+      "description": "Estrenamos página con la carta al día, los precios, cómo llegar y todas las formas de reservar mesa en nuestro restaurante del casco de Arafo.",
       "og_type": "article",
       "image": "img/postre-teide.webp"
     },
     "en": {
-      "title": "Our website is up (menu included) · La Carreta del Carretón",
-      "description": "Our new website: the full menu with prices and allergens, opening hours, how to find us and news from La Carreta del Carretón, in Arafo.",
+      "title": "Our website and menu are up · La Carreta del Carretón",
+      "description": "We have launched a site with an up-to-date menu, the prices, how to find us and every way to book a table at our restaurant in Arafo, Tenerife.",
       "og_type": "article",
       "image": "img/postre-teide.webp"
     }
   },
   "catering.html": {
     "es": {
-      "title": "Catering de comida cubana Habana Express · Arafo, Tenerife",
-      "description": "Catering de comida cubana en Tenerife con Habana Express: buffet para celebraciones, reuniones familiares y eventos de empresa. Ponemos comida, máquinas y personal. Pide presupuesto."
+      "title": "Catering por encargo en Arafo y Tenerife · Habana Express",
+      "description": "Catering para cumpleaños, reuniones familiares, comidas de empresa y aperitivos en Tenerife. Ponemos la comida, las máquinas y el personal que sirve."
     },
     "en": {
-      "title": "Habana Express Cuban food catering · Arafo, Tenerife",
-      "description": "Cuban food catering in Tenerife with Habana Express: buffet service for celebrations, family gatherings and company events. Food, equipment and staff included. Ask for a quote."
+      "title": "Catering to order in Tenerife · Habana Express catering",
+      "description": "Catering for birthdays, family gatherings, work lunches and finger food anywhere in Tenerife. We bring the food, the equipment and the staff."
     }
   },
   "legal.html": {
     "es": {
-      "title": "Información legal · La Carreta del Carretón",
-      "description": "Aviso legal, política de privacidad y política de cookies de La Carreta del Carretón, restaurante cubano en Arafo, Tenerife."
+      "title": "Información legal · La Carreta del Carretón, Arafo",
+      "description": "Aviso legal, política de privacidad y política de cookies de La Carreta del Carretón, restaurante en C. el Carretón 4-7, Arafo, Tenerife, España."
     },
     "en": {
-      "title": "Legal information · La Carreta del Carretón",
-      "description": "Legal notice, privacy policy and cookie policy for La Carreta del Carretón, a Cuban restaurant in Arafo, Tenerife."
+      "title": "Legal information · La Carreta del Carretón, Arafo",
+      "description": "Legal notice, privacy policy and cookie policy for La Carreta del Carretón, a restaurant at C. el Carretón 4-7, Arafo, Tenerife, Spain. In Spanish."
     }
   },
   "404.html": {
     "es": {
-      "title": "Página no encontrada · La Carreta del Carretón",
-      "description": "La página que buscas no existe. Vuelve al inicio, consulta la carta de nuestro restaurante cubano en Arafo o llámanos al 922 51 50 66 para reservar mesa."
+      "title": "Esta página no existe · La Carreta del Carretón, Arafo",
+      "description": "La página que buscas no existe. Vuelve al inicio, consulta la carta de nuestro restaurante cubano y canario de Arafo o llámanos al 922 51 50 66."
     },
     "en": {
-      "title": "Page not found · La Carreta del Carretón",
-      "description": "The page you are looking for doesn't exist. Go back to the home page, see the menu of our Cuban restaurant in Arafo, or call +34 922 51 50 66 to book."
+      "title": "This page does not exist · La Carreta del Carretón",
+      "description": "The page you are looking for does not exist. Go back to the home page, see the menu of our restaurant in Arafo, or call +34 922 51 50 66 to book."
     }
   }
 }

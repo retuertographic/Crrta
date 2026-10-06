@@ -55,6 +55,31 @@ La página de error es `404.html` **en la raíz**: GitHub Pages solo usa esa,
 también para las rutas bajo `/en/`, así que lleva los dos idiomas. No entra
 en el sitemap.
 
+## La voz
+
+Los textos salen del documento de comunicación y marca (*Carreta del
+Carretón — Comunicación y marketing, v2*). Lo que no conviene perder al
+editar `src/i18n.json`:
+
+- **La posición es «Cuba y Canarias en la misma mesa»**, no «restaurante
+  cubano» ni «fusión cubano-canaria». Hay platos cubanos de toda la vida,
+  platos con alma canaria y algunos que sí mezclan. La palabra «fusión» se
+  reserva para esos últimos.
+- **Tutear siempre.** Frases cortas. Sin exclamaciones en el cuerpo del
+  texto. Casera, cercana, generosa.
+- **Nada de clichés turísticos** («sabores exóticos del Caribe»,
+  «experiencia gastronómica»). Los platos cubanos se explican con palabras
+  de aquí: «millo tierno molido con carne, cocinado en su propia hoja».
+- **Los precios solo viven en la carta**, que sale de la hoja de cálculo. No
+  repetirlos en la copy: se desincronizan.
+- **Guachin Salsa: nunca una fecha sin confirmar.** La sección de la portada
+  explica que existe y que no hay calendario fijo; las fechas van por
+  Facebook y por novedades cuando las haya.
+- **La nota de Google (4,4 ★, 700+ reseñas) se enseña, no se marca.** Va en
+  el hero enlazada a la ficha de Google. No lleva `aggregateRating` en los
+  datos estructurados a propósito: las directrices de Google no permiten
+  marcar como propias las valoraciones recogidas en otro sitio.
+
 ## Elementos comunes (`src/partials/`)
 
 Lo que sale en más de una página vive en un solo archivo. Las plantillas

@@ -859,3 +859,31 @@
     font-size:.78rem;line-height:1.65;color:var(--text-soft);text-align:center;
   }
   .form-privacy a{color:var(--gold);font-weight:600;text-decoration:underline;}
+
+  /* ---------- RESEÑA EN EL HERO ---------- */
+  .hero-reviews{margin:18px 0 0;}
+  .hero-reviews a{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--gold-light);font-size:.86rem;font-weight:600;
+    text-decoration:none;border-bottom:1px solid rgba(210,176,114,.45);padding:4px 0;
+  }
+  .hero-reviews a:hover{color:#fff;border-bottom-color:#fff;}
+
+  /* ---------- GUACHIN SALSA ----------
+     Banda oscura entre dos secciones claras: la fiesta no es el día a día
+     del restaurante y tampoco lo parece. */
+  .salsa{background:var(--ink);color:#fff;padding:92px 0;text-align:center;}
+  .salsa .eyebrow{color:var(--gold-light);}
+  .salsa .section-title{color:#fff;}
+  .salsa .section-title .accent{color:var(--gold-light);}
+  .salsa p{
+    max-width:640px;margin:18px auto 0;
+    color:rgba(255,255,255,.82);font-size:1rem;line-height:1.85;
+  }
+  .salsa-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+  .salsa-ctas .btn.outline{border-color:rgba(255,255,255,.5);color:#fff;}
+  .salsa-ctas .btn.outline:hover{background:#fff;color:var(--ink);border-color:#fff;}
+  @media (max-width:620px){
+    .salsa{padding:70px 0;}
+    .salsa-ctas .btn{width:100%;text-align:center;}
+  }
