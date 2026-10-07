@@ -75,6 +75,11 @@ editar `src/i18n.json`:
 - **Guachin Salsa: nunca una fecha sin confirmar.** La sección de la portada
   explica que existe y que no hay calendario fijo; las fechas van por
   Facebook y por novedades cuando las haya.
+- **El «?» de la hoja de la carta solo existe en la columna de gluten** y
+  significa «lo lleva, pero podemos prepararlo sin él si lo pides». No
+  significa «puede contener»: son cosas distintas y la web las publica
+  distintas. Un «?» en cualquier otra columna no se publica y el script
+  avisa, porque ahí no está definido qué quiere decir.
 - **La nota de Google (4,4 ★, 700+ reseñas) se enseña, no se marca.** Va en
   el hero enlazada a la ficha de Google. No lleva `aggregateRating` en los
   datos estructurados a propósito: las directrices de Google no permiten

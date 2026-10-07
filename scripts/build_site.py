@@ -152,7 +152,6 @@ def render_carta(menu: dict, i18n: dict, lang: str) -> tuple[str, str, str]:
     tabs = ['<div class="menu-tabs" role="tablist">']
     panels = []
     allergen_names = i18n.get(lang, {}).get("allergens", {}) or {}
-    maybe_label = t(i18n, lang, "allergens_maybe_label")
 
     for index, cat in enumerate(categories):
         slug = f"cat{index}"
@@ -179,14 +178,19 @@ def render_carta(menu: dict, i18n: dict, lang: str) -> tuple[str, str, str]:
                 rows.append(f'<div class="mi-desc">{esc(description)}</div>')
 
             certain = item.get("allergens") or []
-            maybe = item.get("allergens_maybe") or []
-            if certain or maybe:
+            # El gluten que se puede quitar bajo petición sigue siendo gluten:
+            # se marca igual que los demás y se añade aparte lo que se puede
+            # pedir. Mezclarlo en una sola etiqueta se lee como «no lleva».
+            sin_gluten = bool(item.get("gluten_on_request"))
+            if certain:
                 chips = [f'<div class="mi-allergens" role="group" aria-label="{esc(t(i18n, lang, "allergens_label"))}">']
                 for code in certain:
                     chips.append(f'<span class="al">{esc(allergen_names.get(code, code))}</span>')
-                for code in maybe:
-                    name = esc(allergen_names.get(code, code))
-                    chips.append(f'<span class="al maybe" title="{esc(maybe_label)}">{name} ?</span>')
+                if sin_gluten:
+                    chips.append(
+                        f'<span class="al on-request" title="{esc(t(i18n, lang, "allergens_gluten_note"))}">'
+                        f'{esc(t(i18n, lang, "allergens_gluten_chip"))}</span>'
+                    )
                 chips.append("</div>")
                 rows.append("".join(chips))
             rows.append("</div>")

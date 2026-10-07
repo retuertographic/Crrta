@@ -17,10 +17,17 @@ Para actualizar la carta: edita la hoja, expórtala
 (Archivo → Descargar → CSV), sustituye carta/carta-hoja.csv y ejecuta el
 script. Las columnas deben mantener el orden de la cabecera.
 
-Sobre los alérgenos: la hoja marca "X" cuando el plato lo lleva según su
-receta habitual y "?" cuando podría llevarlo. Las dos son estimaciones,
-no una analítica, así que el "?" se publica aparte, como "puede contener",
-y la web añade el aviso de consultar en sala. No se mezclan.
+Sobre los alérgenos: la hoja marca "X" cuando el plato lleva el alérgeno
+según su receta habitual.
+
+El "?" solo aparece en la columna de gluten y NO significa «puede
+contenerlo»: significa que el plato se puede preparar sin gluten si el
+comensal lo pide. Son dos cosas distintas y se publican distintas —
+confundirlas es lo peor que puede hacer una carta con alérgenos. Si algún
+día apareciera un "?" en otra columna, el script avisa y no lo publica.
+
+Nada de esto es una analítica, así que la web añade siempre el aviso de
+consultar en sala.
 """
 
 from __future__ import annotations
@@ -242,17 +249,30 @@ def build(rows: list[list[str]], descriptions: dict[str, dict]) -> tuple[list[di
         else:
             review.append(f"{section} · {name}: sin precio en la hoja")
 
-        certain, maybe = [], []
+        certain, on_request = [], False
         for offset, key in enumerate(ALLERGEN_COLUMNS):
             mark = cell(row, FIRST_ALLERGEN_COL + offset).upper()
             if mark == "X":
                 certain.append(key)
             elif mark == "?":
-                maybe.append(key)
+                if key == "gluten":
+                    # El plato lleva gluten como se sirve, pero en cocina
+                    # pueden hacerlo sin él si se pide.
+                    certain.append(key)
+                    on_request = True
+                else:
+                    # El "?" solo está definido para el gluten. En cualquier
+                    # otra columna no se sabe qué quiere decir, así que no se
+                    # publica nada y se avisa: quedarse corto en un alérgeno
+                    # es peor que no decirlo.
+                    review.append(
+                        f"{section} · {name}: «?» en la columna «{key}», donde no "
+                        f"está definido qué significa. NO se ha publicado."
+                    )
         if certain:
             item["allergens"] = certain
-        if maybe:
-            item["allergens_maybe"] = maybe
+        if on_request:
+            item["gluten_on_request"] = True
 
         note = cell(row, COL_NOTES)
         if note:

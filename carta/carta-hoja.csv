@@ -1,93 +1,89 @@
 Sección,Subcategoría,Nº,Plato,Ración (€),Media ración (€),Precio unidad (€),Otros formatos / precios,IGIC,Gluten,Crustáceos,Huevo,Pescado,Cacahuete,Soja,Leche,Frutos secos,Apio,Mostaza,Sésamo,Sulfitos,Altramuces,Moluscos,Notas alérgenos / transcripción
-Aperitivos,,1,Tostones,"4,20",,,,Incluido
-Aperitivos,,2,Tostones Rellenos,"7,00","4,80",,,Incluido,?,,,,,,?,,,,,,,,Confirmar relleno
-Aperitivos,,3,Huevos Rotos,"7,50","5,35",,,Incluido,,,X
-Aperitivos,,4,Papas Rellenas,"7,50","5,35",,,Incluido,X,,X,,,,?,,,,,,,,Suelen ir rebozadas
-Aperitivos,,5,Croquetas de Jamón Cocido,"3,75","2,15",,,Incluido,X,,X,,,,X
-Aperitivos,,6,Croquetas de Pollo,"3,75","2,15",,,Incluido,X,,X,,,,X
-Aperitivos,,7,Croquetas de Gofio con carne de Costilla,"3,75","2,15",,,Incluido,X,,X,,,,X,,,,,,,,Confirmar tipo de gofio (trigo/millo)
-Aperitivos,,8,Tamal Cubano,"5,90",,,,Incluido
-Aperitivos,,9,Yuca con mojo,"4,80","3,20",,,Incluido
-Ensaladas,,1,Mixta,"4,80",,,,Incluido,,,?,?,,,,,,,,,,,Suele llevar huevo y atún
-Ensaladas,,2,Habana Libre,"12,30","8,60",,,Incluido,,,,,,,,,,,,,,,Receta desconocida: confirmar
-Ensaladas,,3,Perla del Caribe,"12,30","8,60",,,Incluido,,,,,,,,,,,,,,,Receta desconocida: confirmar
-Ensaladas,,4,El Carretón,"13,80","9,80",,,Incluido,,,,,,,,,,,,,,,Receta desconocida: confirmar
-Ensaladas,,5,Guajira,"12,30","8,60",,,Incluido,,,,,,,,,,,,,,,Receta desconocida: confirmar
-Ensaladas,,6,Ensalada Especial,"7,50",,,,Incluido,,,?,?,,,,,,,,,,,Confirmar ingredientes
-Vegetariano,,1,Ensalada Mixta especial,"7,50",,,,Incluido,,,?,,,,,,,,,,,,Confirmar ingredientes
-Vegetariano,,2,Yuca con mojo,"4,80","3,20",,,Incluido
-Vegetariano,,3,Papas fritas,"3,20","2,15",,,Incluido
-Vegetariano,,4,Tostones,"4,20",,,,Incluido
-Vegetariano,,5,Vegetales salteados,"5,35",,,,Incluido,,,,,,?,,,,,,,,,Si llevan salsa de soja
-Vegetariano,,6,Vegetales a la brasa,"6,50","4,30",,,Incluido
-Vegetariano,,7,Arroz Congrí,"2,70",,,,Incluido
-Sopas,,1,Sopa de pollo,"3,20","2,15",,,Incluido,?,,,,,,,,?,,,,,,Si lleva fideos / apio
-Sopas,,2,Garbanzos,"4,30","2,70",,,Incluido,,,,,,,,,?
-Pollo,,1,1/2 Pollo,"5,90",,,,Incluido
-Pollo,,2,1/4 Pollo,"3,20",,,,Incluido
-Pollo,,3,Nuggets de Pollo,"5,90","3,75",,,Incluido,X,,?
-Res,,1,Ropa Vieja a la cubana,"11,70","7,50",,,Incluido,,,,,,,,,,,,?,,,Si lleva vino
-Res,,2,Churrasco de Entraña,"15,00",,,,Incluido
-Carne de Cochino,,1,Masas de cerdo fritas,"10,00","5,90",,,Incluido
-Carne de Cochino,,2,Pata Asada,"10,00","5,90",,,Incluido,,,,,,,,,,,,,,,"En la carta aparecen dos precios de ración: 10,00 € y 10,50 € — confirmar"
-Carne de Cochino,,3,Chuletas a la brasa,"11,20","6,30",,,Incluido
-Carne de Cochino,,4,Costillas BBQ,"14,50","8,00",,,Incluido,?,,,,,,,,,?,,?,,,Depende de la salsa BBQ
-Carne de Cochino,,5,Solomillo de cerdo a la brasa (para 2 personas),"13,90","7,50",,,Incluido
-Carne de Cochino,,6,Secreto a la Brasa,"13,40","7,50",,,Incluido
-Pescado y Marisco,,1,Bacalao en salsa,"10,70",,,,Incluido,,,,X,,,,,,,,?
-Pescado y Marisco,,2,Enchilado de Langostino,"12,85","7,50",,,Incluido,,X,,,,,,,,,,?
-Pescado y Marisco,,3,Langostinos a la brasa,"12,85","7,50",,,Incluido,,X
-Pescado y Marisco,,4,Langostinos al ajillo,"12,85","7,50",,,Incluido,,X
-Postres,,1,Tarta de queso,"4,80",,,,Incluido,X,,X,,,,X
-Postres,,2,Pudin de Guayaba con Queso,"4,80",,,,Incluido,X,,X,,,,X
-Postres,,3,Flan,"3,75",,,,Incluido,,,X,,,,X
-Postres,,4,Teide,"5,90",,,,Incluido,,,,,,,,,,,,,,,Postre de la casa: confirmar
-Postres,,5,Tarta de Limón,"4,80",,,,Incluido,X,,X,,,,X
-Postres,Helados,10,Pivot Chocolate/Vainilla/Fresa,,,"3,10",,,,,,,,?,X
-Postres,Helados,12,Sándwich (helado),,,"3,00",,,X,,,,,?,X
-Postres,Helados,13,Polo,,,"1,75"
-Bebidas,Aguas,1,Agua natural,,,,"Pequeña 1,20 € · Grande 1,70 €"
-Bebidas,Aguas,2,Agua con gas,,,,"Pequeña 1,35 € · Grande 1,85 €"
-Bebidas,Aguas,3,Tónica,,,"1,50",,Incluido
-Bebidas,Refrescos,7,Coca Cola,,,"1,80",,Incluido
-Bebidas,Refrescos,8,Coca Cola Zero,,,"1,80",,Incluido
-Bebidas,Refrescos,9,Aquarius de Naranja/Limón,,,"1,90",,Incluido
-Bebidas,Refrescos,10,Nestea Mango Piña,,,"1,95",,Incluido
-Bebidas,Zumos,13,Zumos,,,"1,80",,Incluido
-Bebidas,Zumos,14,Zumos de Mango,,,"1,80",,Incluido
-Bebidas,Cervezas,18,Dorada Pilsen,,,"1,70",,Incluido,X
-Bebidas,Cervezas,19,Dorada Especial,,,"1,90",,Incluido,X
-Bebidas,Cervezas,20,Heineken,,,"1,60",,Incluido,X
-Bebidas,Cervezas,21,Heineken 00,,,"1,90",,Incluido,X
-Bebidas,Cervezas,22,Mixta de Limón,,,"2,00",,Incluido,X
-Bebidas,Cervezas,23,Mahou Maestra,,,"2,20",,Incluido,X
-Bebidas,Cervezas,24,Victoria,,,"1,90",,,X
-Bebidas,Vinos,36,Tinto Victoria,,,,"Copa 1,70 € · 1/2 L 4,80 € · 1/4 L 2,80 €",,,,,,,,,,,,,X
-Bebidas,Vinos,37,Vino blanco de Güímar,,,,"Copa 1,70 € · 1/2 L 4,80 € · 1/4 L 2,80 €",,,,,,,,,,,,,X
-Bebidas,Vinos,38,Vino blanco afrutado Güímar,,,,"Copa 1,70 € · 1/2 L 4,80 € · 1/4 L 2,80 €",,,,,,,,,,,,,X
-Bebidas,Vinos,39,Señorío Real (Ribera del Duero),,,,"Botella 10,00 €",,,,,,,,,,,,,X
-Bebidas,Vinos,40,La Planta,,,,"Botella 18,00 €",,,,,,,,,,,,,X
-Bebidas,Cócteles,48,Mojito Cubano,,,"4,30"
-Bebidas,Copas,54,Havana 7 años,,,"4,50"
-Bebidas,Copas,55,Havana 5 años,,,"3,50"
-Bebidas,Copas,56,Arehucas Blanco/Dorado,,,"3,50"
-Bebidas,Copas,57,Ginebra,,,"4,00"
-Bebidas,Copas,58,Johnnie Walker,,,,"Rojo 3,50 € · Negro 4,50 €"
-Bebidas,Copas,59,Copa Licor,,,"2,00",,,,,,,,,,,,,,,,,Depende del licor
-Bebidas,Cafés,66,Café solo,,,"1,00"
-Bebidas,Cafés,67,Cortado natural,,,"1,20",,,,,,,,,X
-Bebidas,Cafés,68,Cortado leche y leche,,,"1,20",,,,,,,,,X
-Bebidas,Cafés,69,Condensada/Bombón,,,"1,20",,,,,,,,,X
-Bebidas,Cafés,70,Barraquito,,,"1,30",,,,,,,,,X
-Bebidas,Cafés,71,Barraquito especial,,,"1,50",,,,,,,,,X
-Bebidas,Cafés,72,Café con leche,,,"1,40",,,,,,,,,X
-Bebidas,Cafés,73,Guayoyo,,,"1,00"
-Bebidas,Cafés,74,Café Americano,,,"1,10"
-Bebidas,Cafés,75,Café con hielo,,,"1,20"
-Bebidas,Infusiones,81,Té Verde/Rojo,,,"1,30"
-Bebidas,Infusiones,82,Manzanilla,,,"1,30"
-Bebidas,Infusiones,83,Menta Poleo,,,"1,30"
-LEYENDA
-X = contiene el alérgeno (estimación según receta habitual del plato)
-? = puede contenerlo según la receta: CONFIRMAR con cocina
-vacío = no se espera ninguno de los 14 alérgenos
+Aperitivos,,1,Tostones,"4,20€",,,,Incluido,?,,,,,,,,,,,,,,
+Aperitivos,,2,Tostones Rellenos,"7,00€","4,80€",,,Incluido,?,,,,,,,,,,,,,,Ropa vieja a la cubana 
+Aperitivos,,3,Huevos Rotos,"7,50€","5,35€",,,Incluido,?,,X,,,,,,,,,,,,
+Aperitivos,,4,Papas Rellenas,"5,30€","3,20€",,,Incluido,X,,X,,,,,,,,,,,,Suelen ir rebozadas
+Aperitivos,,5,Croquetas de Jamón Cocido,"3,75€","2,15€",,,Incluido,X,,X,,,,,,,,,,,,
+Aperitivos,,6,Croquetas de Pollo,"3,75€","2,15€",,,Incluido,X,,X,,,,,,,,,,,,
+Aperitivos,,7,Croquetas de Gofio con carne de Costilla,"3,75€","2,15€",,,Incluido,X,,X,,,,,,,x,,,,,Confirmar tipo de gofio (trigo/millo)
+Aperitivos,,8,Tamal Cubano,"5,90€",,,,Incluido,,,,,,,,,,,,,,,
+Aperitivos,,9,Yuca con mojo,"4,80€","3,20€",,,Incluido,,,,,,,,,,,,,,,
+Ensaladas,,1,Mixta,"4,80€",,,,Incluido,,,,,,,,,,,,,,,"Diferentes tipos de lechuga, tomate , millo y cebolla"
+Ensaladas,,2,Habana Libre,"12,30€","8,60€",,,Incluido,,,,,,,x,x,,,,x,,," Diferentes tipos de lechuga, frutos secos ( nueces , pasas) , frutas ( uva , manzana) , queso feta, pollo y una vinagreta de mango."
+Ensaladas,,3,Perla del Caribe,"12,30€","8,60€",,,Incluido,,x,,,,,x,x,,,,x,,," Diferentes tipos de lechuga, frutos secos ( nueces , pasas) , frutas ( uva , manzana) , queso feta, langostinos y una vinagreta de mango."
+Ensaladas,,4,El Carretón,"13,80€","9,80€",,,Incluido,,,,,,,x,x,,,,x,,," Diferentes tipos de lechuga, frutos secos ( nueces , pasas) , frutas ( uva , manzana) , queso feta, entraña ( ternera) y una vinagreta de mango"
+Ensaladas,,5,Guajira,"12,30€","8,60€",,,Incluido,,,,,,,x,x,,,,x,,,"Diferentes tipos de lechuga, frutos secos ( nueces , pasas) , frutas ( uva , manzana) , queso feta, pollo y una vinagreta de mango"
+Ensaladas,,6,Ensalada Especial,"7,50€",,,,Incluido,,,,,,,x,x,,,,x,,," Diferentes tipos de lechuga, frutos secos ( nueces , pasas) , frutas ( uva , manzana) , queso feta y una vinagreta de mango"
+Vegetariano,,1,Ensalada Especial,"7,50€",,,,Incluido,,,,,,,x,x,,,,x,,," Diferentes tipos de lechuga, frutos secos ( nueces , pasas) , frutas ( uva , manzana) , queso feta y una vinagreta de mango"
+Vegetariano,,2,Yuca con mojo,"4,80€","3,20€",,,Incluido,,,,,,,,,,,,x,,,
+Vegetariano,,3,Papas fritas,"3,20€","2,15€",,,Incluido,?,,,,,,,,,,,,,,
+Vegetariano,,4,Tostones,"4,20€",,,,Incluido,?,,,,,,,,,,,,,,
+Vegetariano,,5,Vegetales salteados,"5,35€",,,,Incluido,,,,,,,,,,,,,,,
+Vegetariano,,6,Vegetales a la brasa,"6,50€","4,30€",,,Incluido,,,,,,,,,, x,,x,,,
+Vegetariano,,7,Arroz Congrí,"2,70€",,,,Incluido,,,,,,,,,,,,,,,
+Sopas,,1,Sopa de pollo,"3,20€","2,15€",,,Incluido,x,,,,,,,,,,,,,,"Si ,lleva fideos "
+Sopas,,2,Garbanzos,"4,30€","2,70€",,,Incluido,,,,,,,,,,,,,,,
+Pollo,,1,1/2 Pollo,"5,90€",,,,Incluido,,,,,,,,,,,,x,,,
+Pollo,,2,1/4 Pollo,"3,20€",,,,Incluido,,,,,,,,,,,,x,,,
+Pollo,,3,Nuggets de Pollo,"5,90€","3,75€",,,Incluido,X,,x,,,,,,,,,,,,
+Res,,1,Ropa Vieja a la cubana,"11,70€","7,50€",,,Incluido,,,,,,,,,,,,x,,,"Si, lleva vino"
+Res,,2,Churrasco de Entraña,"15,00€",,,,Incluido,,,,,,,,,,,,x,,,
+Carne de Cochino,,1,Masas de cerdo fritas,"10,00€","5,90€",,,Incluido,,,,,,,,,,,,x,,,
+Carne de Cochino,,2,Pata Asada,"10,00€","5,90€",,,Incluido,,,,,,,,,,,,x,,,
+Carne de Cochino,,3,Chuletas a la brasa,"11,20€","6,30€",,,Incluido,,,,,,,,,,,,x,,,
+Carne de Cochino,,4,Costillas BBQ,"14,50€","8,00€",,,Incluido,,,,,,,,,,x,,x,,,
+Carne de Cochino,,5,Solomillo de cerdo a la brasa (para 2 personas),"13,90€","7,50€",,,Incluido,,,,,,,,,,,,x,,,
+Carne de Cochino,,6,Secreto a la Brasa,"13,40€","7,50€",,,Incluido,,,,,,,,,,,,x,,,
+Pescado y Marisco,,1,Bacalao en salsa,"10,70€",,,,Incluido,,,,X,,,,,,,,x,,,
+Pescado y Marisco,,2,Enchilado de Langostino,"12,85€","7,50€",,,Incluido,,X,,,,,,,,,,x,,,
+Pescado y Marisco,,3,Langostinos a la brasa,"12,85€","7,50€",,,Incluido,,X,,,,,,,,,,x,,,
+Pescado y Marisco,,4,Langostinos al ajillo,"12,85€","7,50€",,,Incluido,,X,,,,,,,,,,,,,
+Postres,,1,Tarta de queso,"4,80€",,,,Incluido,X,,X,,,,X,,,,,,,,
+Postres,,2,Pudin de Guayaba con Queso,"4,80€",,,,Incluido,X,,X,,,,X,,,,,,,,
+Postres,,3,Flan,"3,75€",,,,Incluido,,,X,,,,X,,,,,,,,
+Postres,,4,Teide,"5,90€",,,,Incluido,x,,x,,,,x,,,,,,,,Bizcocho de chocolate relleno con helado de vainilla y una salsa de chocolate tibia por encima 
+Postres,,5,Tarta de Limón,"4,80€",,,,Incluido,X,,X,,,,X,,,,,,,,
+Postres,Helados,10,Pivot Chocolate/Vainilla/Fresa,,,"3,10€",,,x,,,,,,X,,,,,,,,
+Postres,Helados,12,Sándwich (helado),,,"3,00€",,,X,,,,,,X,,,,,,,,
+Postres,Helados,13,Polo,,,"1,75€",,,,,,,,,,,,,,,,,
+Bebidas,Aguas,1,Agua natural,,,,"Pequeña 1,20 € · Grande 1,70 €",,,,,,,,,,,,,,,,
+Bebidas,Aguas,2,Agua con gas,,,,"Pequeña 1,35 € · Grande 1,85 €",,,,,,,,,,,,,,,,
+Bebidas,Aguas,3,Tónica,,,"1,50€",,Incluido,,,,,,,,,,,,,,,
+Bebidas,Refrescos,7,Coca Cola,,,"1,80€",,Incluido,,,,,,,,,,,,,,,
+Bebidas,Refrescos,8,Coca Cola Zero,,,"1,80€",,Incluido,,,,,,,,,,,,,,,
+Bebidas,Refrescos,9,Aquarius de Naranja/Limón,,,"1,90€",,Incluido,,,,,,,,,,,,,,,
+Bebidas,Refrescos,10,Nestea Mango Piña,,,"1,95€",,Incluido,,,,,,,,,,,,,,,
+Bebidas,Zumos,13,Zumos,,,"1,80€",,Incluido,,,,,,,,,,,,,,,
+Bebidas,Zumos,14,Zumos de Mango,,,"1,80€",,Incluido,,,,,,,,,,,,,,,
+Bebidas,Cervezas,18,Dorada Pilsen,,,"1,70€",,Incluido,X,,,,,,,,,,,,,,
+Bebidas,Cervezas,19,Dorada Especial,,,"1,90€",,Incluido,X,,,,,,,,,,,,,,
+Bebidas,Cervezas,20,Heineken,,,"1,60€",,Incluido,X,,,,,,,,,,,,,,
+Bebidas,Cervezas,21,Victoria 00,,,"1,90€",,Incluido,X,,,,,,,,,,,,,,
+Bebidas,Cervezas,22,Freedamm Limón,,,"2,00€",,Incluido,X,,,,,,,,,,,,,,
+Bebidas,Cervezas,23,Voldamm,,,"2,20€",,Incluido,X,,,,,,,,,,,,,,
+Bebidas,Cervezas,24,Caña Victoria,,,"1,70€",,,X,,,,,,,,,,,,,,
+Bebidas,Vinos,36,Tinto Victoria,,,,"Copa 1,95 € · 1/2 L 5,45 € · 1/4 L 3,00 €",,,,,,,,,,,,,X,,,
+Bebidas,Vinos,37,Vino blanco de Güímar,,,,"Copa 2,15 € · 1/2 L 5,90€ · 1/4 L 3,30€",,,,,,,,,,,,,X,,,
+Bebidas,Vinos,38,Vino blanco afrutado Güímar,,,,"Copa 2,25€ · 1/2 L 6,00 € · 1/4 L 3,30 €",,,,,,,,,,,,,X,,,
+Bebidas,Vinos,39,Señorío Real (Ribera del Duero),,,,"Botella 10,70€",,,,,,,,,,,,,X,,,
+Bebidas,Vinos,40,La Planta,,,,"Botella 19,30 €",,,,,,,,,,,,,X,,,
+Bebidas,Cócteles,48,Mojito Cubano,,,"4,30€",,,,,,,,,,,,,,,,,
+Bebidas,Copas,54,Havana 7 años,,,"4,50€",,,,,,,,,,,,,,,,,
+Bebidas,Copas,55,Havana especial ,,,"3,75€",,,,,,,,,,,,,,,,,
+Bebidas,Copas,56,Arehucas Blanco/Dorado,,,"3,75€",,,,,,,,,,,,,,,,,
+Bebidas,Copas,57,Ginebra,,,"5,90€",,,,,,,,,,,,,,,,,
+Bebidas,Copas,58,Johnnie Walker,,,,"Rojo 3,75€ · Negro 4,80 €",,,,,,,,,,,,,,,,
+Bebidas,Copas,59,Copa Licor,,,"2,65€",,,,,,,,,,,,,,,,,Depende del licor
+Bebidas,Cafés,66,Café solo,,,"1,10€",,,,,,,,,,,,,,,,,
+Bebidas,Cafés,67,Cortado natural,,,"1,30€",,,,,,,,,X,,,,,,,,
+Bebidas,Cafés,68,Cortado leche y leche,,,"1,30€",,,,,,,,,X,,,,,,,,
+Bebidas,Cafés,69,Condensada/Bombón,,,"1,30€",,,,,,,,,X,,,,,,,,
+Bebidas,Cafés,70,Barraquito,,,"1,35€",,,,,,,,,X,,,,,,,,
+Bebidas,Cafés,71,Barraquito especial,,,"1,65€",,,,,,,,,X,,,,,,,,
+Bebidas,Cafés,72,Café con leche,,,"1,60€",,,,,,,,,X,,,,,,,,
+Bebidas,Cafés,73,Guayoyo,,,"1,10€",,,,,,,,,,,,,,,,,
+Bebidas,Cafés,74,Café Americano,,,"1,30€",,,,,,,,,,,,,,,,,
+Bebidas,Cafés,75,Café con hielo,,,"1,30€",,,,,,,,,,,,,,,,,
+Bebidas,Infusiones,81,Té Verde/Rojo,,,"1,35€",,,,,,,,,,,,,,,,,
+Bebidas,Infusiones,82,Manzanilla,,,"1,35€",,,,,,,,,,,,,,,,,
+Bebidas,Infusiones,83,Menta Poleo,,,"1,35€",,,,,,,,,,,,,,,,,

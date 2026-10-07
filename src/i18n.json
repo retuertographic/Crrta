@@ -44,7 +44,6 @@
     "carta_empty": "Estamos actualizando la carta. Llámanos al <a href=\"tel:+34922515066\">922 51 50 66</a> y te contamos lo que hay hoy.",
     "allergens_label": "Alérgenos",
     "note_igic": "Todos los precios de comida llevan el IGIC incluido.",
-    "allergens_maybe_label": "Puede contenerlo: consúltanos",
     "note_allergens": "Los alérgenos son una estimación según la receta habitual del plato; los marcados con «?» están por confirmar. Si tienes alguna alergia o intolerancia, dínoslo al pedir y lo comprobamos en cocina.",
     "allergens": {
       "gluten": "Gluten",
@@ -215,7 +214,13 @@
     "salsa_title2": "salsa cubana en el salón",
     "salsa_p": "Hay sábados que aquí no son un sábado cualquiera: salsa cubana, cocina de la casa y ambiente de fiesta. No tiene calendario fijo y no es todos los sábados — por eso, cuando hay fecha, la anunciamos nosotros.",
     "salsa_cta_fb": "Enterarte por Facebook",
-    "salsa_cta_call": "O pregúntanos por teléfono"
+    "salsa_cta_call": "O pregúntanos por teléfono",
+    "allergens_gluten_chip": "Sin gluten a petición",
+    "allergens_gluten_note": "Este plato lleva gluten tal como se sirve, pero en cocina pueden prepararlo sin gluten si lo pides al encargar.",
+    "carta_legend_title": "Sobre los alérgenos",
+    "carta_legend_marks": "Debajo de cada plato están los alérgenos que lleva según su receta habitual. Donde pone «Sin gluten a petición», el plato lleva gluten tal como se sirve, pero podemos prepararlo sin él si lo dices al pedir.",
+    "carta_legend_empty": "Si un plato no lleva ninguna etiqueta, es que no esperamos en él ninguno de los catorce alérgenos de declaración obligatoria.",
+    "carta_legend_warning": "Cocinamos todo en la misma cocina, así que no podemos garantizar que no haya trazas. Si tienes una alergia o una intolerancia, dínoslo al reservar o al sentarte y lo miramos plato a plato contigo."
   },
   "en": {
     "nav_home": "Home",
@@ -262,7 +267,6 @@
     "carta_empty": "We are updating the menu right now. Call us on <a href=\"tel:+34922515066\">+34 922 51 50 66</a> and we will tell you what is on today.",
     "allergens_label": "Allergens",
     "note_igic": "All food prices include local tax (IGIC).",
-    "allergens_maybe_label": "May contain it — please ask us",
     "note_allergens": "Allergens are an estimate based on each dish's usual recipe; those marked «?» are still to be confirmed. Tell us when you order if you have any allergy or intolerance and we will check with the kitchen.",
     "allergens": {
       "gluten": "Gluten",
@@ -433,6 +437,12 @@
     "salsa_title2": "Cuban salsa in the dining room",
     "salsa_p": "Some Saturdays here are not just any Saturday: Cuban salsa, the kitchen doing its thing and a party going on. There is no fixed calendar and it is not every Saturday — so when there is a date, you will hear it from us.",
     "salsa_cta_fb": "Hear about it on Facebook",
-    "salsa_cta_call": "Or ask us by phone"
+    "salsa_cta_call": "Or ask us by phone",
+    "allergens_gluten_chip": "Gluten-free on request",
+    "allergens_gluten_note": "This dish contains gluten as served, but the kitchen can prepare it without gluten if you ask when ordering.",
+    "carta_legend_title": "About allergens",
+    "carta_legend_marks": "Under each dish you will find the allergens it contains according to its usual recipe. Where it says «Gluten-free on request», the dish contains gluten as served, but we can make it without if you say so when ordering.",
+    "carta_legend_empty": "If a dish has no labels, it means we do not expect any of the fourteen allergens that must be declared.",
+    "carta_legend_warning": "Everything is cooked in the same kitchen, so we cannot guarantee there are no traces. If you have an allergy or an intolerance, tell us when you book or when you sit down and we will go through the menu with you."
   }
 }

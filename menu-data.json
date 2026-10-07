@@ -1,15 +1,11 @@
 {
   "source": "Hoja de cálculo «Carta La Carreta del Carretón — con alérgenos»",
   "source_file": "carta/carta-hoja.csv",
-  "scraped_at": "2026-09-26T19:01:45.999473+00:00",
+  "scraped_at": "2026-10-07T14:57:27.016429+00:00",
   "notes": [
     "IGIC INCLUIDO"
   ],
-  "allergen_legend": [
-    "X = contiene el alérgeno (estimación según receta habitual del plato)",
-    "? = puede contenerlo según la receta: CONFIRMAR con cocina",
-    "vacío = no se espera ninguno de los 14 alérgenos"
-  ],
+  "allergen_legend": [],
   "categories": [
     {
       "category": "Aperitivos",
@@ -26,7 +22,11 @@
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ]
+          ],
+          "allergens": [
+            "gluten"
+          ],
+          "gluten_on_request": true
         },
         {
           "name": "Tostones Rellenos",
@@ -45,10 +45,10 @@
               "label_en": "Half portion"
             }
           ],
-          "allergens_maybe": [
-            "gluten",
-            "leche"
-          ]
+          "allergens": [
+            "gluten"
+          ],
+          "gluten_on_request": true
         },
         {
           "name": "Huevos Rotos",
@@ -66,8 +66,10 @@
             }
           ],
           "allergens": [
+            "gluten",
             "huevo"
-          ]
+          ],
+          "gluten_on_request": true
         },
         {
           "name": "Papas Rellenas",
@@ -76,12 +78,12 @@
           "description_en": "Mashed potato seasoned with nutmeg and butter, stuffed with minced meat, then breaded and fried",
           "prices": [
             {
-              "value": "7,50",
+              "value": "5,30",
               "label": "1 ración",
               "label_en": "Full portion"
             },
             {
-              "value": "5,35",
+              "value": "3,20",
               "label": "½ ración",
               "label_en": "Half portion"
             }
@@ -89,9 +91,6 @@
           "allergens": [
             "gluten",
             "huevo"
-          ],
-          "allergens_maybe": [
-            "leche"
           ]
         },
         {
@@ -111,8 +110,7 @@
           ],
           "allergens": [
             "gluten",
-            "huevo",
-            "leche"
+            "huevo"
           ]
         },
         {
@@ -132,8 +130,7 @@
           ],
           "allergens": [
             "gluten",
-            "huevo",
-            "leche"
+            "huevo"
           ]
         },
         {
@@ -154,7 +151,7 @@
           "allergens": [
             "gluten",
             "huevo",
-            "leche"
+            "mostaza"
           ]
         },
         {
@@ -205,10 +202,6 @@
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ],
-          "allergens_maybe": [
-            "huevo",
-            "pescado"
           ]
         },
         {
@@ -227,6 +220,11 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "leche",
+            "frutossecos",
+            "sulfitos"
           ]
         },
         {
@@ -245,6 +243,12 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "crustaceos",
+            "leche",
+            "frutossecos",
+            "sulfitos"
           ]
         },
         {
@@ -263,6 +267,11 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "leche",
+            "frutossecos",
+            "sulfitos"
           ]
         },
         {
@@ -281,6 +290,11 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "leche",
+            "frutossecos",
+            "sulfitos"
           ]
         },
         {
@@ -295,9 +309,10 @@
               "label_en": "Full portion"
             }
           ],
-          "allergens_maybe": [
-            "huevo",
-            "pescado"
+          "allergens": [
+            "leche",
+            "frutossecos",
+            "sulfitos"
           ]
         }
       ]
@@ -307,10 +322,10 @@
       "category_en": "Vegetarian",
       "items": [
         {
-          "name": "Ensalada Mixta especial",
+          "name": "Ensalada Especial",
           "number": 1,
-          "description": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta y una vinagreta de mango",
-          "description_en": "Several kinds of lettuce, nuts, fruit (apple and grape), feta cheese and a mango vinaigrette",
+          "description": "Diferentes tipos de lechuga, frutas (uva y manzana), frutos secos, queso feta y una vinagreta de mango",
+          "description_en": "Several kinds of lettuce, fruit (grape and apple), nuts, feta cheese and a mango vinaigrette",
           "prices": [
             {
               "value": "7,50",
@@ -318,8 +333,10 @@
               "label_en": "Full portion"
             }
           ],
-          "allergens_maybe": [
-            "huevo"
+          "allergens": [
+            "leche",
+            "frutossecos",
+            "sulfitos"
           ]
         },
         {
@@ -338,6 +355,9 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "sulfitos"
           ]
         },
         {
@@ -354,7 +374,11 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
-          ]
+          ],
+          "allergens": [
+            "gluten"
+          ],
+          "gluten_on_request": true
         },
         {
           "name": "Tostones",
@@ -367,7 +391,11 @@
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ]
+          ],
+          "allergens": [
+            "gluten"
+          ],
+          "gluten_on_request": true
         },
         {
           "name": "Vegetales salteados",
@@ -380,9 +408,6 @@
               "label": "1 ración",
               "label_en": "Full portion"
             }
-          ],
-          "allergens_maybe": [
-            "soja"
           ]
         },
         {
@@ -401,6 +426,10 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "mostaza",
+            "sulfitos"
           ]
         },
         {
@@ -425,6 +454,8 @@
         {
           "name": "Sopa de pollo",
           "number": 1,
+          "description": "Lleva fideos",
+          "description_en": "It has noodles in it",
           "prices": [
             {
               "value": "3,20",
@@ -437,9 +468,8 @@
               "label_en": "Half portion"
             }
           ],
-          "allergens_maybe": [
-            "gluten",
-            "apio"
+          "allergens": [
+            "gluten"
           ]
         },
         {
@@ -456,9 +486,6 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
-          ],
-          "allergens_maybe": [
-            "apio"
           ]
         }
       ]
@@ -476,6 +503,9 @@
               "label": "1 ración",
               "label_en": "Full portion"
             }
+          ],
+          "allergens": [
+            "sulfitos"
           ]
         },
         {
@@ -489,6 +519,9 @@
               "label": "1 ración",
               "label_en": "Full portion"
             }
+          ],
+          "allergens": [
+            "sulfitos"
           ]
         },
         {
@@ -509,9 +542,7 @@
             }
           ],
           "allergens": [
-            "gluten"
-          ],
-          "allergens_maybe": [
+            "gluten",
             "huevo"
           ]
         }
@@ -538,7 +569,7 @@
               "label_en": "Half portion"
             }
           ],
-          "allergens_maybe": [
+          "allergens": [
             "sulfitos"
           ]
         },
@@ -553,6 +584,9 @@
               "label": "1 ración",
               "label_en": "Full portion"
             }
+          ],
+          "allergens": [
+            "sulfitos"
           ]
         }
       ]
@@ -577,6 +611,9 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "sulfitos"
           ]
         },
         {
@@ -595,6 +632,9 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "sulfitos"
           ]
         },
         {
@@ -613,6 +653,9 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "sulfitos"
           ]
         },
         {
@@ -632,8 +675,7 @@
               "label_en": "Half portion"
             }
           ],
-          "allergens_maybe": [
-            "gluten",
+          "allergens": [
             "mostaza",
             "sulfitos"
           ]
@@ -654,6 +696,9 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "sulfitos"
           ]
         },
         {
@@ -672,6 +717,9 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ],
+          "allergens": [
+            "sulfitos"
           ]
         }
       ]
@@ -693,9 +741,7 @@
             }
           ],
           "allergens": [
-            "pescado"
-          ],
-          "allergens_maybe": [
+            "pescado",
             "sulfitos"
           ]
         },
@@ -717,9 +763,7 @@
             }
           ],
           "allergens": [
-            "crustaceos"
-          ],
-          "allergens_maybe": [
+            "crustaceos",
             "sulfitos"
           ]
         },
@@ -739,7 +783,8 @@
             }
           ],
           "allergens": [
-            "crustaceos"
+            "crustaceos",
+            "sulfitos"
           ]
         },
         {
@@ -825,6 +870,11 @@
               "label": "1 ración",
               "label_en": "Full portion"
             }
+          ],
+          "allergens": [
+            "gluten",
+            "huevo",
+            "leche"
           ]
         },
         {
@@ -858,10 +908,8 @@
             }
           ],
           "allergens": [
+            "gluten",
             "leche"
-          ],
-          "allergens_maybe": [
-            "soja"
           ]
         },
         {
@@ -877,9 +925,6 @@
           "allergens": [
             "gluten",
             "leche"
-          ],
-          "allergens_maybe": [
-            "soja"
           ]
         },
         {
@@ -1067,7 +1112,7 @@
           ]
         },
         {
-          "name": "Heineken 00",
+          "name": "Victoria 00",
           "number": 21,
           "prices": [
             {
@@ -1081,7 +1126,7 @@
           ]
         },
         {
-          "name": "Mixta de Limón",
+          "name": "Freedamm Limón",
           "number": 22,
           "prices": [
             {
@@ -1095,7 +1140,7 @@
           ]
         },
         {
-          "name": "Mahou Maestra",
+          "name": "Voldamm",
           "number": 23,
           "prices": [
             {
@@ -1109,11 +1154,11 @@
           ]
         },
         {
-          "name": "Victoria",
+          "name": "Caña Victoria",
           "number": 24,
           "prices": [
             {
-              "value": "1,90",
+              "value": "1,70",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1131,17 +1176,17 @@
           "number": 36,
           "prices": [
             {
-              "value": "1,70",
+              "value": "1,95",
               "label": "Copa",
               "label_en": "Glass"
             },
             {
-              "value": "4,80",
+              "value": "5,45",
               "label": "1/2 L",
               "label_en": "½ litre"
             },
             {
-              "value": "2,80",
+              "value": "3,00",
               "label": "1/4 L",
               "label_en": "¼ litre"
             }
@@ -1155,17 +1200,17 @@
           "number": 37,
           "prices": [
             {
-              "value": "1,70",
+              "value": "2,15",
               "label": "Copa",
               "label_en": "Glass"
             },
             {
-              "value": "4,80",
+              "value": "5,90",
               "label": "1/2 L",
               "label_en": "½ litre"
             },
             {
-              "value": "2,80",
+              "value": "3,30",
               "label": "1/4 L",
               "label_en": "¼ litre"
             }
@@ -1179,17 +1224,17 @@
           "number": 38,
           "prices": [
             {
-              "value": "1,70",
+              "value": "2,25",
               "label": "Copa",
               "label_en": "Glass"
             },
             {
-              "value": "4,80",
+              "value": "6,00",
               "label": "1/2 L",
               "label_en": "½ litre"
             },
             {
-              "value": "2,80",
+              "value": "3,30",
               "label": "1/4 L",
               "label_en": "¼ litre"
             }
@@ -1203,7 +1248,7 @@
           "number": 39,
           "prices": [
             {
-              "value": "10,00",
+              "value": "10,70",
               "label": "Botella",
               "label_en": "Bottle"
             }
@@ -1217,7 +1262,7 @@
           "number": 40,
           "prices": [
             {
-              "value": "18,00",
+              "value": "19,30",
               "label": "Botella",
               "label_en": "Bottle"
             }
@@ -1257,11 +1302,11 @@
           ]
         },
         {
-          "name": "Havana 5 años",
+          "name": "Havana especial",
           "number": 55,
           "prices": [
             {
-              "value": "3,50",
+              "value": "3,75",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1272,7 +1317,7 @@
           "number": 56,
           "prices": [
             {
-              "value": "3,50",
+              "value": "3,75",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1283,7 +1328,7 @@
           "number": 57,
           "prices": [
             {
-              "value": "4,00",
+              "value": "5,90",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1294,12 +1339,12 @@
           "number": 58,
           "prices": [
             {
-              "value": "3,50",
+              "value": "3,75",
               "label": "Etiqueta roja",
               "label_en": "Red Label"
             },
             {
-              "value": "4,50",
+              "value": "4,80",
               "label": "Etiqueta negra",
               "label_en": "Black Label"
             }
@@ -1310,7 +1355,7 @@
           "number": 59,
           "prices": [
             {
-              "value": "2,00",
+              "value": "2,65",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1325,7 +1370,7 @@
           "number": 66,
           "prices": [
             {
-              "value": "1,00",
+              "value": "1,10",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1336,7 +1381,7 @@
           "number": 67,
           "prices": [
             {
-              "value": "1,20",
+              "value": "1,30",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1350,7 +1395,7 @@
           "number": 68,
           "prices": [
             {
-              "value": "1,20",
+              "value": "1,30",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1364,7 +1409,7 @@
           "number": 69,
           "prices": [
             {
-              "value": "1,20",
+              "value": "1,30",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1380,7 +1425,7 @@
           "description_en": "Coffee with milk, condensed milk, cinnamon and liqueur",
           "prices": [
             {
-              "value": "1,30",
+              "value": "1,35",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1394,7 +1439,7 @@
           "number": 71,
           "prices": [
             {
-              "value": "1,50",
+              "value": "1,65",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1408,7 +1453,7 @@
           "number": 72,
           "prices": [
             {
-              "value": "1,40",
+              "value": "1,60",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1422,7 +1467,7 @@
           "number": 73,
           "prices": [
             {
-              "value": "1,00",
+              "value": "1,10",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1433,7 +1478,7 @@
           "number": 74,
           "prices": [
             {
-              "value": "1,10",
+              "value": "1,30",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1444,7 +1489,7 @@
           "number": 75,
           "prices": [
             {
-              "value": "1,20",
+              "value": "1,30",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1459,7 +1504,7 @@
           "number": 81,
           "prices": [
             {
-              "value": "1,30",
+              "value": "1,35",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1470,7 +1515,7 @@
           "number": 82,
           "prices": [
             {
-              "value": "1,30",
+              "value": "1,35",
               "label": "Unidad",
               "label_en": "Each"
             }
@@ -1481,7 +1526,7 @@
           "number": 83,
           "prices": [
             {
-              "value": "1,30",
+              "value": "1,35",
               "label": "Unidad",
               "label_en": "Each"
             }

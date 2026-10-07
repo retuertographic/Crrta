@@ -90,7 +90,7 @@
   :root{
     --ink:#2B2621;
     --ink-2:#1A1713;
-    --gold:#A9833F;
+    --gold:#826430;
     --gold-light:#D2B072;
     --cream:#EFE8DB;
     --cream-2:#E1D6C2;
@@ -886,4 +886,27 @@
   @media (max-width:620px){
     .salsa{padding:70px 0;}
     .salsa-ctas .btn{width:100%;text-align:center;}
+  }
+
+  /* ---------- LEYENDA DE ALÉRGENOS ---------- */
+  .carta-legend{
+    max-width:760px;margin:0 0 34px;padding:22px 26px;
+    background:var(--paper);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;
+  }
+  .carta-legend h3{
+    font-family:'Playfair Display','Playfair Display reserva',serif;
+    font-size:1.05rem;font-weight:700;color:var(--ink);margin:0 0 10px;
+  }
+  .carta-legend p{font-size:.86rem;line-height:1.7;color:var(--text-soft);margin:0 0 8px;}
+  .carta-legend p:last-child{margin-bottom:0;}
+  .carta-legend .warn{color:var(--ink);font-weight:500;}
+
+  /* «Sin gluten a petición» no es un alérgeno más: se distingue del resto
+     para que no se lea como si el plato no llevara gluten. */
+  .al.on-request{
+    background:transparent;border:1px dashed var(--gold);color:var(--gold);
+    font-weight:600;
+  }
+  @media (max-width:620px){
+    .carta-legend{padding:18px 20px;}
   }
