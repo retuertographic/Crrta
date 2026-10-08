@@ -281,20 +281,10 @@
 
   /* ---------- INTRO / SOBRE NOSOTROS ---------- */
   .intro{padding:120px 0 100px;background:var(--paper);}
-  .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
-  .intro-media{position:relative;border-radius:18px;overflow:hidden;}
+  .intro-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:60px;align-items:start;}
+  .intro-media{position:sticky;top:110px;border-radius:18px;overflow:hidden;}
   .intro-media img{border-radius:18px;aspect-ratio:4/5;object-fit:cover;width:100%;}
-  .intro-media .float-card{
-    position:absolute;left:22px;bottom:22px;
-    background:rgba(26,23,19,.9);color:#fff;
-    border-radius:14px;padding:16px 20px;
-    box-shadow:0 14px 34px rgba(0,0,0,.28);
-    backdrop-filter:blur(4px);
-    max-width:210px;
-  }
-  .intro-media .float-card strong{display:block;font-family:'Playfair Display','Playfair Display reserva',serif;font-size:1.5rem;line-height:1.1;color:var(--gold-light);}
-  .intro-media .float-card span{font-size:.78rem;letter-spacing:.05em;opacity:.85;}
-  .intro-text p{color:var(--text-soft);font-size:1.05rem;line-height:1.85;margin-bottom:18px;}
+  .intro-media  .intro-media  .intro-text p{color:var(--text-soft);font-size:1.05rem;line-height:1.85;margin-bottom:18px;}
   .intro-points{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px;}
   .intro-points li{display:flex;gap:12px;align-items:flex-start;font-weight:600;font-size:.9rem;color:var(--ink);}
   .intro-points li .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);margin-top:6px;flex:none;}
@@ -910,3 +900,73 @@
   @media (max-width:620px){
     .carta-legend{padding:18px 20px;}
   }
+
+  /* ---------- NUESTRA HISTORIA ----------
+     Es la sección más larga de la web, así que manda la lectura: una sola
+     columna de texto con medida corta, la foto arriba en móvil y al lado en
+     escritorio, y subtítulos que la parten en tramos cortos. */
+  .intro-head{max-width:760px;margin:0 0 42px;}
+  .intro-lead{
+    font-family:'Playfair Display','Playfair Display reserva',serif;
+    font-size:clamp(1.1rem,2vw,1.35rem);line-height:1.6;color:var(--text-soft);
+    font-style:italic;margin-top:14px;
+  }
+  .intro-text h3{
+    font-family:'Playfair Display','Playfair Display reserva',serif;
+    font-size:1.25rem;font-weight:700;color:var(--ink);
+    margin:34px 0 12px;
+  }
+  .intro-text p{margin-bottom:16px;}
+  .intro-text p:last-child{margin-bottom:0;}
+
+  .intro-today{
+    max-width:780px;margin:56px auto 0;padding:38px 42px;
+    background:var(--paper);border-radius:22px;
+    box-shadow:0 20px 44px rgba(43,38,33,.08);
+  }
+  .intro-today h3{
+    font-family:'Playfair Display','Playfair Display reserva',serif;
+    font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:800;color:var(--ink);
+    margin:6px 0 16px;
+  }
+  .intro-today p{margin-bottom:16px;}
+  .intro-today blockquote{
+    margin:28px 0 0;padding-top:24px;border-top:1px solid var(--cream-2);text-align:center;
+  }
+  .intro-today blockquote p{
+    font-family:'Yellowtail','Yellowtail reserva',cursive;
+    font-size:clamp(1.4rem,3vw,1.85rem);line-height:1.45;color:var(--gold);margin:0 0 10px;
+  }
+  .intro-today cite{
+    display:block;font-style:normal;font-size:.82rem;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--text-soft);
+  }
+
+  /* Botón único bajo las tres especialidades. */
+  .sel-cta{text-align:center;margin:44px 0 0;}
+
+  @media (max-width:900px){
+    .intro-today{margin-top:40px;padding:30px 24px;}
+    .intro-text h3{margin-top:28px;}
+  }
+
+  /* La historia plegada: se corta con un degradado para que se vea que
+     sigue, nunca de golpe. */
+  .story-body.is-clamped{
+    max-height:560px;overflow:hidden;position:relative;
+  }
+  .story-body.is-clamped::after{
+    content:'';position:absolute;left:0;right:0;bottom:0;height:120px;
+    background:linear-gradient(to bottom, rgba(250,246,238,0), var(--paper));
+    pointer-events:none;
+  }
+  .story-more{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:18px;padding:10px 0;min-height:44px;
+    background:none;border:none;cursor:pointer;
+    font-family:'Poppins','Poppins reserva',sans-serif;
+    font-size:.9rem;font-weight:600;color:var(--gold);
+    border-bottom:1px solid var(--gold);
+  }
+  .story-more:hover{color:var(--ink);border-bottom-color:var(--ink);}
+  .story-more[hidden]{display:none;}

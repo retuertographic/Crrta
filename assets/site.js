@@ -48,6 +48,36 @@
     });
   }
 
+  /* ---- Nuestra historia: plegada en pantallas estrechas ----
+     El texto entero está en el HTML y se ve por defecto. Esto lo pliega
+     solo cuando la pantalla es estrecha y el texto es largo de verdad, así
+     que sin JavaScript no se pierde nada. */
+  const story = document.getElementById('historia-texto');
+  const storyMore = document.getElementById('storyMore');
+  if (story && storyMore) {
+    const estrecha = window.matchMedia('(max-width: 900px)');
+    const plegar = (si) => {
+      story.classList.toggle('is-clamped', si);
+      storyMore.setAttribute('aria-expanded', si ? 'false' : 'true');
+      storyMore.textContent = si ? storyMore.dataset.labelMore : storyMore.dataset.labelLess;
+    };
+    const revisar = () => {
+      // 900 px de texto son unas dos pantallas y media de móvil: a partir de
+      // ahí compensa plegar.
+      const largo = story.scrollHeight > 900;
+      const aplica = estrecha.matches && largo;
+      storyMore.hidden = !aplica;
+      plegar(aplica);
+    };
+    storyMore.addEventListener('click', () => {
+      const plegado = story.classList.contains('is-clamped');
+      plegar(!plegado);
+      if (plegado === false) story.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    });
+    estrecha.addEventListener('change', revisar);
+    revisar();
+  }
+
   /* ---- Horario: resalta el día de hoy ---- */
   const hours = document.querySelector('.hours-grid');
   if (hours) {

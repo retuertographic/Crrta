@@ -16,7 +16,7 @@
   <div class="wrap">
     <span class="hero-tag" data-i18n="hero_tag">🇨🇺 Cocina cubana · Arafo</span>
     <h1><span data-i18n="hero_title1">Aquí se come sin prisa</span><span class="script" data-i18n="hero_title2">y se repite postre</span></h1>
-    <p data-i18n="hero_p">Cocina cubana casera en el casco de Arafo: carnes a la brasa, cerdo tratado como se debe y el postre Teide, que es casi un motivo de viaje en sí mismo.</p>
+    <p data-i18n="hero_p">Un restaurante familiar en Arafo donde conviven los sabores de la cocina cubana y la tradición canaria. Comida casera, buena brasa y el gusto de compartir alrededor de una mesa.</p>
     <div class="hero-ctas">
       <a href="tel:+34922515066" class="btn" data-i18n="cta_call">📞 Llamar y reservar</a>
       <a href="#carta" class="btn outline" data-i18n="hero_btn2">Ver la carta</a>
@@ -38,27 +38,58 @@
 <!-- ================= NOSOTROS ================= -->
 <section class="intro" id="nosotros">
   <div class="wrap">
+
+    <div class="intro-head">
+      <span class="eyebrow" data-i18n="intro_eyebrow">Nuestra historia</span>
+      <h2 class="section-title"><span data-i18n="intro_title1">Raíces cubanas</span><span class="accent" data-i18n="intro_title2">corazón canario</span></h2>
+      <p class="intro-lead" data-i18n="intro_lead">De una pequeña casa de madera a una mesa donde se encuentran dos culturas.</p>
+    </div>
+
     <div class="intro-grid">
       <div class="intro-media">
-        <img src="{{PREFIX}}img/salon.webp" alt="Salón de La Carreta del Carretón, con mesas de mantel de cuadros y pared de piedra volcánica" width="1116" height="837">
-        <div class="float-card">
-          <strong data-i18n="intro_float_num">Arafo</strong>
-          <span data-i18n="intro_float_label">a un paso del Valle de Güímar</span>
-        </div>
+        <!--# Pendiente: una fotografía de aquella primera casa de madera, si
+             se conserva. Es la que cuenta los dieciséis años mejor que
+             ninguna otra. Mientras tanto va el salón de hoy. -->
+        <img src="{{PREFIX}}img/salon.webp" data-i18n-attr="alt=alt_intro"
+             alt="Salón de La Carreta del Carretón, con mesas de mantel de cuadros y pared de piedra volcánica"
+             loading="lazy" width="1116" height="837">
       </div>
+
       <div class="intro-text">
-        <span class="eyebrow" data-i18n="intro_eyebrow">De Cuba a Tenerife</span>
-        <h2 class="section-title"><span data-i18n="intro_title1">Una casa cubana</span><span class="accent" data-i18n="intro_title2">en el corazón de Arafo</span></h2>
-        <p data-i18n="intro_p1">La Carreta del Carretón es un restaurante pequeño y familiar en el casco de Arafo, donde la cocina cubana se hace como en casa: a fuego lento, con producto de aquí y recetas de allá.</p>
-        <p data-i18n="intro_p2">Manteles de cuadros, pared de piedra volcánica y un patio con plantas. Se llena, así que es mejor llamar antes y reservar la mesa.</p>
-        <ul class="intro-points">
-          <li><span class="dot"></span><span data-i18n="intro_point1">Cocina cubana casera</span></li>
-          <li><span class="dot"></span><span data-i18n="intro_point2">Especialistas en cerdo</span></li>
-          <li><span class="dot"></span><span data-i18n="intro_point3">Raciones generosas</span></li>
-          <li><span class="dot"></span><span data-i18n="intro_point4">Trato de toda la vida</span></li>
-        </ul>
+        <div class="story-body" id="historia-texto">
+        <p data-i18n="intro_p1"></p>
+        <p data-i18n="intro_p2"></p>
+        <p data-i18n="intro_p3"></p>
+        <p data-i18n="intro_p4"></p>
+
+        <h3 data-i18n="intro_name_title">¿Y de dónde viene nuestro nombre?</h3>
+        <p data-i18n="intro_name_p1"></p>
+        <p data-i18n="intro_name_p2"></p>
+
+        <h3 data-i18n="intro_years_title">Dieciséis años compartiendo nuestra mesa</h3>
+        <p data-i18n="intro_years_p"></p>
+        </div>
+        <!--# El botón lo enciende assets/site.js solo si hace falta (pantalla
+             estrecha y texto largo). Sin JavaScript la historia se lee
+             entera: se pliega desde fuera, no se despliega desde dentro. -->
+        <button type="button" class="story-more" id="storyMore" hidden
+                aria-expanded="true" aria-controls="historia-texto"
+                data-label-more="Seguir leyendo" data-label-less="Leer menos"
+                data-i18n-attr="data-label-more=story_more;data-label-less=story_less">Seguir leyendo</button>
       </div>
     </div>
+
+    <div class="intro-today">
+      <span class="eyebrow" data-i18n="intro_today_eyebrow">La Carreta de hoy</span>
+      <h3 data-i18n="intro_today_title">Cuba y Canarias en la misma mesa</h3>
+      <p data-i18n="intro_today_p1"></p>
+      <p data-i18n="intro_today_p2"></p>
+      <blockquote>
+        <p data-i18n="intro_quote">La buena comida sabe todavía mejor cuando se comparte.</p>
+        <cite data-i18n="intro_sign">La Carreta del Carretón. Raíces cubanas, corazón canario.</cite>
+      </blockquote>
+    </div>
+
   </div>
 </section>
 
@@ -69,27 +100,29 @@
     <h2 class="section-title"><span data-i18n="sel_title1">Tres razones</span><span class="accent" data-i18n="sel_title2">para sentarse a la mesa</span></h2>
     <div class="sel-grid">
       <div class="sel-card">
-        <div class="thumb"><img src="{{PREFIX}}img/carne-pimientos.webp" alt="Carne a la brasa con pimientos rojos y verdes" loading="lazy" width="765" height="1020"></div>
+        <div class="thumb"><img src="{{PREFIX}}img/salon.webp" data-i18n-attr="alt=alt_sel1" alt="Mesa vestida con mantel de cuadros en el salón de La Carreta del Carretón" loading="lazy" width="1116" height="837"></div>
         <div class="body">
-          <h3 data-i18n="sel1_title">Carne a la brasa</h3>
-          <p data-i18n="sel1_p">Costillas, cerdo y carne salteada con pimientos — el punto justo de fuego y una salsa que pide pan.</p>
+          <h3 data-i18n="sel1_title">Allá y aquí</h3>
+          <p data-i18n="sel1_p"></p>
         </div>
       </div>
       <div class="sel-card">
-        <div class="thumb"><img src="{{PREFIX}}img/postre-teide.webp" alt="Postre Teide: bizcocho cubierto de chocolate caliente" loading="lazy" width="765" height="1020"></div>
+        <div class="thumb"><img src="{{PREFIX}}img/carne-pimientos.webp" data-i18n-attr="alt=alt_sel2" alt="Carne a la brasa con pimientos rojos y verdes" loading="lazy" width="765" height="1020"></div>
         <div class="body">
-          <h3 data-i18n="sel2_title">El postre Teide</h3>
-          <p data-i18n="sel2_p">Nuestro volcán particular: una montaña de bizcocho bañada en chocolate. Viene con varias cucharas por algo.</p>
+          <h3 data-i18n="sel2_title">El sabor de nuestra brasa</h3>
+          <p data-i18n="sel2_p"></p>
         </div>
       </div>
       <div class="sel-card">
-        <div class="thumb"><img src="{{PREFIX}}img/salon.webp" alt="Comedor con mesas vestidas y patio interior" loading="lazy" width="1116" height="837"></div>
+        <div class="thumb"><img src="{{PREFIX}}img/postre-teide.webp" data-i18n-attr="alt=alt_sel3" alt="Postre Teide: bizcocho de chocolate con salsa tibia de chocolate por encima" loading="lazy" width="765" height="1020"></div>
         <div class="body">
-          <h3 data-i18n="sel3_title">Mesa y sobremesa</h3>
-          <p data-i18n="sel3_p">Salón interior y patio con plantas, mesas para grupos y familias. Sitio para quedarse un rato más.</p>
+          <h3 data-i18n="sel3_title">Nuestro Postre Teide</h3>
+          <p data-i18n="sel3_p"></p>
         </div>
       </div>
     </div>
+
+    <p class="sel-cta"><a class="btn" href="#carta" data-i18n="sel_cta">Descubre nuestra carta</a></p>
   </div>
 </section>
 

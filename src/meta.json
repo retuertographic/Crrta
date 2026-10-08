@@ -2,11 +2,11 @@
   "index.html": {
     "es": {
       "title": "La Carreta del Carretón · Cuba y Canarias en Arafo",
-      "description": "Restaurante familiar en el casco de Arafo, Tenerife. Platos cubanos de toda la vida y platos con alma canaria, en la misma mesa. Solo a mediodía."
+      "description": "Restaurante familiar en Arafo, Tenerife, donde conviven la cocina cubana y la tradición canaria. Comida casera y buena brasa. Abrimos solo a mediodía."
     },
     "en": {
       "title": "La Carreta del Carretón · Cuban and Canarian in Arafo",
-      "description": "Family restaurant in the old town of Arafo, Tenerife. Long-standing Cuban dishes and dishes with a Canarian soul, at one table. Lunchtime only."
+      "description": "Family restaurant in Arafo, Tenerife, where Cuban cooking and Canarian tradition live side by side. Home cooking and a good grill. Open at lunchtime only."
     }
   },
   "novedades.html": {
@@ -22,7 +22,7 @@
   "novedades/abrimos-nuestra-web.html": {
     "es": {
       "title": "Ya tenemos web y carta online · La Carreta del Carretón",
-      "description": "Estrenamos página con la carta al día, los precios, cómo llegar y todas las formas de reservar mesa en nuestro restaurante del casco de Arafo.",
+      "description": "Estrenamos página con la carta al día, los precios, cómo llegar y todas las formas de reservar mesa en nuestro restaurante familiar de Arafo, Tenerife.",
       "og_type": "article",
       "image": "img/postre-teide.webp"
     },
