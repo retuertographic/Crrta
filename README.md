@@ -201,6 +201,23 @@ Si añades una familia o un peso, tócalo en `scripts/fetch_fonts.py`,
 ejecútalo, y revisa las precargas de `src/partials/head.html`: ahí van las
 tres que se ven sin bajar (Playfair, Yellowtail y Poppins 400).
 
+## Comprobaciones
+
+```bash
+python -m http.server 8777          # en otra terminal, desde la raíz
+npm install                         # solo la primera vez
+npm run comprobar:solapes
+```
+
+Busca texto que se pisa con otro texto en seis páginas y diez anchuras, de
+320 a 1440 px. Existe porque en la portada se colaron las etiquetas del
+hero por debajo del indicador de scroll, que va posicionado absoluto, y no
+lo vio nadie hasta que apareció en un móvil de verdad: ni el validador de
+HTML ni axe detectan un solape, hay que medir las cajas.
+
+npm no hace falta para nada más. La web es HTML estático y `_config.yml`
+deja `package.json` y `node_modules/` fuera de lo que se publica.
+
 ## Cómo se publica
 
 ```bash

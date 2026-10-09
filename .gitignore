@@ -2,3 +2,7 @@
 Thumbs.db
 __pycache__/
 *.pyc
+
+# Solo para los scripts de comprobación; la web no usa npm.
+node_modules/
+package-lock.json

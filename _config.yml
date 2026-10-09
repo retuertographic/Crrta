@@ -9,3 +9,6 @@ exclude:
   - README.md
   - .gitattributes
   - .gitignore
+  - package.json
+  - package-lock.json
+  - node_modules/

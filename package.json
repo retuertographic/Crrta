@@ -1,0 +1,11 @@
+{
+  "name": "la-carreta-del-carreton",
+  "private": true,
+  "description": "Comprobaciones de la web. El sitio es HTML estático y no necesita nada de esto para funcionar: npm solo hace falta para ejecutar los scripts de scripts/comprobar/.",
+  "scripts": {
+    "comprobar:solapes": "node scripts/comprobar/solapes.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.1"
+  }
+}
