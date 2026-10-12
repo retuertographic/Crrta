@@ -171,8 +171,28 @@ def render_carta(menu: dict, i18n: dict, lang: str) -> tuple[str, str, str]:
                 rows.append(f'<div class="menu-group">{esc(field(item, "group", lang))}</div>')
                 continue
 
-            rows.append('<div class="menu-item"><div class="mi-main">')
-            rows.append(f'<div class="mi-name">{esc(field(item, "name", lang))}</div>')
+            foto = item.get("photo")
+            clase = "menu-item con-foto" if foto else "menu-item"
+            rows.append(f'<div class="{clase}">')
+            if foto:
+                # Decorativa: el nombre del plato está justo al lado, así que
+                # repetirlo en el alt solo estorba a quien usa lector.
+                # {{PREFIX}} lo resuelve el bucle de páginas al final, igual
+                # que en las plantillas: render_carta no sabe a qué
+                # profundidad se va a publicar.
+                # El 84x84 no es el tamaño del archivo sino el del hueco que
+                # ocupa: el CSS fija las dos medidas y recorta con
+                # object-fit, así que es lo que hay que reservar.
+                rows.append(f'<div class="mi-foto"><img src="{{{{PREFIX}}}}{esc(foto)}" alt="" '
+                            f'loading="lazy" width="84" height="84"></div>')
+            rows.append('<div class="mi-main">')
+            nombre = esc(field(item, "name", lang))
+            distintivo = item.get("badge")
+            if distintivo in ("estrella", "casa"):
+                clave = "badge_estrella" if distintivo == "estrella" else "badge_casa"
+                nombre += (f'<span class="mi-badge mi-badge--{distintivo}">'
+                           f'{esc(t(i18n, lang, clave))}</span>')
+            rows.append(f'<div class="mi-name">{nombre}</div>')
             description = field(item, "description", lang)
             if description:
                 rows.append(f'<div class="mi-desc">{esc(description)}</div>')

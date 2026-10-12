@@ -190,10 +190,12 @@ def read_rows(path: Path) -> tuple[list[list[str]], list[str]]:
     return rows, legend
 
 
-def build(rows: list[list[str]], descriptions: dict[str, dict]) -> tuple[list[dict], list[str]]:
+def build(rows: list[list[str]], descriptions: dict[str, dict],
+          destacados: dict[str, dict]) -> tuple[list[dict], list[str]]:
     categories: list[dict] = []
     review: list[str] = []
     used_descriptions: set[str] = set()
+    usados: set[str] = set()
     by_name: dict[str, dict] = {}
     current_group: dict[str, str] = {}
 
@@ -274,6 +276,14 @@ def build(rows: list[list[str]], descriptions: dict[str, dict]) -> tuple[list[di
         if on_request:
             item["gluten_on_request"] = True
 
+        extra = destacados.get(fold(name))
+        if extra:
+            if extra.get("distintivo"):
+                item["badge"] = extra["distintivo"]
+            if extra.get("foto"):
+                item["photo"] = extra["foto"]
+            usados.add(fold(name))
+
         note = cell(row, COL_NOTES)
         if note:
             # Nota interna de la hoja: no se publica, se avisa al terminar.
@@ -281,11 +291,27 @@ def build(rows: list[list[str]], descriptions: dict[str, dict]) -> tuple[list[di
 
         cat["items"].append(item)
 
+    for key in destacados:
+        if key not in usados:
+            review.append(f"destacados.json: «{key}» no coincide con ningún plato de la hoja")
+
     for key in descriptions:
         if key not in used_descriptions:
             review.append(f"descripciones.json: «{key}» no coincide con ningún plato de la hoja")
 
     return categories, review
+
+
+def load_destacados() -> dict:
+    """Distintivos y fotos de unos pocos platos (carta/destacados.json).
+
+    Van aparte de la hoja porque no son datos de la carta: son decisiones de
+    cómo se enseña. La hoja manda en qué hay y cuánto cuesta."""
+    path = REPO / "carta" / "destacados.json"
+    if not path.exists():
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return {fold(k): v for k, v in (data.get("destacados") or {}).items()}
 
 
 def main() -> int:
@@ -295,7 +321,8 @@ def main() -> int:
         return 1
 
     rows, legend = read_rows(path)
-    categories, review = build(rows, load_descriptions())
+    destacados = load_destacados()
+    categories, review = build(rows, load_descriptions(), destacados)
     total = sum(len([i for i in c["items"] if "group" not in i]) for c in categories)
 
     if total < MIN_ITEMS:

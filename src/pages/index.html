@@ -100,14 +100,15 @@
     <h2 class="section-title"><span data-i18n="sel_title1">Tres razones</span><span class="accent" data-i18n="sel_title2">para sentarse a la mesa</span></h2>
     <div class="sel-grid">
       <div class="sel-card">
-        <div class="thumb"><img src="{{PREFIX}}img/salon.webp" data-i18n-attr="alt=alt_sel1" alt="Mesa vestida con mantel de cuadros en el salón de La Carreta del Carretón" loading="lazy" width="1116" height="837"></div>
+        <div class="thumb"><img src="{{PREFIX}}img/montaje-cuba-canarias.webp" data-i18n-attr="alt=alt_sel1" alt="Un tamal cubano y unas croquetas de gofio, servidos en dos platos sobre el mantel de cuadros" loading="lazy" width="760" height="760"></div>
         <div class="body">
           <h3 data-i18n="sel1_title">Allá y aquí</h3>
           <p data-i18n="sel1_p"></p>
         </div>
       </div>
       <div class="sel-card">
-        <div class="thumb"><img src="{{PREFIX}}img/carne-pimientos.webp" data-i18n-attr="alt=alt_sel2" alt="Carne a la brasa con pimientos rojos y verdes" loading="lazy" width="765" height="1020"></div>
+        <div class="thumb"><img src="{{PREFIX}}img/costillas-bbq.webp" data-i18n-attr="alt=alt_sel2" alt="Costillas BBQ recién salidas de la parrilla, servidas con ensalada, y la brasa al fondo" loading="lazy" width="760" height="950">
+          <span class="plato-estrella" data-i18n="badge_estrella">Plato estrella</span></div>
         <div class="body">
           <h3 data-i18n="sel2_title">El sabor de nuestra brasa</h3>
           <p data-i18n="sel2_p"></p>
@@ -149,12 +150,46 @@
 <!-- ================= GUACHIN SALSA ================= -->
 <section class="salsa" id="guachin">
   <div class="wrap">
-    <span class="eyebrow" data-i18n="salsa_eyebrow">Algunos sábados</span>
-    <h2 class="section-title"><span data-i18n="salsa_title1">Guachin Salsa</span><span class="accent" data-i18n="salsa_title2">salsa cubana en el salón</span></h2>
-    <p data-i18n="salsa_p">Hay sábados que aquí no son un sábado cualquiera.</p>
-    <div class="salsa-ctas">
-      <a class="btn" href="https://www.facebook.com/lacarretadelcarreton/" target="_blank" rel="noopener" data-i18n="salsa_cta_fb">Enterarte por Facebook</a>
-      <a class="btn outline" href="tel:+34922515066" data-i18n="salsa_cta_call">O pregúntanos por teléfono</a>
+    <div class="salsa-grid">
+
+      <div class="salsa-media">
+        <!--# Pendiente: una fotografía real de gente bailando en una noche de
+             Guachin Salsa. Esta es el salón, que es verdad pero no cuenta la
+             fiesta. En cuanto llegue la buena, se sustituye aquí. -->
+        <img src="{{PREFIX}}img/salon-interior.webp" data-i18n-attr="alt=alt_salsa"
+             alt="Salón de La Carreta del Carretón, con su pared de piedra volcánica y las mesas vestidas"
+             loading="lazy" width="1200" height="900">
+      </div>
+
+      <div class="salsa-text">
+        <span class="eyebrow" data-i18n="salsa_eyebrow">Cuando La Carreta cambia de ritmo…</span>
+        <!--# El logotipo va dentro del h2 y lleva el nombre en el alt: así
+             la sección sigue teniendo un encabezado de verdad para Google y
+             para quien use lector de pantalla, y la marca es lo que se ve. -->
+        <h2 class="section-title salsa-title">
+          <img class="salsa-logo" src="{{PREFIX}}img/guachin-salsa.webp" alt="Guachin Salsa" width="880" height="379" loading="lazy">
+          <span class="accent" data-i18n="salsa_title2">música, baile y buen ambiente</span>
+        </h2>
+        <p data-i18n="salsa_p1"></p>
+        <p data-i18n="salsa_p2"></p>
+        <p data-i18n="salsa_p3"></p>
+        <p class="salsa-quote" data-i18n="salsa_quote">Porque en La Carreta también hay momentos para levantarse de la mesa y ponerse a bailar.</p>
+
+        <!--# Hueco de la próxima fecha. Mientras no haya ninguna confirmada se
+             queda el aviso de que no la hay; cuando la haya, se sustituye el
+             párrafo por fecha, horario, condiciones y cómo reservar. Nunca
+             una fecha sin confirmar. -->
+        <div class="salsa-next">
+          <strong data-i18n="salsa_next_title">Próxima fecha</strong>
+          <p data-i18n="salsa_next_none">Aún no hay fecha confirmada. En cuanto la haya, la anunciamos en nuestras redes y aquí mismo.</p>
+        </div>
+
+        <div class="salsa-ctas">
+          <a class="btn" href="https://www.facebook.com/lacarretadelcarreton/" target="_blank" rel="noopener" data-i18n="salsa_cta_fb">Seguirnos en Facebook</a>
+          <a class="btn outline" href="tel:+34922515066" data-i18n="salsa_cta_call">Preguntar por teléfono</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -186,6 +221,8 @@
       <a href="{{PREFIX}}img/salon.webp" class="g-tall"><img src="{{PREFIX}}img/salon.webp" alt="Salón y patio de La Carreta del Carretón" loading="lazy" width="1116" height="837"></a>
       <a href="{{PREFIX}}img/carne-pimientos.webp" class="g-wide"><img src="{{PREFIX}}img/carne-pimientos.webp" alt="Carne a la brasa con pimientos" loading="lazy" width="765" height="1020"></a>
       <a href="{{PREFIX}}img/postre-teide.webp" class="g-wide"><img src="{{PREFIX}}img/postre-teide.webp" alt="Postre Teide bañado en chocolate" loading="lazy" width="765" height="1020"></a>
+      <a href="{{PREFIX}}img/exterior.webp" class="g-wide"><img src="{{PREFIX}}img/exterior.webp" data-i18n-attr="alt=alt_exterior" alt="Entrada de La Carreta del Carretón, con la terraza techada y la rueda de carreta en la fachada" loading="lazy" width="1200" height="900"></a>
+      <a href="{{PREFIX}}img/salon-interior.webp" class="g-wide"><img src="{{PREFIX}}img/salon-interior.webp" data-i18n-attr="alt=alt_salsa" alt="Salón de La Carreta del Carretón, con su pared de piedra volcánica y las mesas vestidas" loading="lazy" width="1200" height="900"></a>
     </div>
   </div>
 </section>

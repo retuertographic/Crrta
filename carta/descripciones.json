@@ -36,8 +36,12 @@
       "en": "Tender, juicy grilled skirt steak"
     },
     "Costillas BBQ": {
-      "es": "Plato estrella, tiernas y jugosas costillas previamente maceradas y terminadas en la brasa con salsa barbacoa",
-      "en": "Our signature dish: tender, juicy ribs, marinated and finished on the grill with barbecue sauce"
+      "es": "Tiernas y jugosas, maceradas y terminadas en la brasa con salsa barbacoa",
+      "en": "Tender and juicy, marinated and finished over the coals with barbecue sauce"
+    },
+    "Croquetas de Gofio con carne de Costilla": {
+      "es": "Gofio y carne de costilla, empanadas y fritas. Llevan carne: no son un plato vegetariano",
+      "en": "Gofio and rib meat, breaded and fried. They contain meat: this is not a vegetarian dish"
     },
     "El Carretón": {
       "es": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, churrasco de entraña y una vinagreta de mango",

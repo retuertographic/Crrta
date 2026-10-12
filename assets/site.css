@@ -875,19 +875,57 @@
   /* ---------- GUACHIN SALSA ----------
      Banda oscura entre dos secciones claras: la fiesta no es el día a día
      del restaurante y tampoco lo parece. */
-  .salsa{background:var(--ink);color:#fff;padding:92px 0;text-align:center;}
+  .salsa{background:var(--ink);color:#fff;padding:96px 0;}
+  .salsa-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;}
+  .salsa-media img{
+    width:100%;border-radius:20px;aspect-ratio:4/3;object-fit:cover;
+    box-shadow:0 26px 56px rgba(0,0,0,.4);
+  }
   .salsa .eyebrow{color:var(--gold-light);}
   .salsa .section-title{color:#fff;}
-  .salsa .section-title .accent{color:var(--gold-light);}
-  .salsa p{
-    max-width:640px;margin:18px auto 0;
-    color:rgba(255,255,255,.82);font-size:1rem;line-height:1.85;
+  /* El logotipo hace de titular: ocupa el ancho de la columna hasta un
+     tope, y el subtítulo manuscrito cuelga de él. */
+  .salsa-title{display:block;}
+  .salsa-logo{
+    display:block;width:100%;max-width:460px;height:auto;
+    margin:10px 0 6px;
   }
-  .salsa-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+  /* Con el logotipo haciendo de titular, el subtítulo baja de tamaño: si se
+     queda con el de un title de sección, le come el sitio a la marca. */
+  .salsa-title .accent{font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.35;}
+  @media (max-width:900px){
+    .salsa-logo{max-width:340px;margin-inline:auto;}
+    .salsa-title{text-align:center;}
+    .salsa .eyebrow{display:block;text-align:center;}
+  }
+  .salsa .section-title .accent{color:var(--gold-light);}
+  .salsa p{color:rgba(255,255,255,.82);font-size:1rem;line-height:1.8;margin-bottom:14px;}
+  .salsa-quote{
+    font-family:'Yellowtail','Yellowtail reserva',cursive;
+    font-size:clamp(1.25rem,2.4vw,1.6rem);line-height:1.5;
+    color:var(--gold-light);margin:22px 0 0;
+  }
+
+  /* El hueco de la próxima fecha. Vacío dice que no hay fecha; nunca se
+     deja insinuado que esto pase todas las semanas. */
+  .salsa-next{
+    margin:26px 0 0;padding:18px 22px;
+    background:rgba(255,255,255,.06);border-left:3px solid var(--gold-light);border-radius:0 12px 12px 0;
+  }
+  .salsa-next strong{
+    display:block;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold-light);margin-bottom:6px;
+  }
+  .salsa-next p{margin:0;font-size:.92rem;color:rgba(255,255,255,.8);}
+
+  .salsa-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
   .salsa-ctas .btn.outline{border-color:rgba(255,255,255,.5);color:#fff;}
   .salsa-ctas .btn.outline:hover{background:#fff;color:var(--ink);border-color:#fff;}
+  @media (max-width:900px){
+    .salsa{padding:72px 0;}
+    .salsa-grid{grid-template-columns:1fr;gap:34px;}
+  }
   @media (max-width:620px){
-    .salsa{padding:70px 0;}
     .salsa-ctas .btn{width:100%;text-align:center;}
   }
 
@@ -983,3 +1021,38 @@
   }
   .story-more:hover{color:var(--ink);border-bottom-color:var(--ink);}
   .story-more[hidden]{display:none;}
+
+  /* Distintivos de plato. Discretos: una etiqueta pequeña sobre la foto, no
+     un sello. */
+  .sel-card .thumb{position:relative;}
+  .plato-estrella{
+    position:absolute;left:14px;top:14px;
+    background:rgba(26,23,19,.82);color:var(--gold-light);
+    border:1px solid rgba(210,176,114,.55);border-radius:30px;
+    padding:6px 14px;font-size:.7rem;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;
+    backdrop-filter:blur(4px);
+  }
+
+  /* ---------- DESTACADOS DE LA CARTA ----------
+     La carta se lee, no se hojea: la foto va pequeña y solo en unos pocos
+     platos, y el distintivo es una etiqueta al lado del nombre, no un sello
+     encima. */
+  .menu-item.con-foto{align-items:center;}
+  .mi-foto{flex:none;width:84px;}
+  .mi-foto img{
+    width:84px;height:84px;object-fit:cover;border-radius:12px;display:block;
+    box-shadow:0 8px 20px rgba(43,38,33,.14);
+  }
+  .mi-badge{
+    display:inline-block;margin-left:9px;vertical-align:1px;
+    font-size:.62rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+    border-radius:20px;padding:3px 9px;white-space:nowrap;
+  }
+  .mi-badge--estrella{background:var(--gold);color:#fff;}
+  .mi-badge--casa{background:transparent;color:var(--gold);border:1px solid var(--gold);}
+  @media (max-width:620px){
+    .mi-foto{width:64px;}
+    .mi-foto img{width:64px;height:64px;}
+    .mi-badge{margin-left:0;margin-top:5px;display:block;width:fit-content;}
+  }

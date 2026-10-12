@@ -1,0 +1,25 @@
+{
+  "_comentario": [
+    "Platos que llevan distintivo o fotografía en la carta. La regla del",
+    "documento es usar las fotos con moderación: la carta es un texto que se",
+    "lee, no un catálogo. Unas pocas especialidades, nada más.",
+    "",
+    "distintivo: 'estrella' (Plato estrella) o 'casa' (Especialidad de la casa).",
+    "foto: archivo dentro de img/. Si falta, el plato va solo con su texto.",
+    "",
+    "La clave es el nombre exacto del plato en la hoja de cálculo.",
+    "scripts/build_menu.py avisa si alguna deja de encajar."
+  ],
+  "destacados": {
+    "Costillas BBQ": {
+      "distintivo": "estrella",
+      "foto": "img/costillas-bbq.webp"
+    },
+    "Croquetas de Gofio con carne de Costilla": {
+      "distintivo": "casa"
+    },
+    "Teide": {
+      "foto": "img/postre-teide.webp"
+    }
+  }
+}
