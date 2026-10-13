@@ -250,8 +250,11 @@
     "hours_usual": "Horario habitual",
     "cat_p3": "Según las características del evento, podemos incluir el equipamiento y el personal necesarios, detallando cada servicio en el presupuesto.",
     "cat_claim": "Tú pones la celebración. Nosotros, la comida.",
-    "alt_cat": "Mesas preparadas para una celebración en el salón de La Carreta del Carretón",
-    "alt_comedor": "Comedor de La Carreta del Carretón, con las mesas vestidas de cuadros y el techo de madera"
+    "alt_comedor": "Comedor de La Carreta del Carretón, con las mesas vestidas de cuadros y el techo de madera",
+    "alt_cat1": "Mesa de quesos montada para una celebración, con cuñas de queso, frutos secos, encurtidos y picos",
+    "alt_cat2": "La mesa de quesos vista desde un lado, bajo el toldo, con las bandejas y los cuencos repartidos",
+    "alt_cat3": "La mesa de quesos vista desde arriba, con las bandejas de quesos, los encurtidos y los frutos secos",
+    "alt_montaje": "Mesas preparadas para una celebración en el salón de La Carreta del Carretón"
   },
   "en": {
     "nav_home": "Home",
@@ -504,7 +507,10 @@
     "hours_usual": "Usual hours",
     "cat_p3": "Depending on what the event needs, we can include the equipment and the staff required, itemising each service in the quote.",
     "cat_claim": "You bring the celebration. We bring the food.",
-    "alt_cat": "Tables laid for a celebration in the dining room at La Carreta del Carretón",
-    "alt_comedor": "The dining room at La Carreta del Carretón, with checked tablecloths and a wooden ceiling"
+    "alt_comedor": "The dining room at La Carreta del Carretón, with checked tablecloths and a wooden ceiling",
+    "alt_cat1": "A cheese table laid for a celebration, with wedges of cheese, nuts, pickles and breadsticks",
+    "alt_cat2": "The cheese table seen from one side, under the awning, with the trays and bowls spread out",
+    "alt_cat3": "The cheese table seen from above, with the cheese trays, the pickles and the nuts",
+    "alt_montaje": "Tables laid for a celebration in the dining room at La Carreta del Carretón"
   }
 }

@@ -3,9 +3,11 @@
   "private": true,
   "description": "Comprobaciones de la web. El sitio es HTML estático y no necesita nada de esto para funcionar: npm solo hace falta para ejecutar los scripts de scripts/comprobar/.",
   "scripts": {
+    "comprobar:accesibilidad": "node scripts/comprobar/accesibilidad.mjs",
     "comprobar:solapes": "node scripts/comprobar/solapes.mjs"
   },
   "devDependencies": {
+    "axe-core": "^4.14.0",
     "playwright": "^1.49.1"
   }
 }
