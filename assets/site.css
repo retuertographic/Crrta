@@ -1056,3 +1056,42 @@
     .mi-foto img{width:64px;height:64px;}
     .mi-badge{margin-left:0;margin-top:5px;display:block;width:fit-content;}
   }
+
+  /* ---------- RESERVAS: dos vías delante y dos detrás ----------
+     Teléfono y WhatsApp son las que resuelven en el momento; el formulario
+     y el correo quedan como alternativa, más discretos. */
+  .reserve-otras{
+    margin:20px 0 10px;font-size:.78rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--text-soft);
+  }
+  .reserve-ways--secundarias .way{background:transparent;border-style:dashed;}
+  .reserve-ways--secundarias .way-ic{opacity:.75;}
+  .reserve-confirma{
+    margin:20px 0 0;padding:14px 16px;
+    background:rgba(130,100,48,.08);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;
+    font-size:.88rem;line-height:1.6;color:var(--ink);
+  }
+  /* Los correos administrativos salen de la tarjeta de reserva: reservar
+     tiene que ser lo único que se vea ahí. Al salir de la tarjeta oscura
+     también cambian de color: lo que era blanco sobre marrón ahora va
+     sobre crema. */
+  .contact .more-contacts{
+    margin:36px 0 0;padding:22px 26px;
+    background:var(--paper);border-radius:14px;border:1px solid var(--cream-2);
+  }
+  .contact .more-contacts .mc-title{color:var(--gold);}
+  .contact .more-contacts li{color:var(--text-soft);}
+  .contact .more-contacts li span{color:var(--text-soft);}
+  .contact .more-contacts li a{color:var(--gold);font-weight:600;}
+  .contact .more-contacts li a:hover{color:var(--ink);}
+
+  /* ---------- CATERING ---------- */
+  .cat-media img{
+    width:100%;border-radius:18px;aspect-ratio:4/3;object-fit:cover;display:block;
+    box-shadow:0 20px 44px rgba(43,38,33,.16);margin-bottom:26px;
+  }
+  .cat-claim{
+    text-align:center;margin:0 0 28px;
+    font-family:'Yellowtail','Yellowtail reserva',cursive;
+    font-size:clamp(1.4rem,3vw,1.95rem);line-height:1.4;color:var(--gold);
+  }
