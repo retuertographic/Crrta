@@ -320,6 +320,11 @@ def main() -> int:
         print(f"ERROR: no existe {path}", file=sys.stderr)
         return 1
 
+    try:
+        source_file = str(path.resolve().relative_to(REPO))
+    except ValueError:                      # una exportación de fuera del repositorio
+        source_file = str(path)
+
     rows, legend = read_rows(path)
     destacados = load_destacados()
     categories, review = build(rows, load_descriptions(), destacados)
@@ -335,7 +340,7 @@ def main() -> int:
 
     payload = {
         "source": "Hoja de cálculo «Carta La Carreta del Carretón — con alérgenos»",
-        "source_file": str(path.relative_to(REPO)),
+        "source_file": source_file,
         "scraped_at": datetime.now(timezone.utc).isoformat(),
         "notes": ["IGIC INCLUIDO"],
         "allergen_legend": legend,

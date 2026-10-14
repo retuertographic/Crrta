@@ -1,11 +1,15 @@
 {
   "source": "Hoja de cálculo «Carta La Carreta del Carretón — con alérgenos»",
   "source_file": "carta/carta-hoja.csv",
-  "scraped_at": "2026-10-14T19:38:03.236968+00:00",
+  "scraped_at": "2026-10-14T20:19:53.325706+00:00",
   "notes": [
     "IGIC INCLUIDO"
   ],
-  "allergen_legend": [],
+  "allergen_legend": [
+    "X = contiene el alérgeno (estimación según receta habitual del plato)",
+    "? = lleva gluten, pero se puede preparar sin gluten si el comensal lo pide",
+    "vacío = no se espera ninguno de los 14 alérgenos"
+  ],
   "categories": [
     {
       "category": "Aperitivos",
