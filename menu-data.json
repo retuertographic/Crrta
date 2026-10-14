@@ -1,7 +1,7 @@
 {
   "source": "Hoja de cálculo «Carta La Carreta del Carretón — con alérgenos»",
   "source_file": "carta/carta-hoja.csv",
-  "scraped_at": "2026-10-12T17:01:02.016813+00:00",
+  "scraped_at": "2026-10-14T19:38:03.236968+00:00",
   "notes": [
     "IGIC INCLUIDO"
   ],
@@ -136,8 +136,6 @@
         {
           "name": "Croquetas de Gofio con carne de Costilla",
           "number": 7,
-          "description": "Gofio y carne de costilla, empanadas y fritas. Llevan carne: no son un plato vegetariano",
-          "description_en": "Gofio and rib meat, breaded and fried. They contain meat: this is not a vegetarian dish",
           "prices": [
             {
               "value": "3,75",
@@ -173,8 +171,8 @@
         {
           "name": "Yuca con mojo",
           "number": 9,
-          "description": "Yuca guisada con un mojo de cebollas, criollo cubano",
-          "description_en": "Stewed cassava with Cuban creole onion mojo",
+          "description": "Yuca guisada servida con un mojo de cebollas, criollo cubano",
+          "description_en": "Stewed cassava served with a Cuban creole onion mojo",
           "prices": [
             {
               "value": "4,80",
@@ -186,6 +184,36 @@
               "label": "½ ración",
               "label_en": "Half portion"
             }
+          ]
+        },
+        {
+          "name": "Yuca frita",
+          "number": 10,
+          "prices": [
+            {
+              "value": "5,40",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            },
+            {
+              "value": "3,75",
+              "label": "½ ración",
+              "label_en": "Half portion"
+            }
+          ]
+        },
+        {
+          "name": "Huevo frito",
+          "number": 11,
+          "prices": [
+            {
+              "value": "3,75",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            }
+          ],
+          "allergens": [
+            "huevo"
           ]
         }
       ]
@@ -345,8 +373,8 @@
         {
           "name": "Yuca con mojo",
           "number": 2,
-          "description": "Yuca guisada con un mojo de cebollas, criollo cubano",
-          "description_en": "Stewed cassava with Cuban creole onion mojo",
+          "description": "Yuca guisada servida con un mojo de cebollas, criollo cubano",
+          "description_en": "Stewed cassava served with a Cuban creole onion mojo",
           "prices": [
             {
               "value": "4,80",
@@ -443,6 +471,44 @@
           "prices": [
             {
               "value": "2,70",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            }
+          ]
+        },
+        {
+          "name": "Ensalada Mixta",
+          "number": 8,
+          "prices": [
+            {
+              "value": "4,80",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            }
+          ]
+        },
+        {
+          "name": "Yuca frita",
+          "number": 9,
+          "prices": [
+            {
+              "value": "5,40",
+              "label": "1 ración",
+              "label_en": "Full portion"
+            },
+            {
+              "value": "3,75",
+              "label": "½ ración",
+              "label_en": "Half portion"
+            }
+          ]
+        },
+        {
+          "name": "Papas guisadas",
+          "number": 10,
+          "prices": [
+            {
+              "value": "3,20",
               "label": "1 ración",
               "label_en": "Full portion"
             }
@@ -688,8 +754,6 @@
         {
           "name": "Solomillo de cerdo a la brasa (para 2 personas)",
           "number": 5,
-          "description": "Solomillo de cerdo a la brasa, servido con salsa, champiñones y papas guisadas",
-          "description_en": "Grilled pork tenderloin, served with sauce, mushrooms and stewed potatoes",
           "prices": [
             {
               "value": "13,90",
@@ -884,22 +948,6 @@
           "photo": "img/postre-teide.webp"
         },
         {
-          "name": "Tarta de Limón",
-          "number": 5,
-          "prices": [
-            {
-              "value": "4,80",
-              "label": "1 ración",
-              "label_en": "Full portion"
-            }
-          ],
-          "allergens": [
-            "gluten",
-            "huevo",
-            "leche"
-          ]
-        },
-        {
           "group": "Helados",
           "group_en": "Ice creams"
         },
@@ -942,6 +990,35 @@
               "label": "Unidad",
               "label_en": "Each"
             }
+          ]
+        },
+        {
+          "name": "Trufo almendrado",
+          "number": 11,
+          "prices": [
+            {
+              "value": "3,20",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "leche",
+            "frutossecos"
+          ]
+        },
+        {
+          "name": "Vaso Belice",
+          "number": 14,
+          "prices": [
+            {
+              "value": "3,00",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "leche"
           ]
         }
       ]
@@ -1046,6 +1123,71 @@
           ]
         },
         {
+          "name": "Fanta Naranja",
+          "number": 4,
+          "prices": [
+            {
+              "value": "1,80",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Appletizer",
+          "number": 5,
+          "prices": [
+            {
+              "value": "1,95",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Schweppes de Limón",
+          "number": 6,
+          "prices": [
+            {
+              "value": "1,80",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "7UP",
+          "number": 11,
+          "prices": [
+            {
+              "value": "1,80",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Coca Cola 1,5 L",
+          "number": 12,
+          "prices": [
+            {
+              "value": "3,20",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Fanta Naranja 1,5 L",
+          "prices": [
+            {
+              "value": "3,20",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
           "group": "Zumos",
           "group_en": "Juices"
         },
@@ -1063,6 +1205,17 @@
         {
           "name": "Zumos de Mango",
           "number": 14,
+          "prices": [
+            {
+              "value": "1,80",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ]
+        },
+        {
+          "name": "Zumos de Pera/Piña/Melocotón",
+          "number": 15,
           "prices": [
             {
               "value": "1,80",
@@ -1134,15 +1287,14 @@
         {
           "name": "Freedamm Limón",
           "number": 22,
+          "description": "Sin gluten",
+          "description_en": "Gluten-free",
           "prices": [
             {
               "value": "2,00",
               "label": "Unidad",
               "label_en": "Each"
             }
-          ],
-          "allergens": [
-            "gluten"
           ]
         },
         {
@@ -1171,6 +1323,33 @@
           ],
           "allergens": [
             "gluten"
+          ]
+        },
+        {
+          "name": "Jarra Victoria",
+          "number": 25,
+          "prices": [
+            {
+              "value": "3,00",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
+          ],
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "name": "Daura",
+          "number": 26,
+          "description": "Cerveza sin gluten",
+          "description_en": "Gluten-free beer",
+          "prices": [
+            {
+              "value": "1,90",
+              "label": "Unidad",
+              "label_en": "Each"
+            }
           ]
         },
         {

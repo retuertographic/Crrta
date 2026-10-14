@@ -39,9 +39,9 @@
       "es": "Tiernas y jugosas, maceradas y terminadas en la brasa con salsa barbacoa",
       "en": "Tender and juicy, marinated and finished over the coals with barbecue sauce"
     },
-    "Croquetas de Gofio con carne de Costilla": {
-      "es": "Gofio y carne de costilla, empanadas y fritas. Llevan carne: no son un plato vegetariano",
-      "en": "Gofio and rib meat, breaded and fried. They contain meat: this is not a vegetarian dish"
+    "Daura": {
+      "es": "Cerveza sin gluten",
+      "en": "Gluten-free beer"
     },
     "El Carretón": {
       "es": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, churrasco de entraña y una vinagreta de mango",
@@ -54,6 +54,10 @@
     "Ensalada Especial": {
       "es": "Diferentes tipos de lechuga, frutas (uva y manzana), frutos secos, queso feta y una vinagreta de mango",
       "en": "Several kinds of lettuce, fruit (grape and apple), nuts, feta cheese and a mango vinaigrette"
+    },
+    "Freedamm Limón": {
+      "es": "Sin gluten",
+      "en": "Gluten-free"
     },
     "Guajira": {
       "es": "Diferentes tipos de lechuga, frutos secos, frutas (manzana y uva), queso feta, pata asada y una vinagreta de mango",
@@ -95,10 +99,6 @@
       "es": "Suculento y jugoso secreto de cerdo a la brasa",
       "en": "Succulent, juicy grilled secreto (a prized cut of pork)"
     },
-    "Solomillo de cerdo a la brasa (para 2 personas)": {
-      "es": "Solomillo de cerdo a la brasa, servido con salsa, champiñones y papas guisadas",
-      "en": "Grilled pork tenderloin, served with sauce, mushrooms and stewed potatoes"
-    },
     "Sopa de pollo": {
       "es": "Lleva fideos",
       "en": "It has noodles in it"
@@ -128,8 +128,8 @@
       "en": "Sautéed courgette, aubergine, onion, tomato, green pepper and red pepper"
     },
     "Yuca con mojo": {
-      "es": "Yuca guisada con un mojo de cebollas, criollo cubano",
-      "en": "Stewed cassava with Cuban creole onion mojo"
+      "es": "Yuca guisada servida con un mojo de cebollas, criollo cubano",
+      "en": "Stewed cassava served with a Cuban creole onion mojo"
     }
   }
 }
