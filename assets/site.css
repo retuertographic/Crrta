@@ -894,10 +894,14 @@
      del restaurante y tampoco lo parece. */
   .salsa{background:var(--ink);color:#fff;padding:96px 0;}
   .salsa-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;}
+  /* Dos fotografías de la fiesta, una encima de otra: la pista y la cabina
+     con las mesas llenas. Las dos van ya recortadas a 4:3 en el archivo. */
+  .salsa-media{display:grid;gap:18px;}
   .salsa-media img{
-    width:100%;border-radius:20px;aspect-ratio:4/3;object-fit:cover;
+    width:100%;height:auto;border-radius:20px;object-fit:cover;display:block;
     box-shadow:0 26px 56px rgba(0,0,0,.4);
   }
+  .salsa-media img{aspect-ratio:4/3;}
   .salsa .eyebrow{color:var(--gold-light);}
   .salsa .section-title{color:#fff;}
   /* El logotipo hace de titular: ocupa el ancho de la columna hasta un
