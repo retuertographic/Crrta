@@ -229,7 +229,10 @@
     min-height:100vh;
     display:flex;
     align-items:center;
-    background:linear-gradient(180deg, rgba(26,23,19,.6), rgba(26,23,19,.82)), url('../img/salon.webp') center 55%/cover no-repeat;
+    /* El patio de la entrada: es lo primero que se ve al llegar, así que
+       también abre la web. Encuadrado al 62% para que el cielo quede
+       arriba, detrás de la cabecera, y el local en el centro. */
+    background:linear-gradient(180deg, rgba(26,23,19,.6), rgba(26,23,19,.82)), url('../img/exterior.webp') center 62%/cover no-repeat;
   }
   .hero .wrap{
     position:relative;z-index:2;
@@ -241,7 +244,9 @@
   }
   .hero-tag{
     display:inline-flex;align-items:center;gap:10px;
-    background:rgba(255,255,255,.1);
+    /* Tinte oscuro, no claro: el dorado sobre un velo blanco encima de la foto
+       se quedaba en 1,4:1 de contraste, y así sube por encima de 4,5:1. */
+    background:rgba(26,23,19,.55);
     border:1px solid rgba(210,176,114,.5);
     color:var(--gold-light);padding:8px 18px;border-radius:30px;
     font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
@@ -294,9 +299,22 @@
 
   /* ---------- INTRO / SOBRE NOSOTROS ---------- */
   .intro{padding:120px 0 100px;background:var(--paper);}
+  /* Banda ancha entre el título de la sección y el texto: la terraza del
+     comedor de piedra, que es el otro sitio donde se come aquí. */
+  .intro-banda{margin:0 0 48px;border-radius:20px;overflow:hidden;}
+  .intro-banda img{
+    width:100%;height:auto;display:block;aspect-ratio:21/9;object-fit:cover;object-position:center 34%;
+  }
+  @media (max-width:900px){
+    .intro-banda{margin-bottom:36px;}
+    .intro-banda img{aspect-ratio:16/9;}
+  }
+
   .intro-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:60px;align-items:start;}
   .intro-media{position:sticky;top:110px;border-radius:18px;overflow:hidden;}
-  .intro-media img{border-radius:18px;aspect-ratio:4/5;object-fit:cover;width:100%;}
+  /* La foto del comedor es cuadrada y se publica entera: con 4/5 se perdía
+     el lado derecho, que es donde están la lámpara y la puerta verde. */
+  .intro-media img{border-radius:18px;aspect-ratio:1/1;object-fit:cover;width:100%;height:auto;}
   .intro-media  .intro-media  .intro-text p{color:var(--text-soft);font-size:1.05rem;line-height:1.85;margin-bottom:18px;}
   .intro-points{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px;}
   .intro-points li{display:flex;gap:12px;align-items:flex-start;font-weight:600;font-size:.9rem;color:var(--ink);}
@@ -304,7 +322,6 @@
   @media (max-width:900px){
     .intro{padding:90px 0 70px;}
     .intro-grid{grid-template-columns:1fr;gap:44px;}
-    .intro-media img{aspect-ratio:4/3;}
   }
   @media (max-width:520px){.intro-points{grid-template-columns:1fr;gap:14px;}}
 
@@ -970,8 +987,17 @@
   .intro-text p{margin-bottom:16px;}
   .intro-text p:last-child{margin-bottom:0;}
 
+  /* La fotografía abre la tarjeta de «La Carreta de hoy»: va a sangre, pegada
+     al borde superior, por eso los márgenes negativos del padding. */
+  .intro-today-media{margin:-38px -42px 26px;}
+  .intro-today-media img{
+    width:100%;height:auto;display:block;aspect-ratio:16/9;object-fit:cover;
+    border-radius:22px 22px 0 0;
+  }
+  @media (max-width:900px){.intro-today-media{margin:-30px -24px 22px;}}
+
   .intro-today{
-    max-width:780px;margin:56px auto 0;padding:38px 42px;
+    max-width:780px;margin:56px auto 0;padding:38px 42px;overflow:hidden;
     background:var(--paper);border-radius:22px;
     box-shadow:0 20px 44px rgba(43,38,33,.08);
   }
