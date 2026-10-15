@@ -26,6 +26,7 @@ src/partials/               los elementos comunes, una sola copia de cada uno
             schema.html       ficha del restaurante para Google (NAP)
             scripts.html      el <script> del final
 src/i18n.json               todos los textos, en español e inglés
+src/legal.json              los tres textos legales y los datos del titular
 src/meta.json               título y descripción de cada página, por idioma
 carta/carta-hoja.csv        la hoja de la carta, exportada a CSV
 carta/descripciones.json    las descripciones de los platos, en los dos idiomas
@@ -36,7 +37,7 @@ assets/site.css             el diseño
 assets/fonts/               las fuentes, alojadas aquí y no en Google
 assets/site.js              interacción (pestañas, menú, galería, compartir)
 assets/consent.js           banner de cookies y carga de la medición
-src/analytics.json          IDs de GA4 y Hotjar (vacíos = desactivados)
+src/analytics.json          IDs de GA4 y Hotjar y el script del gestor de cookies
 src/forms.json              IDs de los formularios del CRM
 img/                        logotipo y fotografías
 
@@ -207,13 +208,24 @@ tres que se ven sin bajar (Playfair, Yellowtail y Poppins 400).
 python -m http.server 8777          # en otra terminal, desde la raíz
 npm install                         # solo la primera vez
 npm run comprobar:solapes
+npm run comprobar:accesibilidad
 ```
 
-Busca texto que se pisa con otro texto en seis páginas y diez anchuras, de
-320 a 1440 px. Existe porque en la portada se colaron las etiquetas del
-hero por debajo del indicador de scroll, que va posicionado absoluto, y no
-lo vio nadie hasta que apareció en un móvil de verdad: ni el validador de
-HTML ni axe detectan un solape, hay que medir las cajas.
+`comprobar:solapes` busca texto que se pisa con otro texto, en nueve
+páginas y diez anchuras de 320 a 1440 px. Existe porque en la portada se
+colaron las etiquetas del hero por debajo del indicador de scroll, que va
+posicionado absoluto, y no lo vio nadie hasta que apareció en un móvil de
+verdad: ni el validador de HTML ni axe detectan un solape, hay que medir
+las cajas.
+
+`comprobar:accesibilidad` pasa axe-core por todas las páginas en móvil y
+en escritorio. Las dos anchuras, porque hay fallos que solo existen en
+una: así se colaron treinta y cuatro incumplimientos de contraste cuando
+una tarjeta oscura pasó a fondo claro al apilarse.
+
+Ninguna de las dos ve el texto sobre una imagen de fondo: axe lo marca
+como «incompleto», no como fallo. El dorado de la píldora del hero estuvo
+en 1,43:1 sin que saltara nada.
 
 npm no hace falta para nada más. La web es HTML estático y `_config.yml`
 deja `package.json` y `node_modules/` fuera de lo que se publica.
@@ -291,19 +303,51 @@ porque el formato es siempre el mismo.
 
 ## Textos legales
 
-Están en `/legal.html` (y `/en/legal.html`), en tres secciones con ancla,
-para poder enlazar directamente a cada una:
+Cada documento tiene su propia página, en los dos idiomas:
 
-    /legal.html#aviso-legal
-    /legal.html#privacidad
-    /legal.html#cookies
+    /aviso-legal.html      /en/aviso-legal.html
+    /privacidad.html       /en/privacidad.html
+    /cookies.html          /en/cookies.html
+    /legal.html            índice con las tres, y su versión inglesa
 
-Antes vivían en un modal del pie, que no se podía enlazar. El pie apunta
-ahora a esas anclas, y al cambiar de idioma se conserva el ancla, porque
-los identificadores son los mismos en los dos idiomas.
+`/legal.html` conserva los identificadores `#aviso-legal`, `#privacidad` y
+`#cookies` porque hay enlaces vivos apuntando ahí: quien llegue por uno de
+ellos cae en su tarjeta con el documento a un clic.
 
-El contenido sigue saliendo de `src/i18n.json` (claves `aviso_*`,
-`priv_*`, `cook_*`): se edita ahí, no en la página.
+**El contenido está en `src/legal.json`**, no en las páginas ni en el
+i18n. Ese archivo tiene dos partes:
+
+- `titular`: los datos de identificación, escritos una sola vez. Se
+  insertan en los tres documentos con `[[nombre]]`, `[[nif]]`,
+  `[[domicilio]]`, `[[email]]`, `[[email_privacidad]]`, `[[telefono]]`,
+  `[[registro]]` y `[[web]]`. **Un campo vacío se publica como
+  `[PENDIENTE: ...]` y el generador avisa en cada compilación**: el
+  artículo 10 de la LSSICE exige al menos nombre del titular y NIF.
+- `documentos`: los bloques de cada texto, con su versión española e
+  inglesa. Tipos: `h2`, `h3`, `p`, `ul` y `tabla`. Dentro del texto solo
+  se admite `[etiqueta](enlace)`; un enlace que empieza por `~` es interno
+  y se resuelve al idioma de la página (`~cookies.html`), y una etiqueta
+  que empieza por `mailto:` hace un enlace de correo.
+
+Banderas por bloque: `solo_si` (solo si ese campo del titular está
+relleno), `solo_idioma` (solo en ese idioma, como la nota que avisa de que
+manda la versión española) y `solo_si_consentimiento` (solo si la web
+tiene de verdad un panel de cookies).
+
+### El aviso emergente de cookies
+
+Lo pone un gestor externo. Se configura en `src/analytics.json`:
+
+```json
+"cmp_script": "https://…/cmp.js",
+"cmp_attrs": { "data-cbid": "…", "data-culture": "ES" }
+```
+
+Con eso, el script se inyecta el primero en el `<head>` de todas las
+páginas —un banner de cookies tiene que decidir antes de que cargue nada
+que ponga cookies— y **el banner propio deja de publicarse**, para que no
+haya dos avisos peleándose. Mientras `cmp_script` esté vacío, el banner
+propio solo aparece si hay IDs de medición.
 
 ## Formularios del CRM
 

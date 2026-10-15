@@ -89,7 +89,8 @@ const detector = () => {
 
 const BASE = process.env.BASE || 'http://localhost:8777';
 const browser = await chromium.launch({ executablePath: process.env.PW_CHROMIUM || undefined, args: ['--no-sandbox'] });
-const paginas = ['/', '/en/', '/catering.html', '/legal.html', '/novedades.html', '/404.html'];
+const paginas = ['/', '/en/', '/catering.html', '/legal.html', '/aviso-legal.html',
+                 '/privacidad.html', '/cookies.html', '/novedades.html', '/404.html'];
 const tamanos = [[320,650],[360,740],[390,844],[412,915],[430,932],[600,900],[768,1024],[1024,768],[1280,800],[1440,900]];
 let fallos = 0;
 for (const p of paginas) {
@@ -106,6 +107,6 @@ for (const p of paginas) {
   }
   console.log(`  ${p.padEnd(18)} ${linea.length ? 'SOLAPES\n      ' + linea.join('\n      ') : 'limpio en las 10 anchuras'}`);
 }
-console.log(fallos ? `\n${fallos} solapes` : '\nningún solape de texto en 6 páginas × 10 anchuras');
+console.log(fallos ? `\n${fallos} solapes` : `\nningún solape de texto en ${paginas.length} páginas × ${tamanos.length} anchuras`);
 process.exitCode = fallos ? 1 : 0;
 await browser.close();

@@ -1,0 +1,676 @@
+{
+  "_comentario": [
+    "Textos legales del sitio. Vienen de los documentos del asesor (Aviso Legal,",
+    "Política de Privacidad y Política de Cookies) con los huecos rellenados y",
+    "adaptados a lo que esta web hace de verdad, que es justo lo que pide la",
+    "Guía Web: «nunca deben utilizarse textos genéricos sin adaptarlos a la",
+    "realidad concreta del sitio web».",
+    "",
+    "«titular» se escribe una sola vez y se inserta en los tres documentos con",
+    "los marcadores [[nombre]], [[nif]], [[domicilio]], [[email]],",
+    "[[email_privacidad]], [[telefono]], [[registro]] y [[web]]. Un campo vacío",
+    "sale publicado como [PENDIENTE: ...] y el generador avisa en cada compilación.",
+    "",
+    "Dentro de los textos se admite [texto](enlace) para los enlaces y nada más;",
+    "el resto se escapa. Los enlaces internos empiezan por ~ y se resuelven al",
+    "idioma de la página: ~cookies.html"
+  ],
+  "titular": {
+    "nombre": "",
+    "nif": "",
+    "registro": "",
+    "nombre_comercial": "La Carreta del Carretón",
+    "domicilio": "C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife",
+    "email": "info@lacarretadelcarreton.com",
+    "email_privacidad": "protecciondedatos@lacarretadelcarreton.com",
+    "telefono": "922 51 50 66",
+    "web": "retuertographic.github.io/Crrta"
+  },
+  "actualizado": "2026-10-15",
+  "documentos": {
+    "aviso-legal": [
+      {
+        "t": "h2",
+        "es": "Datos identificativos",
+        "en": "Identification details"
+      },
+      {
+        "t": "p",
+        "es": "La empresa titular del presente dominio web [[web]] es [[nombre]], con número de CIF [[nif]], con domicilio a estos efectos en [[domicilio]], en adelante «el titular». Opera el restaurante La Carreta del Carretón.",
+        "en": "The owner of this web domain [[web]] is [[nombre]], tax identification number [[nif]], with address for these purposes at [[domicilio]], hereinafter «the owner». It operates the restaurant La Carreta del Carretón."
+      },
+      {
+        "t": "p",
+        "es": "Correo electrónico de contacto: [mailto:[[email]]]([[email]]). Teléfono: [[telefono]].",
+        "en": "Contact e-mail: [mailto:[[email]]]([[email]]). Telephone: [[telefono]]."
+      },
+      {
+        "t": "p",
+        "solo_si": "registro",
+        "es": "Inscrita en el Registro Mercantil de [[registro]].",
+        "en": "Entered in the Commercial Register of [[registro]]."
+      },
+      {
+        "t": "h2",
+        "es": "Usuarios",
+        "en": "Users"
+      },
+      {
+        "t": "p",
+        "es": "El acceso y/o uso de este portal o sitio web le atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las Condiciones Generales de Uso reflejadas en el presente aviso. Las Condiciones serán de aplicación independientemente de las Condiciones Generales de Contratación que en su caso resulten de obligado cumplimiento. En todo caso, para cualquier fin específico se pedirá su consentimiento expreso.",
+        "en": "Accessing and/or using this portal or website makes you a USER, and from that access and/or use you accept the General Conditions of Use set out in this notice. These Conditions apply regardless of any General Contracting Conditions that may be binding. In any event, your express consent will be requested for any specific purpose."
+      },
+      {
+        "t": "h2",
+        "es": "Uso del portal",
+        "en": "Use of the portal"
+      },
+      {
+        "t": "p",
+        "es": "Nuestra web proporciona el acceso a informaciones, servicios, programas o datos (en adelante, «los contenidos») en Internet pertenecientes al titular o a sus licenciantes a los que el USUARIO pueda tener acceso.",
+        "en": "Our website provides access to information, services, programs or data (hereinafter, «the contents») on the Internet belonging to the owner or its licensors, to which the USER may have access."
+      },
+      {
+        "t": "p",
+        "es": "Al acceder, navegar o utilizar este sitio web, el usuario acepta de forma plena y explícita todas las disposiciones recogidas en este aviso legal; por lo tanto, si no está de acuerdo con lo aquí dispuesto, se le recomienda abstenerse de utilizar el sitio web.",
+        "en": "By accessing, browsing or using this website, the user fully and explicitly accepts every provision of this legal notice; if you do not agree with what is set out here, you are advised to refrain from using the website."
+      },
+      {
+        "t": "p",
+        "es": "En este sentido, es fundamental que revise periódicamente su contenido, ya que los términos y condiciones pueden ser modificados en cualquier momento y sin previo aviso.",
+        "en": "It is therefore important that you review its content periodically, since the terms and conditions may be amended at any time and without prior notice."
+      },
+      {
+        "t": "p",
+        "es": "Puede haber contenidos disponibles en este sitio web sujetos a condiciones particulares que pueden, en ciertas situaciones, modificar o complementar este aviso legal. Por ello, es importante consultar estas condiciones específicas antes de utilizar esos servicios.",
+        "en": "Some contents available on this website may be subject to particular conditions which, in certain situations, may amend or supplement this legal notice. It is therefore important to read those specific conditions before using such services."
+      },
+      {
+        "t": "p",
+        "es": "Además, el uso de este sitio web estará regido por todos los avisos, normas e instrucciones que la empresa comunique a los usuarios, los cuales pueden modificar, completar o reemplazar este aviso legal.",
+        "en": "In addition, use of this website is governed by all notices, rules and instructions communicated by the company to users, which may amend, supplement or replace this legal notice."
+      },
+      {
+        "t": "p",
+        "es": "El USUARIO asume la responsabilidad del correcto uso del portal. Dicha responsabilidad se extiende al registro que fuese necesario para acceder a determinados servicios o contenidos. En dicho registro el USUARIO será responsable de aportar información veraz y lícita sobre sus datos. Como consecuencia de este registro, al USUARIO se le puede proporcionar una contraseña de la que será responsable, comprometiéndose a hacer un uso diligente, ético y confidencial de la misma. El USUARIO se compromete a hacer un uso adecuado de los contenidos y servicios que se ofrecen a través del portal y, con carácter enunciativo pero no limitativo, a no emplearlos para:",
+        "en": "The USER is responsible for the proper use of the portal. That responsibility extends to any registration needed to access certain services or contents. In such registration the USER is responsible for providing truthful and lawful information. As a result of that registration the USER may be given a password, for which they are responsible and which they undertake to use diligently, ethically and confidentially. The USER undertakes to make proper use of the contents and services offered through the portal and, by way of example but not limitation, not to use them to:"
+      },
+      {
+        "t": "ul",
+        "es": [
+          "Incurrir en actividades ilícitas, ilegales o contrarias a la buena fe y al orden público.",
+          "Difundir contenidos o propaganda de carácter racista, xenófobo, pornográfico-ilegal, de apología del terrorismo o atentatorio contra los derechos humanos.",
+          "Provocar daños en los sistemas físicos y lógicos del propietario, de sus proveedores o de terceras personas, o introducir o difundir en la red virus informáticos o cualesquiera otros sistemas físicos o lógicos que sean susceptibles de provocar los daños anteriormente mencionados.",
+          "Intentar acceder y, en su caso, utilizar las cuentas de correo electrónico de otros usuarios y modificar o manipular sus mensajes."
+        ],
+        "en": [
+          "Engage in unlawful or illegal activities, or activities contrary to good faith and public order.",
+          "Spread racist, xenophobic, illegally pornographic content or propaganda, apologia for terrorism, or content that infringes human rights.",
+          "Cause damage to the physical or logical systems of the owner, its suppliers or third parties, or introduce or spread computer viruses or any other physical or logical systems liable to cause such damage.",
+          "Attempt to access and, where applicable, use other users' e-mail accounts, or modify or manipulate their messages."
+        ]
+      },
+      {
+        "t": "p",
+        "es": "El propietario del portal se reserva el derecho de retirar todos aquellos comentarios y aportaciones que vulneren el respeto a la dignidad de la persona, que sean discriminatorios, xenófobos, racistas, pornográficos, que atenten contra la juventud o la infancia, el orden o la seguridad pública o que, a su juicio, no resultaran adecuados o convenientes para su publicación. En cualquier caso, el propietario del portal no será responsable de las opiniones vertidas por los usuarios a través de los foros, chats u otras herramientas de participación.",
+        "en": "The portal owner reserves the right to withdraw any comments and contributions that infringe respect for personal dignity, or that are discriminatory, xenophobic, racist or pornographic, that harm young people or children, public order or public safety, or that in its judgement are not suitable for publication. In any event, the portal owner is not responsible for the opinions expressed by users through forums, chats or other participation tools."
+      },
+      {
+        "t": "h2",
+        "es": "Propiedad intelectual e industrial",
+        "en": "Intellectual and industrial property"
+      },
+      {
+        "t": "p",
+        "es": "El propietario, por sí o como cesionario, es titular de todos los derechos de propiedad intelectual e industrial de su página web, así como de los elementos contenidos en la misma (a título enunciativo: imágenes, sonido, audio, vídeo, software o textos; marcas o logotipos, combinaciones de colores, estructura y diseño, selección de materiales usados, programas de ordenador necesarios para su funcionamiento, acceso y uso, etc.).",
+        "en": "The owner, in its own right or as assignee, holds all intellectual and industrial property rights in its website and in the elements it contains (by way of example: images, sound, audio, video, software or texts; trade marks or logos, colour combinations, structure and design, selection of materials used, computer programs needed for its operation, access and use, and so on)."
+      },
+      {
+        "t": "p",
+        "es": "Todos los derechos reservados. En virtud de lo dispuesto en los artículos 8 y 32.1, párrafo segundo, de la Ley de Propiedad Intelectual, quedan expresamente prohibidas la reproducción, la distribución y la comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos de esta página web, con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización de su titular.",
+        "en": "All rights reserved. Under articles 8 and 32.1, second paragraph, of the Spanish Intellectual Property Act, the reproduction, distribution and public communication, including making available, of all or part of the contents of this website for commercial purposes, in any medium and by any technical means, without the owner's authorisation, is expressly prohibited."
+      },
+      {
+        "t": "p",
+        "es": "El USUARIO se compromete a respetar los derechos de propiedad intelectual e industrial del titular. Podrá visualizar los elementos del portal e incluso imprimirlos, copiarlos y almacenarlos en el disco duro de su ordenador o en cualquier otro soporte físico siempre y cuando sea, única y exclusivamente, para su uso personal y privado. El USUARIO deberá abstenerse de suprimir, alterar, eludir o manipular cualquier dispositivo de protección o sistema de seguridad que estuviera instalado en las páginas del titular.",
+        "en": "The USER undertakes to respect the owner's intellectual and industrial property rights. They may view the portal's elements and even print, copy and store them on their computer's hard disk or on any other physical medium, provided this is solely and exclusively for personal, private use. The USER must refrain from deleting, altering, circumventing or manipulating any protection device or security system installed on the owner's pages."
+      },
+      {
+        "t": "h2",
+        "es": "Exclusión de garantías y responsabilidad",
+        "en": "Exclusion of warranties and liability"
+      },
+      {
+        "t": "p",
+        "es": "El titular no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado todas las medidas tecnológicas necesarias para evitarlo.",
+        "en": "The owner is in no case liable for damages of any kind that may be caused by, among others: errors or omissions in the contents, unavailability of the portal, or the transmission of viruses or malicious or harmful programs in the contents, despite having adopted all the technological measures necessary to prevent this."
+      },
+      {
+        "t": "p",
+        "es": "Los precios y los platos de la carta se publican a título informativo y pueden variar; los vigentes son siempre los del local. La información sobre alérgenos se ofrece como orientación y no sustituye la consulta en sala: si tienes una alergia o intolerancia, dínoslo antes de pedir.",
+        "en": "Menu prices and dishes are published for information only and may change; the prices in force are always those at the restaurant. Allergen information is offered as guidance and does not replace asking us in the dining room: if you have an allergy or intolerance, tell us before you order."
+      },
+      {
+        "t": "h2",
+        "es": "Modificaciones",
+        "en": "Changes"
+      },
+      {
+        "t": "p",
+        "es": "El titular se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su portal, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través del mismo como la forma en la que éstos aparezcan presentados o localizados en su portal.",
+        "en": "The owner reserves the right to make such changes as it sees fit to its portal without prior notice, and may change, remove or add both the contents and services provided through it and the way in which they are presented or located on the portal."
+      },
+      {
+        "t": "h2",
+        "es": "Enlaces",
+        "en": "Links"
+      },
+      {
+        "t": "p",
+        "es": "En el caso de que se dispusiesen enlaces o hipervínculos hacia otros sitios de Internet, el titular no ejercerá ningún tipo de control sobre dichos sitios y contenidos. En ningún caso asumirá responsabilidad alguna por los contenidos de algún enlace perteneciente a un sitio web ajeno, ni garantizará la disponibilidad técnica, calidad, fiabilidad, exactitud, amplitud, veracidad, validez y constitucionalidad de cualquier material o información contenida en ninguno de dichos hipervínculos u otros sitios de Internet. En caso de usar los enlaces, rogamos que acceda a la política de privacidad y al aviso legal de la página visitada.",
+        "en": "Where links or hyperlinks to other Internet sites are provided, the owner exercises no control over those sites and contents. It accepts no liability whatsoever for the contents of any link belonging to an external website, nor does it guarantee the technical availability, quality, reliability, accuracy, scope, truthfulness, validity or constitutionality of any material or information contained in any such hyperlinks or other Internet sites. If you use the links, please read the privacy policy and legal notice of the page you visit."
+      },
+      {
+        "t": "p",
+        "es": "Igualmente, la inclusión de estas conexiones externas no implicará ningún tipo de asociación, fusión o participación con las entidades conectadas.",
+        "en": "Likewise, the inclusion of these external connections does not imply any kind of association, merger or participation with the connected entities."
+      },
+      {
+        "t": "h2",
+        "es": "Derecho de exclusión",
+        "en": "Right of exclusion"
+      },
+      {
+        "t": "p",
+        "es": "El titular se reserva el derecho a denegar o retirar el acceso al portal y/o a los servicios ofrecidos sin necesidad de preaviso, a instancia propia o de un tercero, a aquellos usuarios que incumplan el presente aviso legal.",
+        "en": "The owner reserves the right to deny or withdraw access to the portal and/or the services offered, without prior notice and at its own request or that of a third party, to users who breach this legal notice."
+      },
+      {
+        "t": "h2",
+        "es": "Generalidades",
+        "en": "General"
+      },
+      {
+        "t": "p",
+        "es": "Se perseguirá el incumplimiento de las presentes condiciones, así como cualquier utilización indebida del portal, ejerciendo todas las acciones civiles y penales que puedan corresponder en derecho.",
+        "en": "Breach of these conditions, and any improper use of the portal, will be pursued through all civil and criminal actions available at law."
+      },
+      {
+        "t": "h2",
+        "es": "Modificación de las presentes condiciones y duración",
+        "en": "Amendment of these conditions and duration"
+      },
+      {
+        "t": "p",
+        "es": "El titular podrá modificar en cualquier momento las condiciones aquí determinadas, siendo debidamente publicadas como aquí aparecen. La vigencia de las citadas condiciones irá en función de su exposición y estarán vigentes hasta que sean modificadas por otras debidamente publicadas.",
+        "en": "The owner may amend the conditions set out here at any time, and such amendments will be duly published as they appear here. These conditions remain in force for as long as they are displayed, until they are replaced by others that are duly published."
+      },
+      {
+        "t": "h2",
+        "es": "Legislación aplicable y jurisdicción",
+        "en": "Applicable law and jurisdiction"
+      },
+      {
+        "t": "p",
+        "es": "La relación entre el titular y el USUARIO se regirá por la normativa española vigente y cualquier controversia se someterá a la autoridad pertinente.",
+        "en": "The relationship between the owner and the USER is governed by current Spanish law, and any dispute will be submitted to the relevant authority."
+      },
+      {
+        "t": "p",
+        "es": "Para obtener más información sobre cómo se gestionan tus datos personales, consulta la [política de privacidad](~privacidad.html). Si deseas conocer el uso de cookies en el sitio web, puedes acceder a la [política de cookies](~cookies.html).",
+        "en": "For more information on how your personal data is handled, see the [privacy policy](~privacidad.html). If you want to know about the use of cookies on the website, you can read the [cookie policy](~cookies.html)."
+      },
+      {
+        "t": "p",
+        "solo_idioma": "en",
+        "clase": "legal-nota",
+        "es": "",
+        "en": "This English text is a translation provided for information. The Spanish version is the binding one: if there is any discrepancy, the Spanish version prevails."
+      }
+    ],
+    "privacidad": [
+      {
+        "t": "p",
+        "es": "En cumplimiento de lo dispuesto en el Reglamento (UE) 2016/679, General de Protección de Datos (RGPD), y en la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), se informa a los usuarios de este sitio web sobre el tratamiento de sus datos personales.",
+        "en": "In accordance with Regulation (EU) 2016/679, the General Data Protection Regulation (GDPR), and Spanish Organic Act 3/2018 on the Protection of Personal Data and the guarantee of digital rights (LOPDGDD), users of this website are informed about the processing of their personal data."
+      },
+      {
+        "t": "h2",
+        "es": "Responsable del tratamiento",
+        "en": "Data controller"
+      },
+      {
+        "t": "p",
+        "es": "El titular del presente sitio web y responsable del tratamiento de los datos personales es [[nombre]], con domicilio social en [[domicilio]], C.I.F. [[nif]], y correo electrónico de contacto en materia de protección de datos [mailto:[[email_privacidad]]]([[email_privacidad]]).",
+        "en": "The owner of this website and controller of the personal data is [[nombre]], with registered address at [[domicilio]], tax ID [[nif]], and contact e-mail for data protection matters [mailto:[[email_privacidad]]]([[email_privacidad]])."
+      },
+      {
+        "t": "h2",
+        "es": "Principios aplicables al tratamiento de datos",
+        "en": "Principles applying to the processing"
+      },
+      {
+        "t": "p",
+        "es": "Los datos personales facilitados serán tratados de forma lícita, leal y transparente, y se limitarán a lo estrictamente necesario para las finalidades para las que son tratados. El responsable adopta las medidas técnicas y organizativas necesarias para garantizar la seguridad, integridad y confidencialidad de los datos, evitando su alteración, pérdida, tratamiento o acceso no autorizado.",
+        "en": "The personal data provided will be processed lawfully, fairly and transparently, and limited to what is strictly necessary for the purposes for which it is processed. The controller adopts the technical and organisational measures needed to guarantee the security, integrity and confidentiality of the data, preventing its alteration, loss, unauthorised processing or unauthorised access."
+      },
+      {
+        "t": "h2",
+        "es": "Datos personales tratados",
+        "en": "Personal data processed"
+      },
+      {
+        "t": "p",
+        "es": "A través de este sitio web y de otros canales de comunicación, el responsable podrá tratar, entre otros, los siguientes datos: datos identificativos, direcciones postales y electrónicas, información de contacto y datos comerciales relacionados con los servicios solicitados.",
+        "en": "Through this website and other communication channels, the controller may process, among others, the following data: identification data, postal and e-mail addresses, contact information, and commercial data relating to the services requested."
+      },
+      {
+        "t": "p",
+        "es": "En concreto, los formularios de esta web recogen los datos que tú mismo escribes en ellos:",
+        "en": "Specifically, the forms on this website collect the data you type into them:"
+      },
+      {
+        "t": "ul",
+        "es": [
+          "Formulario de contacto y reserva: nombre, correo electrónico, teléfono y el mensaje que nos escribas.",
+          "Formulario de presupuesto de catering: nombre, correo electrónico, teléfono, número de invitados, fecha y lugar del evento, tipo de celebración y un campo libre para alergias, horarios y cualquier cosa que debamos saber."
+        ],
+        "en": [
+          "Contact and booking form: name, e-mail address, telephone number and the message you write to us.",
+          "Catering quote form: name, e-mail address, telephone number, number of guests, date and place of the event, type of celebration, and a free-text field for allergies, timings and anything else we should know."
+        ]
+      },
+      {
+        "t": "p",
+        "es": "Si nos escribes por correo electrónico o nos llamas por teléfono, trataremos los datos que nos facilites en esa comunicación. El usuario garantiza que los datos facilitados son veraces, exactos, completos y actualizados, siendo responsable de cualquier daño o perjuicio que pudiera derivarse del incumplimiento de esta obligación. En caso de facilitar datos de terceros, el usuario declara haberles informado previamente del contenido de esta política y haber obtenido su consentimiento cuando sea necesario.",
+        "en": "If you write to us by e-mail or call us, we will process the data you provide in that communication. The user warrants that the data provided is truthful, accurate, complete and up to date, and is responsible for any damage arising from a breach of this obligation. If the user provides third-party data, they declare that they have previously informed those people of the content of this policy and obtained their consent where necessary."
+      },
+      {
+        "t": "h2",
+        "es": "Finalidades del tratamiento",
+        "en": "Purposes of the processing"
+      },
+      {
+        "t": "ul",
+        "es": [
+          "Atender consultas, solicitudes de información o comunicaciones recibidas.",
+          "Gestionar presupuestos, reservas, contrataciones y la prestación de los servicios solicitados.",
+          "Mantener la relación comercial y administrativa con clientes y potenciales clientes.",
+          "Enviar comunicaciones comerciales o informativas, cuando exista consentimiento o base legal suficiente.",
+          "Cumplir con las obligaciones legales aplicables al responsable."
+        ],
+        "en": [
+          "Responding to enquiries, requests for information or messages received.",
+          "Handling quotes, bookings, contracts and the provision of the services requested.",
+          "Maintaining the commercial and administrative relationship with customers and potential customers.",
+          "Sending commercial or informative communications, where there is consent or a sufficient legal basis.",
+          "Complying with the legal obligations applicable to the controller."
+        ]
+      },
+      {
+        "t": "p",
+        "es": "Una reserva solicitada a través del formulario no queda confirmada hasta que recibas nuestra respuesta.",
+        "en": "A booking requested through the form is not confirmed until you receive our reply."
+      },
+      {
+        "t": "h2",
+        "es": "Base jurídica del tratamiento",
+        "en": "Legal basis for the processing"
+      },
+      {
+        "t": "ul",
+        "es": [
+          "El consentimiento del interesado, cuando sea requerido.",
+          "La ejecución de un contrato o la aplicación de medidas precontractuales a solicitud del interesado.",
+          "El cumplimiento de una obligación legal.",
+          "El interés legítimo del responsable, cuando resulte aplicable y conforme a la normativa vigente."
+        ],
+        "en": [
+          "The consent of the data subject, where required.",
+          "Performance of a contract or pre-contractual measures at the data subject's request.",
+          "Compliance with a legal obligation.",
+          "The legitimate interest of the controller, where applicable and in line with current legislation."
+        ]
+      },
+      {
+        "t": "h2",
+        "es": "Conservación de los datos",
+        "en": "Data retention"
+      },
+      {
+        "t": "p",
+        "es": "Los datos personales se conservarán durante el tiempo necesario para cumplir con la finalidad para la que fueron recabados y para atender posibles responsabilidades legales, salvo que la normativa aplicable establezca un plazo de conservación distinto.",
+        "en": "Personal data will be kept for as long as necessary to fulfil the purpose for which it was collected and to address possible legal liabilities, unless the applicable legislation sets a different retention period."
+      },
+      {
+        "t": "h2",
+        "es": "Comunicación de datos a terceros",
+        "en": "Disclosure of data to third parties"
+      },
+      {
+        "t": "p",
+        "es": "No se cederán datos personales a terceros, salvo obligación legal. En su caso, los datos podrán ser comunicados a administraciones públicas, autoridades fiscales, laborales o judiciales. No están previstas transferencias internacionales de datos.",
+        "en": "Personal data will not be disclosed to third parties except where legally required. Where applicable, data may be disclosed to public authorities and tax, employment or judicial authorities. No international data transfers are planned."
+      },
+      {
+        "t": "p",
+        "es": "Los formularios de esta web se gestionan con un proveedor tecnológico que actúa como encargado del tratamiento, con acceso a los datos únicamente para prestar ese servicio y bajo contrato conforme al artículo 28 del RGPD.",
+        "en": "The forms on this website are run with a technology provider acting as data processor, with access to the data solely in order to provide that service and under a contract in line with article 28 GDPR."
+      },
+      {
+        "t": "h2",
+        "es": "Recogida de datos a través de formularios",
+        "en": "Data collected through forms"
+      },
+      {
+        "t": "p",
+        "es": "La recogida de datos personales se realiza, entre otros medios, a través de formularios disponibles en el sitio web. En dichos formularios el usuario deberá aceptar expresamente esta política de privacidad mediante la marcación de la casilla correspondiente, que nunca aparece marcada de antemano. En caso de no aceptar la política, no será posible el envío del formulario.",
+        "en": "Personal data is collected, among other means, through the forms available on the website. In those forms the user must expressly accept this privacy policy by ticking the corresponding box, which is never pre-ticked. If the policy is not accepted, the form cannot be submitted."
+      },
+      {
+        "t": "h2",
+        "es": "Derechos de las personas interesadas",
+        "en": "Your rights"
+      },
+      {
+        "t": "p",
+        "es": "Puedes ejercer, en los términos previstos en la normativa vigente, los derechos de acceso, rectificación, supresión, limitación del tratamiento, oposición y portabilidad de tus datos, así como retirar el consentimiento otorgado en cualquier momento, sin que ello afecte a la licitud del tratamiento previo a su retirada.",
+        "en": "You may exercise, on the terms set out in current legislation, your rights of access, rectification, erasure, restriction of processing, objection and portability, and you may withdraw your consent at any time without affecting the lawfulness of processing carried out before its withdrawal."
+      },
+      {
+        "t": "p",
+        "es": "Para el ejercicio de estos derechos puedes dirigirte al responsable escribiendo a [mailto:[[email_privacidad]]]([[email_privacidad]]) o a [[domicilio]], indicando en el asunto «Protección de datos». Asimismo, puedes presentar una reclamación ante la Agencia Española de Protección de Datos ([www.aepd.es](https://www.aepd.es)) si consideras que el tratamiento no se ajusta a la normativa.",
+        "en": "To exercise these rights you can contact the controller at [mailto:[[email_privacidad]]]([[email_privacidad]]) or at [[domicilio]], writing «Protección de datos» in the subject line. You may also lodge a complaint with the Spanish Data Protection Agency ([www.aepd.es](https://www.aepd.es)) if you believe the processing does not comply with the legislation."
+      },
+      {
+        "t": "h2",
+        "es": "Comunicaciones comerciales",
+        "en": "Commercial communications"
+      },
+      {
+        "t": "p",
+        "es": "De conformidad con la Ley 34/2002, de Servicios de la Sociedad de la Información y del Comercio Electrónico, el responsable solicitará el consentimiento del usuario para el envío de comunicaciones comerciales por medios electrónicos cuando sea legalmente exigible, pudiendo el usuario oponerse en cualquier momento a la recepción de dichas comunicaciones.",
+        "en": "In accordance with Spanish Act 34/2002 on Information Society Services and Electronic Commerce, the controller will request the user's consent to send commercial communications by electronic means where legally required, and the user may object to receiving such communications at any time."
+      },
+      {
+        "t": "h2",
+        "es": "Cookies",
+        "en": "Cookies"
+      },
+      {
+        "t": "p",
+        "es": "Esta web utiliza dispositivos de almacenamiento y recuperación de datos («cookies») únicamente cuando el usuario haya otorgado su consentimiento previo, conforme a lo establecido en la ventana emergente que aparece al acceder por primera vez y en los términos detallados en la [política de cookies](~cookies.html).",
+        "en": "This website uses data storage and retrieval devices («cookies») only where the user has given prior consent, as set out in the pop-up shown on first visit and on the terms detailed in the [cookie policy](~cookies.html)."
+      },
+      {
+        "t": "h2",
+        "es": "Actualización de esta política",
+        "en": "Updates to this policy"
+      },
+      {
+        "t": "p",
+        "es": "La presente política de privacidad podrá actualizarse para adaptarse a cambios normativos o a modificaciones en la actividad del responsable. Se recomienda al usuario revisarla periódicamente.",
+        "en": "This privacy policy may be updated to reflect changes in the legislation or in the controller's activity. Users are advised to review it periodically."
+      },
+      {
+        "t": "p",
+        "solo_idioma": "en",
+        "clase": "legal-nota",
+        "es": "",
+        "en": "This English text is a translation provided for information. The Spanish version is the binding one: if there is any discrepancy, the Spanish version prevails."
+      }
+    ],
+    "cookies": [
+      {
+        "t": "h2",
+        "es": "Qué son las cookies",
+        "en": "What cookies are"
+      },
+      {
+        "t": "p",
+        "es": "Las cookies son pequeños archivos de texto que se descargan en el dispositivo del usuario al acceder a un sitio web. Permiten almacenar y recuperar información sobre los hábitos de navegación o el uso del dispositivo, y pueden utilizarse para reconocer al usuario, personalizar su experiencia y mejorar los servicios ofrecidos.",
+        "en": "Cookies are small text files downloaded to the user's device when they visit a website. They make it possible to store and retrieve information about browsing habits or device use, and they can be used to recognise the user, personalise their experience and improve the services offered."
+      },
+      {
+        "t": "h2",
+        "es": "Tipos de cookies",
+        "en": "Types of cookies"
+      },
+      {
+        "t": "h3",
+        "es": "Según la entidad que las gestione",
+        "en": "By who manages them"
+      },
+      {
+        "t": "ul",
+        "es": [
+          "Cookies propias: gestionadas directamente por el titular del sitio web y enviadas desde sus propios dominios.",
+          "Cookies de terceros: gestionadas por entidades externas que tratan la información obtenida a través de las cookies."
+        ],
+        "en": [
+          "First-party cookies: managed directly by the website owner and sent from its own domains.",
+          "Third-party cookies: managed by external entities that process the information obtained through the cookies."
+        ]
+      },
+      {
+        "t": "h3",
+        "es": "Según su finalidad",
+        "en": "By purpose"
+      },
+      {
+        "t": "ul",
+        "es": [
+          "Cookies técnicas: necesarias para el correcto funcionamiento del sitio web y para permitir la navegación y el uso de sus servicios.",
+          "Cookies de personalización: permiten recordar determinadas preferencias del usuario, como el idioma o la configuración regional.",
+          "Cookies de análisis o medición: permiten analizar el comportamiento de los usuarios y obtener estadísticas de uso con el fin de mejorar el funcionamiento del sitio.",
+          "Cookies de publicidad comportamental: permiten mostrar publicidad personalizada en función de los hábitos de navegación del usuario."
+        ],
+        "en": [
+          "Technical cookies: needed for the website to work properly and to allow browsing and use of its services.",
+          "Personalisation cookies: remember certain user preferences, such as language or regional settings.",
+          "Analytics or measurement cookies: allow user behaviour to be analysed and usage statistics to be obtained in order to improve how the site works.",
+          "Behavioural advertising cookies: allow personalised advertising to be shown based on the user's browsing habits."
+        ]
+      },
+      {
+        "t": "h3",
+        "es": "Según el plazo de conservación",
+        "en": "By retention period"
+      },
+      {
+        "t": "ul",
+        "es": [
+          "Cookies de sesión: se eliminan automáticamente al cerrar el navegador.",
+          "Cookies persistentes: permanecen almacenadas en el dispositivo del usuario durante un periodo determinado."
+        ],
+        "en": [
+          "Session cookies: deleted automatically when the browser is closed.",
+          "Persistent cookies: stored on the user's device for a set period."
+        ]
+      },
+      {
+        "t": "h2",
+        "es": "Finalidad del uso de cookies",
+        "en": "Why we use cookies"
+      },
+      {
+        "t": "p",
+        "es": "Las cookies se utilizan para mejorar la experiencia del usuario, personalizar la navegación, analizar el uso del sitio web, gestionar la sesión, garantizar la seguridad y, en su caso, mostrar publicidad personalizada. Asimismo, permiten obtener información estadística para optimizar los contenidos y servicios ofrecidos.",
+        "en": "Cookies are used to improve the user experience, personalise browsing, analyse use of the website, manage the session, ensure security and, where applicable, show personalised advertising. They also make it possible to obtain statistical information in order to optimise the contents and services offered."
+      },
+      {
+        "t": "h2",
+        "es": "Base legal del tratamiento",
+        "en": "Legal basis for the processing"
+      },
+      {
+        "t": "p",
+        "es": "El uso de cookies se basa en el consentimiento del usuario, salvo en el caso de aquellas cookies técnicas que resultan estrictamente necesarias para el funcionamiento del sitio web, las cuales se basan en el interés legítimo del responsable.",
+        "en": "The use of cookies is based on the user's consent, except for technical cookies that are strictly necessary for the website to work, which are based on the controller's legitimate interest."
+      },
+      {
+        "t": "h2",
+        "es": "Cookies que utiliza esta web",
+        "en": "Cookies used on this website"
+      },
+      {
+        "t": "p",
+        "es": "Esta web es un sitio estático y no instala cookies propias de medición ni de publicidad. Lo que sí guarda es tu decisión sobre las cookies, y los servicios incrustados de terceros pueden instalar las suyas cuando se cargan:",
+        "en": "This is a static website and it does not install first-party measurement or advertising cookies. What it does store is your decision about cookies, and the embedded third-party services may install their own when they load:"
+      },
+      {
+        "t": "tabla",
+        "cabecera": {
+          "es": [
+            "Nombre",
+            "Titularidad",
+            "Finalidad",
+            "Duración",
+            "Descripción"
+          ],
+          "en": [
+            "Name",
+            "Ownership",
+            "Purpose",
+            "Duration",
+            "Description"
+          ]
+        },
+        "filas": {
+          "es": [
+            [
+              "carreton_consent",
+              "Propia",
+              "Técnica",
+              "Hasta que la borres",
+              "No es una cookie, sino un dato guardado en el almacenamiento local del navegador. Recuerda si aceptaste o rechazaste las cookies de medición para no volver a preguntártelo."
+            ],
+            [
+              "Cookies de Google Maps",
+              "De tercero (Google)",
+              "Técnica y de personalización",
+              "Según Google",
+              "El mapa de la sección de contacto se carga desde Google y puede instalar sus propias cookies. Se rige por la política de privacidad de Google."
+            ],
+            [
+              "Cookies del proveedor de formularios",
+              "De tercero",
+              "Técnica",
+              "Según el proveedor",
+              "Los formularios de contacto y de catering se cargan desde el sistema de gestión del restaurante y pueden instalar cookies técnicas necesarias para enviarlos."
+            ]
+          ],
+          "en": [
+            [
+              "carreton_consent",
+              "First party",
+              "Technical",
+              "Until you delete it",
+              "Not a cookie as such, but a value saved in the browser's local storage. It remembers whether you accepted or rejected measurement cookies so you are not asked again."
+            ],
+            [
+              "Google Maps cookies",
+              "Third party (Google)",
+              "Technical and personalisation",
+              "As set by Google",
+              "The map in the contact section is loaded from Google and may install its own cookies. It is governed by Google's privacy policy."
+            ],
+            [
+              "Form provider cookies",
+              "Third party",
+              "Technical",
+              "As set by the provider",
+              "The contact and catering forms are loaded from the restaurant's management system and may install technical cookies needed to submit them."
+            ]
+          ]
+        },
+        "etiqueta": {
+          "es": "Cookies que utiliza esta web",
+          "en": "Cookies used on this website"
+        }
+      },
+      {
+        "t": "p",
+        "es": "Si en el futuro se activan herramientas de medición (por ejemplo, Google Analytics), no se cargarán hasta que las aceptes y se añadirán a esta tabla con su nombre, finalidad y duración.",
+        "en": "If measurement tools (for example Google Analytics) are enabled in the future, they will not load until you accept them and they will be added to this table with their name, purpose and duration."
+      },
+      {
+        "t": "h2",
+        "es": "Destinatarios de la información",
+        "en": "Who receives the information"
+      },
+      {
+        "t": "p",
+        "es": "La información obtenida mediante cookies podrá ser tratada por proveedores de servicios externos que prestan apoyo técnico, analítico o publicitario. Asimismo, podrá comunicarse a terceros cuando exista una obligación legal. En todo caso, el tratamiento se realizará conforme a la normativa vigente y, cuando sea necesario, previa obtención del consentimiento del usuario.",
+        "en": "The information obtained through cookies may be processed by external service providers giving technical, analytical or advertising support. It may also be disclosed to third parties where there is a legal obligation. In all cases, processing will comply with current legislation and, where necessary, will take place only after the user's consent has been obtained."
+      },
+      {
+        "t": "h2",
+        "es": "Transferencias internacionales de datos",
+        "en": "International data transfers"
+      },
+      {
+        "t": "p",
+        "es": "La aceptación de determinadas cookies puede implicar transferencias internacionales de datos, especialmente en el uso de servicios prestados por Google LLC y Meta Platforms Inc. Dichas transferencias se realizarán únicamente a países que cuenten con un nivel de protección adecuado o mediante la adopción de garantías apropiadas, como las cláusulas contractuales tipo aprobadas por la Comisión Europea.",
+        "en": "Accepting certain cookies may involve international data transfers, particularly when using services provided by Google LLC and Meta Platforms Inc. Such transfers will be made only to countries with an adequate level of protection or under appropriate safeguards, such as the standard contractual clauses approved by the European Commission."
+      },
+      {
+        "t": "h2",
+        "es": "Gestión y desactivación de cookies",
+        "en": "Managing and disabling cookies"
+      },
+      {
+        "t": "p",
+        "solo_si_consentimiento": true,
+        "es": "Puedes cambiar tu decisión sobre las cookies en cualquier momento desde el panel de preferencias de cookies de esta web.",
+        "en": "You can change your decision about cookies at any time from the cookie preferences panel on this website."
+      },
+      {
+        "t": "p",
+        "es": "Además, puedes configurar tu navegador para consultar, bloquear o eliminar las cookies instaladas en tu dispositivo. La desactivación de determinadas cookies puede afectar al correcto funcionamiento del sitio web o a la calidad de la experiencia de navegación.",
+        "en": "You can also set your browser to view, block or delete the cookies installed on your device. Disabling certain cookies may affect how the website works or the quality of your browsing experience."
+      },
+      {
+        "t": "p",
+        "es": "La configuración se realiza a través de las opciones o preferencias del navegador. Para más información, puedes consultar la ayuda de los principales navegadores:",
+        "en": "This is done through the browser's options or preferences. For more information, see the help pages of the main browsers:"
+      },
+      {
+        "t": "ul",
+        "es": [
+          "[Microsoft Edge](https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09)",
+          "[Mozilla Firefox](https://support.mozilla.org/es/kb/Borrar%20cookies)",
+          "[Google Chrome](https://support.google.com/chrome/answer/95647?hl=es)",
+          "[Safari](https://support.apple.com/es-es/guide/safari/sfri11471/mac)",
+          "[Opera](https://help.opera.com/en/latest/web-preferences/#cookies)",
+          "[Brave](https://support.brave.com/hc/en-us/articles/360050634931-How-Do-I-Manage-Cookies-In-Brave-)"
+        ],
+        "en": [
+          "[Microsoft Edge](https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09)",
+          "[Mozilla Firefox](https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox)",
+          "[Google Chrome](https://support.google.com/chrome/answer/95647)",
+          "[Safari](https://support.apple.com/en-gb/guide/safari/sfri11471/mac)",
+          "[Opera](https://help.opera.com/en/latest/web-preferences/#cookies)",
+          "[Brave](https://support.brave.com/hc/en-us/articles/360050634931-How-Do-I-Manage-Cookies-In-Brave-)"
+        ]
+      },
+      {
+        "t": "h2",
+        "es": "Actualización de la política de cookies",
+        "en": "Updates to the cookie policy"
+      },
+      {
+        "t": "p",
+        "es": "El responsable se reserva el derecho a modificar la presente política de cookies para adaptarla a cambios normativos o técnicos. Las actualizaciones se publicarán en el sitio web, por lo que se recomienda revisarla periódicamente. Dado que las cookies tienen una duración limitada, el consentimiento se solicitará de nuevo de forma periódica, al menos cada doce meses.",
+        "en": "The controller reserves the right to amend this cookie policy to adapt it to legal or technical changes. Updates will be published on the website, so you are advised to review it periodically. Since cookies have a limited lifetime, consent will be requested again periodically, at least every twelve months."
+      },
+      {
+        "t": "p",
+        "solo_idioma": "en",
+        "clase": "legal-nota",
+        "es": "",
+        "en": "This English text is a translation provided for information. The Spanish version is the binding one: if there is any discrepancy, the Spanish version prevails."
+      }
+    ]
+  }
+}

@@ -21,8 +21,10 @@ import { fileURLToPath } from 'node:url';
 
 const axe = readFileSync(fileURLToPath(new URL('../../node_modules/axe-core/axe.min.js', import.meta.url)), 'utf8');
 const BASE = process.env.BASE || 'http://localhost:8777';
-const paginas = ['/', '/catering.html', '/legal.html', '/novedades.html', '/404.html',
-                 '/en/', '/en/catering.html', '/en/legal.html', '/en/novedades.html'];
+const paginas = ['/', '/catering.html', '/legal.html', '/aviso-legal.html', '/privacidad.html',
+                 '/cookies.html', '/novedades.html', '/404.html',
+                 '/en/', '/en/catering.html', '/en/legal.html', '/en/aviso-legal.html',
+                 '/en/privacidad.html', '/en/cookies.html', '/en/novedades.html'];
 const tamanos = [[390, 844], [1280, 800]];
 const reglas = { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } };
 

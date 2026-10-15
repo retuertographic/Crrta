@@ -46,11 +46,41 @@
   "legal.html": {
     "es": {
       "title": "Información legal · La Carreta del Carretón, Arafo",
-      "description": "Aviso legal, política de privacidad y política de cookies de La Carreta del Carretón, restaurante en C. el Carretón 4-7, Arafo, Tenerife, España."
+      "description": "Aviso legal, política de privacidad y política de cookies de La Carreta del Carretón, restaurante en C. el Carretón 4-7, Arafo, Tenerife."
     },
     "en": {
       "title": "Legal information · La Carreta del Carretón, Arafo",
-      "description": "Legal notice, privacy policy and cookie policy for La Carreta del Carretón, a restaurant at C. el Carretón 4-7, Arafo, Tenerife, Spain. In Spanish."
+      "description": "Legal notice, privacy policy and cookie policy for La Carreta del Carretón, a restaurant at C. el Carretón 4-7, Arafo, Tenerife, Spain."
+    }
+  },
+  "aviso-legal.html": {
+    "es": {
+      "title": "Aviso legal · La Carreta del Carretón",
+      "description": "Titular del sitio web, datos de contacto y condiciones de uso de la web de La Carreta del Carretón, restaurante en Arafo, Tenerife."
+    },
+    "en": {
+      "title": "Legal notice · La Carreta del Carretón",
+      "description": "Website owner, contact details and conditions of use for the website of La Carreta del Carretón, a restaurant in Arafo, Tenerife."
+    }
+  },
+  "privacidad.html": {
+    "es": {
+      "title": "Política de privacidad · La Carreta del Carretón",
+      "description": "Qué datos personales trata La Carreta del Carretón, con qué finalidad, durante cuánto tiempo y cómo ejercer tus derechos de protección de datos."
+    },
+    "en": {
+      "title": "Privacy policy · La Carreta del Carretón",
+      "description": "What personal data La Carreta del Carretón processes, for what purpose, for how long, and how to exercise your data protection rights."
+    }
+  },
+  "cookies.html": {
+    "es": {
+      "title": "Política de cookies · La Carreta del Carretón",
+      "description": "Qué cookies utiliza la web de La Carreta del Carretón, quién las gestiona, cuánto duran y cómo bloquearlas o eliminarlas."
+    },
+    "en": {
+      "title": "Cookie policy · La Carreta del Carretón",
+      "description": "Which cookies the La Carreta del Carretón website uses, who manages them, how long they last and how to block or delete them."
     }
   },
   "404.html": {

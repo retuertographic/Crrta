@@ -41,6 +41,7 @@ import json
 import re
 import shutil
 import sys
+import unicodedata
 from datetime import date
 from pathlib import Path
 
@@ -59,6 +60,9 @@ DEFAULT_LANG = "es"
 PAGES = [
     "index.html",
     "legal.html",
+    "aviso-legal.html",
+    "privacidad.html",
+    "cookies.html",
     "catering.html",
     "novedades.html",
     "novedades/abrimos-nuestra-web.html",
@@ -338,6 +342,131 @@ def leftover_markers(markup: str) -> list[str]:
 
 # ------------------------------------------------------------ <head> y UI
 
+# Etiqueta de cada hueco del titular cuando está sin rellenar. Sale
+# publicado tal cual, a propósito: un aviso legal al que le falta el NIF
+# tiene que notarse, no esconderse.
+PENDIENTE = {
+    "nombre": {"es": "nombre del titular", "en": "owner's name"},
+    "nif": {"es": "NIF", "en": "tax ID"},
+    "registro": {"es": "Registro Mercantil", "en": "Commercial Register"},
+}
+
+ENLACE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
+
+
+def slug(text: str) -> str:
+    base = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9]+", "-", base.lower()).strip("-")
+
+
+def legal_tokens(text: str, titular: dict, lang: str) -> str:
+    """Mete los datos del titular. Lo que falte se publica como [PENDIENTE: ...]."""
+    def uno(m):
+        clave = m.group(1)
+        valor = (titular.get(clave) or "").strip()
+        if valor:
+            return valor
+        etiqueta = PENDIENTE.get(clave, {}).get(lang) or clave
+        return f"[{'PENDIENTE' if lang == 'es' else 'TO BE COMPLETED'}: {etiqueta}]"
+    return re.sub(r"\[\[(\w+)\]\]", uno, text)
+
+
+def legal_inline(text: str, titular: dict, lang: str) -> str:
+    """Escapa el texto y convierte [texto](enlace).
+
+    Un enlace que empieza por ~ es interno y se resuelve al idioma de la
+    página; si el texto empieza por «mailto:», el enlace es un correo."""
+    out = esc(legal_tokens(text, titular, lang))
+
+    def enlace(m):
+        etiqueta, url = m.group(1), m.group(2)
+        if etiqueta.startswith("mailto:"):
+            etiqueta, url = etiqueta[7:], "mailto:" + url
+        elif url.startswith("~"):
+            url = "{{HOME}}" + url[1:]
+        fuera = ' target="_blank" rel="noopener"' if url.startswith("http") else ""
+        return f'<a href="{url}"{fuera}>{etiqueta}</a>'
+
+    return ENLACE.sub(enlace, out)
+
+
+def render_legal(bloques: list, titular: dict, lang: str, consentimiento: bool) -> str:
+    """Un documento legal de src/legal.json, en el idioma de la página."""
+    vistos: set[str] = set()
+    html_out: list[str] = []
+    for b in bloques:
+        if b.get("solo_si") and not (titular.get(b["solo_si"]) or "").strip():
+            continue
+        if b.get("solo_si_consentimiento") and not consentimiento:
+            continue
+        if b.get("solo_idioma") and b["solo_idioma"] != lang:
+            continue
+        tipo = b["t"]
+        if tipo in ("h2", "h3"):
+            texto = legal_tokens(b[lang], titular, lang)
+            ident, n = slug(texto), 2
+            while ident in vistos:
+                ident, n = f"{ident}-{n}", n + 1
+            vistos.add(ident)
+            html_out.append(f"<{tipo} id=\"{esc(ident)}\">{esc(texto)}</{tipo}>")
+        elif tipo == "p":
+            clase = f' class="{esc(b["clase"])}"' if b.get("clase") else ""
+            html_out.append(f"<p{clase}>{legal_inline(b[lang], titular, lang)}</p>")
+        elif tipo == "ul":
+            items = "".join(f"<li>{legal_inline(x, titular, lang)}</li>" for x in b[lang])
+            html_out.append(f"<ul>{items}</ul>")
+        elif tipo == "tabla":
+            cab = "".join(f'<th scope="col">{esc(c)}</th>' for c in b["cabecera"][lang])
+            filas = "".join(
+                "<tr>" + "".join(f"<td>{legal_inline(c, titular, lang)}</td>" for c in fila) + "</tr>"
+                for fila in b["filas"][lang])
+            # tabindex y role: la caja se desplaza a lo ancho en móvil y una
+            # zona con scroll tiene que poder recorrerse con el teclado.
+            etiqueta = esc((b.get("etiqueta") or {}).get(lang, ""))
+            html_out.append(
+                f'<div class="legal-tabla" role="region" aria-label="{etiqueta}" tabindex="0">'
+                f"<table><thead><tr>{cab}</tr></thead><tbody>{filas}</tbody></table></div>")
+    return "\n    ".join(html_out)
+
+
+# Los tres documentos legales, en el orden en que se enseñan.
+LEGAL_PAGES = [("aviso-legal.html", "footer_legal"),
+               ("privacidad.html", "footer_privacy"),
+               ("cookies.html", "footer_cookies")]
+
+
+def render_legal_fecha(iso: str, i18n: dict, lang: str) -> str:
+    return (f'<p class="legal-updated">{esc(t(i18n, lang, "legal_updated"))} '
+            f'{esc(fmt_date(iso, lang))}.</p>')
+
+
+def render_legal_otros(page: str, i18n: dict, lang: str) -> str:
+    """Los otros dos documentos, al pie de cada uno. Dos clics como mucho
+    desde cualquier página, que es lo que pide la guía."""
+    otros = [(destino, clave) for destino, clave in LEGAL_PAGES if destino != page]
+    if not otros:
+        return ""
+    enlaces = "".join(
+        f'<a href="{{{{HOME}}}}{destino}">{esc(t(i18n, lang, clave))}</a>'
+        for destino, clave in otros)
+    return ('<nav class="legal-otros" aria-labelledby="otros-legales">'
+            f'<h2 id="otros-legales">{esc(t(i18n, lang, "legal_otros"))}</h2>'
+            f"{enlaces}</nav>")
+
+
+def render_cmp(src: str, cfg: dict) -> str:
+    """Script del gestor de consentimiento de cookies, si lo hay.
+
+    Va en el <head> y sin defer: un banner de cookies tiene que decidir
+    antes de que cargue nada que ponga cookies. Los atributos sueltos
+    (data-cbid, data-culture...) se copian tal cual desde
+    src/analytics.json, que es lo que suele pedir cada gestor."""
+    if not src:
+        return ""
+    attrs = "".join(f' {esc(k)}="{esc(v)}"' for k, v in (cfg.get("cmp_attrs") or {}).items())
+    return f'<script src="{esc(src)}"{attrs}></script>'
+
+
 def render_seo(page: str, lang: str, meta: dict) -> str:
     """title, description, canonical, og: y hreflang de esta página.
 
@@ -597,10 +726,17 @@ def build() -> int:
             return 1
 
     forms = json.loads((SRC / "forms.json").read_text(encoding="utf-8"))
+    legal = json.loads((SRC / "legal.json").read_text(encoding="utf-8"))
+    titular = legal["titular"]
     analytics_cfg = json.loads((SRC / "analytics.json").read_text(encoding="utf-8"))
     ga4 = (analytics_cfg.get("ga4_id") or "").strip()
     hotjar = (analytics_cfg.get("hotjar_id") or "").strip()
     measuring = bool(ga4 or hotjar)
+    # El aviso de cookies lo pondrá un gestor externo: en cuanto haya URL en
+    # src/analytics.json («cmp_script»), se inyecta su script y se retira el
+    # banner propio, para no tener dos avisos peleándose.
+    cmp_script = (analytics_cfg.get("cmp_script") or "").strip()
+    consentimiento = bool(measuring or cmp_script)
 
     # Elementos comunes: cada archivo de src/partials/ es un marcador.
     partials = load_partials()
@@ -625,8 +761,16 @@ def build() -> int:
         common["FORM_CONTACTO"] = render_contacto(
             tpl_contacto, tpl_form, forms, lang, i18n)
         # Sin IDs de medición no hay nada que consentir: ni banner ni botón.
-        common["CONSENT_BANNER"] = tpl_banner if measuring else ""
-        common["CONSENT_PREFS"] = tpl_prefs if measuring else ""
+        # Con gestor externo, el banner propio sobra.
+        propio = measuring and not cmp_script
+        common["CONSENT_BANNER"] = tpl_banner if propio else ""
+        common["CONSENT_PREFS"] = tpl_prefs if propio else ""
+        common["CMP"] = render_cmp(cmp_script, analytics_cfg)
+        for clave, doc in (("DOC_AVISO", "aviso-legal"),
+                           ("DOC_PRIVACIDAD", "privacidad"),
+                           ("DOC_COOKIES", "cookies")):
+            common[clave] = render_legal(
+                legal["documentos"][doc], titular, lang, consentimiento)
 
         for page in PAGES:
             template = (SRC / "pages" / page).read_text(encoding="utf-8")
@@ -640,6 +784,8 @@ def build() -> int:
             slots["ANALYTICS"] = render_analytics(ga4, hotjar, analytics_cfg, prefix)
             slots["LANG_SWITCH"] = render_lang_switch(page, lang, i18n)
             slots["NOVEDADES"] = render_novedades(posts, i18n, lang, prefix, home)
+            slots["LEGAL_ACTUALIZADO"] = render_legal_fecha(legal["actualizado"], i18n, lang)
+            slots["LEGAL_OTROS"] = render_legal_otros(page, i18n, lang)
 
             body = strip_source_notes(expand_partials(template, slots))
             for name in leftover_markers(body):
@@ -667,6 +813,16 @@ def build() -> int:
     write_robots()
     tools = ", ".join(n for n, on in (("GA4", ga4), ("Hotjar", hotjar)) if on) or "ninguna"
     print(f"OK: {len(written)} páginas en {len(LANGUAGES)} idiomas · medición: {tools}")
+    faltan = [k for k in PENDIENTE if not (titular.get(k) or "").strip()]
+    if faltan:
+        print("  AVISO: los textos legales salen con huecos sin rellenar en "
+              "src/legal.json → " + ", ".join(faltan), file=sys.stderr)
+        print("         El artículo 10 de la LSSICE exige publicar al menos "
+              "nombre del titular y NIF.", file=sys.stderr)
+    if cmp_script:
+        print(f"  · aviso de cookies: gestor externo ({cmp_script})")
+    elif measuring:
+        print("  · aviso de cookies: banner propio")
     if not measuring:
         print("  (sin IDs en src/analytics.json: no se inyecta nada ni aparece el banner)")
     for path in written:
