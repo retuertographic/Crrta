@@ -862,22 +862,23 @@
     display:block;width:100%;border:0;overflow:hidden;background:transparent;
     color-scheme:light;
   }
-  /* Alturas medidas en navegador real (scratchpad/measure.mjs), con unos
-     40-70px de margen: el contenido crece al estrecharse porque la etiqueta
-     del consentimiento pasa a más líneas. */
-  .crm-form--catering iframe{height:920px;}   /* contenido máx. 882 */
-  .crm-form--contacto iframe{height:620px;}   /* contenido máx. 558 */
+  /* Alturas medidas en un navegador real, con 60-90px de margen: el
+     contenido crece al estrecharse porque las etiquetas largas pasan a más
+     líneas. Se vuelven a medir con «npm run comprobar:formularios», que
+     avisa si el CRM ha hecho crecer un formulario por encima de su hueco. */
+  .crm-form--catering iframe{height:920px;}   /* contenido máx. 858 */
+  .crm-form--contacto iframe{height:860px;}   /* contenido máx. 786 */
   @media (max-width:620px){
-    .crm-form--catering iframe{height:950px;} /* contenido máx. 906 */
-    .crm-form--contacto iframe{height:650px;} /* contenido máx. 582 */
+    .crm-form--catering iframe{height:980px;} /* contenido máx. 906 */
+    .crm-form--contacto iframe{height:900px;} /* contenido máx. 834 */
   }
   @media (max-width:430px){
-    .crm-form--catering iframe{height:980px;} /* contenido máx. 930 */
-    .crm-form--contacto iframe{height:690px;} /* contenido máx. 630 */
+    .crm-form--catering iframe{height:1000px;} /* contenido máx. 930 */
+    .crm-form--contacto iframe{height:930px;}  /* contenido máx. 858 */
   }
   @media (max-width:360px){
-    .crm-form--catering iframe{height:1020px;} /* contenido máx. 978 */
-    .crm-form--contacto iframe{height:720px;}
+    .crm-form--catering iframe{height:1020px;} /* contenido máx. 930 */
+    .crm-form--contacto iframe{height:930px;}  /* contenido máx. 858 */
   }
 
   .contact-form-block{

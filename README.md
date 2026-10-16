@@ -209,6 +209,7 @@ python -m http.server 8777          # en otra terminal, desde la raíz
 npm install                         # solo la primera vez
 npm run comprobar:solapes
 npm run comprobar:accesibilidad
+npm run comprobar:formularios      # este sale a internet, a los formularios del CRM
 ```
 
 `comprobar:solapes` busca texto que se pisa con otro texto, en nueve
@@ -217,6 +218,12 @@ colaron las etiquetas del hero por debajo del indicador de scroll, que va
 posicionado absoluto, y no lo vio nadie hasta que apareció en un móvil de
 verdad: ni el validador de HTML ni axe detectan un solape, hay que medir
 las cajas.
+
+`comprobar:formularios` mide los formularios del CRM en un navegador y
+compara lo que ocupan con las alturas fijas de `assets/site.css`. Existe
+porque el formulario vive en el CRM y puede crecer sin que nadie toque
+este repositorio: al de contacto le añadieron fecha, hora y número de
+personas, se quedó con 170 px de scroll dentro, y no falló nada más.
 
 `comprobar:accesibilidad` pasa axe-core por todas las páginas en móvil y
 en escritorio. Las dos anchuras, porque hay fallos que solo existen en

@@ -8,7 +8,7 @@
     "fija por tramos de ancho. Los valores salen de medir cada formulario en",
     "un navegador real; pasarse es gratis porque el formulario tiene fondo",
     "transparente, quedarse corto provoca scroll dentro del iframe.",
-    "Para volver a medirlos: scratchpad/measure.mjs.",
+    "Para volver a medirlos: npm run comprobar:formularios.",
     "Deja un guid vacío para que esa sección no muestre formulario."
   ],
   "base_url": "https://crmapi.retuertographicdesign.com/form/",
