@@ -372,8 +372,12 @@ aparece si hay IDs de medición).
 de contacto. Comprobado en un navegador — antes de decidir y después de
 pulsar «Rechazar todo», el iframe se carga igual y contacta con
 `google.com`, `maps.gstatic.com` y `maps.googleapis.com`. El aviso sale,
-pero sobre ese tercero no manda. Si hay que taparlo, hay que hacerlo en
-esta web: no cargar el iframe hasta que haya consentimiento.
+pero sobre ese tercero no manda.
+
+Está visto y **decidido dejarlo así**: el mapa carga siempre. Si algún día
+se quiere tapar, hay que hacerlo en esta web —no cargar el iframe hasta
+que haya consentimiento, con un marcador y un botón en su hueco—, porque
+el gestor no lo va a hacer.
 
 ## Formularios del CRM
 
