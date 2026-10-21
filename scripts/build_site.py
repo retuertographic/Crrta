@@ -48,7 +48,10 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 SRC = REPO / "src"
 
-SITE_URL = "https://retuertographic.github.io/Crrta"
+# Dominio propio. GitHub Pages lo sirve por el archivo CNAME de la raíz, y
+# redirige retuertographic.github.io/Crrta aquí, así que los enlaces
+# antiguos siguen funcionando.
+SITE_URL = "https://lacarretadelcarreton.com"
 
 # código -> (carpeta de salida, etiqueta hreflang, locale para las fechas)
 LANGUAGES = {

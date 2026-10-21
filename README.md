@@ -409,7 +409,7 @@ la altura de `#root > div > div`.
 - La casilla de consentimiento: **Catering ES ya apunta bien**. Los otros
   tres (Catering EN, Contacto ES y Contacto EN) siguen enlazando a la
   política de privacidad de **otra web** (`retuertographic.github.io/rya`).
-  Deben apuntar a `https://retuertographic.github.io/Crrta/legal.html#privacidad`
+  Deben apuntar a `https://lacarretadelcarreton.com/privacidad.html`
   y, los de inglés, a `.../en/legal.html#privacidad`.
 - Los cuatro están **sin captcha**.
 - El botón del formulario de contacto sale en azul de Material, mientras

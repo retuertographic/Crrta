@@ -4,4 +4,4 @@ Disallow: /src/
 Disallow: /scripts/
 Disallow: /carta/
 
-Sitemap: https://retuertographic.github.io/Crrta/sitemap.xml
+Sitemap: https://lacarretadelcarreton.com/sitemap.xml
