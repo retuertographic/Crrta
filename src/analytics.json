@@ -1,20 +1,37 @@
 {
   "_comentario": [
     "Identificadores de las herramientas de medición. Cada una se carga solo",
-    "si tiene ID: deja el campo vacío para desactivarla. Si los dos están",
-    "vacíos no se inyecta nada y el banner de cookies no aparece.",
-    "Nada de esto se carga hasta que la persona acepta en el banner.",
+    "si tiene ID: deja el campo vacío para desactivarla.",
+    "Nada de esto se carga hasta que la persona acepta.",
     "",
-    "cmp_script: URL del script del gestor de consentimiento de cookies (el",
-    "aviso emergente, que lo pone un tercero). En cuanto tenga valor se",
-    "inyecta en el <head> de todas las páginas, antes que nada, y el banner",
-    "propio deja de publicarse para que no haya dos avisos a la vez.",
-    "cmp_attrs: atributos sueltos que pida ese script, por ejemplo",
-    "{\"data-cbid\": \"...\", \"data-culture\": \"ES\"}."
+    "cmp: el gestor de consentimiento de cookies, que es quien pone el aviso",
+    "emergente. Con «scripts» lleno se inyecta en el <head> de todas las",
+    "páginas, antes que nada, y el banner propio deja de publicarse para que",
+    "no haya dos avisos a la vez. Vacía «scripts» y vuelve el banner propio.",
+    "  · config: una variable global que el gestor lee al arrancar. Se",
+    "    escribe entre el primer script y el resto, que es donde la quiere.",
+    "  · scripts: en el orden que diga el proveedor. «defer» tal cual."
   ],
   "ga4_id": "",
   "hotjar_id": "",
   "track_contact_clicks": true,
-  "cmp_script": "",
-  "cmp_attrs": {}
+  "cmp": {
+    "nombre": "Biscotti CMP",
+    "config": {
+      "variable": "BiscottiConfig",
+      "valor": {
+        "websiteId": "c97b5ded-098c-4654-8c16-62759a38c260",
+        "apiUrl": "https://api.biscotti-cmp.com/api/v1"
+      }
+    },
+    "scripts": [
+      {
+        "src": "https://api.biscotti-cmp.com/scripts/biscotti-boot.js"
+      },
+      {
+        "src": "https://api.biscotti-cmp.com/scripts/biscotti.min.js",
+        "defer": true
+      }
+    ]
+  }
 }

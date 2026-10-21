@@ -457,17 +457,50 @@ def render_legal_otros(page: str, i18n: dict, lang: str) -> str:
             f"{enlaces}</nav>")
 
 
-def render_cmp(src: str, cfg: dict) -> str:
-    """Script del gestor de consentimiento de cookies, si lo hay.
+def render_cmp(cmp: dict) -> str:
+    """El gestor de consentimiento de cookies, si lo hay.
 
-    Va en el <head> y sin defer: un banner de cookies tiene que decidir
-    antes de que cargue nada que ponga cookies. Los atributos sueltos
-    (data-cbid, data-culture...) se copian tal cual desde
-    src/analytics.json, que es lo que suele pedir cada gestor."""
-    if not src:
+    Va en el <head> y antes que nada: un aviso de cookies tiene que poder
+    decidir antes de que cargue nada que ponga cookies. Se respeta el orden
+    que da el proveedor —primero su script de arranque, luego la variable
+    de configuración, luego el resto— porque de ese orden depende que el
+    segundo encuentre la configuración puesta.
+
+    El preconnect no lo pide el proveedor: lo añadimos para que el
+    navegador abra la conexión con su servidor mientras todavía está
+    leyendo el <head>, que es tiempo que se le quita al primer script, que
+    es síncrono y bloquea el dibujado."""
+    scripts = (cmp or {}).get("scripts") or []
+    if not scripts:
         return ""
-    attrs = "".join(f' {esc(k)}="{esc(v)}"' for k, v in (cfg.get("cmp_attrs") or {}).items())
-    return f'<script src="{esc(src)}"{attrs}></script>'
+
+    lineas = []
+    origenes = []
+    for s in scripts:
+        o = re.match(r"https?://[^/]+", s.get("src", ""))
+        if o and o.group(0) not in origenes:
+            origenes.append(o.group(0))
+    for o in origenes:
+        lineas.append(f'<link rel="preconnect" href="{esc(o)}" crossorigin>')
+
+    config = (cmp or {}).get("config") or {}
+    primera, resto = scripts[0], scripts[1:]
+
+    def etiqueta(s: dict) -> str:
+        extra = "".join(
+            f" {esc(k)}" if v is True else f' {esc(k)}="{esc(v)}"'
+            for k, v in s.items() if k != "src" and v is not False)
+        return f'<script src="{esc(s["src"])}"{extra}></script>'
+
+    lineas.append(etiqueta(primera))
+    if config.get("variable"):
+        # json.dumps y no una plantilla: así un valor con comillas no puede
+        # romper el script ni colar nada dentro de la página.
+        valor = json.dumps(config.get("valor") or {}, ensure_ascii=False)
+        valor = valor.replace("</", "<\\/")      # ni cerrar el <script> antes de tiempo
+        lineas.append(f'<script>window.{config["variable"]} = {valor};</script>')
+    lineas += [etiqueta(s) for s in resto]
+    return "\n".join(lineas)
 
 
 def render_seo(page: str, lang: str, meta: dict) -> str:
@@ -735,11 +768,12 @@ def build() -> int:
     ga4 = (analytics_cfg.get("ga4_id") or "").strip()
     hotjar = (analytics_cfg.get("hotjar_id") or "").strip()
     measuring = bool(ga4 or hotjar)
-    # El aviso de cookies lo pondrá un gestor externo: en cuanto haya URL en
-    # src/analytics.json («cmp_script»), se inyecta su script y se retira el
-    # banner propio, para no tener dos avisos peleándose.
-    cmp_script = (analytics_cfg.get("cmp_script") or "").strip()
-    consentimiento = bool(measuring or cmp_script)
+    # El aviso de cookies lo pone un gestor externo: en cuanto haya scripts
+    # en src/analytics.json («cmp»), se inyectan y se retira el banner
+    # propio, para no tener dos avisos peleándose.
+    cmp = analytics_cfg.get("cmp") or {}
+    cmp_on = bool(cmp.get("scripts"))
+    consentimiento = bool(measuring or cmp_on)
 
     # Elementos comunes: cada archivo de src/partials/ es un marcador.
     partials = load_partials()
@@ -765,10 +799,10 @@ def build() -> int:
             tpl_contacto, tpl_form, forms, lang, i18n)
         # Sin IDs de medición no hay nada que consentir: ni banner ni botón.
         # Con gestor externo, el banner propio sobra.
-        propio = measuring and not cmp_script
+        propio = measuring and not cmp_on
         common["CONSENT_BANNER"] = tpl_banner if propio else ""
         common["CONSENT_PREFS"] = tpl_prefs if propio else ""
-        common["CMP"] = render_cmp(cmp_script, analytics_cfg)
+        common["CMP"] = render_cmp(cmp)
         for clave, doc in (("DOC_AVISO", "aviso-legal"),
                            ("DOC_PRIVACIDAD", "privacidad"),
                            ("DOC_COOKIES", "cookies")):
@@ -822,8 +856,9 @@ def build() -> int:
               "src/legal.json → " + ", ".join(faltan), file=sys.stderr)
         print("         El artículo 10 de la LSSICE exige publicar al menos "
               "nombre del titular y NIF.", file=sys.stderr)
-    if cmp_script:
-        print(f"  · aviso de cookies: gestor externo ({cmp_script})")
+    if cmp_on:
+        print(f"  · aviso de cookies: {cmp.get('nombre') or 'gestor externo'} "
+              f"({len(cmp['scripts'])} scripts)")
     elif measuring:
         print("  · aviso de cookies: banner propio")
     if not measuring:

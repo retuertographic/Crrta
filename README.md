@@ -343,18 +343,37 @@ tiene de verdad un panel de cookies).
 
 ### El aviso emergente de cookies
 
-Lo pone un gestor externo. Se configura en `src/analytics.json`:
+Lo pone **Biscotti CMP**, un gestor externo. Se configura en
+`src/analytics.json`, en el bloque `cmp`:
 
 ```json
-"cmp_script": "https://…/cmp.js",
-"cmp_attrs": { "data-cbid": "…", "data-culture": "ES" }
+"cmp": {
+  "nombre": "Biscotti CMP",
+  "config":  { "variable": "BiscottiConfig",
+               "valor": { "websiteId": "…", "apiUrl": "…" } },
+  "scripts": [ { "src": "…/biscotti-boot.js" },
+               { "src": "…/biscotti.min.js", "defer": true } ]
+}
 ```
 
-Con eso, el script se inyecta el primero en el `<head>` de todas las
-páginas —un banner de cookies tiene que decidir antes de que cargue nada
-que ponga cookies— y **el banner propio deja de publicarse**, para que no
-haya dos avisos peleándose. Mientras `cmp_script` esté vacío, el banner
-propio solo aparece si hay IDs de medición.
+Se inyecta lo primero en el `<head>` de todas las páginas —un aviso de
+cookies tiene que poder decidir antes de que cargue nada que ponga
+cookies— respetando el orden del proveedor: su script de arranque, la
+variable de configuración y el resto. De ese orden depende que el segundo
+script encuentre la configuración puesta. El `preconnect` lo añadimos
+nosotros: el primer script es síncrono y bloquea el dibujado, así que al
+menos la conexión se abre mientras el navegador lee el `<head>`.
+
+Con `scripts` lleno, **el banner propio deja de publicarse**, para que no
+haya dos avisos peleándose. Vacía `scripts` y vuelve el de casa (que solo
+aparece si hay IDs de medición).
+
+**Lo que este gestor no hace**: no bloquea el mapa de Google de la sección
+de contacto. Comprobado en un navegador — antes de decidir y después de
+pulsar «Rechazar todo», el iframe se carga igual y contacta con
+`google.com`, `maps.gstatic.com` y `maps.googleapis.com`. El aviso sale,
+pero sobre ese tercero no manda. Si hay que taparlo, hay que hacerlo en
+esta web: no cargar el iframe hasta que haya consentimiento.
 
 ## Formularios del CRM
 

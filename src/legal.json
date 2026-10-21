@@ -515,8 +515,8 @@
       },
       {
         "t": "p",
-        "es": "Esta web es un sitio estático y no instala cookies propias de medición ni de publicidad. Lo que sí guarda es tu decisión sobre las cookies, y los servicios incrustados de terceros pueden instalar las suyas cuando se cargan:",
-        "en": "This is a static website and it does not install first-party measurement or advertising cookies. What it does store is your decision about cookies, and the embedded third-party services may install their own when they load:"
+        "es": "Esta web es un sitio estático y no instala cookies propias de medición ni de publicidad. Lo que hay es el gestor de consentimiento que muestra el aviso, que guarda tu decisión, y los servicios incrustados de terceros, que pueden instalar las suyas cuando se cargan:",
+        "en": "This is a static website and it does not install first-party measurement or advertising cookies. What there is: the consent manager that shows the banner, which stores your decision, and the embedded third-party services, which may install their own when they load:"
       },
       {
         "t": "tabla",
@@ -539,11 +539,18 @@
         "filas": {
           "es": [
             [
-              "carreton_consent",
-              "Propia",
+              "biscotti_consent",
+              "De tercero (Biscotti CMP)",
+              "Técnica",
+              "180 días",
+              "Guarda tu decisión sobre las cookies para no volver a preguntártela en cada visita. La pone el gestor de consentimiento que muestra el aviso."
+            ],
+            [
+              "biscotti_visitor_id, biscotti_visitor_token y biscotti_cfg_…",
+              "De tercero (Biscotti CMP)",
               "Técnica",
               "Hasta que la borres",
-              "No es una cookie, sino un dato guardado en el almacenamiento local del navegador. Recuerda si aceptaste o rechazaste las cookies de medición para no volver a preguntártelo."
+              "No son cookies, sino datos guardados en el almacenamiento local del navegador. Identifican tu navegador ante el gestor de consentimiento y guardan la configuración del aviso."
             ],
             [
               "Cookies de Google Maps",
@@ -562,11 +569,18 @@
           ],
           "en": [
             [
-              "carreton_consent",
-              "First party",
+              "biscotti_consent",
+              "Third party (Biscotti CMP)",
               "Technical",
-              "Until you delete it",
-              "Not a cookie as such, but a value saved in the browser's local storage. It remembers whether you accepted or rejected measurement cookies so you are not asked again."
+              "180 days",
+              "Stores your decision about cookies so you are not asked again on every visit. It is set by the consent manager that shows the banner."
+            ],
+            [
+              "biscotti_visitor_id, biscotti_visitor_token and biscotti_cfg_…",
+              "Third party (Biscotti CMP)",
+              "Technical",
+              "Until you delete them",
+              "Not cookies as such, but values saved in the browser's local storage. They identify your browser to the consent manager and store the banner's settings."
             ],
             [
               "Google Maps cookies",
@@ -622,8 +636,8 @@
       {
         "t": "p",
         "solo_si_consentimiento": true,
-        "es": "Puedes cambiar tu decisión sobre las cookies en cualquier momento desde el panel de preferencias de cookies de esta web.",
-        "en": "You can change your decision about cookies at any time from the cookie preferences panel on this website."
+        "es": "Puedes cambiar tu decisión sobre las cookies en cualquier momento desde el botón de preferencias que el aviso deja en la esquina de la pantalla.",
+        "en": "You can change your decision about cookies at any time from the preferences button that the banner leaves in the corner of the screen."
       },
       {
         "t": "p",
