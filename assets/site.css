@@ -88,6 +88,13 @@
 /* === fin de las fuentes === */
 
   :root{
+    /* Esta web está diseñada en claro y no tiene tema oscuro propio. Sin
+       declararlo, Chrome y Samsung Internet se toman la libertad de
+       recolorearla cuando el móvil está en oscuro: el dorado de los
+       botones salía granate (#270B00 medido en una captura real, contra
+       el #826430 que servimos). Con esto, dejan de hacerlo. */
+    color-scheme:light;
+
     --ink:#2B2621;
     --ink-2:#1A1713;
     --gold:#826430;
