@@ -679,7 +679,7 @@ legal y en la política de privacidad, y el de información general va en el
 JSON-LD.
 
 La tarjeta de reservas presenta las cuatro vías con el mismo peso —
-teléfono, WhatsApp (+34 661 72 78 26), correo y el formulario del CRM que
+teléfono, WhatsApp (el mismo 922 51 50 66), correo y el formulario del CRM que
 está más abajo en la misma página (`.reserve-ways` en `assets/site.css`), y los botones
 «Reservar mesa» de la cabecera, el pie y la galería llevan a la sección de
 contacto en vez de abrir el marcador del teléfono.
