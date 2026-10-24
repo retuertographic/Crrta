@@ -49,22 +49,16 @@ const detector = () => {
     return r;
   };
   const rectosDe = (e) => [...e.getClientRects()].map(r => recortar(r, e)).filter(Boolean);
-  const rectoRecortadoViejo = (e) => {
-    let r = e.getBoundingClientRect();
-    for (let p = e.parentElement; p && p !== document.body; p = p.parentElement) {
-      const cs = getComputedStyle(p);
-      if (cs.overflow === 'visible' && cs.overflowX === 'visible' && cs.overflowY === 'visible') continue;
-      const c = p.getBoundingClientRect();
-      const top = Math.max(r.top, c.top), left = Math.max(r.left, c.left);
-      const bottom = Math.min(r.bottom, c.bottom), right = Math.min(r.right, c.right);
-      if (bottom <= top || right <= left) return null;
-      r = { top, left, bottom, right, width: right - left, height: bottom - top };
-    }
-    return r;
-  };
+  /* El aviso de cookies es una superposición de un tercero: se dibuja
+     encima del contenido a propósito, así que su texto cruza con todo lo
+     nuestro. Medirlo daba 1700 «solapes» por página —ni uno real— y dejaba
+     la comprobación inservible, que es peor que no tenerla. Lo que hay
+     debajo se sigue midiendo igual; lo suyo no es nuestro de maquetar. */
+  const DEL_GESTOR = '[id^="biscotti"], [class*="biscotti"]';
 
   const hojas = [...document.querySelectorAll('body *')].filter(e => {
     if (!e.textContent.trim()) return false;
+    if (e.closest(DEL_GESTOR)) return false;
     if ([...e.children].some(c => c.textContent.trim())) return false;
     return visible(e);
   });
