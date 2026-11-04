@@ -605,13 +605,35 @@ hoja.
 
 ## Añadir una novedad
 
-1. Añade una entrada al principio del array `posts` de
-   `novedades-data.json` (`slug`, `date` en `AAAA-MM-DD`, `image`, títulos
-   y extractos en los dos idiomas).
-2. Copia `src/pages/novedades/abrimos-nuestra-web.html` a
-   `src/pages/novedades/<slug>.html` y cambia el texto.
-3. Añade la página a `PAGES` y sus textos a `src/meta.json`.
-4. Ejecuta `build_site.py`.
+Se añade un objeto al array `posts` de `novedades-data.json` y se ejecuta
+`build_site.py`. No hay que tocar nada más: ni `PAGES`, ni `src/meta.json`,
+ni `src/i18n.json`, ni crear un archivo por entrada. Con eso se publican la
+tarjeta de `/novedades.html` y la página `/novedades/<slug>.html`, en los
+dos idiomas, desde `src/pages/novedades/_entrada.html`.
+
+| Campo | Para qué |
+| --- | --- |
+| `slug` | la URL de la entrada |
+| `date` | `AAAA-MM-DD`; también ordena la lista, de la más nueva a la más vieja |
+| `image`, `image_w`, `image_h` | la foto y su tamaño real, para que no salte el texto al cargar |
+| `alt_es` / `alt_en` | qué se ve en la foto (no repitas el titular: ya va al lado) |
+| `title_es` / `title_en` | el titular |
+| `excerpt_es` / `excerpt_en` | la entradilla de la tarjeta; también es la description si no hay `seo` |
+| `cuerpo` | el texto, en bloques |
+| `seo` | opcional: `title` y `description` por idioma |
+
+Los bloques de `cuerpo` llevan `t` y el texto en los dos idiomas:
+
+- `p` — un párrafo.
+- `h2` / `h3` — un subtítulo.
+- `ul` — una lista; `es` y `en` son arrays de líneas.
+- `destacado` — un párrafo con barra dorada, para la frase que se quiere
+  que se lea aunque se lea en diagonal.
+
+Dentro del texto se pueden poner enlaces con `[texto](url)`. Si la url
+empieza por `~` es interna y se resuelve al idioma de la página:
+`[la carta](~index.html#carta)` lleva a `/index.html#carta` en español y a
+`/en/index.html#carta` en inglés.
 
 
 ## Cambiar textos

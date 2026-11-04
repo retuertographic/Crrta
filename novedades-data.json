@@ -1,4 +1,19 @@
 {
+  "_comentario": [
+    "Novedades. Cada objeto de «posts» publica dos cosas: la tarjeta de",
+    "/novedades.html y su propia página en /novedades/<slug>.html, las dos",
+    "en español y en inglés, a partir de src/pages/novedades/_entrada.html.",
+    "",
+    "Para añadir una entrada basta con añadir un objeto aquí: ni se toca el",
+    "generador, ni src/meta.json, ni src/i18n.json. El orden lo da «date»,",
+    "de la más nueva a la más vieja.",
+    "",
+    "«cuerpo» son bloques, como los textos legales: t = p | h2 | h3 | ul |",
+    "destacado. Dentro del texto se pueden poner enlaces con [texto](url);",
+    "si la url empieza por ~ es interna y se resuelve al idioma de la página.",
+    "",
+    "«seo» es opcional: sin él se usan el título y la entradilla."
+  ],
   "posts": [
     {
       "slug": "abrimos-nuestra-web",
@@ -7,7 +22,428 @@
       "title_es": "Ya tenemos web (y carta online)",
       "excerpt_es": "Estrenamos página para que no tengas que llamar solo para preguntar el horario. Aquí encontrarás la carta con los precios al día, cómo llegar y todo lo que vayamos contando.",
       "title_en": "Our website is up (menu included)",
-      "excerpt_en": "We have a page at last, so you no longer have to call just to check the opening hours. Here you will find the menu with current prices, how to find us, and whatever else we have to share."
+      "excerpt_en": "We have a page at last, so you no longer have to call just to check the opening hours. Here you will find the menu with current prices, how to find us, and whatever else we have to share.",
+      "alt_es": "Postre Teide bañado en chocolate",
+      "alt_en": "Teide dessert covered in chocolate",
+      "image_w": 765,
+      "image_h": 1020,
+      "seo": {
+        "es": {
+          "title": "Ya tenemos web y carta online · La Carreta del Carretón",
+          "description": "Estrenamos página con la carta al día, los precios, cómo llegar y todas las formas de reservar mesa en nuestro restaurante familiar de Arafo, Tenerife."
+        },
+        "en": {
+          "title": "Our website and menu are up · La Carreta del Carretón",
+          "description": "We have launched a site with an up-to-date menu, the prices, how to find us and every way to book a table at our restaurant in Arafo, Tenerife."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "Llevábamos tiempo con la misma conversación por teléfono: «¿a qué hora abren?», «¿tienen postre Teide hoy?», «¿dónde están exactamente?». Así que hemos hecho una página para tenerlo todo en un sitio.",
+          "en": "We kept having the same phone conversation: “what time do you open?”, “do you have the Teide dessert today?”, “where exactly are you?”. So we built a page that keeps it all in one place."
+        },
+        {
+          "t": "h2",
+          "es": "La carta, siempre al día",
+          "en": "The menu, always current"
+        },
+        {
+          "t": "p",
+          "es": "La sección de carta sale de la misma hoja que usamos en cocina, así que los precios y los platos que ves aquí son los mismos que hay en la mesa.",
+          "en": "The menu section comes from the same spreadsheet we use in the kitchen, so the dishes and prices you see here are the ones on the table."
+        },
+        {
+          "t": "h2",
+          "es": "Lo demás, donde toca",
+          "en": "Everything else, where you would expect it"
+        },
+        {
+          "t": "p",
+          "es": "Horario completo, dirección con mapa y el teléfono a un clic. Abrimos de miércoles a domingo, solo a mediodía, y reservar sigue siendo tan sencillo como llamarnos al 922 51 50 66.",
+          "en": "Full opening hours, the address with a map, and the phone number one tap away. We open Wednesday to Sunday, lunch only, and booking is still as simple as calling +34 922 51 50 66."
+        },
+        {
+          "t": "p",
+          "es": "Esta sección de novedades la iremos usando para contar lo que se salga de lo normal: platos de temporada, días de cierre, celebraciones. Nos vemos en la mesa.",
+          "en": "We will use this news section for anything out of the ordinary: seasonal dishes, closing days, celebrations. See you at the table."
+        }
+      ]
+    },
+    {
+      "slug": "cuba-y-canarias-en-la-misma-mesa",
+      "date": "2026-09-30",
+      "image": "img/montaje-cuba-canarias.webp",
+      "image_w": 760,
+      "image_h": 760,
+      "alt_es": "Un plato de tamal cubano y otro de croquetas de gofio, servidos sobre el mantel de cuadros",
+      "alt_en": "A plate of Cuban tamal and a plate of gofio croquettes on the checked tablecloth",
+      "title_es": "Cuba y Canarias en la misma mesa",
+      "title_en": "Cuba and the Canaries at the same table",
+      "excerpt_es": "En la carta hay congrí y hay gofio, cochino canario y ropa vieja. Ni es fusión ni es casualidad: es lo que pasa cuando una cocina cubana lleva dieciséis años comprando en Tenerife.",
+      "excerpt_en": "The menu has congrí and it has gofio, Canarian pork and ropa vieja. It is not fusion and it is not chance: it is what happens when a Cuban kitchen spends sixteen years buying in Tenerife.",
+      "seo": {
+        "es": {
+          "title": "Cuba y Canarias en la misma mesa · La Carreta del Carretón",
+          "description": "Cómo acabaron conviviendo el congrí y el gofio en la misma carta: dos despensas, una cocina y dieciséis años en Arafo, Tenerife."
+        },
+        "en": {
+          "title": "Cuba and the Canaries at the same table · La Carreta del Carretón",
+          "description": "How congrí and gofio ended up on the same menu: two pantries, one kitchen and sixteen years in Arafo, Tenerife."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "Quien entra por primera vez suele hacer la misma pregunta: ¿esto es un restaurante cubano o uno canario? La respuesta corta es que las dos cosas. La larga tiene dieciséis años.",
+          "en": "People coming in for the first time usually ask the same thing: is this a Cuban restaurant or a Canarian one? The short answer is both. The long one takes sixteen years."
+        },
+        {
+          "t": "h2",
+          "es": "Dos despensas, una cocina",
+          "en": "Two pantries, one kitchen"
+        },
+        {
+          "t": "p",
+          "es": "La cocina que trajimos se apoya en el cerdo, el arroz, el plátano y los frijoles. La de aquí, en el gofio, los mojos, las papas y el cochino de la tierra. Comparten más de lo que parece, y lo que no comparten se lleva bien.",
+          "en": "The cooking we brought leans on pork, rice, plantain and beans. The one here leans on gofio, mojo sauces, potatoes and local pork. They have more in common than it looks, and what they do not share gets along anyway."
+        },
+        {
+          "t": "p",
+          "es": "Por eso en una misma mesa puede haber un congrí al lado de unas papas arrugadas, o una ropa vieja con un mojo hecho en esta cocina. Nadie tuvo que inventar nada: fue el mercado de la isla el que se fue metiendo en las recetas de casa.",
+          "en": "That is why one table can carry congrí beside papas arrugadas, or ropa vieja with a mojo made in this kitchen. Nobody had to invent anything: the island's market simply worked its way into the family recipes."
+        },
+        {
+          "t": "h2",
+          "es": "Lo que salió de ahí",
+          "en": "What came out of it"
+        },
+        {
+          "t": "p",
+          "es": "Las croquetas de gofio con carne de costilla son el ejemplo más claro: una croqueta de toda la vida amasada con un ingrediente que en Cuba no existe. O el cochino canario a la brasa, que fue de lo primero que pusimos y sigue en la carta.",
+          "en": "The gofio croquettes with rib meat are the clearest example: an everyday croquette made with an ingredient that does not exist in Cuba. Or the Canarian pork off the grill, one of the first things we put on and still on the menu."
+        },
+        {
+          "t": "destacado",
+          "es": "No lo llamamos fusión. Lo llamamos cocinar con lo que hay, que es lo que siempre se ha hecho en las dos islas.",
+          "en": "We do not call it fusion. We call it cooking with what there is, which is what both islands have always done."
+        },
+        {
+          "t": "p",
+          "es": "Si quieres verlo entero, está en [la carta](~index.html#carta), con los precios al día.",
+          "en": "If you want to see the whole thing, it is on [the menu](~index.html#carta), with current prices."
+        }
+      ]
+    },
+    {
+      "slug": "costillas-bbq",
+      "date": "2026-10-07",
+      "image": "img/costillas-bbq.webp",
+      "image_w": 760,
+      "image_h": 950,
+      "alt_es": "Costillas BBQ recién salidas de la parrilla, servidas con ensalada",
+      "alt_en": "BBQ ribs fresh off the grill, served with salad",
+      "title_es": "Costillas BBQ: por qué tardan lo que tardan",
+      "title_en": "BBQ ribs: why they take as long as they do",
+      "excerpt_es": "Es el plato que más sale de la parrilla y el que menos admite prisas. Qué lleva, cuánto tiempo y por qué no se puede pedir «para dentro de diez minutos».",
+      "excerpt_en": "It is the dish that leaves the grill most often and the one that least tolerates hurry. What goes into it, how long it takes and why it cannot be ordered «for ten minutes from now».",
+      "seo": {
+        "es": {
+          "title": "Costillas BBQ a la brasa · La Carreta del Carretón",
+          "description": "Cómo preparamos las costillas BBQ en nuestro restaurante de Arafo: tiempo largo antes de la brasa y poco fuego al final. Cómo pedirlas y cómo compartirlas."
+        },
+        "en": {
+          "title": "BBQ ribs off the grill · La Carreta del Carretón",
+          "description": "How we cook our BBQ ribs in Arafo: a long, slow start and a short finish over the coals. How to order them and how to share them."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "Si hay un plato que sale una y otra vez de nuestra parrilla son las costillas. Y si hay un plato al que no se le puede meter prisa, también.",
+          "en": "If one dish leaves our grill again and again, it is the ribs. And if one dish cannot be hurried, it is also the ribs."
+        },
+        {
+          "t": "h2",
+          "es": "Primero el tiempo, luego el fuego",
+          "en": "Time first, fire second"
+        },
+        {
+          "t": "p",
+          "es": "La costilla se trabaja despacio mucho antes de llegar a la brasa. Esa parte no se ve desde la mesa, pero es la que decide si la carne se separa del hueso sola o hay que pelearse con ella.",
+          "en": "The rib is worked slowly long before it reaches the coals. That part is invisible from the table, but it decides whether the meat comes off the bone by itself or has to be fought for."
+        },
+        {
+          "t": "p",
+          "es": "La brasa llega al final y dura poco: lo justo para que la salsa se agarre y quede ese borde tostado que cruje. Si se adelanta ese paso, la costilla sale brillante por fuera y dura por dentro.",
+          "en": "The grill comes at the end and lasts a short while: just enough for the sauce to catch and for that toasted edge to crisp. Rush that step and the rib comes out shiny outside and tough inside."
+        },
+        {
+          "t": "h2",
+          "es": "Cómo pedirlas",
+          "en": "How to order them"
+        },
+        {
+          "t": "p",
+          "es": "Van acompañadas de papas fritas y se comparten sin problema. En los [menús de grupo](~index.html#menus) entran como segundo, así que si venís varios no hay que elegir entre ellas y el resto de la brasa.",
+          "en": "They come with chips and share easily. They are one of the mains in the [group menus](~index.html#menus), so if there are several of you there is no need to choose between the ribs and the rest of the grill."
+        },
+        {
+          "t": "destacado",
+          "es": "Un consejo de la casa: si sois muchos, llamad antes. Las costillas se preparan por tandas y no salen de la nada.",
+          "en": "A word from the house: if there are many of you, call ahead. Ribs are prepared in batches and do not appear out of nowhere."
+        }
+      ]
+    },
+    {
+      "slug": "croquetas-de-gofio",
+      "date": "2026-10-14",
+      "image": "img/croquetas-gofio.webp",
+      "image_w": 700,
+      "image_h": 700,
+      "alt_es": "Croquetas de gofio doradas, servidas en plato con lechuga",
+      "alt_en": "Golden gofio croquettes served on a plate with lettuce",
+      "title_es": "Croquetas de gofio: cómo salió una receta que no existía",
+      "title_en": "Gofio croquettes: how a recipe that did not exist came about",
+      "excerpt_es": "Una croqueta de las de casa, carne de costilla y un ingrediente canario que no estaba en ninguna receta cubana. Así nació el plato que más nos copian.",
+      "excerpt_en": "A homemade croquette, rib meat and a Canarian ingredient that appeared in no Cuban recipe. That is how the dish we get copied most came about.",
+      "seo": {
+        "es": {
+          "title": "Croquetas de gofio con carne de costilla · La Carreta del Carretón",
+          "description": "La historia de nuestras croquetas de gofio con carne de costilla: cómo un ingrediente canario entró en una receta cubana. Restaurante en Arafo, Tenerife."
+        },
+        "en": {
+          "title": "Gofio croquettes with rib meat · La Carreta del Carretón",
+          "description": "The story of our gofio croquettes with rib meat: how a Canarian ingredient found its way into a Cuban recipe. A restaurant in Arafo, Tenerife."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "El gofio estaba en todas las cocinas de Arafo menos en la nuestra. Tardamos en darle un sitio, y cuando se lo dimos fue en el menos esperado: dentro de una croqueta.",
+          "en": "Gofio was in every kitchen in Arafo except ours. It took us a while to find it a place, and when we did it was the least expected one: inside a croquette."
+        },
+        {
+          "t": "h2",
+          "es": "La idea",
+          "en": "The idea"
+        },
+        {
+          "t": "p",
+          "es": "La croqueta es un plato que en casa se hacía siempre, con lo que quedaba del día anterior. Cambiamos parte de la harina por gofio y metimos dentro carne de costilla deshecha. Lo que sale no se parece ni a una croqueta clásica ni a nada que se coma con gofio.",
+          "en": "The croquette is something we always made at home, with whatever was left from the day before. We swapped part of the flour for gofio and put pulled rib meat inside. What comes out is neither a classic croquette nor anything else you would eat gofio with."
+        },
+        {
+          "t": "p",
+          "es": "El gofio le da un tostado que no se consigue friendo más, y la costilla pone la parte jugosa. Se nota en el primer bocado y no hace falta explicarlo en la mesa.",
+          "en": "The gofio brings a toasted note that no amount of extra frying can give, and the rib brings the juice. You notice it on the first bite and nobody needs it explained at the table."
+        },
+        {
+          "t": "h2",
+          "es": "Si vienes a probarlas",
+          "en": "If you come to try them"
+        },
+        {
+          "t": "p",
+          "es": "Están entre los aperitivos, en ración y media ración, y entran también en los [menús de grupo](~index.html#menus). Hay días que se acaban antes de cerrar.",
+          "en": "They are among the starters, in a full or half portion, and they are also in the [group menus](~index.html#menus). Some days they run out before we close."
+        }
+      ]
+    },
+    {
+      "slug": "tamal-cubano",
+      "date": "2026-10-21",
+      "image": "img/tamal-cubano.webp",
+      "image_w": 760,
+      "image_h": 600,
+      "alt_es": "Tamal cubano servido con cebolla por encima y su hoja al lado",
+      "alt_en": "Cuban tamal served with onion on top and its leaf alongside",
+      "title_es": "El tamal, explicado antes de que preguntes",
+      "title_en": "The tamal, explained before you ask",
+      "excerpt_es": "Es el plato por el que más nos preguntan en la mesa: qué lleva, de dónde sale y por qué va con cebolla por encima. Aquí está la respuesta larga.",
+      "excerpt_en": "It is the dish people ask about most at the table: what is in it, where it comes from and why it is served with onion on top. Here is the long answer.",
+      "seo": {
+        "es": {
+          "title": "El tamal cubano de La Carreta del Carretón · Arafo",
+          "description": "Qué es el tamal cubano, qué lleva y por qué lo servimos con cebolla encurtida. Uno de los platos que menos ha cambiado en dieciséis años."
+        },
+        "en": {
+          "title": "The Cuban tamal at La Carreta del Carretón · Arafo",
+          "description": "What a Cuban tamal is, what goes into it and why we serve it with pickled onion. One of the dishes that has changed least in sixteen years."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "Casi todas las mesas que piden tamal por primera vez hacen la misma pregunta antes de que llegue: «¿y eso qué es?».",
+          "en": "Almost every table ordering tamal for the first time asks the same question before it arrives: «so what is that?»."
+        },
+        {
+          "t": "h2",
+          "es": "Qué es",
+          "en": "What it is"
+        },
+        {
+          "t": "p",
+          "es": "Maíz molido, cocinado despacio y envuelto en su propia hoja, con carne de cerdo dentro. Poco más. Es un plato de campo, de los que se hacían en cantidad porque daban de comer a mucha gente con poco.",
+          "en": "Ground corn, cooked slowly and wrapped in its own leaf, with pork inside. Not much more. It is country food, made in quantity because it fed a lot of people with very little."
+        },
+        {
+          "t": "p",
+          "es": "Lo servimos con cebolla por encima, que corta la grasa y refresca. Esa parte sí es decisión de esta casa.",
+          "en": "We serve it with onion on top, which cuts the fat and freshens it up. That part is this house's decision."
+        },
+        {
+          "t": "h2",
+          "es": "De dónde viene",
+          "en": "Where it comes from"
+        },
+        {
+          "t": "p",
+          "es": "En Cuba el tamal se vende en la calle y se come de pie. Aquí llega al plato y con cubiertos, pero la receta es la misma que se hacía en casa antes de venirnos.",
+          "en": "In Cuba the tamal is sold in the street and eaten standing up. Here it arrives on a plate with cutlery, but the recipe is the one made at home before we came over."
+        },
+        {
+          "t": "destacado",
+          "es": "Es, de toda la carta, el plato que menos ha cambiado en dieciséis años.",
+          "en": "Of everything on the menu, it is the dish that has changed least in sixteen years."
+        },
+        {
+          "t": "p",
+          "es": "Está en [la carta](~index.html#carta) todo el año.",
+          "en": "It is on [the menu](~index.html#carta) all year round."
+        }
+      ]
+    },
+    {
+      "slug": "menus-de-grupo",
+      "date": "2026-10-28",
+      "image": "img/carne-pimientos.webp",
+      "image_w": 765,
+      "image_h": 1020,
+      "alt_es": "Fuente de carne a la brasa con pimientos, servida para compartir",
+      "alt_en": "A dish of grilled meat with peppers, served to share",
+      "title_es": "Menús cerrados para grupos: 30, 40 y 50 €",
+      "title_en": "Set menus for groups: 30, 40 and 50 €",
+      "excerpt_es": "Cuatro menús por persona pensados para mesas grandes: aperitivos al centro, segundo a elegir y postre. Uno de ellos, vegetariano.",
+      "excerpt_en": "Four per-person menus built for big tables: starters in the middle, a main to choose and dessert. One of them vegetarian.",
+      "seo": {
+        "es": {
+          "title": "Menús cerrados para grupos y celebraciones · La Carreta del Carretón",
+          "description": "Cuatro menús de grupo por persona —30, 40 y 50 €, más uno vegetariano— con todos los platos publicados. Restaurante familiar en Arafo, Tenerife."
+        },
+        "en": {
+          "title": "Set menus for groups and celebrations · La Carreta del Carretón",
+          "description": "Four per-person group menus — 30, 40 and 50 €, plus a vegetarian one — with every dish listed. Family restaurant in Arafo, Tenerife."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "Veníamos apañándonos con un folio impreso cada vez que llamaba un grupo. Ya no hace falta: los cuatro menús están publicados, con todos los platos y el precio.",
+          "en": "We used to get by with a printed sheet every time a group called. Not any more: all four menus are published, with every dish and the price."
+        },
+        {
+          "t": "h2",
+          "es": "Qué hay en cada uno",
+          "en": "What is in each one"
+        },
+        {
+          "t": "ul",
+          "es": [
+            "30 € — los clásicos de la brasa, servidos al centro para compartir.",
+            "40 € — la versión más completa, con más aperitivos y segundo a elegir.",
+            "50 € — el más largo, pensado para celebraciones.",
+            "30 € vegetariano — sin carne ni pescado, con los aperitivos de la casa."
+          ],
+          "en": [
+            "30 € — the grill classics, served in the middle to share.",
+            "40 € — the fuller version, with more starters and a main to choose.",
+            "50 € — the longest one, meant for celebrations.",
+            "30 € vegetarian — no meat and no fish, with the house starters."
+          ]
+        },
+        {
+          "t": "p",
+          "es": "Los precios son por persona y el IGIC no va incluido, al revés que en la carta del día a día. Lo decimos dentro de cada menú para que no haya sorpresas al pedir la cuenta.",
+          "en": "Prices are per person and IGIC is not included, unlike the everyday menu. We say so inside each menu so there are no surprises when the bill arrives."
+        },
+        {
+          "t": "h2",
+          "es": "Cómo se reserva",
+          "en": "How to book"
+        },
+        {
+          "t": "p",
+          "es": "Con antelación, diciéndonos cuántos sois, qué día y si hay alergias o intolerancias. Con eso lo dejamos todo preparado y no hay que decidir nada en la mesa.",
+          "en": "In advance, telling us how many of you there are, which day and whether there are allergies or intolerances. With that we have everything ready and nothing has to be decided at the table."
+        },
+        {
+          "t": "p",
+          "es": "Los cuatro están en [la sección de menús](~index.html#menus).",
+          "en": "All four are in [the menus section](~index.html#menus)."
+        }
+      ]
+    },
+    {
+      "slug": "guachin-salsa-noviembre",
+      "date": "2026-11-03",
+      "image": "img/guachin-baile.webp",
+      "image_w": 1400,
+      "image_h": 1050,
+      "alt_es": "Gente bailando en una noche de Guachin Salsa en La Carreta del Carretón",
+      "alt_en": "People dancing on a Guachin Salsa night at La Carreta del Carretón",
+      "title_es": "Guachin Salsa: tres fechas en noviembre",
+      "title_en": "Guachin Salsa: three dates in November",
+      "excerpt_es": "Viernes 6, viernes 20 y viernes 27. Son fechas sueltas, no todos los fines de semana, y las plazas se acaban.",
+      "excerpt_en": "Friday the 6th, Friday the 20th and Friday the 27th. These are one-off dates, not every weekend, and places run out.",
+      "seo": {
+        "es": {
+          "title": "Guachin Salsa en noviembre: 6, 20 y 27 · La Carreta del Carretón",
+          "description": "Las tres fechas de Guachin Salsa de noviembre en La Carreta del Carretón, Arafo: viernes 6, 20 y 27. Reserva tu plaza antes de que se acaben."
+        },
+        "en": {
+          "title": "Guachin Salsa in November: 6th, 20th and 27th · La Carreta del Carretón",
+          "description": "The three Guachin Salsa dates in November at La Carreta del Carretón, Arafo: Friday the 6th, 20th and 27th. Book your place before they run out."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "Noviembre trae tres noches de Guachin Salsa en La Carreta: viernes 6, viernes 20 y viernes 27.",
+          "en": "November brings three Guachin Salsa nights to La Carreta: Friday the 6th, Friday the 20th and Friday the 27th."
+        },
+        {
+          "t": "h2",
+          "es": "Qué es y qué no es",
+          "en": "What it is and what it is not"
+        },
+        {
+          "t": "p",
+          "es": "No es una cita de todos los viernes y sábados. Son fechas sueltas, señaladas, y por eso las anunciamos con tiempo: el local tiene el aforo que tiene y las plazas vuelan.",
+          "en": "It is not an every-Friday-and-Saturday thing. These are separate, marked dates, which is why we announce them early: the room holds what it holds and places go quickly."
+        },
+        {
+          "t": "p",
+          "es": "La noche va de comer, de música y de bailar. Quien no baila también cabe: la mesa sigue puesta.",
+          "en": "The night is about eating, music and dancing. Those who do not dance fit in too: the table is still set."
+        },
+        {
+          "t": "h2",
+          "es": "Cómo reservar",
+          "en": "How to book"
+        },
+        {
+          "t": "p",
+          "es": "Llamando o por WhatsApp al 922 51 50 66. Las fechas que queden por delante están siempre arriba, en [la sección de Guachin Salsa](~index.html#guachin), y las contamos también en [Instagram](https://www.instagram.com/lacarretadelcarretonarafo/).",
+          "en": "By phone or WhatsApp on 922 51 50 66. The dates still ahead are always up there, in [the Guachin Salsa section](~index.html#guachin), and we announce them on [Instagram](https://www.instagram.com/lacarretadelcarretonarafo/) as well."
+        },
+        {
+          "t": "destacado",
+          "es": "En la web solo se ven las fechas que quedan por delante: cuando una pasa, desaparece sola.",
+          "en": "The site only shows the dates still ahead: once one has passed, it drops off by itself."
+        }
+      ]
     }
   ]
 }

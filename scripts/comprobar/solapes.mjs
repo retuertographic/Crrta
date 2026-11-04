@@ -84,7 +84,8 @@ const detector = () => {
 const BASE = process.env.BASE || 'http://localhost:8777';
 const browser = await chromium.launch({ executablePath: process.env.PW_CHROMIUM || undefined, args: ['--no-sandbox'] });
 const paginas = ['/', '/en/', '/catering.html', '/legal.html', '/aviso-legal.html',
-                 '/privacidad.html', '/cookies.html', '/novedades.html', '/404.html'];
+                 '/privacidad.html', '/cookies.html', '/novedades.html', '/404.html',
+                 '/novedades/menus-de-grupo.html', '/novedades/guachin-salsa-noviembre.html'];
 const tamanos = [[320,650],[360,740],[390,844],[412,915],[430,932],[600,900],[768,1024],[1024,768],[1280,800],[1440,900]];
 let fallos = 0;
 for (const p of paginas) {

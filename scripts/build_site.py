@@ -68,7 +68,6 @@ PAGES = [
     "cookies.html",
     "catering.html",
     "novedades.html",
-    "novedades/abrimos-nuestra-web.html",
     "404.html",
 ]
 
@@ -254,9 +253,15 @@ def render_novedades(posts: list[dict], i18n: dict, lang: str,
     for post in sorted(posts, key=lambda p: p["date"], reverse=True):
         title = esc(field(post, "title", lang))
         excerpt = esc(field(post, "excerpt", lang))
+        # El alt describe la foto, no repite el titular: el titular ya va
+        # justo debajo y un lector de pantalla lo diría dos veces.
+        alt = esc(field(post, "alt", lang))
+        ancho, alto = post.get("image_w"), post.get("image_h")
+        medidas = f' width="{int(ancho)}" height="{int(alto)}"' if ancho and alto else ""
         cards.append(
             f'<article class="nov-card">'
-            f'<div class="thumb"><img src="{prefix}{esc(post["image"])}" alt="{title}" loading="lazy"></div>'
+            f'<div class="thumb"><img src="{prefix}{esc(post["image"])}" alt="{alt}"'
+            f'{medidas} loading="lazy"></div>'
             f'<div class="body"><div class="nov-date">{esc(fmt_date(post["date"], lang))}</div>'
             f'<h3>{title}</h3><p>{excerpt}</p>'
             f'<a class="read-more" href="{home}novedades/{esc(post["slug"])}.html">'
@@ -264,6 +269,67 @@ def render_novedades(posts: list[dict], i18n: dict, lang: str,
         )
     cards.append("</div>")
     return "\n".join(cards)
+
+
+def post_page(post: dict) -> str:
+    """La ruta publicada de una entrada."""
+    return f"novedades/{post['slug']}.html"
+
+
+def render_post_cover(post: dict, lang: str, prefix: str) -> str:
+    """La foto de cabecera, si la entrada tiene.
+
+    Las medidas van en el HTML para que el navegador reserve el hueco antes
+    de descargarla: sin ellas el texto salta cuando llega la imagen."""
+    imagen = post.get("image")
+    if not imagen:
+        return ""
+    alt = esc(field(post, "alt", lang))
+    ancho, alto = post.get("image_w"), post.get("image_h")
+    medidas = f' width="{int(ancho)}" height="{int(alto)}"' if ancho and alto else ""
+    return (f'<img class="post-cover" src="{prefix}{esc(imagen)}" alt="{alt}"'
+            f'{medidas}>')
+
+
+def render_post_body(post: dict, lang: str) -> str:
+    """El cuerpo de la entrada, bloque a bloque, igual que los legales."""
+    html_out = []
+    for b in post.get("cuerpo", []):
+        tipo = b["t"]
+        if tipo in ("h2", "h3"):
+            html_out.append(f"<{tipo}>{esc(b[lang])}</{tipo}>")
+        elif tipo == "p":
+            html_out.append(f"<p>{texto_inline(b[lang])}</p>")
+        elif tipo == "destacado":
+            html_out.append(f'<p class="post-destacado">{texto_inline(b[lang])}</p>')
+        elif tipo == "ul":
+            items = "".join(f"<li>{texto_inline(x)}</li>" for x in b[lang])
+            html_out.append(f"<ul>{items}</ul>")
+        else:
+            print(f"  aviso: bloque «{tipo}» desconocido en la entrada "
+                  f"«{post.get('slug')}»", file=sys.stderr)
+    return "\n    ".join(html_out)
+
+
+def meta_de_posts(posts: list[dict]) -> dict:
+    """El SEO de cada entrada sale de sus propios datos.
+
+    Si la entrada no trae «seo», se usan su título y su entradilla: una
+    novedad sin description es peor que una description repetida."""
+    out = {}
+    for post in posts:
+        seo = post.get("seo") or {}
+        por_idioma = {}
+        for lang in LANGUAGES:
+            info = dict(seo.get(lang) or {})
+            info.setdefault("title", f"{field(post, 'title', lang)} · La Carreta del Carretón")
+            info.setdefault("description", field(post, "excerpt", lang))
+            info["og_type"] = "article"
+            if post.get("image"):
+                info.setdefault("image", post["image"])
+            por_idioma[lang] = info
+        out[post_page(post)] = por_idioma
+    return out
 
 
 # ------------------------------------------------------------- partials
@@ -374,13 +440,13 @@ def legal_tokens(text: str, titular: dict, lang: str) -> str:
     return re.sub(r"\[\[(\w+)\]\]", uno, text)
 
 
-def legal_inline(text: str, titular: dict, lang: str) -> str:
+def texto_inline(text: str) -> str:
     """Escapa el texto y convierte [texto](enlace).
 
     Un enlace que empieza por ~ es interno y se resuelve al idioma de la
-    página; si el texto empieza por «mailto:», el enlace es un correo."""
-    out = esc(legal_tokens(text, titular, lang))
-
+    página; si el texto empieza por «mailto:», el enlace es un correo. Lo
+    usan los textos legales y las entradas de novedades, que son los dos
+    sitios donde el texto lo escribe una persona en un archivo de datos."""
     def enlace(m):
         etiqueta, url = m.group(1), m.group(2)
         if etiqueta.startswith("mailto:"):
@@ -390,7 +456,12 @@ def legal_inline(text: str, titular: dict, lang: str) -> str:
         fuera = ' target="_blank" rel="noopener"' if url.startswith("http") else ""
         return f'<a href="{url}"{fuera}>{etiqueta}</a>'
 
-    return ENLACE.sub(enlace, out)
+    return ENLACE.sub(enlace, esc(text))
+
+
+def legal_inline(text: str, titular: dict, lang: str) -> str:
+    """Igual, con los datos del titular ya sustituidos."""
+    return texto_inline(legal_tokens(text, titular, lang))
 
 
 def render_legal(bloques: list, titular: dict, lang: str, consentimiento: bool) -> str:
@@ -493,7 +564,14 @@ def render_salsa_fechas(eventos: dict, i18n: dict, lang: str) -> str:
 
 
 def render_menus(datos: dict, i18n: dict, lang: str) -> str:
-    """Los menús cerrados para grupos, una tarjeta por menú."""
+    """Los menús cerrados para grupos, una tarjeta por menú.
+
+    El aviso del IGIC va dentro de cada tarjeta y no una vez arriba: el que
+    llega a un menú desde el móvil o desde un enlace se encuentra el precio
+    sin el aviso al lado, y la carta de la web sí lleva el IGIC incluido.
+    Repetirlo cuatro veces es el precio de que no se lea separado de su
+    precio."""
+    aviso_igic = datos["nota"][lang]
     tarjetas = []
     for m in datos.get("menus", []):
         etiqueta = (m.get("etiqueta") or {}).get(lang, "")
@@ -519,6 +597,7 @@ def render_menus(datos: dict, i18n: dict, lang: str) -> str:
             + (f' <span class="menu-etiqueta">{esc(etiqueta)}</span>' if etiqueta else "")
             + f'</h3><p class="menu-precio">{esc(m["precio"])} €'
             f'<span>{esc(t(i18n, lang, "menus_por_persona"))}</span></p>'
+            f'<p class="menu-igic">{esc(aviso_igic)}</p>'
             f'<p class="menu-resumen">{esc(m["resumen"][lang])}</p></header>'
             f'<div class="menu-bloques">{"".join(bloques)}</div></article>')
     return "\n      ".join(tarjetas)
@@ -822,6 +901,10 @@ def build() -> int:
     meta = json.loads((SRC / "meta.json").read_text(encoding="utf-8"))
     menu = json.loads((REPO / "menu-data.json").read_text(encoding="utf-8"))
     posts = json.loads((REPO / "novedades-data.json").read_text(encoding="utf-8")).get("posts", [])
+    # Cada entrada se publica como página propia a partir de una sola
+    # plantilla: añadir una novedad es añadir un objeto al archivo de datos.
+    post_pages = [post_page(x) for x in posts]
+    meta.update(meta_de_posts(posts))
 
     for code in LANGUAGES:
         if code not in i18n:
@@ -873,7 +956,6 @@ def build() -> int:
         common["CONSENT_PREFS"] = tpl_prefs if propio else ""
         common["CMP"] = render_cmp(cmp)
         common["MENUS"] = render_menus(menus, i18n, lang)
-        common["MENUS_NOTA"] = esc(menus["nota"][lang])
         common["MENUS_PIE"] = esc(menus["pie"][lang])
         common["SALSA_FECHAS"] = render_salsa_fechas(eventos, i18n, lang)
         for clave, doc in (("DOC_AVISO", "aviso-legal"),
@@ -882,8 +964,10 @@ def build() -> int:
             common[clave] = render_legal(
                 legal["documentos"][doc], titular, lang, consentimiento)
 
-        for page in PAGES:
-            template = (SRC / "pages" / page).read_text(encoding="utf-8")
+        for page in PAGES + post_pages:
+            origen = (SRC / "pages" / "novedades" / "_entrada.html"
+                      if page in post_pages else SRC / "pages" / page)
+            template = origen.read_text(encoding="utf-8")
             prefix = prefix_for(page, lang)     # hasta la raíz del sitio
             home = lang_prefix_for(page)        # hasta la raíz del idioma
 
@@ -896,16 +980,17 @@ def build() -> int:
             slots["NOVEDADES"] = render_novedades(posts, i18n, lang, prefix, home)
             slots["LEGAL_ACTUALIZADO"] = render_legal_fecha(legal["actualizado"], i18n, lang)
             slots["LEGAL_OTROS"] = render_legal_otros(page, i18n, lang)
+            if page in post_pages:
+                post = posts[post_pages.index(page)]
+                slots["POST_TITLE"] = esc(field(post, "title", lang))
+                slots["POST_DATE"] = esc(fmt_date(post["date"], lang))
+                slots["POST_COVER"] = render_post_cover(post, lang, prefix)
+                slots["POST_BODY"] = render_post_body(post, lang)
 
             body = strip_source_notes(expand_partials(template, slots))
             for name in leftover_markers(body):
                 print(f"  aviso [{lang}] {page}: marcador <!--{{{{{name}}}}}--> "
                       f"sin resolver (¿falta src/partials/?)", file=sys.stderr)
-
-            if "{{POST_DATE}}" in body:
-                slug = Path(page).stem
-                post = next((p for p in posts if p["slug"] == slug), None)
-                body = body.replace("{{POST_DATE}}", esc(fmt_date(post["date"], lang)) if post else "")
 
             body = resolve_mailboxes(body, lang)
             body = strip_conditionals(body, measuring)
@@ -919,7 +1004,7 @@ def build() -> int:
             target.write_text(body, encoding="utf-8")
             written.append(str(target.relative_to(REPO)))
 
-    write_sitemap()
+    write_sitemap(PAGES + post_pages)
     write_robots()
     tools = ", ".join(n for n, on in (("GA4", ga4), ("Hotjar", hotjar)) if on) or "ninguna"
     print(f"OK: {len(written)} páginas en {len(LANGUAGES)} idiomas · medición: {tools}")
@@ -951,10 +1036,10 @@ def build() -> int:
     return 0
 
 
-def write_sitemap() -> None:
+def write_sitemap(paginas: list[str]) -> None:
     today = date.today().isoformat()
     urls = []
-    for page in PAGES:
+    for page in paginas:
         if page == "404.html":
             continue
         for lang in LANGUAGES:

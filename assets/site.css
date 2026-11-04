@@ -631,8 +631,22 @@
   .post-hero .post-meta{color:rgba(255,255,255,.65);font-size:.85rem;}
   .post-body{background:var(--paper);padding:70px 0 100px;}
   .post-body .wrap{max-width:760px;}
-  .post-body img.post-cover{width:100%;border-radius:16px;margin-bottom:36px;aspect-ratio:16/9;object-fit:cover;}
+  /* height:auto es obligatorio: los atributos width/height del HTML fijan
+     la altura y, sin esto, el aspect-ratio no se aplica. */
+  .post-body img.post-cover{width:100%;height:auto;border-radius:16px;margin-bottom:36px;aspect-ratio:16/9;object-fit:cover;}
   .post-body p{color:var(--text-soft);font-size:1.05rem;line-height:1.85;margin-bottom:20px;}
+  .post-body a{color:var(--gold);font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+  .post-body a:hover{color:var(--ink);}
+  /* ul{list-style:none} es global; aquí sí se quieren las viñetas. */
+  .post-body ul{margin:0 0 20px;padding-left:1.25em;list-style:disc;}
+  .post-body li{color:var(--text-soft);font-size:1.05rem;line-height:1.8;margin-bottom:8px;}
+  .post-body li::marker{color:var(--gold);}
+  .post-destacado{
+    border-left:3px solid var(--gold);background:var(--cream);
+    padding:16px 20px;border-radius:0 12px 12px 0;margin:28px 0;
+    font-size:1.05rem;line-height:1.75;color:var(--ink);
+  }
+  .post-body p.post-destacado{margin-bottom:28px;}
   .post-body h2{font-family:'Playfair Display','Playfair Display reserva',serif;font-size:1.5rem;color:var(--ink);margin:36px 0 14px;}
   .post-back{display:inline-block;margin-top:24px;color:var(--gold);font-weight:700;font-size:.9rem;}
   .post-back:hover{color:var(--ink);}
@@ -968,10 +982,7 @@
      debajo y nada que compita con ellos. */
   .menus{background:var(--cream);padding:96px 0;}
   .menus .section-title{margin-bottom:10px;}
-  .menus-nota{
-    color:var(--text-soft);font-size:.95rem;margin-bottom:38px;
-  }
-  .menus-grid{display:grid;gap:22px;}
+  .menus-grid{display:grid;gap:22px;margin-top:38px;}
   @media (min-width:900px){.menus-grid{grid-template-columns:1fr 1fr;}}
 
   .menu-card{
@@ -1003,6 +1014,7 @@
     font-size:.8rem;font-weight:500;color:var(--text-soft);margin-left:8px;
     letter-spacing:.02em;
   }
+  .menu-igic{color:var(--text-soft);font-size:.82rem;margin:6px 0 0;}
   .menu-resumen{color:var(--text-soft);font-size:.92rem;line-height:1.7;margin:10px 0 0;}
 
   .menu-bloques{display:grid;gap:18px;}

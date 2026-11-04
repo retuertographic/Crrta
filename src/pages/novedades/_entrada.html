@@ -9,23 +9,22 @@
 
 <main id="contenido">
 
+<!--# Plantilla única de todas las entradas de novedades. El texto, la foto
+     y el SEO de cada una viven en novedades-data.json: añadir una entrada
+     es añadir un objeto a ese archivo, no copiar este archivo. -->
+
 <section class="post-hero">
   <div class="wrap">
     <span class="eyebrow" data-i18n="novedades_eyebrow">Últimas noticias</span>
-    <h1 data-i18n="post1_title">Ya tenemos web (y carta online)</h1>
-    <div class="post-meta">{{POST_DATE}}</div>
+    <h1><!--{{POST_TITLE}}--></h1>
+    <div class="post-meta"><!--{{POST_DATE}}--></div>
   </div>
 </section>
 
 <section class="post-body">
   <div class="wrap">
-    <img class="post-cover" src="{{PREFIX}}img/postre-teide.webp" alt="Postre Teide bañado en chocolate" width="765" height="1020">
-    <p data-i18n="post1_p1">Llevábamos tiempo con la misma conversación por teléfono: «¿a qué hora abren?», «¿tienen postre Teide hoy?», «¿dónde están exactamente?». Así que hemos hecho una página para tenerlo todo en un sitio.</p>
-    <h2 data-i18n="post1_h1">La carta, siempre al día</h2>
-    <p data-i18n="post1_p2">La sección de carta se actualiza sola desde nuestra carta digital, así que los precios y los platos que ves aquí son los mismos que hay en la mesa. Si algo cambia en cocina, cambia también en la web.</p>
-    <h2 data-i18n="post1_h2">Lo demás, donde toca</h2>
-    <p data-i18n="post1_p3">Horario completo, dirección con mapa y el teléfono a un clic. Abrimos de miércoles a domingo, solo a mediodía, y reservar sigue siendo tan sencillo como llamarnos al 922 51 50 66.</p>
-    <p data-i18n="post1_p4">Esta sección de novedades la iremos usando para contar lo que se salga de lo normal: platos de temporada, días de cierre, celebraciones. Nos vemos en la mesa.</p>
+    <!--{{POST_COVER}}-->
+    <!--{{POST_BODY}}-->
 
     <div class="post-share">
       <span class="share-label" data-i18n="share_label">Compartir</span>

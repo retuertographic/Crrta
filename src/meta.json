@@ -19,20 +19,6 @@
       "description": "What we tell from the kitchen: off-menu dishes, news from the house and the Guachin Salsa dates when there are any. A restaurant in Arafo, Tenerife."
     }
   },
-  "novedades/abrimos-nuestra-web.html": {
-    "es": {
-      "title": "Ya tenemos web y carta online · La Carreta del Carretón",
-      "description": "Estrenamos página con la carta al día, los precios, cómo llegar y todas las formas de reservar mesa en nuestro restaurante familiar de Arafo, Tenerife.",
-      "og_type": "article",
-      "image": "img/postre-teide.webp"
-    },
-    "en": {
-      "title": "Our website and menu are up · La Carreta del Carretón",
-      "description": "We have launched a site with an up-to-date menu, the prices, how to find us and every way to book a table at our restaurant in Arafo, Tenerife.",
-      "og_type": "article",
-      "image": "img/postre-teide.webp"
-    }
-  },
   "catering.html": {
     "es": {
       "title": "Catering por encargo en Arafo y Tenerife · Habana Express",
