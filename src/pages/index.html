@@ -157,6 +157,28 @@
   </div>
 </section>
 
+<!-- ================= MENÚS DE GRUPO ================= -->
+<section class="menus" id="menus">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="menus_eyebrow">Para venir en grupo</span>
+    <h2 class="section-title"><span data-i18n="menus_title1">Menús cerrados</span><span class="accent" data-i18n="menus_title2">para celebraciones y grupos</span></h2>
+    <!--# El IGIC va aquí arriba y repetido en cada tarjeta: en la carta está
+         incluido y en estos menús no, y esa diferencia tiene que leerse sin
+         buscarla. -->
+    <p class="menus-nota"><!--{{MENUS_NOTA}}--></p>
+
+    <div class="menus-grid">
+      <!--{{MENUS}}-->
+    </div>
+
+    <p class="menus-pie"><!--{{MENUS_PIE}}--></p>
+    <div class="menus-ctas">
+      <a class="btn" href="{{HOME}}index.html#contacto" data-i18n="menus_cta">Pedir uno de estos menús</a>
+      <a class="btn outline" href="tel:+34922515066" data-i18n="salsa_cta_call">Preguntar por teléfono</a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CATERING (resumen) ================= -->
 <!-- ================= GUACHIN SALSA ================= -->
 <section class="salsa" id="guachin">
@@ -186,13 +208,11 @@
         <p data-i18n="salsa_p3"></p>
         <p class="salsa-quote" data-i18n="salsa_quote">Porque en La Carreta también hay momentos para levantarse de la mesa y ponerse a bailar.</p>
 
-        <!--# Hueco de la próxima fecha. Mientras no haya ninguna confirmada se
-             queda el aviso de que no la hay; cuando la haya, se sustituye el
-             párrafo por fecha, horario, condiciones y cómo reservar. Nunca
-             una fecha sin confirmar. -->
+        <!--# Las fechas salen de src/eventos.json y las pasadas se caen solas
+             al generar. Sin ninguna por delante, vuelve el aviso de que no hay
+             fecha confirmada: nunca una fecha vieja ni una sin confirmar. -->
         <div class="salsa-next">
-          <strong data-i18n="salsa_next_title">Próxima fecha</strong>
-          <p data-i18n="salsa_next_none">Aún no hay fecha confirmada. En cuanto la haya, la anunciamos en nuestras redes y aquí mismo.</p>
+          <!--{{SALSA_FECHAS}}-->
         </div>
 
         <div class="salsa-ctas">

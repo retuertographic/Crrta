@@ -1,0 +1,512 @@
+{
+  "_comentario": [
+    "Menús cerrados para grupos. Los nombres de los platos van en español en",
+    "los dos idiomas, como en la carta: ahí tampoco se traducen, solo las",
+    "descripciones. Lo que sí tiene es/en es todo lo demás.",
+    "",
+    "Ojo con el IGIC: la carta lo lleva incluido y estos menús NO. Así lo",
+    "dicen los carteles del restaurante y así se publica, con el aviso a la",
+    "vista en cada menú para que nadie se lleve la sorpresa en la cuenta.",
+    "",
+    "«destacado» pinta la tarjeta con el borde dorado. Solo uno."
+  ],
+  "nota": {
+    "es": "Precios por persona, IGIC no incluido.",
+    "en": "Prices per person, IGIC (Canary Islands tax) not included."
+  },
+  "pie": {
+    "es": "Los menús de grupo se reservan con antelación. Cuéntanos cuántos sois, qué día y si hay alergias o intolerancias, y lo dejamos todo preparado.",
+    "en": "Group menus are booked in advance. Tell us how many of you there are, which day, and whether there are any allergies or intolerances, and we will have everything ready."
+  },
+  "menus": [
+    {
+      "id": "30",
+      "precio": "30",
+      "titulo": {
+        "es": "Menú de grupos",
+        "en": "Group menu"
+      },
+      "resumen": {
+        "es": "Los clásicos de la brasa, servidos para compartir en el centro de la mesa.",
+        "en": "The grill classics, served to share in the middle of the table."
+      },
+      "bloques": [
+        {
+          "titulo": {
+            "es": "Picoteo",
+            "en": "To start"
+          },
+          "platos": [
+            {
+              "plato": "Pan"
+            },
+            {
+              "plato": "Huevos Rotos"
+            },
+            {
+              "plato": "Garbanzos"
+            },
+            {
+              "plato": "Ensalada Especial",
+              "detalle": {
+                "es": "Diferentes tipos de lechuga, frutos secos, frutas, queso feta y una vinagreta de mango",
+                "en": "Different lettuces, nuts, fruit, feta cheese and a mango vinaigrette"
+              }
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Segundo",
+            "en": "Main"
+          },
+          "nota": {
+            "es": "para compartir",
+            "en": "to share"
+          },
+          "platos": [
+            {
+              "plato": "Costillas BBQ"
+            },
+            {
+              "plato": "Pollo"
+            },
+            {
+              "plato": "Pata Asada"
+            },
+            {
+              "plato": "Papas Fritas"
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Postres",
+            "en": "Dessert"
+          },
+          "platos": [
+            {
+              "plato": "Flan"
+            },
+            {
+              "plato": "Arroz con leche"
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Bebidas",
+            "en": "Drinks"
+          },
+          "platos": [
+            {
+              "plato": "Agua"
+            },
+            {
+              "plato": "Refresco"
+            },
+            {
+              "plato": "Vino",
+              "detalle": {
+                "es": "1 botella cada 4 personas",
+                "en": "1 bottle per 4 people"
+              }
+            },
+            {
+              "plato": "Cerveza",
+              "detalle": {
+                "es": "3 por persona",
+                "en": "3 per person"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "precio": "40",
+      "destacado": true,
+      "titulo": {
+        "es": "Menú de grupos",
+        "en": "Group menu"
+      },
+      "resumen": {
+        "es": "Con croquetas de gofio en el picoteo y el segundo a elegir por cada comensal.",
+        "en": "With gofio croquettes to start and each guest choosing their own main."
+      },
+      "bloques": [
+        {
+          "titulo": {
+            "es": "Picoteo",
+            "en": "To start"
+          },
+          "platos": [
+            {
+              "plato": "Pan"
+            },
+            {
+              "plato": "Croquetas de Gofio",
+              "detalle": {
+                "es": "con carne de costillas",
+                "en": "with rib meat"
+              }
+            },
+            {
+              "plato": "Huevos Rotos"
+            },
+            {
+              "plato": "Garbanzos"
+            },
+            {
+              "plato": "Ensalada Especial",
+              "detalle": {
+                "es": "Diferentes tipos de lechuga, frutos secos, frutas, queso feta y una vinagreta de mango",
+                "en": "Different lettuces, nuts, fruit, feta cheese and a mango vinaigrette"
+              }
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Segundo",
+            "en": "Main"
+          },
+          "nota": {
+            "es": "a elegir",
+            "en": "choice of"
+          },
+          "cierre": {
+            "es": "Todos los segundos van acompañados de papas fritas.",
+            "en": "Every main comes with chips."
+          },
+          "platos": [
+            {
+              "plato": "Costillas BBQ"
+            },
+            {
+              "plato": "Solomillo de Cerdo a la Brasa"
+            },
+            {
+              "plato": "Secreto"
+            },
+            {
+              "plato": "Pollo"
+            },
+            {
+              "plato": "Pata Asada"
+            },
+            {
+              "plato": "Bacalao"
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Postres",
+            "en": "Dessert"
+          },
+          "nota": {
+            "es": "a elegir",
+            "en": "choice of"
+          },
+          "platos": [
+            {
+              "plato": "Flan"
+            },
+            {
+              "plato": "Arroz con leche"
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Bebidas",
+            "en": "Drinks"
+          },
+          "platos": [
+            {
+              "plato": "Agua"
+            },
+            {
+              "plato": "Refresco"
+            },
+            {
+              "plato": "Vino",
+              "detalle": {
+                "es": "1 botella cada 4 personas",
+                "en": "1 bottle per 4 people"
+              }
+            },
+            {
+              "plato": "Cerveza",
+              "detalle": {
+                "es": "3 por persona",
+                "en": "3 per person"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "50",
+      "precio": "50",
+      "titulo": {
+        "es": "Menú de grupos",
+        "en": "Group menu"
+      },
+      "resumen": {
+        "es": "Entrecote entre los segundos, los postres de la casa y la barra abierta de cerveza durante la cena.",
+        "en": "Entrecôte among the mains, the house desserts, and beer flowing throughout dinner."
+      },
+      "bloques": [
+        {
+          "titulo": {
+            "es": "Picoteo",
+            "en": "To start"
+          },
+          "platos": [
+            {
+              "plato": "Pan"
+            },
+            {
+              "plato": "Croquetas de Gofio",
+              "detalle": {
+                "es": "con carne de costillas",
+                "en": "with rib meat"
+              }
+            },
+            {
+              "plato": "Huevos Rotos"
+            },
+            {
+              "plato": "Garbanzos"
+            },
+            {
+              "plato": "Ensalada Especial",
+              "detalle": {
+                "es": "Diferentes tipos de lechuga, frutos secos, frutas, queso feta y una vinagreta de mango",
+                "en": "Different lettuces, nuts, fruit, feta cheese and a mango vinaigrette"
+              }
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Segundo",
+            "en": "Main"
+          },
+          "nota": {
+            "es": "a elegir",
+            "en": "choice of"
+          },
+          "cierre": {
+            "es": "Todos los segundos van acompañados de papas fritas.",
+            "en": "Every main comes with chips."
+          },
+          "platos": [
+            {
+              "plato": "Costillas BBQ"
+            },
+            {
+              "plato": "Solomillo de Cerdo a la Brasa"
+            },
+            {
+              "plato": "Secreto"
+            },
+            {
+              "plato": "Pollo"
+            },
+            {
+              "plato": "Pata Asada"
+            },
+            {
+              "plato": "Entrecote"
+            },
+            {
+              "plato": "Bacalao"
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Postres",
+            "en": "Dessert"
+          },
+          "nota": {
+            "es": "a elegir",
+            "en": "choice of"
+          },
+          "platos": [
+            {
+              "plato": "Flan"
+            },
+            {
+              "plato": "Pudín de Guayaba con Queso"
+            },
+            {
+              "plato": "3 Leches"
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Bebidas",
+            "en": "Drinks"
+          },
+          "platos": [
+            {
+              "plato": "Agua"
+            },
+            {
+              "plato": "Refresco"
+            },
+            {
+              "plato": "Vino",
+              "detalle": {
+                "es": "1 botella cada 4 personas",
+                "en": "1 bottle per 4 people"
+              }
+            },
+            {
+              "plato": "Cervezas ilimitadas durante la cena",
+              "detalle": {
+                "es": "hasta que se sirva el postre",
+                "en": "until dessert is served"
+              }
+            },
+            {
+              "plato": "1 copa por persona",
+              "detalle": {
+                "es": "mojito o combinado",
+                "en": "mojito or a mixed drink"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vegetariano",
+      "precio": "30",
+      "etiqueta": {
+        "es": "Vegetariano",
+        "en": "Vegetarian"
+      },
+      "titulo": {
+        "es": "Menú de grupos",
+        "en": "Group menu"
+      },
+      "resumen": {
+        "es": "El mismo menú de 30 €, sin carne: los huevos rotos y los garbanzos se preparan sin ella.",
+        "en": "The same 30 € menu without meat: the huevos rotos and the chickpeas are made without it."
+      },
+      "bloques": [
+        {
+          "titulo": {
+            "es": "Picoteo",
+            "en": "To start"
+          },
+          "platos": [
+            {
+              "plato": "Pan"
+            },
+            {
+              "plato": "Huevos Rotos",
+              "detalle": {
+                "es": "sin carne",
+                "en": "without meat"
+              }
+            },
+            {
+              "plato": "Garbanzos",
+              "detalle": {
+                "es": "sin carne",
+                "en": "without meat"
+              }
+            },
+            {
+              "plato": "Ensalada Especial",
+              "detalle": {
+                "es": "Diferentes tipos de lechuga, frutos secos, frutas, queso feta y una vinagreta de mango",
+                "en": "Different lettuces, nuts, fruit, feta cheese and a mango vinaigrette"
+              }
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Principal",
+            "en": "Main"
+          },
+          "platos": [
+            {
+              "plato": "Tostones",
+              "detalle": {
+                "es": "1 ración por persona",
+                "en": "1 portion per person"
+              }
+            },
+            {
+              "plato": "Arroz Congrí",
+              "detalle": {
+                "es": "1 ración por persona",
+                "en": "1 portion per person"
+              }
+            },
+            {
+              "plato": "Vegetales Salteados",
+              "detalle": {
+                "es": "1 ración por persona",
+                "en": "1 portion per person"
+              }
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Postres",
+            "en": "Dessert"
+          },
+          "platos": [
+            {
+              "plato": "Flan"
+            },
+            {
+              "plato": "Arroz con leche"
+            }
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Bebidas",
+            "en": "Drinks"
+          },
+          "platos": [
+            {
+              "plato": "Agua"
+            },
+            {
+              "plato": "Refresco"
+            },
+            {
+              "plato": "Vino",
+              "detalle": {
+                "es": "1 botella cada 4 personas",
+                "en": "1 bottle per 4 people"
+              }
+            },
+            {
+              "plato": "Cerveza",
+              "detalle": {
+                "es": "3 por persona",
+                "en": "3 per person"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

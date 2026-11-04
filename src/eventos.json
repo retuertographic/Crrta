@@ -1,0 +1,19 @@
+{
+  "_comentario": [
+    "Las fechas de Guachin Salsa en La Carreta. Solo las que se celebran",
+    "aquí: el calendario de los organizadores trae también eventos en otros",
+    "sitios, y publicarlos en la web del restaurante haría que alguien se",
+    "presentara aquí el día equivocado.",
+    "",
+    "Las pasadas se caen solas al generar, comparando con la fecha del día.",
+    "Si todas han pasado, el hueco vuelve a decir que no hay fecha, que es",
+    "mejor que enseñar una vieja. Eso sí: el sitio es estático, así que una",
+    "fecha no desaparece hasta que se vuelve a generar y publicar. El",
+    "generador avisa cuando quedan menos de dos por delante."
+  ],
+  "guachin_salsa": [
+    { "fecha": "2026-11-06" },
+    { "fecha": "2026-11-20" },
+    { "fecha": "2026-11-27" }
+  ]
+}

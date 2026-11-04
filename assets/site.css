@@ -169,7 +169,12 @@
   }
 
   /* ---------- HEADER ---------- */
-  header{
+  /* «body >» y no «header» a secas: la regla valía para cualquier <header>
+     de la página, así que el <header> de cada tarjeta de menú se iba fijo
+     al alto de la pantalla, los cuatro amontonados sobre el menú. Con el
+     hijo directo se queda donde tiene que estar, y no sube la
+     especificidad, que si no header.scrolled dejaría de pintar. */
+  body > header{
     position:fixed;top:0;left:0;right:0;
     z-index:100;
     background:rgba(43,38,33,0);
@@ -211,7 +216,12 @@
        lo cómodo con el pulgar. */
     min-width:44px;min-height:44px;display:none;align-items:center;justify-content:center;padding:0;}
 
-  @media (max-width:1100px){
+  /* El menú se pliega en 1220 y no en 1100. Con nueve enlaces más el botón
+     de reservar y el idioma, por debajo de 1215 el selector de idioma se
+     salía por el lado derecho de la pantalla: ya pasaba entre 1101 y 1125
+     antes de añadir «Menús», solo que en una franja tan estrecha que no lo
+     vio nadie. Medido enlace a enlace, no a ojo. */
+  @media (max-width:1220px){
     .nav-links{
       position:fixed;inset:0 0 0 auto;height:100vh;width:min(78vw,320px);
       background:var(--paper);flex-direction:column;justify-content:center;
@@ -927,7 +937,7 @@
     outline-offset:3px;
     border-radius:4px;
   }
-  header a:focus-visible, header button:focus-visible,
+  body > header a:focus-visible, body > header button:focus-visible,
   footer a:focus-visible, footer button:focus-visible,
   .lightbox-close:focus-visible{outline-color:#fff;}
 
@@ -951,6 +961,93 @@
     text-decoration:none;border-bottom:1px solid rgba(210,176,114,.45);padding:4px 0;
   }
   .hero-reviews a:hover{color:#fff;border-bottom-color:#fff;}
+
+  /* ---------- MENÚS DE GRUPO ----------
+     Cuatro menús cerrados, una tarjeta cada uno. Son listas largas, así
+     que la tarjeta manda poco: el precio grande arriba, los bloques
+     debajo y nada que compita con ellos. */
+  .menus{background:var(--cream);padding:96px 0;}
+  .menus .section-title{margin-bottom:10px;}
+  .menus-nota{
+    color:var(--text-soft);font-size:.95rem;margin-bottom:38px;
+  }
+  .menus-grid{display:grid;gap:22px;}
+  @media (min-width:900px){.menus-grid{grid-template-columns:1fr 1fr;}}
+
+  .menu-card{
+    background:var(--paper);border:1px solid rgba(43,38,33,.1);border-radius:20px;
+    padding:30px 30px 26px;box-shadow:0 14px 34px rgba(43,38,33,.06);
+    display:flex;flex-direction:column;
+  }
+  /* El de 40 € es el que más se pide; se marca sin decirlo con palabras. */
+  .menu-card--destacado{border-color:var(--gold);box-shadow:0 18px 40px rgba(130,100,48,.16);}
+
+  .menu-head{border-bottom:1px solid var(--cream-2);padding-bottom:18px;margin-bottom:20px;}
+  .menu-head h3{
+    font-family:'Playfair Display','Playfair Display reserva',serif;
+    font-size:1.15rem;color:var(--ink);margin:0 0 4px;font-weight:700;
+  }
+  .menu-etiqueta{
+    display:inline-block;vertical-align:middle;margin-left:6px;
+    font-family:'Poppins','Poppins reserva',sans-serif;
+    font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gold);border:1px solid rgba(130,100,48,.45);border-radius:999px;
+    padding:3px 9px;
+  }
+  .menu-precio{
+    font-family:'Playfair Display','Playfair Display reserva',serif;
+    font-size:2.4rem;font-weight:800;color:var(--gold);line-height:1.1;margin:0;
+  }
+  .menu-precio span{
+    font-family:'Poppins','Poppins reserva',sans-serif;
+    font-size:.8rem;font-weight:500;color:var(--text-soft);margin-left:8px;
+    letter-spacing:.02em;
+  }
+  .menu-resumen{color:var(--text-soft);font-size:.92rem;line-height:1.7;margin:10px 0 0;}
+
+  .menu-bloques{display:grid;gap:18px;}
+  .menu-bloque h4{
+    font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink);margin:0 0 8px;
+  }
+  .menu-nota{
+    font-weight:500;letter-spacing:.04em;text-transform:none;color:var(--gold);
+  }
+  .menu-bloque ul{margin:0;padding:0;list-style:none;}
+  .menu-bloque li{
+    color:var(--ink);font-size:.95rem;line-height:1.6;margin-bottom:5px;
+    padding-left:14px;position:relative;
+  }
+  .menu-bloque li::before{
+    content:'';position:absolute;left:0;top:.6em;
+    width:5px;height:5px;border-radius:50%;background:var(--gold-light);
+  }
+  .menu-det{display:block;color:var(--text-soft);font-size:.84rem;line-height:1.5;}
+  .menu-cierre{
+    color:var(--text-soft);font-size:.84rem;line-height:1.55;margin:8px 0 0;font-style:italic;
+  }
+
+  .menus-pie{
+    color:var(--text-soft);font-size:.95rem;line-height:1.75;
+    max-width:60ch;margin:34px 0 0;
+  }
+  .menus-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;}
+  @media (max-width:900px){.menus{padding:72px 0;}}
+  @media (max-width:620px){
+    .menu-card{padding:26px 22px 22px;}
+    .menus-ctas .btn{width:100%;text-align:center;}
+  }
+
+  /* Las fechas de Guachin Salsa, dentro del recuadro oscuro. */
+  .salsa-fechas{margin:0 0 10px;padding:0;list-style:none;}
+  .salsa-fechas li{
+    color:#fff;font-size:1rem;font-weight:600;line-height:1.5;
+    padding-left:16px;position:relative;
+  }
+  .salsa-fechas li::before{
+    content:'';position:absolute;left:0;top:.62em;
+    width:6px;height:6px;border-radius:50%;background:var(--gold-light);
+  }
 
   /* ---------- GUACHIN SALSA ----------
      Banda oscura entre dos secciones claras: la fiesta no es el día a día

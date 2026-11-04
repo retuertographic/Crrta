@@ -225,7 +225,15 @@
     "legal_card_aviso": "Quién es el titular de esta web, cómo contactar con él y en qué condiciones se usa el sitio.",
     "legal_card_priv": "Qué datos recogemos en los formularios, para qué los usamos, cuánto los guardamos y cómo ejercer tus derechos.",
     "legal_card_cook": "Qué cookies usa esta web, quién las pone, cuánto duran y cómo cambiar tu decisión.",
-    "legal_card_read": "Leer el documento"
+    "legal_card_read": "Leer el documento",
+    "menus_eyebrow": "Para venir en grupo",
+    "menus_title1": "Menús cerrados",
+    "menus_title2": "para celebraciones y grupos",
+    "menus_por_persona": "por persona",
+    "menus_cta": "Pedir uno de estos menús",
+    "nav_menus": "Menús",
+    "salsa_next_titles": "Próximas fechas",
+    "salsa_next_book": "Reserva tu plaza antes de que se acaben: llámanos o escríbenos por WhatsApp al 922 51 50 66."
   },
   "en": {
     "nav_home": "Home",
@@ -453,6 +461,14 @@
     "legal_card_aviso": "Who owns this website, how to contact them and the conditions for using the site.",
     "legal_card_priv": "What data we collect in the forms, what we use it for, how long we keep it and how to exercise your rights.",
     "legal_card_cook": "Which cookies this website uses, who sets them, how long they last and how to change your decision.",
-    "legal_card_read": "Read the document"
+    "legal_card_read": "Read the document",
+    "menus_eyebrow": "Coming as a group",
+    "menus_title1": "Set menus",
+    "menus_title2": "for celebrations and groups",
+    "menus_por_persona": "per person",
+    "menus_cta": "Ask for one of these menus",
+    "nav_menus": "Set menus",
+    "salsa_next_titles": "Next dates",
+    "salsa_next_book": "Book your place before they run out: call us or send a WhatsApp to 922 51 50 66."
   }
 }

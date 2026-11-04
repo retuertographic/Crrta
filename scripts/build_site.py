@@ -457,6 +457,73 @@ def render_legal_otros(page: str, i18n: dict, lang: str) -> str:
             f"{enlaces}</nav>")
 
 
+DIAS = {
+    "es": ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"],
+    "en": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+}
+
+
+def fecha_larga(iso: str, lang: str) -> str:
+    """«Viernes 6 de noviembre» / «Friday 6 November». Sin el año: son
+    fechas de las próximas semanas y el año sobra para leerlas."""
+    d = date.fromisoformat(iso)
+    dia = DIAS.get(lang, DIAS["en"])[d.weekday()]
+    mes = MONTHS.get(lang, MONTHS["en"])[d.month - 1]
+    texto = f"{dia} {d.day} de {mes}" if lang == "es" else f"{dia} {d.day} {mes}"
+    return texto[0].upper() + texto[1:]
+
+
+def render_salsa_fechas(eventos: dict, i18n: dict, lang: str) -> str:
+    """El hueco de las fechas de Guachin Salsa.
+
+    Las que ya han pasado no se publican: una fecha vieja en una web es
+    peor que no poner ninguna. Si no queda ninguna por delante, vuelve el
+    aviso de que no hay fecha confirmada."""
+    hoy = date.today()
+    futuras = [e["fecha"] for e in (eventos.get("guachin_salsa") or [])
+               if date.fromisoformat(e["fecha"]) >= hoy]
+    if not futuras:
+        return (f'<strong>{esc(t(i18n, lang, "salsa_next_title"))}</strong>\n'
+                f'          <p>{esc(t(i18n, lang, "salsa_next_none"))}</p>')
+    clave = "salsa_next_title" if len(futuras) == 1 else "salsa_next_titles"
+    fechas = "".join(f"<li>{esc(fecha_larga(f, lang))}</li>" for f in sorted(futuras))
+    return (f'<strong>{esc(t(i18n, lang, clave))}</strong>\n'
+            f'          <ul class="salsa-fechas">{fechas}</ul>\n'
+            f'          <p>{esc(t(i18n, lang, "salsa_next_book"))}</p>')
+
+
+def render_menus(datos: dict, i18n: dict, lang: str) -> str:
+    """Los menús cerrados para grupos, una tarjeta por menú."""
+    tarjetas = []
+    for m in datos.get("menus", []):
+        etiqueta = (m.get("etiqueta") or {}).get(lang, "")
+        bloques = []
+        for b in m["bloques"]:
+            nota = (b.get("nota") or {}).get(lang, "")
+            cabecera = esc(b["titulo"][lang]) + (f' <span class="menu-nota">{esc(nota)}</span>' if nota else "")
+            lineas = []
+            for pl in b["platos"]:
+                det = (pl.get("detalle") or {}).get(lang, "")
+                lineas.append(f'<li>{esc(pl["plato"])}'
+                              + (f' <span class="menu-det">{esc(det)}</span>' if det else "")
+                              + "</li>")
+            cierre = (b.get("cierre") or {}).get(lang, "")
+            bloques.append(
+                f'<div class="menu-bloque"><h4>{cabecera}</h4><ul>{"".join(lineas)}</ul>'
+                + (f'<p class="menu-cierre">{esc(cierre)}</p>' if cierre else "")
+                + "</div>")
+        tarjetas.append(
+            f'<article class="menu-card{" menu-card--destacado" if m.get("destacado") else ""}">'
+            f'<header class="menu-head">'
+            f'<h3>{esc(m["titulo"][lang])}'
+            + (f' <span class="menu-etiqueta">{esc(etiqueta)}</span>' if etiqueta else "")
+            + f'</h3><p class="menu-precio">{esc(m["precio"])} €'
+            f'<span>{esc(t(i18n, lang, "menus_por_persona"))}</span></p>'
+            f'<p class="menu-resumen">{esc(m["resumen"][lang])}</p></header>'
+            f'<div class="menu-bloques">{"".join(bloques)}</div></article>')
+    return "\n      ".join(tarjetas)
+
+
 def render_cmp(cmp: dict) -> str:
     """El gestor de consentimiento de cookies, si lo hay.
 
@@ -763,6 +830,8 @@ def build() -> int:
 
     forms = json.loads((SRC / "forms.json").read_text(encoding="utf-8"))
     legal = json.loads((SRC / "legal.json").read_text(encoding="utf-8"))
+    menus = json.loads((SRC / "menus.json").read_text(encoding="utf-8"))
+    eventos = json.loads((SRC / "eventos.json").read_text(encoding="utf-8"))
     titular = legal["titular"]
     analytics_cfg = json.loads((SRC / "analytics.json").read_text(encoding="utf-8"))
     ga4 = (analytics_cfg.get("ga4_id") or "").strip()
@@ -803,6 +872,10 @@ def build() -> int:
         common["CONSENT_BANNER"] = tpl_banner if propio else ""
         common["CONSENT_PREFS"] = tpl_prefs if propio else ""
         common["CMP"] = render_cmp(cmp)
+        common["MENUS"] = render_menus(menus, i18n, lang)
+        common["MENUS_NOTA"] = esc(menus["nota"][lang])
+        common["MENUS_PIE"] = esc(menus["pie"][lang])
+        common["SALSA_FECHAS"] = render_salsa_fechas(eventos, i18n, lang)
         for clave, doc in (("DOC_AVISO", "aviso-legal"),
                            ("DOC_PRIVACIDAD", "privacidad"),
                            ("DOC_COOKIES", "cookies")):
@@ -856,6 +929,15 @@ def build() -> int:
               "src/legal.json → " + ", ".join(faltan), file=sys.stderr)
         print("         El artículo 10 de la LSSICE exige publicar al menos "
               "nombre del titular y NIF.", file=sys.stderr)
+    futuras = [e["fecha"] for e in (eventos.get("guachin_salsa") or [])
+               if date.fromisoformat(e["fecha"]) >= date.today()]
+    if len(futuras) == 0:
+        print("  AVISO: no queda ninguna fecha de Guachin Salsa por delante en "
+              "src/eventos.json; el hueco dice que no hay fecha confirmada.", file=sys.stderr)
+    elif len(futuras) < 2:
+        print(f"  · Guachin Salsa: solo queda {len(futuras)} fecha por delante ({futuras[0]})")
+    else:
+        print(f"  · Guachin Salsa: {len(futuras)} fechas por delante, la próxima el {min(futuras)}")
     if cmp_on:
         print(f"  · aviso de cookies: {cmp.get('nombre') or 'gestor externo'} "
               f"({len(cmp['scripts'])} scripts)")
