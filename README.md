@@ -636,6 +636,27 @@ empieza por `~` es interna y se resuelve al idioma de la página:
 `/en/index.html#carta` en inglés.
 
 
+### Dejar una entrada programada
+
+`date` es la fecha de publicación, no solo la que se enseña. Una entrada
+con fecha futura se queda escrita en el archivo y **no se publica**: no
+sale en la lista, no tiene página y no entra en el sitemap. El día que le
+toca aparece sola.
+
+Se pueden dejar varias escritas de una vez, cada una con su fecha. Al
+generar, el propio script las enumera:
+
+```
+· programada para el 2026-12-05: Lo que cocinamos en Navidad
+```
+
+Lo que lo hace posible es `.github/workflows/rehacer-cada-dia.yml`, que
+vuelve a generar el sitio cada mañana y hace commit solo si algo ha
+cambiado. Ese mismo rebuild es el que retira las fechas pasadas de Guachin
+Salsa. Si el repositorio pasa 60 días sin actividad, GitHub desactiva el
+workflow y hay que reactivarlo a mano en la pestaña Actions.
+
+
 ## Cambiar textos
 
 Todo lo traducible lleva `data-i18n="clave"` en las plantillas, y la clave

@@ -900,7 +900,16 @@ def build() -> int:
     i18n = json.loads((SRC / "i18n.json").read_text(encoding="utf-8"))
     meta = json.loads((SRC / "meta.json").read_text(encoding="utf-8"))
     menu = json.loads((REPO / "menu-data.json").read_text(encoding="utf-8"))
-    posts = json.loads((REPO / "novedades-data.json").read_text(encoding="utf-8")).get("posts", [])
+    todas = json.loads((REPO / "novedades-data.json").read_text(encoding="utf-8")).get("posts", [])
+    # «date» es la fecha de publicación: una entrada con fecha futura no se
+    # publica todavía (ni tarjeta, ni página, ni sitemap). Se puede dejar
+    # escrita hoy y que salga sola el día que toque, porque el sitio se
+    # vuelve a generar cada mañana (.github/workflows/rehacer-cada-dia.yml).
+    hoy = date.today()
+    posts = [x for x in todas if date.fromisoformat(x["date"]) <= hoy]
+    programadas = [x for x in todas if date.fromisoformat(x["date"]) > hoy]
+    for x in sorted(programadas, key=lambda x: x["date"]):
+        print(f"  · programada para el {x['date']}: {field(x, 'title', DEFAULT_LANG)}")
     # Cada entrada se publica como página propia a partir de una sola
     # plantilla: añadir una novedad es añadir un objeto al archivo de datos.
     post_pages = [post_page(x) for x in posts]

@@ -1,0 +1,57 @@
+# Vuelve a generar el sitio todos los días, aunque nadie haya tocado nada.
+#
+# Hace falta porque hay cosas que dependen de la fecha y el sitio es
+# estático: las entradas de novedades con fecha futura, que no se publican
+# hasta que llega su día, y las fechas de Guachin Salsa, que desaparecen
+# solas cuando pasan. Sin esto, ese cambio no ocurre hasta el siguiente
+# push.
+#
+# No despliega: solo hace commit si algo ha cambiado. El push dispara el
+# despliegue de Pages que ya había.
+#
+# Aviso: GitHub desactiva los workflows programados de un repositorio que
+# lleva 60 días sin actividad. Si pasa, se reactiva a mano desde la
+# pestaña Actions.
+
+name: Rehacer el sitio cada día
+
+on:
+  schedule:
+    # 05:17 UTC: las 05:17 en Canarias en invierno, las 06:17 en verano.
+    # Minuto raro a propósito: en punto es cuando se amontonan los de todo
+    # GitHub y la cola se alarga.
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rehacer-cada-dia
+  cancel-in-progress: false
+
+jobs:
+  rehacer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # build_site.py es solo biblioteca estándar: no hay nada que instalar.
+      - name: Generar
+        run: python3 scripts/build_site.py
+
+      - name: Publicar si ha cambiado algo
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          if git diff --quiet; then
+            echo 'Nada que cambiar hoy.'
+            exit 0
+          fi
+          git add -A
+          git commit -m 'Rehecho automáticamente (fechas del día)'
+          git push
