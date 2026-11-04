@@ -249,9 +249,13 @@
       <a href="#contacto" class="btn" data-i18n="nav_book">Reservar mesa</a>
     </div>
     <div class="gallery-grid" id="galleryGrid">
-      <a href="{{PREFIX}}img/salon.webp" class="g-tall"><img src="{{PREFIX}}img/salon.webp" alt="Salón y patio de La Carreta del Carretón" loading="lazy" width="1116" height="837"></a>
-      <a href="{{PREFIX}}img/carne-pimientos.webp" class="g-wide"><img src="{{PREFIX}}img/carne-pimientos.webp" alt="Carne a la brasa con pimientos" loading="lazy" width="765" height="1020"></a>
-      <a href="{{PREFIX}}img/postre-teide.webp" class="g-wide"><img src="{{PREFIX}}img/postre-teide.webp" alt="Postre Teide bañado en chocolate" loading="lazy" width="765" height="1020"></a>
+      <!--# Las medidas llenan la rejilla de 4 columnas sin huecos: la primera
+           ocupa 2x2, la segunda 2x1 y las dos últimas 1x1 cada una. Si se
+           añade otra foto hay que recolocarlas, o quedará media fila vacía. -->
+      <a href="{{PREFIX}}img/salon.webp" class="g-tall"><img src="{{PREFIX}}img/salon.webp" data-i18n-attr="alt=alt_gal_salon" alt="Salón y patio de La Carreta del Carretón" loading="lazy" width="1116" height="837"></a>
+      <a href="{{PREFIX}}img/carne-pimientos.webp" class="g-wide"><img src="{{PREFIX}}img/carne-pimientos.webp" data-i18n-attr="alt=alt_gal_carne" alt="Carne a la brasa con pimientos, servida en fuente" loading="lazy" width="765" height="1020"></a>
+      <a href="{{PREFIX}}img/postre-teide.webp"><img src="{{PREFIX}}img/postre-teide.webp" data-i18n-attr="alt=alt_gal_postre" alt="Postre Teide bañado en chocolate" loading="lazy" width="765" height="1020"></a>
+      <a href="{{PREFIX}}img/huevos-rotos.webp"><img src="{{PREFIX}}img/huevos-rotos.webp" data-i18n-attr="alt=alt_gal_huevos" alt="Huevos rotos con papas, servidos en fuente para compartir" loading="lazy" width="1000" height="1000"></a>
     </div>
   </div>
 </section>

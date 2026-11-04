@@ -444,6 +444,276 @@
           "en": "The site only shows the dates still ahead: once one has passed, it drops off by itself."
         }
       ]
+    },
+    {
+      "slug": "habana-express-como-funciona",
+      "date": "2026-11-17",
+      "image": "img/catering-quesos-1.webp",
+      "image_w": 900,
+      "image_h": 675,
+      "alt_es": "Mesa de quesos y embutidos montada para un catering",
+      "alt_en": "A cheese and charcuterie table laid out for a catering job",
+      "title_es": "Habana Express: qué pasa desde que llamas hasta que se come",
+      "title_en": "Habana Express: from your call to the first plate",
+      "excerpt_es": "El catering de la casa contado en orden: qué nos tienes que decir, qué llevamos, qué montamos y qué queda fuera del presupuesto.",
+      "excerpt_en": "Our catering service in order: what you need to tell us, what we bring, what we set up and what is not in the quote.",
+      "seo": {
+        "es": {
+          "title": "Cómo funciona el catering Habana Express · La Carreta del Carretón",
+          "description": "Buffet, mesas de quesos, equipamiento y personal: cómo pedimos los datos, qué incluye el presupuesto y con cuánto tiempo conviene avisar. Catering en Tenerife."
+        },
+        "en": {
+          "title": "How the Habana Express catering works · La Carreta del Carretón",
+          "description": "Buffet, cheese tables, equipment and staff: what we ask for, what the quote covers and how much notice to give. Catering in Tenerife."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "Habana Express es La Carreta cuando sale de Arafo. La cocina es la misma; lo que cambia es que la mesa la pones tú.",
+          "en": "Habana Express is La Carreta when it leaves Arafo. The kitchen is the same; what changes is that the table is yours."
+        },
+        {
+          "t": "h2",
+          "es": "Lo primero, tres datos",
+          "en": "First, three things"
+        },
+        {
+          "t": "p",
+          "es": "Para dar un precio hace falta poco: qué se celebra, dónde y cuántos sois. Con eso sabemos si el sitio tiene cocina, cuánto hay que llevar montado de casa y de qué tamaño es el buffet.",
+          "en": "Quoting takes very little: what the occasion is, where it is and how many of you there are. From that we know whether the venue has a kitchen, how much has to arrive ready and how big the buffet needs to be."
+        },
+        {
+          "t": "h2",
+          "es": "Lo que llevamos",
+          "en": "What we bring"
+        },
+        {
+          "t": "p",
+          "es": "Nuestra especialidad es el buffet: fuentes al centro, raciones de las de aquí y gente repitiendo. Si la celebración pide otra cosa, también montamos mesas de quesos y aperitivos, que funcionan mejor cuando se come de pie.",
+          "en": "The buffet is what we do best: platters in the middle, our usual portions and people going back for more. If the occasion calls for something else, we also lay out cheese and appetiser tables, which work better when people eat standing up."
+        },
+        {
+          "t": "p",
+          "es": "Según el evento podemos llevar también el equipamiento y el personal. No va de serie: se detalla en el presupuesto, para que se vea qué se está pagando.",
+          "en": "Depending on the event we can bring the equipment and the staff too. That is not automatic: it is itemised in the quote, so you can see what you are paying for."
+        },
+        {
+          "t": "destacado",
+          "es": "Las bebidas van aparte. Lo decimos antes y no después, que es cuando molesta.",
+          "en": "Drinks are quoted separately. We say so up front rather than later, when it would be annoying."
+        },
+        {
+          "t": "h2",
+          "es": "Con cuánto tiempo avisar",
+          "en": "How much notice"
+        },
+        {
+          "t": "p",
+          "es": "Cuanto antes mejor, y más en temporada de comidas de empresa. Cuéntanoslo desde [la página del catering](~catering.html) o por teléfono, al 922 51 50 66.",
+          "en": "The sooner the better, especially in the season of company lunches. Tell us from [the catering page](~catering.html) or by phone, on 922 51 50 66."
+        }
+      ]
+    },
+    {
+      "slug": "cocina-casera",
+      "date": "2026-12-01",
+      "image": "img/huevos-rotos.webp",
+      "image_w": 1000,
+      "image_h": 1000,
+      "alt_es": "Huevos rotos con papas, servidos en fuente para compartir",
+      "alt_en": "Huevos rotos with potatoes, served on a platter to share",
+      "title_es": "«Cocina casera» no es una manera de hablar",
+      "title_en": "«Home cooking» is not just a turn of phrase",
+      "excerpt_es": "Qué queremos decir cuando escribimos «casera»: todo hecho el mismo día, ración de las de casa y ninguna cocina de ensamblaje.",
+      "excerpt_en": "What we mean when we write «home cooking»: everything made the same day, portions the size they are at home, and no assembly-line kitchen.",
+      "seo": {
+        "es": {
+          "title": "Qué entendemos por cocina casera · La Carreta del Carretón",
+          "description": "Guisos y mojos hechos el mismo día, raciones generosas con media ración en casi todo y postres de la casa. Restaurante familiar en Arafo, Tenerife."
+        },
+        "en": {
+          "title": "What we mean by home cooking · La Carreta del Carretón",
+          "description": "Stews and mojos made the same day, generous portions with a half portion on almost everything, and desserts made in house. Family restaurant in Arafo, Tenerife."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "«Cocina casera» es de esas palabras que de tanto usarlas ya no dicen nada. Como está escrita en nuestra web, conviene decir qué entendemos por ella.",
+          "en": "«Home cooking» is one of those phrases that says nothing any more from overuse. Since it is written on our site, it is worth saying what we mean by it."
+        },
+        {
+          "t": "h2",
+          "es": "Se cocina el mismo día",
+          "en": "It is cooked the same day"
+        },
+        {
+          "t": "p",
+          "es": "Los guisos, los mojos y las salsas se hacen aquí y para el servicio del día. No hay cocina de ensamblaje, y lo que no sale no espera al miércoles siguiente.",
+          "en": "The stews, the mojos and the sauces are made here, for that day's service. There is no assembling of pre-made parts, and what does not go out does not wait for the following Wednesday."
+        },
+        {
+          "t": "h2",
+          "es": "La ración es la ración",
+          "en": "A portion is a portion"
+        },
+        {
+          "t": "p",
+          "es": "Servimos cantidades de casa, no de fotografía. Por eso hay media ración en casi todo: a mucha gente la entera se le hace grande, y preferimos eso a quedarnos cortos.",
+          "en": "We serve the amounts you would get at home, not the amounts that photograph well. That is why almost everything comes in a half portion too: a full one is a lot for many people, and we would rather that than serve too little."
+        },
+        {
+          "t": "destacado",
+          "es": "Un plato que hay que terminar en el bar de al lado no nos sirve.",
+          "en": "A dish you have to finish at the bar next door is no use to us."
+        },
+        {
+          "t": "p",
+          "es": "Los huevos rotos son buen ejemplo: papas, huevo y poco más, pero en fuente y para el centro de la mesa.",
+          "en": "The huevos rotos are a good example: potatoes, egg and little else, but on a platter and meant for the middle of the table."
+        },
+        {
+          "t": "h2",
+          "es": "Y los postres",
+          "en": "And the desserts"
+        },
+        {
+          "t": "p",
+          "es": "Se hacen en casa. No es un detalle menor: en esta familia hay repostería con formación detrás, y en el Postre Teide se nota.",
+          "en": "They are made in house. That is not a small thing: there is trained pastry work behind them in this family, and the Teide dessert shows it."
+        }
+      ]
+    },
+    {
+      "slug": "mesas-de-quesos",
+      "date": "2026-12-15",
+      "image": "img/catering-quesos-3.webp",
+      "image_w": 900,
+      "image_h": 675,
+      "alt_es": "Tabla de quesos con panes y frutos secos, preparada para un aperitivo",
+      "alt_en": "A cheese board with breads and nuts, ready for an aperitif",
+      "title_es": "Mesas de quesos: cuando no hace falta sentar a nadie",
+      "title_en": "Cheese tables: when nobody needs to sit down",
+      "excerpt_es": "No todas las celebraciones piden un buffet. Para las que se comen de pie montamos mesas de quesos y aperitivos.",
+      "excerpt_en": "Not every occasion calls for a buffet. For the ones eaten standing up we lay out cheese and appetiser tables.",
+      "seo": {
+        "es": {
+          "title": "Mesas de quesos y aperitivos para eventos · Habana Express",
+          "description": "Quesos, embutidos, panes y aperitivos montados para comer de pie, en inauguraciones, aperitivos y reuniones de empresa. Catering en Tenerife."
+        },
+        "en": {
+          "title": "Cheese and appetiser tables for events · Habana Express",
+          "description": "Cheese, charcuterie, breads and appetisers laid out to eat standing up, for openings, receptions and company gatherings. Catering in Tenerife."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "Hay celebraciones en las que nadie se sienta: una inauguración, un aperitivo largo, una reunión de empresa que acaba en picoteo. Ahí el buffet sobra.",
+          "en": "Some occasions have nobody sitting down: an opening, a long reception, a company gathering that ends in nibbles. A buffet is too much for those."
+        },
+        {
+          "t": "h2",
+          "es": "Qué es",
+          "en": "What it is"
+        },
+        {
+          "t": "p",
+          "es": "Una mesa montada para ir picando: quesos, embutidos, panes y aperitivos, puestos para que la gente se acerque, se sirva y siga hablando. Se repone mientras dure.",
+          "en": "A table laid out for picking: cheese, charcuterie, breads and appetisers, arranged so people come over, help themselves and carry on talking. It is topped up while it lasts."
+        },
+        {
+          "t": "h2",
+          "es": "Cuándo funciona mejor",
+          "en": "When it works best"
+        },
+        {
+          "t": "ul",
+          "es": [
+            "Cuando se come de pie y la gente va y viene.",
+            "Cuando hay que dar de comer sin parar el acto.",
+            "Como aperitivo antes de un buffet, si la comida se alarga.",
+            "Cuando el sitio no tiene cocina ni espacio para montarla."
+          ],
+          "en": [
+            "When people eat standing up and come and go.",
+            "When people have to be fed without stopping the event.",
+            "As an opener before a buffet, when the meal runs long.",
+            "When the venue has no kitchen and no room for one."
+          ]
+        },
+        {
+          "t": "p",
+          "es": "Si además hace falta comida caliente, se combinan las dos cosas: la mesa para el principio y el buffet después.",
+          "en": "If hot food is needed as well, the two go together: the table at the start and the buffet after."
+        },
+        {
+          "t": "p",
+          "es": "Se pide igual que el resto: [cuéntanos qué tienes pensado](~catering.html) y preparamos la propuesta.",
+          "en": "You ask for it the same way as everything else: [tell us what you have in mind](~catering.html) and we will put a proposal together."
+        }
+      ]
+    },
+    {
+      "slug": "de-ocho-mesas-a-veintisiete",
+      "date": "2026-12-29",
+      "image": "img/exterior.webp",
+      "image_w": 1200,
+      "image_h": 900,
+      "alt_es": "Exterior de La Carreta del Carretón, con su porche",
+      "alt_en": "The outside of La Carreta del Carretón, with its porch",
+      "title_es": "De ocho mesas a veintisiete",
+      "title_en": "From eight tables to twenty-seven",
+      "excerpt_es": "La casa empezó siendo de madera, con un porche modesto y ocho mesas. Dieciséis años después hay veintisiete, y el porche sigue ahí.",
+      "excerpt_en": "The place started out wooden, with a modest porch and eight tables. Sixteen years later there are twenty-seven, and the porch is still there.",
+      "seo": {
+        "es": {
+          "title": "Dieciséis años en El Carretón · La Carreta del Carretón",
+          "description": "De una casa de madera con ocho mesas a las veintisiete de hoy, sin cerrar y sin cambiar de cocina. La historia del restaurante en Arafo, Tenerife."
+        },
+        "en": {
+          "title": "Sixteen years in El Carretón · La Carreta del Carretón",
+          "description": "From a wooden house with eight tables to today's twenty-seven, without closing and without changing the kitchen. The story of the restaurant in Arafo, Tenerife."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "A El Carretón llegamos con poco: una casa de madera, un porche modesto y ocho mesas. Daba para lo que daba.",
+          "en": "We arrived in El Carretón with very little: a wooden house, a modest porch and eight tables. It held what it held."
+        },
+        {
+          "t": "h2",
+          "es": "Lo que ha crecido",
+          "en": "What has grown"
+        },
+        {
+          "t": "p",
+          "es": "Hoy hay veintisiete mesas. No llegaron de golpe: la casa fue creciendo al mismo ritmo que la clientela, un trozo cada vez y sin cerrar.",
+          "en": "Today there are twenty-seven tables. They did not arrive all at once: the place grew at the same pace as the regulars did, a piece at a time and without ever closing."
+        },
+        {
+          "t": "h2",
+          "es": "Lo que no",
+          "en": "What has not"
+        },
+        {
+          "t": "p",
+          "es": "Seguimos abriendo solo a mediodía y seguimos siendo los mismos en la cocina. No es una pose: es lo que permite que todo se haga el mismo día.",
+          "en": "We still open at lunchtime only and it is still the same people in the kitchen. That is not a pose: it is what makes it possible to cook everything the same day."
+        },
+        {
+          "t": "destacado",
+          "es": "Las ocho mesas del principio siguen ahí dentro, en algún sitio, entre las veintisiete de ahora.",
+          "en": "The original eight tables are still in there somewhere, among today's twenty-seven."
+        },
+        {
+          "t": "p",
+          "es": "La historia entera está contada en [la portada](~index.html#nosotros).",
+          "en": "The whole story is told on [the home page](~index.html#nosotros)."
+        }
+      ]
     }
   ]
 }

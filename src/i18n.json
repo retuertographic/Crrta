@@ -226,7 +226,11 @@
     "menus_cta": "Pedir uno de estos menús",
     "nav_menus": "Menús",
     "salsa_next_titles": "Próximas fechas",
-    "salsa_next_book": "Reserva tu plaza antes de que se acaben: llámanos o escríbenos por WhatsApp al 922 51 50 66."
+    "salsa_next_book": "Reserva tu plaza antes de que se acaben: llámanos o escríbenos por WhatsApp al 922 51 50 66.",
+    "alt_gal_salon": "Salón y patio de La Carreta del Carretón",
+    "alt_gal_carne": "Carne a la brasa con pimientos, servida en fuente",
+    "alt_gal_postre": "Postre Teide bañado en chocolate",
+    "alt_gal_huevos": "Huevos rotos con papas, servidos en fuente para compartir"
   },
   "en": {
     "nav_home": "Home",
@@ -455,6 +459,10 @@
     "menus_cta": "Ask for one of these menus",
     "nav_menus": "Set menus",
     "salsa_next_titles": "Next dates",
-    "salsa_next_book": "Book your place before they run out: call us or send a WhatsApp to 922 51 50 66."
+    "salsa_next_book": "Book your place before they run out: call us or send a WhatsApp to 922 51 50 66.",
+    "alt_gal_salon": "The dining room and patio at La Carreta del Carretón",
+    "alt_gal_carne": "Grilled meat with peppers, served on a platter",
+    "alt_gal_postre": "Teide dessert covered in chocolate",
+    "alt_gal_huevos": "Huevos rotos with potatoes, served on a platter to share"
   }
 }

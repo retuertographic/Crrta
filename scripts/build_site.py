@@ -311,6 +311,25 @@ def render_post_body(post: dict, lang: str) -> str:
     return "\n    ".join(html_out)
 
 
+def limpia_novedades(out_root: Path, post_pages: list[str]) -> list[str]:
+    """Borra las entradas publicadas que ya no toca publicar.
+
+    Hace falta porque el generador solo escribe, nunca borra: una entrada
+    que se programa para más adelante, que se renombra o que se quita del
+    archivo de datos dejaría su HTML antiguo colgado en el servidor, fuera
+    del listado y del sitemap pero accesible por su URL."""
+    carpeta = out_root / "novedades"
+    if not carpeta.is_dir():
+        return []
+    validos = {Path(x).name for x in post_pages}
+    retiradas = []
+    for f in sorted(carpeta.glob("*.html")):
+        if f.name not in validos:
+            f.unlink()
+            retiradas.append(str(f.relative_to(REPO)))
+    return retiradas
+
+
 def meta_de_posts(posts: list[dict]) -> dict:
     """El SEO de cada entrada sale de sus propios datos.
 
@@ -1012,6 +1031,9 @@ def build() -> int:
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(body, encoding="utf-8")
             written.append(str(target.relative_to(REPO)))
+
+        for retirada in limpia_novedades(out_root, post_pages):
+            print(f"  retirada: {retirada}")
 
     write_sitemap(PAGES + post_pages)
     write_robots()
