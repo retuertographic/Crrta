@@ -230,7 +230,9 @@
     "alt_gal_salon": "Salón y patio de La Carreta del Carretón",
     "alt_gal_carne": "Carne a la brasa con pimientos, servida en fuente",
     "alt_gal_postre": "Postre Teide bañado en chocolate",
-    "alt_gal_huevos": "Huevos rotos con papas, servidos en fuente para compartir"
+    "alt_gal_huevos": "Huevos rotos con papas, servidos en fuente para compartir",
+    "alt_gal_pollo": "Pollo a la brasa con mojo verde y ensalada, servido en fuente",
+    "alt_gal_cerdo": "Carne de cerdo a la brasa, cortada y servida con mojo verde"
   },
   "en": {
     "nav_home": "Home",
@@ -463,6 +465,8 @@
     "alt_gal_salon": "The dining room and patio at La Carreta del Carretón",
     "alt_gal_carne": "Grilled meat with peppers, served on a platter",
     "alt_gal_postre": "Teide dessert covered in chocolate",
-    "alt_gal_huevos": "Huevos rotos with potatoes, served on a platter to share"
+    "alt_gal_huevos": "Huevos rotos with potatoes, served on a platter to share",
+    "alt_gal_pollo": "Grilled chicken with green mojo and salad, served on a platter",
+    "alt_gal_cerdo": "Grilled pork, sliced and served with green mojo"
   }
 }
