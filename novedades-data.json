@@ -393,25 +393,30 @@
       "image_h": 1050,
       "alt_es": "Gente bailando en una noche de Guachin Salsa en La Carreta del Carretón",
       "alt_en": "People dancing on a Guachin Salsa night at La Carreta del Carretón",
-      "title_es": "Guachin Salsa: tres fechas en noviembre",
-      "title_en": "Guachin Salsa: three dates in November",
-      "excerpt_es": "Viernes 6, viernes 20 y viernes 27. Son fechas sueltas, no todos los fines de semana, y las plazas se acaban.",
-      "excerpt_en": "Friday the 6th, Friday the 20th and Friday the 27th. These are one-off dates, not every weekend, and places run out.",
+      "title_es": "Guachin Salsa: las fechas de noviembre",
+      "title_en": "Guachin Salsa: the November dates",
+      "excerpt_es": "Viernes 6, sábado 14, viernes 20 y viernes 27. Son fechas sueltas, no todos los fines de semana, y las plazas se acaban.",
+      "excerpt_en": "Friday the 6th, Saturday the 14th, Friday the 20th and Friday the 27th. These are one-off dates, not every weekend, and places run out.",
       "seo": {
         "es": {
-          "title": "Guachin Salsa en noviembre: 6, 20 y 27 · La Carreta del Carretón",
-          "description": "Las tres fechas de Guachin Salsa de noviembre en La Carreta del Carretón, Arafo: viernes 6, 20 y 27. Reserva tu plaza antes de que se acaben."
+          "title": "Guachin Salsa en noviembre: 6, 14, 20 y 27 · La Carreta del Carretón",
+          "description": "Las fechas de Guachin Salsa de noviembre en La Carreta del Carretón, Arafo: viernes 6, sábado 14, viernes 20 y viernes 27. Reserva tu plaza antes de que se acaben."
         },
         "en": {
-          "title": "Guachin Salsa in November: 6th, 20th and 27th · La Carreta del Carretón",
-          "description": "The three Guachin Salsa dates in November at La Carreta del Carretón, Arafo: Friday the 6th, 20th and 27th. Book your place before they run out."
+          "title": "Guachin Salsa in November: 6th, 14th, 20th and 27th · La Carreta del Carretón",
+          "description": "The Guachin Salsa dates in November at La Carreta del Carretón, Arafo: Friday the 6th, Saturday the 14th, Friday the 20th and Friday the 27th. Book before they run out."
         }
       },
       "cuerpo": [
         {
           "t": "p",
-          "es": "Noviembre trae tres noches de Guachin Salsa en La Carreta: viernes 6, viernes 20 y viernes 27.",
-          "en": "November brings three Guachin Salsa nights to La Carreta: Friday the 6th, Friday the 20th and Friday the 27th."
+          "es": "Noviembre trae varias noches de Guachin Salsa en La Carreta: viernes 6, sábado 14, viernes 20 y viernes 27.",
+          "en": "November brings several Guachin Salsa nights to La Carreta: Friday the 6th, Saturday the 14th, Friday the 20th and Friday the 27th."
+        },
+        {
+          "t": "destacado",
+          "es": "Actualizado el 9 de noviembre: se ha añadido el sábado 14, que no estaba cuando publicamos esto.",
+          "en": "Updated on 9 November: Saturday the 14th has been added; it was not here when we first published this."
         },
         {
           "t": "h2",
@@ -439,7 +444,7 @@
           "en": "By phone or WhatsApp on 922 51 50 66. The dates still ahead are always up there, in [the Guachin Salsa section](~index.html#guachin), and we announce them on [Instagram](https://www.instagram.com/lacarretadelcarretonarafo/) as well."
         },
         {
-          "t": "destacado",
+          "t": "p",
           "es": "En la web solo se ven las fechas que quedan por delante: cuando una pasa, desaparece sola.",
           "en": "The site only shows the dates still ahead: once one has passed, it drops off by itself."
         }
@@ -712,6 +717,66 @@
           "t": "p",
           "es": "La historia entera está contada en [la portada](~index.html#nosotros).",
           "en": "The whole story is told on [the home page](~index.html#nosotros)."
+        }
+      ]
+    },
+    {
+      "slug": "guachin-salsa-sabado-14",
+      "date": "2026-11-09",
+      "image": "img/guachin-noche.webp",
+      "image_w": 1400,
+      "image_h": 1050,
+      "alt_es": "Noche de Guachin Salsa en La Carreta del Carretón, con el salón lleno",
+      "alt_en": "A Guachin Salsa night at La Carreta del Carretón, with a full room",
+      "title_es": "Guachin Salsa este sábado 14",
+      "title_en": "Guachin Salsa this Saturday the 14th",
+      "excerpt_es": "Fecha nueva, y además en sábado: el 14 hay Guachin Salsa en La Carreta. Las plazas son las que caben en el salón.",
+      "excerpt_en": "A new date, and a Saturday at that: there is Guachin Salsa at La Carreta on the 14th. The places are the ones the room holds.",
+      "seo": {
+        "es": {
+          "title": "Guachin Salsa el sábado 14 de noviembre · La Carreta del Carretón",
+          "description": "Fecha añadida: el sábado 14 de noviembre hay Guachin Salsa en La Carreta del Carretón, Arafo. Reserva por teléfono o WhatsApp antes de que se acaben las plazas."
+        },
+        "en": {
+          "title": "Guachin Salsa on Saturday 14 November · La Carreta del Carretón",
+          "description": "A date has been added: Guachin Salsa on Saturday 14 November at La Carreta del Carretón, Arafo. Book by phone or WhatsApp before the places run out."
+        }
+      },
+      "cuerpo": [
+        {
+          "t": "p",
+          "es": "Se ha añadido una fecha a noviembre, y cae en sábado: el 14 hay Guachin Salsa en La Carreta.",
+          "en": "A date has been added to November, and it falls on a Saturday: there is Guachin Salsa at La Carreta on the 14th."
+        },
+        {
+          "t": "h2",
+          "es": "Por qué lo contamos ahora",
+          "en": "Why we are saying so now"
+        },
+        {
+          "t": "p",
+          "es": "Las fechas no siguen un patrón fijo: se cierran cuando se cierran y las anunciamos ese mismo día. Esta queda a menos de una semana vista, que para reservar da justo.",
+          "en": "The dates follow no fixed pattern: they are confirmed when they are confirmed and we announce them the same day. This one is less than a week away, which is only just enough time to book."
+        },
+        {
+          "t": "h2",
+          "es": "Por si es tu primera vez",
+          "en": "In case it is your first time"
+        },
+        {
+          "t": "p",
+          "es": "Se come, suena la música y se baila. Quien venga solo a cenar también tiene su sitio: la mesa está puesta igual.",
+          "en": "There is food, there is music and there is dancing. Anyone coming just for dinner has a place too: the table is set all the same."
+        },
+        {
+          "t": "destacado",
+          "es": "El salón es el que es. Cuando se llenan las plazas, se llenan.",
+          "en": "The room is the size it is. When the places are gone, they are gone."
+        },
+        {
+          "t": "p",
+          "es": "Para reservar, llámanos o escríbenos por WhatsApp al 922 51 50 66. Después del 14 quedan el viernes 20 y el viernes 27: están en [la sección de Guachin Salsa](~index.html#guachin) y las contamos también en [Instagram](https://www.instagram.com/lacarretadelcarretonarafo/).",
+          "en": "To book, call us or send a WhatsApp to 922 51 50 66. After the 14th come Friday the 20th and Friday the 27th: they are in [the Guachin Salsa section](~index.html#guachin) and we announce them on [Instagram](https://www.instagram.com/lacarretadelcarretonarafo/) too."
         }
       ]
     }
