@@ -52,6 +52,16 @@ SRC = REPO / "src"
 # redirige retuertographic.github.io/Crrta aquí, así que los enlaces
 # antiguos siguen funcionando.
 SITE_URL = "https://lacarretadelcarreton.com"
+SITE_NAME = "La Carreta del Carretón"
+
+# Las imágenes de vista previa al compartir. Son JPEG de 1200x630 y las
+# genera scripts/build_share.py; aquí solo se enlazan. Las fotos del sitio
+# son WebP, que WhatsApp no sabe enseñar en la vista previa de un enlace,
+# y las redes dibujan la tarjeta en 1,91:1, así que no vale con enlazar la
+# foto original.
+SHARE_DIR = "img/share"
+SHARE_DEFECTO = f"{SHARE_DIR}/default.jpg"
+SHARE_ANCHO, SHARE_ALTO = 1200, 630
 
 # código -> (carpeta de salida, etiqueta hreflang, locale para las fechas)
 LANGUAGES = {
@@ -344,8 +354,10 @@ def meta_de_posts(posts: list[dict]) -> dict:
             info.setdefault("title", f"{field(post, 'title', lang)} · La Carreta del Carretón")
             info.setdefault("description", field(post, "excerpt", lang))
             info["og_type"] = "article"
+            info["published"] = post["date"]
             if post.get("image"):
                 info.setdefault("image", post["image"])
+                info.setdefault("image_alt", field(post, "alt", lang))
             por_idioma[lang] = info
         out[post_page(post)] = por_idioma
     return out
@@ -668,28 +680,73 @@ def render_cmp(cmp: dict) -> str:
     return "\n".join(lineas)
 
 
-def render_seo(page: str, lang: str, meta: dict) -> str:
-    """title, description, canonical, og: y hreflang de esta página.
+def share_image(image: str | None, page: str) -> str:
+    """La imagen de vista previa de esta página, relativa a la raíz.
+
+    Si la página declara foto propia se usa su versión de img/share/; si no
+    la declara, o todavía no se ha generado, se usa la del logotipo. El
+    aviso está para enterarse al generar y no al compartir el enlace."""
+    if image:
+        destino = f"{SHARE_DIR}/{Path(image).stem}.jpg"
+        if (REPO / destino).exists():
+            return destino
+        print(f"  aviso {page}: falta {destino}; se comparte con el logotipo. "
+              f"Ejecuta scripts/build_share.py", file=sys.stderr)
+    return SHARE_DEFECTO
+
+
+def render_seo(page: str, lang: str, meta: dict, i18n: dict) -> str:
+    """title, description, canonical, og:, twitter: y hreflang de esta página.
 
     El canonical apunta siempre a la propia URL (autorreferente) y
     las etiquetas hreflang declaran las dos versiones, para que Google
-    no trate español e inglés como contenido duplicado."""
+    no trate español e inglés como contenido duplicado.
+
+    Las og: y twitter: son las que leen WhatsApp, Facebook, X y Telegram
+    al pegar un enlace. Van con el tamaño declarado porque sin él algunas
+    enseñan una miniatura pequeña en vez de la tarjeta grande."""
     info = meta.get(page, {}).get(lang) or meta.get(page, {}).get(DEFAULT_LANG, {})
-    title = info.get("title", "La Carreta del Carretón")
+    title = info.get("title", SITE_NAME)
     description = info.get("description", "")
     og_type = info.get("og_type", "website")
-    image = info.get("image", "img/logo-square.jpg")
+    image = share_image(info.get("image"), page)
+    if image == SHARE_DEFECTO:
+        image_alt = t(i18n, lang, "og_logo_alt", SITE_NAME)
+    else:
+        image_alt = info.get("image_alt") or title
 
     lines = [
         f"<title>{esc(title)}</title>",
         f'<meta name="description" content="{esc(description)}">',
         f'<link rel="canonical" href="{esc(page_url(page, lang))}">',
+        f'<meta property="og:site_name" content="{esc(SITE_NAME)}">',
         f'<meta property="og:title" content="{esc(title)}">',
         f'<meta property="og:description" content="{esc(description)}">',
         f'<meta property="og:type" content="{esc(og_type)}">',
         f'<meta property="og:url" content="{esc(page_url(page, lang))}">',
         f'<meta property="og:image" content="{SITE_URL}/{esc(image)}">',
-        f'<meta property="og:locale" content="{esc(LANGUAGES[lang][1].replace("-", "_"))}">',
+        f'<meta property="og:image:type" content="image/jpeg">',
+        f'<meta property="og:image:width" content="{SHARE_ANCHO}">',
+        f'<meta property="og:image:height" content="{SHARE_ALTO}">',
+        f'<meta property="og:image:alt" content="{esc(image_alt)}">',
+        # El tercer campo, no el segundo: el segundo es el hreflang, que para
+        # el inglés es «en» a secas, y og:locale pide idioma_PAÍS.
+        f'<meta property="og:locale" content="{esc(LANGUAGES[lang][2].replace("-", "_"))}">',
+    ]
+    for code in LANGUAGES:
+        if code != lang:
+            lines.append('<meta property="og:locale:alternate" content="'
+                         f'{esc(LANGUAGES[code][2].replace("-", "_"))}">')
+    if og_type == "article" and info.get("published"):
+        lines.append('<meta property="article:published_time" '
+                     f'content="{esc(info["published"])}">')
+    # X y Telegram leen las suyas; sin twitter:card sale el enlace pelado.
+    lines += [
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:title" content="{esc(title)}">',
+        f'<meta name="twitter:description" content="{esc(description)}">',
+        f'<meta name="twitter:image" content="{SITE_URL}/{esc(image)}">',
+        f'<meta name="twitter:image:alt" content="{esc(image_alt)}">',
     ]
     # hreflang: cada versión se anuncia a sí misma y a las demás.
     for code in LANGUAGES:
@@ -737,6 +794,124 @@ def render_breadcrumbs(page: str, lang: str, i18n: dict, posts: list[dict]) -> s
     return ('<script type="application/ld+json">\n'
             + json.dumps(datos, ensure_ascii=False, indent=2)
             + "\n</script>")
+
+
+# --------------------------------------------------- datos estructurados
+
+RESTAURANTE_ID = f"{SITE_URL}/#restaurante"
+
+
+def editor() -> dict:
+    """Quién firma y quién publica, para las páginas que no son la portada.
+
+    Va con @id al nodo Restaurant de la portada, pero repitiendo nombre y
+    logotipo: así cada página se entiende sola y Google no depende de haber
+    leído antes la portada."""
+    return {
+        "@type": "Organization",
+        "@id": RESTAURANTE_ID,
+        "name": SITE_NAME,
+        "url": f"{SITE_URL}/",
+        "logo": {"@type": "ImageObject",
+                 "url": url_absoluta("img/logo-square.jpg"),
+                 "width": 1990, "height": 2000},
+    }
+
+
+def jsonld(datos: dict) -> str:
+    return ('<script type="application/ld+json">\n'
+            + json.dumps(datos, ensure_ascii=False, indent=2)
+            + "\n</script>")
+
+
+def url_absoluta(rel: str) -> str:
+    return f"{SITE_URL}/{rel.lstrip('/')}"
+
+
+def render_schema_post(post: dict, lang: str) -> str:
+    """La ficha de una novedad para Google.
+
+    author y publisher apuntan por @id a la ficha del restaurante que está
+    en la portada, en vez de repetirla: así Google ve un solo negocio.
+
+    No lleva dateModified a propósito: no se guarda cuándo se tocó cada
+    entrada, y poner la fecha de publicación ahí sería decir que nunca se
+    ha cambiado, que no siempre es verdad."""
+    page = post_page(post)
+    url = page_url(page, lang)
+    datos = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "@id": f"{url}#articulo",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": url},
+        "headline": field(post, "title", lang),
+        "description": field(post, "excerpt", lang),
+        "datePublished": post["date"],
+        "inLanguage": LANGUAGES[lang][2],
+        "isPartOf": {"@type": "Blog", "@id": f'{page_url("novedades.html", lang)}#blog'},
+        "author": editor(),
+        "publisher": editor(),
+    }
+    imagen = share_image(post.get("image"), page)
+    datos["image"] = [url_absoluta(imagen)]
+    return jsonld(datos)
+
+
+def render_schema_blog(posts: list[dict], i18n: dict, lang: str) -> str:
+    """El índice de novedades, con sus entradas."""
+    url = page_url("novedades.html", lang)
+    entradas = []
+    for post in sorted(posts, key=lambda x: x["date"], reverse=True):
+        p_url = page_url(post_page(post), lang)
+        entradas.append({
+            "@type": "BlogPosting",
+            "@id": f"{p_url}#articulo",
+            "url": p_url,
+            "headline": field(post, "title", lang),
+            "datePublished": post["date"],
+            "image": url_absoluta(share_image(post.get("image"), post_page(post))),
+        })
+    return jsonld({
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": f"{url}#blog",
+        "url": url,
+        "name": f'{t(i18n, lang, "nav_novedades")} · {SITE_NAME}',
+        "inLanguage": LANGUAGES[lang][2],
+        "publisher": editor(),
+        "blogPost": entradas,
+    })
+
+
+def render_schema_eventos(eventos: dict, i18n: dict, lang: str) -> str:
+    """Las fechas de Guachin Salsa que quedan por delante, como eventos.
+
+    Sin hora: los carteles no la dicen y schema.org admite startDate con
+    fecha sola. Sin offers ni performer por lo mismo; Google los marca como
+    recomendados, no obligatorios, y es mejor no decir nada que inventarlo."""
+    hoy = date.today()
+    futuras = sorted(e["fecha"] for e in (eventos.get("guachin_salsa") or [])
+                     if date.fromisoformat(e["fecha"]) >= hoy)
+    if not futuras:
+        return ""
+    salida = []
+    for fecha in futuras:
+        salida.append(jsonld({
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "@id": f"{SITE_URL}/#guachin-{fecha}",
+            "name": f"Guachin Salsa · {SITE_NAME}",
+            "description": t(i18n, lang, "salsa_p2"),
+            "startDate": fecha,
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "url": f'{page_url("index.html", lang)}#guachin',
+            "image": [url_absoluta(share_image("img/guachin-baile.webp", "index.html"))],
+            "location": {"@id": RESTAURANTE_ID},
+            "organizer": {"@id": RESTAURANTE_ID},
+            "inLanguage": LANGUAGES[lang][2],
+        }))
+    return "\n".join(salida)
 
 
 def render_lang_switch(page: str, lang: str, i18n: dict) -> str:
@@ -986,6 +1161,8 @@ def build() -> int:
         common["MENUS"] = render_menus(menus, i18n, lang)
         common["MENUS_PIE"] = esc(menus["pie"][lang])
         common["SALSA_FECHAS"] = render_salsa_fechas(eventos, i18n, lang)
+        common["SCHEMA_EVENTOS"] = render_schema_eventos(eventos, i18n, lang)
+        common["SCHEMA_BLOG"] = render_schema_blog(posts, i18n, lang)
         for clave, doc in (("DOC_AVISO", "aviso-legal"),
                            ("DOC_PRIVACIDAD", "privacidad"),
                            ("DOC_COOKIES", "cookies")):
@@ -1001,7 +1178,7 @@ def build() -> int:
 
             # Y lo que cambia en cada página.
             slots = dict(common)
-            slots["SEO"] = render_seo(page, lang, meta)
+            slots["SEO"] = render_seo(page, lang, meta, i18n)
             slots["BREADCRUMBS"] = render_breadcrumbs(page, lang, i18n, posts)
             slots["ANALYTICS"] = render_analytics(ga4, hotjar, analytics_cfg, prefix)
             slots["LANG_SWITCH"] = render_lang_switch(page, lang, i18n)
@@ -1014,6 +1191,7 @@ def build() -> int:
                 slots["POST_DATE"] = esc(fmt_date(post["date"], lang))
                 slots["POST_COVER"] = render_post_cover(post, lang, prefix)
                 slots["POST_BODY"] = render_post_body(post, lang)
+                slots["SCHEMA_POST"] = render_schema_post(post, lang)
 
             body = strip_source_notes(expand_partials(template, slots))
             for name in leftover_markers(body):

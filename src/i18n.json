@@ -232,7 +232,8 @@
     "alt_gal_postre": "Postre Teide bañado en chocolate",
     "alt_gal_huevos": "Huevos rotos con papas, servidos en fuente para compartir",
     "alt_gal_pollo": "Pollo a la brasa con mojo verde y ensalada, servido en fuente",
-    "alt_gal_cerdo": "Carne de cerdo a la brasa, cortada y servida con mojo verde"
+    "alt_gal_cerdo": "Carne de cerdo a la brasa, cortada y servida con mojo verde",
+    "og_logo_alt": "Logotipo de La Carreta del Carretón"
   },
   "en": {
     "nav_home": "Home",
@@ -467,6 +468,7 @@
     "alt_gal_postre": "Teide dessert covered in chocolate",
     "alt_gal_huevos": "Huevos rotos with potatoes, served on a platter to share",
     "alt_gal_pollo": "Grilled chicken with green mojo and salad, served on a platter",
-    "alt_gal_cerdo": "Grilled pork, sliced and served with green mojo"
+    "alt_gal_cerdo": "Grilled pork, sliced and served with green mojo",
+    "og_logo_alt": "La Carreta del Carretón logo"
   }
 }

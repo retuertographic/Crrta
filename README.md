@@ -607,7 +607,8 @@ hoja.
 
 Se añade un objeto al array `posts` de `novedades-data.json` y se ejecuta
 `build_site.py`. No hay que tocar nada más: ni `PAGES`, ni `src/meta.json`,
-ni `src/i18n.json`, ni crear un archivo por entrada. Con eso se publican la
+ni `src/i18n.json`, ni crear un archivo por entrada. Si la entrada estrena
+foto, hay que ejecutar además `scripts/build_share.py` (ver más abajo). Con eso se publican la
 tarjeta de `/novedades.html` y la página `/novedades/<slug>.html`, en los
 dos idiomas, desde `src/pages/novedades/_entrada.html`.
 
@@ -655,6 +656,88 @@ vuelve a generar el sitio cada mañana y hace commit solo si algo ha
 cambiado. Ese mismo rebuild es el que retira las fechas pasadas de Guachin
 Salsa. Si el repositorio pasa 60 días sin actividad, GitHub desactiva el
 workflow y hay que reactivarlo a mano en la pestaña Actions.
+
+
+## Compartir un enlace
+
+Al pegar un enlace en WhatsApp, Facebook, X o Telegram, cada uno lee las
+etiquetas `og:` y `twitter:` del `<head>` y dibuja con ellas una tarjeta.
+`build_site.py` las escribe solo, por página y por idioma:
+
+| Qué sale | De dónde |
+| --- | --- |
+| Titular | el `title` de la página (el `seo.title` en una novedad) |
+| Texto | la `description` (en una novedad, su entradilla si no hay `seo`) |
+| Imagen | `img/share/<foto>.jpg`, y el logotipo si la página no declara foto |
+| Texto alternativo | el `alt` de la novedad, o el titular |
+| Fecha | `article:published_time`, solo en las novedades |
+
+### Por qué hay una carpeta img/share/
+
+Las fotos del sitio son WebP y están en el formato y el recorte que le
+conviene a la web, no a una vista previa:
+
+- **WhatsApp no sabe enseñar WebP** en la vista previa de un enlace, ni el
+  rastreador de Facebook. Enlazar la foto original deja la tarjeta sin
+  imagen, que es lo que pasaba antes.
+- Las tarjetas se dibujan en **1,91:1**. Con una foto cuadrada o vertical
+  el recorte lo hace cada red por su cuenta y suele cortar mal.
+
+Así que `scripts/build_share.py` genera, para cada foto que alguna página
+declare como suya, una versión JPEG de 1200x630 recortada al centro en
+`img/share/`, más `default.jpg`, que es el logotipo sobre blanco y es la
+que se usa cuando una página no declara foto.
+
+```
+python3 scripts/build_share.py
+```
+
+Hay que ejecutarlo **cuando entra una foto nueva**, no cada vez. Necesita
+Pillow (`pip install pillow`); `build_site.py` no necesita nada y por eso
+esto va aparte: el workflow diario ejecuta solo el segundo. Si falta la
+versión de compartir de alguna foto, `build_site.py` avisa al generar y
+esa página sale con el logotipo mientras tanto.
+
+### Comprobarlo de verdad
+
+Las redes guardan en caché lo que leyeron la primera vez, así que después
+de cambiar una tarjeta conviene forzar la relectura:
+
+- Facebook y WhatsApp: <https://developers.facebook.com/tools/debug/>
+- X: <https://cards-dev.twitter.com/validator>
+- LinkedIn: <https://www.linkedin.com/post-inspector/>
+
+
+## Datos estructurados (JSON-LD)
+
+Lo que lee Google para enseñar algo más que un enlace azul. Todo se genera
+solo; no hay que escribir JSON a mano en ningún sitio.
+
+| Dónde | Qué declara | De dónde sale |
+| --- | --- | --- |
+| Portada | `Restaurant`: nombre, dirección, teléfono, horario, carta, redes | `src/partials/schema.html` |
+| Portada | un `Event` por cada fecha de Guachin Salsa que quede por delante | `src/eventos.json` |
+| Novedades | `Blog` con la lista de entradas | `novedades-data.json` |
+| Cada novedad | `BlogPosting`: titular, entradilla, foto, fecha y quién lo publica | `novedades-data.json` |
+| Todas menos la portada | `BreadcrumbList`, la ruta hasta la página | el generador |
+
+Un par de decisiones que conviene no deshacer sin saber por qué están:
+
+- La ficha del restaurante **no lleva `aggregateRating`**. Las reseñas son
+  de Google y sus directrices no permiten marcar como propias las
+  valoraciones recogidas en otro sitio. La nota se enseña en el hero,
+  enlazada a la ficha de Google, que es donde se puede comprobar.
+- Las entradas **no llevan `dateModified`**: no se guarda cuándo se tocó
+  cada una, y poner ahí la fecha de publicación sería afirmar que nunca se
+  ha cambiado.
+- Los eventos **no llevan hora, ni precio, ni artista**: los carteles no
+  los dicen. Google los marca como recomendados, no obligatorios, y es
+  mejor no decir nada que inventarlo.
+- `author`, `publisher`, `location` y `organizer` apuntan por `@id` a la
+  ficha de la portada, para que Google vea un solo negocio y no uno por
+  página.
+
+Para comprobarlo: <https://search.google.com/test/rich-results>
 
 
 ## Cambiar textos
