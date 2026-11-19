@@ -658,6 +658,19 @@ Salsa. Si el repositorio pasa 60 días sin actividad, GitHub desactiva el
 workflow y hay que reactivarlo a mano en la pestaña Actions.
 
 
+## El sitemap y su lastmod
+
+`sitemap.xml` se genera con el resto. La fecha de cada URL es la del día en
+que el HTML de esa página **cambió de verdad**: al generar se compara lo
+nuevo con lo que ya había en disco, y las páginas que salen idénticas
+conservan la fecha que tenían.
+
+Importa porque el sitio se vuelve a generar cada mañana. Poniendo la fecha
+de hoy en las 32 URLs, el sitemap decía a diario que había cambiado todo
+—que es falso, y Google acaba ignorando el `lastmod` de un sitio que
+miente— y además dejaba un commit automático al día sin nada dentro.
+
+
 ## Compartir un enlace
 
 Al pegar un enlace en WhatsApp, Facebook, X o Telegram, cada uno lee las
@@ -738,6 +751,31 @@ Un par de decisiones que conviene no deshacer sin saber por qué están:
   página.
 
 Para comprobarlo: <https://search.google.com/test/rich-results>
+
+
+## llms.txt
+
+`llms.txt` es un mapa del sitio en prosa, pensado para que un modelo de
+lenguaje —el de un buscador, un asistente— entienda qué hay aquí sin
+tener que rastrear y adivinar. Lo define <https://llmstxt.org>: un título,
+un resumen entre comillas y secciones con listas de enlaces comentados.
+
+Se genera solo, con todo lo demás, y hay uno por idioma:
+
+- `/llms.txt` — el de la raíz, que es el que buscan las máquinas.
+- `/en/llms.txt`
+
+Dentro van los datos de contacto y el horario (leídos de la ficha JSON-LD
+de la portada, que es donde están), qué contiene cada página, las secciones
+de la carta, los precios de los menús de grupo, las fechas de Guachin Salsa
+que queden por delante y la lista de novedades **publicadas** —las que
+están programadas no salen, igual que no salen en la web—. Los textos
+legales van bajo `## Opcional`, que en este formato significa «sáltatelo si
+necesitas menos contexto».
+
+No lleva fecha de generación a propósito: el sitio se regenera cada mañana
+y una fecha dentro haría que el archivo cambiara a diario sin que hubiera
+cambiado nada.
 
 
 ## Cambiar textos

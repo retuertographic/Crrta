@@ -1,0 +1,48 @@
+# La Carreta del Carretón
+
+> A family restaurant in Arafo (Tenerife) where Cuban cooking and Canarian tradition live side by side. Open at lunchtime only, Wednesday to Sunday.
+
+The site is published in two languages: Spanish at the root and English under /en/. Dish names are not translated; their descriptions are.
+
+- Address: C. el Carretón, 4-7, 38550 Arafo, Santa Cruz de Tenerife (Spain)
+- Phone and WhatsApp: +34 922 51 50 66
+- E-mail: info@lacarretadelcarreton.com
+- Opening hours: Wednesday, Thursday, Friday 12:30–16:00; Saturday, Sunday 12:00–16:00. Lunchtime only; closed on Monday and Tuesday.
+- Booking: by phone, by WhatsApp or through the form on the home page. There is no online booking with automatic confirmation.
+
+## What is on the site
+
+- [Home](https://lacarretadelcarreton.com/en/): The restaurant: its story, specialities, menu, group menus, catering, Guachin Salsa, gallery and contact details.
+- [Menu](https://lacarretadelcarreton.com/en/#carta): The everyday menu, with prices and allergens. Sections: Aperitivos, Ensaladas, Vegetariano, Sopas, Pollo, Res, Carne de Cochino, Pescado y Marisco, Postres, Bebidas. Prices include IGIC.
+- [Set menus](https://lacarretadelcarreton.com/en/#menus): Set menus for groups and celebrations: 30 €, 40 €, 50 €, 30 € (Vegetarian). Per person and IGIC NOT included, unlike the everyday menu.
+- [Catering](https://lacarretadelcarreton.com/en/catering.html): Habana Express catering: buffet, cheese tables and appetisers for celebrations and company events, quoted case by case.
+- [Guachin Salsa](https://lacarretadelcarreton.com/en/#guachin): Nights of music and dancing on separate dates, not every weekend. Next dates: Friday 20 November, Friday 27 November.
+- [News](https://lacarretadelcarreton.com/en/novedades.html): Articles from the house: dishes, menus, catering and the Guachin Salsa dates.
+- [Gallery](https://lacarretadelcarreton.com/en/#galeria): Photographs of the dining room and the food.
+- [Contact](https://lacarretadelcarreton.com/en/#contacto): Opening hours, address with a map, phone and booking form.
+
+## Published news
+
+Entries dated in the future are not published until their day, so this list is what is visible right now.
+
+- [Habana Express: from your call to the first plate](https://lacarretadelcarreton.com/en/novedades/habana-express-como-funciona.html) — 17 November 2026: Our catering service in order: what you need to tell us, what we bring, what we set up and what is not in the quote.
+- [Guachin Salsa this Saturday the 14th](https://lacarretadelcarreton.com/en/novedades/guachin-salsa-sabado-14.html) — 9 November 2026: A new date, and a Saturday at that: there is Guachin Salsa at La Carreta on the 14th. The places are the ones the room holds.
+- [Guachin Salsa: the November dates](https://lacarretadelcarreton.com/en/novedades/guachin-salsa-noviembre.html) — 3 November 2026: Friday the 6th, Saturday the 14th, Friday the 20th and Friday the 27th. These are one-off dates, not every weekend, and places run out.
+- [Set menus for groups: 30, 40 and 50 €](https://lacarretadelcarreton.com/en/novedades/menus-de-grupo.html) — 28 October 2026: Four per-person menus built for big tables: starters in the middle, a main to choose and dessert. One of them vegetarian.
+- [The tamal, explained before you ask](https://lacarretadelcarreton.com/en/novedades/tamal-cubano.html) — 21 October 2026: It is the dish people ask about most at the table: what is in it, where it comes from and why it is served with onion on top. Here is the long answer.
+- [Gofio croquettes: how a recipe that did not exist came about](https://lacarretadelcarreton.com/en/novedades/croquetas-de-gofio.html) — 14 October 2026: A homemade croquette, rib meat and a Canarian ingredient that appeared in no Cuban recipe. That is how the dish we get copied most came about.
+- [BBQ ribs: why they take as long as they do](https://lacarretadelcarreton.com/en/novedades/costillas-bbq.html) — 7 October 2026: It is the dish that leaves the grill most often and the one that least tolerates hurry. What goes into it, how long it takes and why it cannot be ordered «for ten minutes from now».
+- [Cuba and the Canaries at the same table](https://lacarretadelcarreton.com/en/novedades/cuba-y-canarias-en-la-misma-mesa.html) — 30 September 2026: The menu has congrí and it has gofio, pork and ropa vieja. It is not fusion and it is not chance: it is what happens when a Cuban kitchen spends sixteen years buying in Tenerife.
+- [Our website is up (menu included)](https://lacarretadelcarreton.com/en/novedades/abrimos-nuestra-web.html) — 21 September 2026: We have a page at last, so you no longer have to call just to check the opening hours. Here you will find the menu with current prices, how to find us, and whatever else we have to share.
+
+## In Spanish
+
+- [La Carreta del Carretón](https://lacarretadelcarreton.com/)
+- [llms.txt](https://lacarretadelcarreton.com/llms.txt)
+
+## Optional
+
+- [Legal notice](https://lacarretadelcarreton.com/en/aviso-legal.html): Website owner, contact details and conditions of use for the website of La Carreta del Carretón, a restaurant in Arafo, Tenerife.
+- [Privacy policy](https://lacarretadelcarreton.com/en/privacidad.html): What personal data La Carreta del Carretón processes, for what purpose, for how long, and how to exercise your data protection rights.
+- [Cookie policy](https://lacarretadelcarreton.com/en/cookies.html): Which cookies the La Carreta del Carretón website uses, who manages them, how long they last and how to block or delete them.
+- [sitemap.xml](https://lacarretadelcarreton.com/sitemap.xml): Sitemap, with both language versions of every page.

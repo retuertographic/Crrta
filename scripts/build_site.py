@@ -1139,6 +1139,9 @@ def build() -> int:
     tpl_prefs = partials.pop("CONSENT_PREFS")
 
     written: list[str] = []
+    # Antes de escribir nada, qué decía el sitemap publicado.
+    previos = lastmod_previos()
+    cambiadas: set[str] = set()
     for lang, (folder, _, _) in LANGUAGES.items():
         out_root = REPO / folder if folder else REPO
         carta_tabs, carta_panels, carta_notes = render_carta(menu, i18n, lang)
@@ -1207,13 +1210,16 @@ def build() -> int:
 
             target = out_root / page
             target.parent.mkdir(parents=True, exist_ok=True)
+            if not target.is_file() or target.read_text(encoding="utf-8") != body:
+                cambiadas.add(page_url(page, lang))
             target.write_text(body, encoding="utf-8")
             written.append(str(target.relative_to(REPO)))
 
         for retirada in limpia_novedades(out_root, post_pages):
             print(f"  retirada: {retirada}")
 
-    write_sitemap(PAGES + post_pages)
+    write_sitemap(PAGES + post_pages, cambiadas, previos)
+    write_llms(meta, menu, menus, eventos, posts, i18n, partials["SCHEMA"])
     write_robots()
     tools = ", ".join(n for n, on in (("GA4", ga4), ("Hotjar", hotjar)) if on) or "ninguna"
     print(f"OK: {len(written)} páginas en {len(LANGUAGES)} idiomas · medición: {tools}")
@@ -1245,7 +1251,25 @@ def build() -> int:
     return 0
 
 
-def write_sitemap(paginas: list[str]) -> None:
+def lastmod_previos() -> dict[str, str]:
+    """Las fechas del sitemap que ya está publicado, por URL."""
+    f = REPO / "sitemap.xml"
+    if not f.is_file():
+        return {}
+    texto = f.read_text(encoding="utf-8")
+    return dict(re.findall(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>", texto))
+
+
+def write_sitemap(paginas: list[str], cambiadas: set[str],
+                  previos: dict[str, str]) -> None:
+    """El sitemap, con un lastmod que dice la verdad.
+
+    La fecha de hoy va solo en las páginas cuyo HTML ha cambiado de verdad
+    en esta generación; las demás conservan la que ya tenían. Antes se
+    ponía hoy en las 32, y como el sitio se vuelve a generar cada mañana,
+    el sitemap decía a diario que había cambiado todo: eso no solo es
+    falso, es que Google acaba ignorando el lastmod de un sitio que miente,
+    y además dejaba un commit automático al día sin nada dentro."""
     today = date.today().isoformat()
     urls = []
     for page in paginas:
@@ -1256,9 +1280,11 @@ def write_sitemap(paginas: list[str]) -> None:
                 f'\n    <xhtml:link rel="alternate" hreflang="{LANGUAGES[c][1]}" '
                 f'href="{page_url(page, c)}"/>' for c in LANGUAGES
             )
+            url = page_url(page, lang)
+            lastmod = today if url in cambiadas else previos.get(url, today)
             urls.append(
-                f"  <url>\n    <loc>{page_url(page, lang)}</loc>"
-                f"\n    <lastmod>{today}</lastmod>{alternates}\n  </url>"
+                f"  <url>\n    <loc>{url}</loc>"
+                f"\n    <lastmod>{lastmod}</lastmod>{alternates}\n  </url>"
             )
     (REPO / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -1267,6 +1293,199 @@ def write_sitemap(paginas: list[str]) -> None:
         + "\n".join(urls) + "\n</urlset>\n",
         encoding="utf-8",
     )
+
+
+DIAS_SCHEMA = {
+    "es": {"Monday": "lunes", "Tuesday": "martes", "Wednesday": "miércoles",
+           "Thursday": "jueves", "Friday": "viernes", "Saturday": "sábados",
+           "Sunday": "domingos"},
+    "en": {"Monday": "Monday", "Tuesday": "Tuesday", "Wednesday": "Wednesday",
+           "Thursday": "Thursday", "Friday": "Friday", "Saturday": "Saturday",
+           "Sunday": "Sunday"},
+}
+
+LLMS_TEXTOS = {
+    "es": {
+        "resumen": "Restaurante familiar en Arafo (Tenerife) donde conviven la "
+                   "cocina cubana y la tradición canaria. Abrimos solo a mediodía, "
+                   "de miércoles a domingo.",
+        "idiomas": "La web se publica en dos idiomas: español en la raíz e inglés "
+                   "bajo /en/. Los nombres de los platos no se traducen; sí sus "
+                   "descripciones.",
+        "direccion": "Dirección", "telefono": "Teléfono y WhatsApp",
+        "correo": "Correo", "horario": "Horario", "reservas": "Reservas",
+        "reservas_v": "por teléfono, por WhatsApp o desde el formulario de la portada. "
+                      "No hay reserva en línea con confirmación automática.",
+        "solo_mediodia": "Solo a mediodía; los lunes y martes está cerrado.",
+        "h_paginas": "Qué hay en la web",
+        "h_novedades": "Novedades publicadas",
+        "h_otro_idioma": "En inglés",
+        "h_opcional": "Opcional",
+        "portada": "El restaurante: historia, especialidades, carta, menús de grupo, "
+                   "catering, Guachin Salsa, galería y contacto.",
+        "carta": "La carta del día a día, con precios y alérgenos. Secciones: {secciones}. "
+                 "Precios con IGIC incluido.",
+        "menus": "Menús cerrados para grupos y celebraciones: {precios}. Precios por "
+                 "persona e IGIC NO incluido, al revés que en la carta.",
+        "catering": "Catering Habana Express: buffet, mesas de quesos y aperitivos "
+                    "para celebraciones y eventos de empresa, con presupuesto a medida.",
+        "salsa": "Noches de música y baile en fechas sueltas, no todos los fines de "
+                 "semana. {fechas}",
+        "salsa_con": "Próximas fechas: {lista}.",
+        "salsa_sin": "Ahora mismo no hay fecha confirmada.",
+        "novedades": "Artículos de la casa: platos, menús, catering y las fechas de "
+                     "Guachin Salsa.",
+        "galeria": "Fotografías del salón y de los platos.",
+        "contacto": "Horario, dirección con mapa, teléfono y formulario de reserva.",
+        "sitemap": "Mapa del sitio, con las dos versiones de idioma de cada página.",
+        "nota_novedades": "Las entradas con fecha futura no se publican hasta su día, "
+                          "así que esta lista es la que está visible ahora.",
+    },
+    "en": {
+        "resumen": "A family restaurant in Arafo (Tenerife) where Cuban cooking and "
+                   "Canarian tradition live side by side. Open at lunchtime only, "
+                   "Wednesday to Sunday.",
+        "idiomas": "The site is published in two languages: Spanish at the root and "
+                   "English under /en/. Dish names are not translated; their "
+                   "descriptions are.",
+        "direccion": "Address", "telefono": "Phone and WhatsApp",
+        "correo": "E-mail", "horario": "Opening hours", "reservas": "Booking",
+        "reservas_v": "by phone, by WhatsApp or through the form on the home page. "
+                      "There is no online booking with automatic confirmation.",
+        "solo_mediodia": "Lunchtime only; closed on Monday and Tuesday.",
+        "h_paginas": "What is on the site",
+        "h_novedades": "Published news",
+        "h_otro_idioma": "In Spanish",
+        "h_opcional": "Optional",
+        "portada": "The restaurant: its story, specialities, menu, group menus, "
+                   "catering, Guachin Salsa, gallery and contact details.",
+        "carta": "The everyday menu, with prices and allergens. Sections: {secciones}. "
+                 "Prices include IGIC.",
+        "menus": "Set menus for groups and celebrations: {precios}. Per person and "
+                 "IGIC NOT included, unlike the everyday menu.",
+        "catering": "Habana Express catering: buffet, cheese tables and appetisers for "
+                    "celebrations and company events, quoted case by case.",
+        "salsa": "Nights of music and dancing on separate dates, not every weekend. "
+                 "{fechas}",
+        "salsa_con": "Next dates: {lista}.",
+        "salsa_sin": "No date is confirmed at the moment.",
+        "novedades": "Articles from the house: dishes, menus, catering and the Guachin "
+                     "Salsa dates.",
+        "galeria": "Photographs of the dining room and the food.",
+        "contacto": "Opening hours, address with a map, phone and booking form.",
+        "sitemap": "Sitemap, with both language versions of every page.",
+        "nota_novedades": "Entries dated in the future are not published until their "
+                          "day, so this list is what is visible right now.",
+    },
+}
+
+
+def ficha_restaurante(schema_html: str) -> dict:
+    """Los datos del restaurante, leídos de la ficha JSON-LD de la portada.
+
+    Se leen de ahí y no se repiten aquí porque esa ficha es el único sitio
+    donde están el teléfono, la dirección y el horario."""
+    m = re.search(r"<script type=\"application/ld\+json\">(.*?)</script>",
+                  schema_html, re.S)
+    return json.loads(m.group(1)) if m else {}
+
+
+def write_llms(meta: dict, menu: dict, menus: dict, eventos: dict,
+               posts: list[dict], i18n: dict, schema_html: str) -> None:
+    """llms.txt: el mapa del sitio en prosa, para los modelos de lenguaje.
+
+    Formato de llmstxt.org: un H1, un resumen entre comillas, y secciones
+    con listas de enlaces. Va uno por idioma; el que buscan las máquinas es
+    el de la raíz.
+
+    No lleva fecha de generación a propósito: el sitio se vuelve a generar
+    cada mañana y una fecha dentro haría que el archivo cambiara a diario
+    sin que haya cambiado nada."""
+    ficha = ficha_restaurante(schema_html)
+    # +34922515066 no hay quien lo lea; se agrupa como se dice.
+    tel = ficha.get("telephone", "")
+    m = re.fullmatch(r"\+34(\d{3})(\d{2})(\d{2})(\d{2})", tel)
+    if m:
+        tel = "+34 " + " ".join(m.groups())
+    paises = {"ES": {"es": "España", "en": "Spain"}}
+    dom = ficha.get("address", {})
+    direccion = ", ".join(x for x in (
+        dom.get("streetAddress"), f'{dom.get("postalCode", "")} {dom.get("addressLocality", "")}'.strip(),
+        dom.get("addressRegion")) if x)
+
+    hoy = date.today()
+    futuras = sorted(e["fecha"] for e in (eventos.get("guachin_salsa") or [])
+                     if date.fromisoformat(e["fecha"]) >= hoy)
+    secciones = [field(c, "category", DEFAULT_LANG) for c in menu.get("categories", [])
+                 if c.get("items")]
+    publicadas = sorted(posts, key=lambda x: x["date"], reverse=True)[:20]
+
+    for lang in LANGUAGES:
+        tx = LLMS_TEXTOS[lang]
+        raiz = page_url("index.html", lang)
+        otro = next(c for c in LANGUAGES if c != lang)
+
+        horario = "; ".join(
+            "{} {}–{}".format(
+                ", ".join(DIAS_SCHEMA[lang][d] for d in h["dayOfWeek"]),
+                h["opens"], h["closes"])
+            for h in ficha.get("openingHoursSpecification", []))
+
+        precios = ", ".join(
+            f'{m["precio"]} €' + (f' ({(m.get("etiqueta") or {}).get(lang, "")})'
+                                  if (m.get("etiqueta") or {}).get(lang) else "")
+            for m in menus.get("menus", []))
+
+        fechas = (tx["salsa_con"].format(
+                      lista=", ".join(fecha_larga(f, lang) for f in futuras))
+                  if futuras else tx["salsa_sin"])
+
+        L = [f"# {SITE_NAME}", "", f'> {tx["resumen"]}', "", tx["idiomas"], "",
+             f'- {tx["direccion"]}: {direccion} '
+             f'({paises.get(dom.get("addressCountry", ""), {}).get(lang, dom.get("addressCountry", ""))})',
+             f'- {tx["telefono"]}: {tel}',
+             f'- {tx["correo"]}: {ficha.get("email", "")}',
+             f'- {tx["horario"]}: {horario}. {tx["solo_mediodia"]}',
+             f'- {tx["reservas"]}: {tx["reservas_v"]}',
+             "", f'## {tx["h_paginas"]}', ""]
+
+        def meta_de(pagina: str) -> str:
+            info = meta.get(pagina, {}).get(lang) or meta.get(pagina, {}).get(DEFAULT_LANG, {})
+            return info.get("description", "")
+
+        L += [
+            f'- [{t(i18n, lang, "nav_home", "Inicio")}]({raiz}): {tx["portada"]}',
+            f'- [{t(i18n, lang, "nav_carta")}]({raiz}#carta): '
+            + tx["carta"].format(secciones=", ".join(secciones)),
+            f'- [{t(i18n, lang, "nav_menus")}]({raiz}#menus): '
+            + tx["menus"].format(precios=precios),
+            f'- [{t(i18n, lang, "nav_catering")}]({page_url("catering.html", lang)}): '
+            + tx["catering"],
+            f'- [Guachin Salsa]({raiz}#guachin): ' + tx["salsa"].format(fechas=fechas),
+            f'- [{t(i18n, lang, "nav_novedades")}]({page_url("novedades.html", lang)}): '
+            + tx["novedades"],
+            f'- [{t(i18n, lang, "nav_gallery")}]({raiz}#galeria): {tx["galeria"]}',
+            f'- [{t(i18n, lang, "nav_contact")}]({raiz}#contacto): {tx["contacto"]}',
+            "", f'## {tx["h_novedades"]}', "", tx["nota_novedades"], "",
+        ]
+        for post in publicadas:
+            L.append(f'- [{field(post, "title", lang)}]'
+                     f'({page_url(post_page(post), lang)}) — '
+                     f'{fmt_date(post["date"], lang)}: '
+                     f'{field(post, "excerpt", lang)}')
+
+        L += ["", f'## {tx["h_otro_idioma"]}', "",
+              f'- [{SITE_NAME}]({page_url("index.html", otro)})',
+              f'- [llms.txt]({SITE_URL}/{LANGUAGES[otro][0] + "/" if LANGUAGES[otro][0] else ""}llms.txt)',
+              "", f'## {tx["h_opcional"]}', ""]
+        for pagina, clave in LEGAL_PAGES:
+            L.append(f'- [{t(i18n, lang, clave)}]({page_url(pagina, lang)}): '
+                     f'{meta_de(pagina)}')
+        L.append(f'- [sitemap.xml]({SITE_URL}/sitemap.xml): {tx["sitemap"]}')
+
+        destino = REPO / LANGUAGES[lang][0] / "llms.txt" if LANGUAGES[lang][0] else REPO / "llms.txt"
+        destino.parent.mkdir(parents=True, exist_ok=True)
+        destino.write_text("\n".join(L) + "\n", encoding="utf-8")
 
 
 def write_robots() -> None:
