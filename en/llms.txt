@@ -16,7 +16,7 @@ The site is published in two languages: Spanish at the root and English under /e
 - [Menu](https://lacarretadelcarreton.com/en/#carta): The everyday menu, with prices and allergens. Sections: Aperitivos, Ensaladas, Vegetariano, Sopas, Pollo, Res, Carne de Cochino, Pescado y Marisco, Postres, Bebidas. Prices include IGIC.
 - [Set menus](https://lacarretadelcarreton.com/en/#menus): Set menus for groups and celebrations: 30 €, 40 €, 50 €, 30 € (Vegetarian). Per person and IGIC NOT included, unlike the everyday menu.
 - [Catering](https://lacarretadelcarreton.com/en/catering.html): Habana Express catering: buffet, cheese tables and appetisers for celebrations and company events, quoted case by case.
-- [Guachin Salsa](https://lacarretadelcarreton.com/en/#guachin): Nights of music and dancing on separate dates, not every weekend. Next dates: Friday 20 November, Friday 27 November.
+- [Guachin Salsa](https://lacarretadelcarreton.com/en/#guachin): Nights of music and dancing on separate dates, not every weekend. Next dates: Friday 27 November.
 - [News](https://lacarretadelcarreton.com/en/novedades.html): Articles from the house: dishes, menus, catering and the Guachin Salsa dates.
 - [Gallery](https://lacarretadelcarreton.com/en/#galeria): Photographs of the dining room and the food.
 - [Contact](https://lacarretadelcarreton.com/en/#contacto): Opening hours, address with a map, phone and booking form.

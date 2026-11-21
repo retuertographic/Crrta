@@ -12,6 +12,33 @@
     </div>
     <a href="{{HOME}}index.html#contacto" class="book" data-i18n="nav_book">Reservar mesa</a>
   </div>
+
+  <!--# La firma de quien ha hecho la web, en su propia fila y separada por
+       una línea: es de otra persona, no del restaurante, y mezclarla con el
+       copyright de la casa confunde quién es quién.
+
+       Los separadores van en span aria-hidden: un lector de pantalla leería
+       «barra vertical» y «punto medio», que no aportan nada. Y el párrafo
+       no está de adorno: los enlaces en línea dentro de un párrafo quedan
+       exentos del tamaño mínimo de destino de WCAG 2.5.8, que es lo que
+       obliga a los demás enlaces del pie a llevar relleno.
+
+       En el teléfono se enseña 0034 / 0049, como en las otras webs de la
+       firma, pero el href va en +34 / +49, que es la forma internacional
+       que marcan bien todos los móviles. -->
+  <div class="f-credito">
+    <div class="wrap">
+      <p>
+        <span data-i18n="credito_pre">Desarrollado por</span>
+        <a href="https://retuertographicdesign.com/" target="_blank" rel="noopener">Retuerto Graphic Design</a>.
+        Ricardo Retuerto Barrera <span aria-hidden="true">|</span>
+        Spain-Germany <span aria-hidden="true">|</span>
+        <a href="tel:+34922971723">0034 922 971 723</a>
+        <span aria-hidden="true">·</span>
+        <a href="tel:+493031878629">0049 30 31878629</a>
+      </p>
+    </div>
+  </div>
 </footer>
 
 <button class="to-top" id="toTop" data-i18n-attr="aria-label=aria_to_top" aria-label="Volver arriba">

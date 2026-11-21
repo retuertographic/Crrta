@@ -16,7 +16,7 @@ La web se publica en dos idiomas: español en la raíz e inglés bajo /en/. Los 
 - [Carta](https://lacarretadelcarreton.com/#carta): La carta del día a día, con precios y alérgenos. Secciones: Aperitivos, Ensaladas, Vegetariano, Sopas, Pollo, Res, Carne de Cochino, Pescado y Marisco, Postres, Bebidas. Precios con IGIC incluido.
 - [Menús](https://lacarretadelcarreton.com/#menus): Menús cerrados para grupos y celebraciones: 30 €, 40 €, 50 €, 30 € (Vegetariano). Precios por persona e IGIC NO incluido, al revés que en la carta.
 - [Catering](https://lacarretadelcarreton.com/catering.html): Catering Habana Express: buffet, mesas de quesos y aperitivos para celebraciones y eventos de empresa, con presupuesto a medida.
-- [Guachin Salsa](https://lacarretadelcarreton.com/#guachin): Noches de música y baile en fechas sueltas, no todos los fines de semana. Próximas fechas: Viernes 20 de noviembre, Viernes 27 de noviembre.
+- [Guachin Salsa](https://lacarretadelcarreton.com/#guachin): Noches de música y baile en fechas sueltas, no todos los fines de semana. Próximas fechas: Viernes 27 de noviembre.
 - [Novedades](https://lacarretadelcarreton.com/novedades.html): Artículos de la casa: platos, menús, catering y las fechas de Guachin Salsa.
 - [Galería](https://lacarretadelcarreton.com/#galeria): Fotografías del salón y de los platos.
 - [Contacto](https://lacarretadelcarreton.com/#contacto): Horario, dirección con mapa, teléfono y formulario de reserva.
