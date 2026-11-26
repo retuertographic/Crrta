@@ -297,14 +297,21 @@ Los platos que no están en la carta de siempre viven en
   y la carta, con los platos y una galería de fotos y vídeos. Los vídeos
   van sin sonido, en bucle, y solo se reproducen mientras están en
   pantalla; al pulsar cualquier pieza se abre en el lightbox.
-- **Un aviso emergente en la portada**, hasta el día `aviso_hasta`
-  (incluido). Sale una vez por visitante (`localStorage`,
-  `carreton_fdc_visto`), espera a que se cierre el aviso de cookies y no
-  sale si se llega a la portada con un ancla. Pasada la fecha, el rebuild
-  diario lo quita del HTML y el navegador lo esconde por su cuenta.
+- **Un aviso emergente en la portada**. Sale una vez por visitante
+  (`localStorage`, `carreton_fdc_visto`), espera a que se cierre el aviso
+  de cookies y no sale si se llega a la portada con un ancla.
 
-Para una tanda nueva: cambia `platos`, `galeria` y `aviso_hasta`. Para
-retirarlo todo, deja `platos` vacío. Las fotos y vídeos van en
+Las tres se publican hasta el día `hasta` (incluido) y **desaparecen las
+tres juntas** al día siguiente: son platos de una tanda, y pasada la fecha
+no tiene sentido que la web siga anunciando algo que ya no está. Cuando
+cae la pestaña, la carta vuelve a abrir por Aperitivos.
+
+Lo retira el rebuild diario. La sección y el aviso llevan además
+`data-hasta`, y el navegador los quita por su cuenta pasada esa fecha, por
+si el rebuild fallara algún día.
+
+Para una tanda nueva: cambia `platos`, `galeria` y `hasta`. Para retirarlo
+todo antes de tiempo, deja `platos` vacío. Las fotos y vídeos van en
 `img/fuera-de-carta/` (WebP para fotos; MP4 H.264 sin audio y un póster
 WebP para cada vídeo).
 

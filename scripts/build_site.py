@@ -164,9 +164,9 @@ def categoria_fuera(fdc: dict) -> dict | None:
     una categoría más de menu-data.json, para que la carta los pinte con el
     mismo código. Van sin precio: el precio vive en la hoja y estos platos
     no están en ella, así que la carta dice que se pregunte."""
-    platos = fdc.get("platos") or []
-    if not platos:
+    if not fuera_vigente(fdc):
         return None
+    platos = fdc["platos"]
     items = []
     for pl in platos:
         item = {"name": pl["nombre"]["es"], "name_en": pl["nombre"].get("en", ""),
@@ -631,8 +631,14 @@ def render_salsa_fechas(eventos: dict, i18n: dict, lang: str) -> str:
             f'          <p>{esc(t(i18n, lang, "salsa_next_book"))}</p>')
 
 
-def aviso_fuera_vigente(fdc: dict) -> bool:
-    hasta = fdc.get("aviso_hasta")
+def fuera_vigente(fdc: dict) -> bool:
+    """Si lo de fuera de carta sigue en pie hoy.
+
+    Manda sobre las tres piezas a la vez —la pestaña de la carta, la
+    sección de la portada y el aviso emergente—: son platos de una tanda,
+    y pasada la fecha no tiene sentido que la web siga anunciando algo que
+    ya no está. Para retirarlos antes, vacía «platos»."""
+    hasta = fdc.get("hasta")
     return bool(fdc.get("platos")) and bool(hasta) and date.today() <= date.fromisoformat(hasta)
 
 
@@ -674,10 +680,10 @@ def render_fuera_platos(fdc: dict, i18n: dict, lang: str) -> str:
 
 
 def render_fuera_aviso(fdc: dict, i18n: dict, lang: str) -> str:
-    """El aviso emergente de la portada. Solo hasta «aviso_hasta»: pasado
+    """El aviso emergente de la portada. Solo hasta «hasta»: pasado
     ese día no se escribe en el HTML, y el navegador lo esconde también
     por si el rebuild diario no ha pasado todavía."""
-    if not aviso_fuera_vigente(fdc):
+    if not fuera_vigente(fdc):
         return ""
     platos = [esc(p["nombre"].get(lang) or p["nombre"]["es"]) for p in fdc["platos"]]
     lista = "".join(f"<li>{n}</li>" for n in platos)
@@ -686,7 +692,7 @@ def render_fuera_aviso(fdc: dict, i18n: dict, lang: str) -> str:
            if foto else "")
     return (
         f'<div class="fdc-aviso" id="fdcAviso" role="dialog" aria-modal="true" '
-        f'aria-labelledby="fdcAvisoTitulo" data-hasta="{esc(fdc["aviso_hasta"])}" hidden>\n'
+        f'aria-labelledby="fdcAvisoTitulo" data-hasta="{esc(fdc["hasta"])}" hidden>\n'
         f'  <div class="fdc-aviso-caja">\n'
         f'    <button type="button" class="fdc-aviso-cerrar" id="fdcAvisoCerrar" '
         f'aria-label="{esc(t(i18n, lang, "fdc_aviso_cerrar"))}">&times;</button>\n'
@@ -703,10 +709,14 @@ def render_fuera_aviso(fdc: dict, i18n: dict, lang: str) -> str:
 
 
 def render_fuera_seccion(fdc: dict, i18n: dict, lang: str) -> str:
-    if not fdc.get("platos"):
+    """La sección de la portada. Desaparece el mismo día que el aviso.
+
+    data-hasta no es decorativo: si el rebuild diario fallara, el navegador
+    la retira igual, como ya hace con el aviso."""
+    if not fuera_vigente(fdc):
         return ""
     return f"""<!-- ================= FUERA DE CARTA ================= -->
-<section class="fuera" id="fuera-de-carta">
+<section class="fuera" id="fuera-de-carta" data-hasta="{esc(fdc["hasta"])}">
   <div class="wrap">
     <div class="fdc-grid">
       <div class="fdc-texto">
@@ -1374,10 +1384,11 @@ def build() -> int:
         print(f"  · Guachin Salsa: solo queda {len(futuras)} fecha por delante ({futuras[0]})")
     else:
         print(f"  · Guachin Salsa: {len(futuras)} fechas por delante, la próxima el {min(futuras)}")
-    if aviso_fuera_vigente(fdc):
-        print(f"  · fuera de carta: aviso emergente publicado hasta el {fdc['aviso_hasta']}")
+    if fuera_vigente(fdc):
+        print(f"  · fuera de carta: pestaña, sección y aviso publicados "
+              f"hasta el {fdc['hasta']} incluido")
     elif fdc.get("platos"):
-        print("  · fuera de carta: sección y pestaña publicadas; el aviso emergente ya ha caducado")
+        print(f"  · fuera de carta: nada publicado, la fecha ({fdc.get('hasta')}) ya pasó")
     if cmp_on:
         print(f"  · aviso de cookies: {cmp.get('nombre') or 'gestor externo'} "
               f"({len(cmp['scripts'])} scripts)")

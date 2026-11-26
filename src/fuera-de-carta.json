@@ -4,11 +4,11 @@
     "la carta (la primera), una sección en la portada con su galería de",
     "fotos y vídeos, y un aviso emergente en la portada.",
     "",
-    "El aviso emergente solo se publica hasta «aviso_hasta» (incluido). Al",
-    "día siguiente el rebuild diario lo quita del HTML, y el navegador",
-    "también lo esconde por su cuenta pasada esa fecha, por si el rebuild",
-    "llega tarde. La pestaña y la sección siguen mientras haya platos:",
-    "para retirarlas, vacía «platos».",
+    "Las tres se publican hasta «hasta» (ese día incluido) y desaparecen",
+    "juntas al día siguiente: son platos de una tanda, y no tiene sentido",
+    "anunciar lo que ya no está. Lo quita el rebuild diario, y el navegador",
+    "los esconde también por su cuenta pasada esa fecha, por si el rebuild",
+    "llegara tarde. Para retirarlos antes de tiempo, vacía «platos».",
     "",
     "Los precios viven en la hoja de la carta, no aquí. Mientras estos",
     "platos no estén en la hoja, la web dice que se pregunte en sala.",
@@ -16,7 +16,7 @@
     "Galería: «tipo» es «foto» o «video». Los vídeos van sin sonido, en MP4",
     "H.264, con un «poster» (el fotograma que se ve antes de cargar)."
   ],
-  "aviso_hasta": "2026-11-29",
+  "hasta": "2026-11-29",
   "platos": [
     {
       "nombre": { "es": "Lagarto de cerdo a la brasa", "en": "Grilled pork lagarto" },

@@ -178,6 +178,16 @@
     fdcVideos.forEach(v => io.observe(v));
   }
 
+  /* ---- Fuera de carta: la sección también caduca ----
+     La quita el rebuild diario, pero si ese día fallara la web estaría
+     anunciando platos que ya no hay, así que el navegador la retira
+     igualmente. Misma fecha y misma cuenta que el aviso. */
+  const fdcSeccion = document.getElementById('fuera-de-carta');
+  if (fdcSeccion && fdcSeccion.dataset.hasta) {
+    const fin = new Date(fdcSeccion.dataset.hasta + 'T23:59:59Z').getTime();
+    if (Date.now() > fin) fdcSeccion.remove();
+  }
+
   /* ---- Aviso emergente de fuera de carta ----
      Sale una vez por visitante y por tanda (la clave guarda la fecha de
      caducidad, así que una tanda nueva vuelve a salir). Pasado el día de
