@@ -123,23 +123,115 @@
     });
   }
 
-  /* ---- Galería con lightbox ---- */
+  /* ---- Galería con lightbox (fotos y vídeos) ----
+     Sirve a la galería de la casa y a la de fuera de carta. Las piezas
+     con data-tipo="video" se abren en el <video> del lightbox. */
   const lightbox = document.getElementById('lightbox');
   if (lightbox) {
     const img = document.getElementById('lightboxImg');
-    document.querySelectorAll('#galleryGrid a').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        img.src = a.getAttribute('href');
-        img.alt = a.querySelector('img') ? a.querySelector('img').alt : '';
-        lightbox.classList.add('open');
-      });
-    });
-    const close = () => lightbox.classList.remove('open');
+    const vid = document.getElementById('lightboxVideo');
     const closeBtn = document.getElementById('lightboxClose');
+    let origen = null;
+    const abrir = (a) => {
+      origen = a;
+      if (a.dataset.tipo === 'video' && vid) {
+        img.hidden = true;
+        vid.hidden = false;
+        vid.poster = a.dataset.poster || '';
+        vid.src = a.getAttribute('href');
+        vid.play().catch(() => {});
+      } else {
+        if (vid) { vid.pause(); vid.hidden = true; vid.removeAttribute('src'); }
+        img.hidden = false;
+        img.src = a.getAttribute('href');
+        const i = a.querySelector('img');
+        img.alt = i ? i.alt : (a.getAttribute('aria-label') || '');
+      }
+      lightbox.classList.add('open');
+      if (closeBtn) closeBtn.focus();
+    };
+    document.querySelectorAll('#galleryGrid a, #fdcGaleria a').forEach(a => {
+      a.addEventListener('click', e => { e.preventDefault(); abrir(a); });
+    });
+    const close = () => {
+      if (!lightbox.classList.contains('open')) return;
+      lightbox.classList.remove('open');
+      if (vid) { vid.pause(); vid.removeAttribute('src'); vid.load(); }
+      if (origen) origen.focus();
+    };
     if (closeBtn) closeBtn.addEventListener('click', close);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  }
+
+  /* ---- Vídeos de fuera de carta: solo se reproducen mientras se ven.
+     preload="none" en el HTML, así que no se descargan hasta llegar. */
+  const fdcVideos = document.querySelectorAll('#fdcGaleria video');
+  const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (fdcVideos.length && 'IntersectionObserver' in window && !quieto) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) en.target.play().catch(() => {});
+        else en.target.pause();
+      });
+    }, { threshold: 0.4 });
+    fdcVideos.forEach(v => io.observe(v));
+  }
+
+  /* ---- Aviso emergente de fuera de carta ----
+     Sale una vez por visitante y por tanda (la clave guarda la fecha de
+     caducidad, así que una tanda nueva vuelve a salir). Pasado el día de
+     data-hasta no sale aunque el HTML siga sin regenerar. */
+  const aviso = document.getElementById('fdcAviso');
+  if (aviso) {
+    const hasta = aviso.dataset.hasta;
+    const clave = 'carreton_fdc_visto';
+    let visto = null;
+    try { visto = localStorage.getItem(clave); } catch (e) {}
+    // Fin del día en Canarias (UTC+0 en invierno, UTC+1 en verano): se
+    // toma UTC+0, que es el más tardío de los dos.
+    const caduca = hasta ? new Date(hasta + 'T23:59:59Z') : null;
+    const vigente = caduca && Date.now() <= caduca.getTime();
+    if (vigente && visto !== hasta && !location.hash) {
+      let previo = null;
+      const cerrar = (devolver) => {
+        aviso.hidden = true;
+        document.body.classList.remove('fdc-aviso-abierto');
+        try { localStorage.setItem(clave, hasta); } catch (e) {}
+        document.removeEventListener('keydown', teclas);
+        if (devolver !== false && previo && previo.focus) previo.focus();
+      };
+      const teclas = (e) => {
+        if (e.key === 'Escape') cerrar();
+        if (e.key === 'Tab') {
+          const f = aviso.querySelectorAll('a, button');
+          const primero = f[0], ultimo = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+          else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+        }
+      };
+      // Si el aviso de cookies está abierto, se espera a que lo cierren:
+      // los dos a la vez se tapan y el de cookies va primero.
+      const cookiesAbierto = () => {
+        const ov = document.getElementById('biscotti-banner-overlay');
+        return ov && ov.classList.contains('visible');
+      };
+      const mostrar = () => {
+        if (cookiesAbierto()) { setTimeout(mostrar, 800); return; }
+        previo = document.activeElement;
+        aviso.hidden = false;
+        document.body.classList.add('fdc-aviso-abierto');
+        document.addEventListener('keydown', teclas);
+        const btn = document.getElementById('fdcAvisoCerrar');
+        if (btn) btn.focus();
+      };
+      setTimeout(mostrar, 2500);
+      aviso.addEventListener('click', e => { if (e.target === aviso) cerrar(); });
+      const btnCerrar = document.getElementById('fdcAvisoCerrar');
+      if (btnCerrar) btnCerrar.addEventListener('click', () => cerrar());
+      aviso.querySelectorAll('#fdcAvisoVer, #fdcAvisoReservar')
+        .forEach(el => el.addEventListener('click', () => cerrar(false)));
+    }
   }
 
   /* ---- Compartir. Las etiquetas vienen del HTML, en su idioma. ---- */

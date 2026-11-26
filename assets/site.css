@@ -429,6 +429,68 @@
     .menu-item .mi-price .pl{display:block;margin-right:0;margin-bottom:1px;text-align:right;}
   }
 
+  /* ---------- FUERA DE CARTA ---------- */
+  .fuera{background:var(--cream);padding:110px 0;}
+  .fdc-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start;}
+  .fdc-intro{color:var(--text-soft);line-height:1.75;margin-bottom:26px;}
+  .fdc-plato{background:var(--paper);border-left:4px solid var(--gold);border-radius:0 14px 14px 0;
+    padding:20px 24px;margin-bottom:16px;box-shadow:0 8px 20px rgba(43,38,33,.06);}
+  .fdc-plato h3{font-family:'Playfair Display','Playfair Display reserva',serif;font-size:1.3rem;margin-bottom:8px;}
+  .fdc-plato p{color:var(--text-soft);line-height:1.7;font-size:.95rem;}
+  .fdc-plato .fdc-precio{margin-top:10px;font-weight:700;color:var(--gold);font-size:.85rem;}
+  .fdc-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+  /* Columnas en vez de rejilla: cada foto y cada vídeo conserva su
+     proporción (hay verticales y horizontales) y no quedan huecos. */
+  .fdc-galeria{columns:2;column-gap:14px;}
+  .fdc-pieza{display:block;position:relative;break-inside:avoid;margin-bottom:14px;border-radius:14px;
+    overflow:hidden;background:var(--cream-2);}
+  .fdc-pieza img,.fdc-pieza video{display:block;width:100%;height:auto;transition:transform .5s ease;}
+  .fdc-pieza:hover img,.fdc-pieza:hover video{transform:scale(1.05);}
+  .fdc-play{position:absolute;right:12px;bottom:12px;width:38px;height:38px;border-radius:50%;
+    background:rgba(26,23,19,.7);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:.85rem;padding-left:3px;pointer-events:none;}
+  @media (max-width:900px){
+    .fuera{padding:80px 0;}
+    .fdc-grid{grid-template-columns:1fr;gap:36px;}
+  }
+
+  /* La pestaña de fuera de carta, que se distinga de las de siempre. */
+  .menu-tab--fuera{border-color:var(--gold);color:var(--gold);}
+  .menu-fuera-intro{padding:16px 0 6px;color:var(--text-soft);font-size:.92rem;line-height:1.6;}
+  .menu-fuera-intro a{color:var(--gold);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+
+  /* Vídeo dentro del lightbox. */
+  .lightbox video{max-width:min(900px,90vw);max-height:85vh;border-radius:12px;box-shadow:0 30px 60px rgba(0,0,0,.5);background:#000;}
+  .lightbox [hidden]{display:none;}
+
+  /* ---------- AVISO DE FUERA DE CARTA ---------- */
+  .fdc-aviso{position:fixed;inset:0;z-index:300;background:rgba(26,23,19,.72);
+    display:flex;align-items:center;justify-content:center;padding:20px;}
+  .fdc-aviso[hidden]{display:none;}
+  .fdc-aviso-caja{position:relative;background:var(--paper);border-radius:20px;overflow:hidden;
+    width:min(760px,100%);max-height:calc(100vh - 40px);overflow-y:auto;
+    display:grid;grid-template-columns:.9fr 1.1fr;box-shadow:0 30px 70px rgba(0,0,0,.45);}
+  .fdc-aviso-foto img{width:100%;height:100%;object-fit:cover;object-position:38% 50%;}
+  .fdc-aviso-texto{padding:38px 34px 32px;}
+  .fdc-aviso-texto h2{font-family:'Playfair Display','Playfair Display reserva',serif;font-size:1.7rem;
+    line-height:1.15;margin:8px 0 14px;}
+  .fdc-aviso-texto ul{margin:0 0 14px;}
+  .fdc-aviso-texto li{font-weight:700;padding:6px 0 6px 18px;position:relative;}
+  .fdc-aviso-texto li::before{content:'';position:absolute;left:0;top:50%;width:8px;height:8px;
+    margin-top:-4px;border-radius:50%;background:var(--gold);}
+  .fdc-aviso-texto p{color:var(--text-soft);line-height:1.65;font-size:.93rem;}
+  .fdc-aviso-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .fdc-aviso-ctas .btn{padding:12px 22px;font-size:.88rem;}
+  .fdc-aviso-cerrar{position:absolute;top:8px;right:8px;z-index:1;width:44px;height:44px;border:none;
+    border-radius:50%;background:rgba(250,246,238,.92);color:var(--ink);font-size:1.7rem;line-height:1;cursor:pointer;}
+  body.fdc-aviso-abierto{overflow:hidden;}
+  @media (max-width:640px){
+    .fdc-aviso-caja{grid-template-columns:1fr;}
+    .fdc-aviso-foto{height:200px;}
+    .fdc-aviso-texto{padding:26px 22px 24px;}
+    .fdc-aviso-texto h2{font-size:1.45rem;}
+  }
+
   /* ---------- GALERÍA ---------- */
   .gallery{padding:120px 0 100px;background:var(--paper);}
   .gallery-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:50px;}

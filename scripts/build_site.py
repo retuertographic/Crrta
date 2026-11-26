@@ -159,8 +159,33 @@ def page_url(page: str, lang: str) -> str:
 
 # --------------------------------------------------------------- la carta
 
-def render_carta(menu: dict, i18n: dict, lang: str) -> tuple[str, str, str]:
+def categoria_fuera(fdc: dict) -> dict | None:
+    """Los platos fuera de carta (src/fuera-de-carta.json), con la forma de
+    una categoría más de menu-data.json, para que la carta los pinte con el
+    mismo código. Van sin precio: el precio vive en la hoja y estos platos
+    no están en ella, así que la carta dice que se pregunte."""
+    platos = fdc.get("platos") or []
+    if not platos:
+        return None
+    items = []
+    for pl in platos:
+        item = {"name": pl["nombre"]["es"], "name_en": pl["nombre"].get("en", ""),
+                "description": pl["descripcion"]["es"],
+                "description_en": pl["descripcion"].get("en", ""),
+                "consultar": True}
+        if pl.get("foto"):
+            item["photo"] = pl["foto"]
+        items.append(item)
+    return {"category": "Fuera de carta", "category_en": "Off the menu",
+            "fuera": True, "items": items}
+
+
+def render_carta(menu: dict, i18n: dict, lang: str,
+                 fdc: dict | None = None) -> tuple[str, str, str]:
     categories = [c for c in menu.get("categories", []) if c.get("items")]
+    fuera = categoria_fuera(fdc or {})
+    if fuera and categories:
+        categories = [fuera] + categories
     if not categories:
         empty = t(i18n, lang, "carta_empty")
         return "", f'<div class="menu-panel active"><p class="menu-empty">{empty}</p></div>', ""
@@ -173,6 +198,8 @@ def render_carta(menu: dict, i18n: dict, lang: str) -> tuple[str, str, str]:
         slug = f"cat{index}"
         active = " active" if index == 0 else ""
         label = esc(field(cat, "category", lang))
+        if cat.get("fuera"):
+            active += " menu-tab--fuera"
         tabs.append(
             f'<button class="menu-tab{active}" data-category="{slug}" role="tab" '
             f'id="tab-{slug}" aria-controls="panel-{slug}" '
@@ -180,8 +207,12 @@ def render_carta(menu: dict, i18n: dict, lang: str) -> tuple[str, str, str]:
             f'aria-selected="{"true" if index == 0 else "false"}">{label}</button>'
         )
 
-        rows = [f'<div class="menu-panel{active}" data-category="{slug}" role="tabpanel" '
+        panel_active = " active" if index == 0 else ""
+        rows = [f'<div class="menu-panel{panel_active}" data-category="{slug}" role="tabpanel" '
                 f'id="panel-{slug}" aria-labelledby="tab-{slug}" tabindex="0">']
+        if cat.get("fuera"):
+            rows.append(f'<p class="menu-fuera-intro">{esc(t(i18n, lang, "fdc_carta_intro"))} '
+                        f'<a href="#fuera-de-carta">{esc(t(i18n, lang, "fdc_carta_link"))}</a></p>')
         for item in cat["items"]:
             if "group" in item:
                 rows.append(f'<div class="menu-group">{esc(field(item, "group", lang))}</div>')
@@ -231,6 +262,12 @@ def render_carta(menu: dict, i18n: dict, lang: str) -> tuple[str, str, str]:
                 rows.append("".join(chips))
             rows.append("</div>")
 
+            if item.get("consultar"):
+                # Sin columna de precio: la entradilla de la pestaña ya dice
+                # que el precio se pregunta en sala, y en el móvil esa
+                # columna dejaba la descripción en una tira estrecha.
+                rows.append("</div>")
+                continue
             prices = item.get("prices") or ([{"value": item["price"]}] if item.get("price") else [])
             rows.append('<div class="mi-prices">')
             for price in prices:
@@ -592,6 +629,102 @@ def render_salsa_fechas(eventos: dict, i18n: dict, lang: str) -> str:
     return (f'<strong>{esc(t(i18n, lang, clave))}</strong>\n'
             f'          <ul class="salsa-fechas">{fechas}</ul>\n'
             f'          <p>{esc(t(i18n, lang, "salsa_next_book"))}</p>')
+
+
+def aviso_fuera_vigente(fdc: dict) -> bool:
+    hasta = fdc.get("aviso_hasta")
+    return bool(fdc.get("platos")) and bool(hasta) and date.today() <= date.fromisoformat(hasta)
+
+
+def render_fuera_galeria(fdc: dict, lang: str) -> str:
+    """La galería de fotos y vídeos de los platos fuera de carta.
+
+    Los vídeos se ven en la propia rejilla, sin sonido y en bucle, y solo
+    se reproducen mientras están en pantalla (lo decide site.js). Al
+    pulsar cualquier pieza se abre en grande en el lightbox."""
+    piezas = []
+    for g in fdc.get("galeria") or []:
+        alt = esc(g["alt"].get(lang) or g["alt"]["es"])
+        forma = "fdc-v" if g["h"] > g["w"] else "fdc-h"
+        src = "{{PREFIX}}" + esc(g["src"])
+        if g["tipo"] == "video":
+            poster = "{{PREFIX}}" + esc(g["poster"])
+            piezas.append(
+                f'<a href="{src}" class="fdc-pieza {forma} es-video" data-tipo="video" '
+                f'data-poster="{poster}" aria-label="{alt}">'
+                f'<video src="{src}" poster="{poster}" muted loop playsinline preload="none" '
+                f'width="{g["w"]}" height="{g["h"]}" aria-hidden="true"></video>'
+                f'<span class="fdc-play" aria-hidden="true">▶</span></a>')
+        else:
+            piezas.append(
+                f'<a href="{src}" class="fdc-pieza {forma}" data-tipo="foto">'
+                f'<img src="{src}" alt="{alt}" loading="lazy" width="{g["w"]}" height="{g["h"]}"></a>')
+    return "\n        ".join(piezas)
+
+
+def render_fuera_platos(fdc: dict, i18n: dict, lang: str) -> str:
+    tarjetas = []
+    for pl in fdc.get("platos") or []:
+        nombre = esc(pl["nombre"].get(lang) or pl["nombre"]["es"])
+        desc = esc(pl["descripcion"].get(lang) or pl["descripcion"]["es"])
+        tarjetas.append(
+            f'<article class="fdc-plato"><h3>{nombre}</h3><p>{desc}</p>'
+            f'<p class="fdc-precio">{esc(t(i18n, lang, "fdc_precio"))}</p></article>')
+    return "\n        ".join(tarjetas)
+
+
+def render_fuera_aviso(fdc: dict, i18n: dict, lang: str) -> str:
+    """El aviso emergente de la portada. Solo hasta «aviso_hasta»: pasado
+    ese día no se escribe en el HTML, y el navegador lo esconde también
+    por si el rebuild diario no ha pasado todavía."""
+    if not aviso_fuera_vigente(fdc):
+        return ""
+    platos = [esc(p["nombre"].get(lang) or p["nombre"]["es"]) for p in fdc["platos"]]
+    lista = "".join(f"<li>{n}</li>" for n in platos)
+    foto = next((p.get("foto") for p in fdc["platos"] if p.get("foto")), "")
+    img = (f'<img src="{{{{PREFIX}}}}{esc(foto)}" alt="" width="1050" height="1400" loading="lazy">'
+           if foto else "")
+    return (
+        f'<div class="fdc-aviso" id="fdcAviso" role="dialog" aria-modal="true" '
+        f'aria-labelledby="fdcAvisoTitulo" data-hasta="{esc(fdc["aviso_hasta"])}" hidden>\n'
+        f'  <div class="fdc-aviso-caja">\n'
+        f'    <button type="button" class="fdc-aviso-cerrar" id="fdcAvisoCerrar" '
+        f'aria-label="{esc(t(i18n, lang, "fdc_aviso_cerrar"))}">&times;</button>\n'
+        f'    <div class="fdc-aviso-foto">{img}</div>\n'
+        f'    <div class="fdc-aviso-texto">\n'
+        f'      <span class="eyebrow">{esc(t(i18n, lang, "fdc_aviso_eyebrow"))}</span>\n'
+        f'      <h2 id="fdcAvisoTitulo">{esc(t(i18n, lang, "fdc_aviso_titulo"))}</h2>\n'
+        f'      <ul>{lista}</ul>\n'
+        f'      <p>{esc(t(i18n, lang, "fdc_aviso_p"))}</p>\n'
+        f'      <div class="fdc-aviso-ctas">'
+        f'<a class="btn" href="#fuera-de-carta" id="fdcAvisoVer">{esc(t(i18n, lang, "fdc_aviso_ver"))}</a>'
+        f'<a class="btn outline" href="#contacto" id="fdcAvisoReservar">{esc(t(i18n, lang, "nav_book"))}</a></div>\n'
+        f'    </div>\n  </div>\n</div>')
+
+
+def render_fuera_seccion(fdc: dict, i18n: dict, lang: str) -> str:
+    if not fdc.get("platos"):
+        return ""
+    return f"""<!-- ================= FUERA DE CARTA ================= -->
+<section class="fuera" id="fuera-de-carta">
+  <div class="wrap">
+    <div class="fdc-grid">
+      <div class="fdc-texto">
+        <span class="eyebrow">{esc(t(i18n, lang, "fdc_eyebrow"))}</span>
+        <h2 class="section-title"><span>{esc(t(i18n, lang, "fdc_title1"))}</span><span class="accent">{esc(t(i18n, lang, "fdc_title2"))}</span></h2>
+        <p class="fdc-intro">{esc(t(i18n, lang, "fdc_intro"))}</p>
+        {render_fuera_platos(fdc, i18n, lang)}
+        <div class="fdc-ctas">
+          <a class="btn" href="#contacto">{esc(t(i18n, lang, "nav_book"))}</a>
+          <a class="btn outline" href="tel:+34922515066">{esc(t(i18n, lang, "salsa_cta_call"))}</a>
+        </div>
+      </div>
+      <div class="fdc-galeria" id="fdcGaleria">
+        {render_fuera_galeria(fdc, lang)}
+      </div>
+    </div>
+  </div>
+</section>"""
 
 
 def render_menus(datos: dict, i18n: dict, lang: str) -> str:
@@ -1118,6 +1251,7 @@ def build() -> int:
     legal = json.loads((SRC / "legal.json").read_text(encoding="utf-8"))
     menus = json.loads((SRC / "menus.json").read_text(encoding="utf-8"))
     eventos = json.loads((SRC / "eventos.json").read_text(encoding="utf-8"))
+    fdc = json.loads((SRC / "fuera-de-carta.json").read_text(encoding="utf-8"))
     titular = legal["titular"]
     analytics_cfg = json.loads((SRC / "analytics.json").read_text(encoding="utf-8"))
     ga4 = (analytics_cfg.get("ga4_id") or "").strip()
@@ -1144,7 +1278,7 @@ def build() -> int:
     cambiadas: set[str] = set()
     for lang, (folder, _, _) in LANGUAGES.items():
         out_root = REPO / folder if folder else REPO
-        carta_tabs, carta_panels, carta_notes = render_carta(menu, i18n, lang)
+        carta_tabs, carta_panels, carta_notes = render_carta(menu, i18n, lang, fdc)
 
         # Lo que es igual en todas las páginas de este idioma.
         common = dict(partials)
@@ -1164,6 +1298,8 @@ def build() -> int:
         common["MENUS"] = render_menus(menus, i18n, lang)
         common["MENUS_PIE"] = esc(menus["pie"][lang])
         common["SALSA_FECHAS"] = render_salsa_fechas(eventos, i18n, lang)
+        common["FUERA_CARTA"] = render_fuera_seccion(fdc, i18n, lang)
+        common["FUERA_AVISO"] = render_fuera_aviso(fdc, i18n, lang)
         common["SCHEMA_EVENTOS"] = render_schema_eventos(eventos, i18n, lang)
         common["SCHEMA_BLOG"] = render_schema_blog(posts, i18n, lang)
         for clave, doc in (("DOC_AVISO", "aviso-legal"),
@@ -1238,6 +1374,10 @@ def build() -> int:
         print(f"  · Guachin Salsa: solo queda {len(futuras)} fecha por delante ({futuras[0]})")
     else:
         print(f"  · Guachin Salsa: {len(futuras)} fechas por delante, la próxima el {min(futuras)}")
+    if aviso_fuera_vigente(fdc):
+        print(f"  · fuera de carta: aviso emergente publicado hasta el {fdc['aviso_hasta']}")
+    elif fdc.get("platos"):
+        print("  · fuera de carta: sección y pestaña publicadas; el aviso emergente ya ha caducado")
     if cmp_on:
         print(f"  · aviso de cookies: {cmp.get('nombre') or 'gestor externo'} "
               f"({len(cmp['scripts'])} scripts)")

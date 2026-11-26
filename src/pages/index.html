@@ -139,6 +139,9 @@
   </div>
 </section>
 
+<!--# Fuera de carta: sale de src/fuera-de-carta.json. Sin platos, no se publica. -->
+<!--{{FUERA_CARTA}}-->
+
 <!-- ================= CARTA ================= -->
 <section class="carta" id="carta">
   <div class="wrap">
@@ -265,9 +268,14 @@
 </section>
 
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose">&times;</button>
+  <button class="lightbox-close" id="lightboxClose" data-i18n-attr="aria-label=aria_cerrar" aria-label="Cerrar">&times;</button>
   <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" id="lightboxImg">
+  <video id="lightboxVideo" controls playsinline loop muted hidden></video>
 </div>
+
+<!--# Aviso emergente de lo que hay fuera de carta. Solo hasta la fecha
+     «aviso_hasta» de src/fuera-de-carta.json; después sale vacío. -->
+<!--{{FUERA_AVISO}}-->
 
 <!-- ================= CONTACTO ================= -->
 <section class="contact" id="contacto">

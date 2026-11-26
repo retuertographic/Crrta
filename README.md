@@ -285,6 +285,29 @@ busca, y así están en el código fuente de la página.
 4. Ejecuta el build. Si falta alguna clave, el script avisa por stderr y
    usa el español mientras tanto — no rompe la página.
 
+## Fuera de carta
+
+Los platos que no están en la carta de siempre viven en
+`src/fuera-de-carta.json` y salen en tres sitios a la vez:
+
+- **Una pestaña en la carta**, la primera, marcada en dorado. Sin precio:
+  estos platos no están en la hoja de la carta, así que la pestaña dice que
+  precio y alérgenos se preguntan en sala.
+- **Una sección en la portada** (`#fuera-de-carta`), entre Especialidades
+  y la carta, con los platos y una galería de fotos y vídeos. Los vídeos
+  van sin sonido, en bucle, y solo se reproducen mientras están en
+  pantalla; al pulsar cualquier pieza se abre en el lightbox.
+- **Un aviso emergente en la portada**, hasta el día `aviso_hasta`
+  (incluido). Sale una vez por visitante (`localStorage`,
+  `carreton_fdc_visto`), espera a que se cierre el aviso de cookies y no
+  sale si se llega a la portada con un ancla. Pasada la fecha, el rebuild
+  diario lo quita del HTML y el navegador lo esconde por su cuenta.
+
+Para una tanda nueva: cambia `platos`, `galeria` y `aviso_hasta`. Para
+retirarlo todo, deja `platos` vacío. Las fotos y vídeos van en
+`img/fuera-de-carta/` (WebP para fotos; MP4 H.264 sin audio y un póster
+WebP para cada vídeo).
+
 ## Catering (Habana Express)
 
 Página propia, `src/pages/catering.html`, con su entrada en el menú y un

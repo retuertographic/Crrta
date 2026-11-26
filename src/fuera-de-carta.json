@@ -1,0 +1,72 @@
+{
+  "_comentario": [
+    "Los platos fuera de carta. Salen en tres sitios: una pestaña propia en",
+    "la carta (la primera), una sección en la portada con su galería de",
+    "fotos y vídeos, y un aviso emergente en la portada.",
+    "",
+    "El aviso emergente solo se publica hasta «aviso_hasta» (incluido). Al",
+    "día siguiente el rebuild diario lo quita del HTML, y el navegador",
+    "también lo esconde por su cuenta pasada esa fecha, por si el rebuild",
+    "llega tarde. La pestaña y la sección siguen mientras haya platos:",
+    "para retirarlas, vacía «platos».",
+    "",
+    "Los precios viven en la hoja de la carta, no aquí. Mientras estos",
+    "platos no estén en la hoja, la web dice que se pregunte en sala.",
+    "",
+    "Galería: «tipo» es «foto» o «video». Los vídeos van sin sonido, en MP4",
+    "H.264, con un «poster» (el fotograma que se ve antes de cargar)."
+  ],
+  "aviso_hasta": "2026-11-29",
+  "platos": [
+    {
+      "nombre": { "es": "Lagarto de cerdo a la brasa", "en": "Grilled pork lagarto" },
+      "descripcion": {
+        "es": "Corte alargado y estrecho situado entre el lomo y las costillas. Destaca por su jugosidad, ternura y grasa entreverada, que le aporta un sabor intenso. Ideal para preparar a la brasa.",
+        "en": "A long, narrow cut from between the loin and the ribs. Juicy and tender, with marbled fat that gives it an intense flavour. Made for the grill."
+      },
+      "foto": "img/fuera-de-carta/lagarto-plato.webp"
+    },
+    {
+      "nombre": { "es": "Codillo de cerdo", "en": "Pork knuckle" },
+      "descripcion": {
+        "es": "Codillo de cerdo en su salsa, servido con papas.",
+        "en": "Pork knuckle in its own sauce, served with potatoes."
+      },
+      "foto": "img/fuera-de-carta/codillo.webp"
+    }
+  ],
+  "galeria": [
+    {
+      "tipo": "video",
+      "src": "img/fuera-de-carta/lagarto-parrilla.mp4",
+      "poster": "img/fuera-de-carta/lagarto-parrilla.webp",
+      "w": 848, "h": 478,
+      "alt": { "es": "Lagarto de cerdo en la parrilla, sobre la brasa, junto a los panes", "en": "Pork lagarto on the grill over the embers, next to the bread rolls" }
+    },
+    {
+      "tipo": "foto",
+      "src": "img/fuera-de-carta/codillo.webp",
+      "w": 1050, "h": 1400,
+      "alt": { "es": "Codillo de cerdo en su salsa con papas", "en": "Pork knuckle in its sauce with potatoes" }
+    },
+    {
+      "tipo": "foto",
+      "src": "img/fuera-de-carta/lagarto-brasa.webp",
+      "w": 1400, "h": 1050,
+      "alt": { "es": "Piezas de lagarto de cerdo dorándose en la parrilla", "en": "Pieces of pork lagarto browning on the grill" }
+    },
+    {
+      "tipo": "video",
+      "src": "img/fuera-de-carta/lagarto-servido.mp4",
+      "poster": "img/fuera-de-carta/lagarto-servido.webp",
+      "w": 478, "h": 850,
+      "alt": { "es": "Plato de lagarto de cerdo recién servido junto a la brasa", "en": "A plate of pork lagarto just served next to the grill" }
+    },
+    {
+      "tipo": "foto",
+      "src": "img/fuera-de-carta/lagarto-plato.webp",
+      "w": 1050, "h": 1400,
+      "alt": { "es": "Lagarto de cerdo a la brasa servido con lechuga", "en": "Grilled pork lagarto served with lettuce" }
+    }
+  ]
+}
